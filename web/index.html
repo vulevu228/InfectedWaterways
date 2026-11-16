@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infected Waterways</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<style>
+  :root { --bg:#0b1220; --panel:rgba(12,20,34,.92); --line:#1f2c44; --text:#dbe6f5; --muted:#8597b3;
+          --t1:#38d9ff; --t2:#2b9be0; --t3:#2468a8; --stem:#7ff3ff; --hi:#ffcf4d; --lake:#173a5e; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--text); font:13px/1.45 system-ui,Segoe UI,sans-serif; }
+  #map { position:absolute; inset:0; }
+  .panel { position:absolute; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
+           backdrop-filter:blur(6px); z-index:2; }
+  #head { top:12px; left:12px; width:300px; max-height:calc(100% - 24px); overflow:auto; }
+  #head h1 { font-size:17px; margin:0 0 2px; letter-spacing:.2px; }
+  #head .sub { color:var(--muted); font-size:12px; margin-bottom:10px; }
+  #q { width:100%; box-sizing:border-box; padding:7px 9px; border-radius:7px; border:1px solid var(--line);
+       background:#0e1a2e; color:var(--text); font:inherit; }
+  .sec { margin-top:12px; font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); }
+  .row { display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer; }
+  .row input { margin:0; }
+  .sw { width:22px; height:0; border-top:3px solid; border-radius:2px; flex:none; }
+  #top { list-style:none; padding:0; margin:4px 0 0; }
+  #top li { display:flex; justify-content:space-between; padding:3px 4px; border-radius:5px; cursor:pointer; }
+  #top li:hover { background:#14233b; }
+  #top li span:last-child { color:var(--muted); font-variant-numeric:tabular-nums; }
+  #info { right:12px; top:12px; width:280px; display:none; }
+  #info h2 { margin:0 0 6px; font-size:16px; color:var(--hi); }
+  #info table { width:100%; border-collapse:collapse; }
+  #info td { padding:3px 0; border-bottom:1px solid var(--line); }
+  #info td:last-child { text-align:right; font-variant-numeric:tabular-nums; }
+  #info .x { position:absolute; right:10px; top:8px; cursor:pointer; color:var(--muted); }
+  .note { color:var(--muted); font-size:11px; margin-top:8px; }
+  #status { position:absolute; left:50%; bottom:28px; transform:translateX(-50%); z-index:2; padding:5px 10px;
+            border-radius:6px; background:var(--panel); border:1px solid var(--line); font-size:12px; display:none; }
+  @media (max-width:640px) { #head { width:auto; right:12px; max-height:42%; } #info { left:12px; right:12px; top:auto; bottom:12px; width:auto; } }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="head" class="panel">
+  <h1>Infected Waterways</h1>
+  <div class="sub">Milestone 1: the world's waterways. No outbreak or simulation data on this map yet.</div>
+  <input id="q" list="names" placeholder="Find a river or lake…">
+  <datalist id="names"></datalist>
+  <div class="sec">Layers</div>
+  <label class="row"><input type="checkbox" data-l="stems" checked><span class="sw" style="border-color:var(--stem)"></span>Main stems (named, outlet ≥ 100 m³/s)</label>
+  <label class="row"><input type="checkbox" data-l="t1" checked><span class="sw" style="border-color:var(--t1)"></span>Mainstream ≥ 1,000 m³/s</label>
+  <label class="row"><input type="checkbox" data-l="t2" checked><span class="sw" style="border-color:var(--t2)"></span>Major river ≥ 100 m³/s</label>
+  <label class="row"><input type="checkbox" data-l="t3" checked><span class="sw" style="border-color:var(--t3)"></span>River ≥ 10 m³/s (zoom in)</label>
+  <label class="row"><input type="checkbox" data-l="lakes" checked><span class="sw" style="border-color:#3b7fbf;border-top-width:8px"></span>Lakes &amp; reservoirs</label>
+  <div class="sec">Largest rivers by outlet discharge</div>
+  <ul id="top"></ul>
+  <div class="note">Discharge = long-term average at the outlet (HydroRIVERS). Click any river to highlight its whole river system.</div>
+  <div class="note">Data: HydroSHEDS HydroRIVERS / HydroLAKES v1.0 (CC BY 4.0) · Natural Earth names · basemap OpenFreeMap © OpenStreetMap</div>
+</div>
+<div id="info" class="panel"><span class="x" id="ix">✕</span><div id="ib"></div></div>
+<div id="status"></div>
+<script>
+const fmt = n => n == null ? "–" : Number(n).toLocaleString("en-US", {maximumFractionDigits: 0});
+const status = t => { const s = document.getElementById("status"); s.textContent = t || ""; s.style.display = t ? "block" : "none"; };
+window.onerror = (m, src, l) => status("Error: " + m + " (line " + l + ")");
+window.onunhandledrejection = e => status("Error: " + (e.reason?.message || e.reason));
+const map = new maplibregl.Map({ container: "map", style: "https://tiles.openfreemap.org/styles/dark",
+  center: [60, 20], zoom: 1.6, attributionControl: { compact: true } });
+map.on("error", e => status("Map error: " + (e.error?.message || e.error)));
+map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+
+let stems = null, index = {}, loaded = new Set(), selected = null;
+const D = { t1: null, t2: null, t3: { type: "FeatureCollection", features: [] } };
+const W = (a, b) => ["interpolate", ["linear"], ["zoom"], 1, a, 8, b];
+
+map.on("load", async () => {
+  // dim the basemap's own water lines so ours read clearly
+  for (const l of map.getStyle().layers) if (/waterway/.test(l.id)) map.setLayoutProperty(l.id, "visibility", "none");
+  const before = map.getStyle().layers.find(l => l.type === "symbol")?.id;
+  status("Loading rivers…");
+  const [lakes, t1, t2, st, lab, idx] = await Promise.all(
+    ["lakes", "rivers_t1", "rivers_t2", "mainstems", "mainstem_labels"].map(f => fetch(`data/${f}.geojson`).then(r => r.json()))
+      .concat(fetch("data/rivers_index.json").then(r => r.json())));
+  stems = st; index = idx; D.t1 = t1; D.t2 = t2;
+  map.addSource("lakes", { type: "geojson", data: lakes });
+  map.addSource("t1", { type: "geojson", data: t1 });
+  map.addSource("t2", { type: "geojson", data: t2 });
+  map.addSource("t3", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+  map.addSource("stems", { type: "geojson", data: stems });
+  map.addSource("stemlab", { type: "geojson", data: lab });
+  map.addLayer({ id: "lakes", type: "fill", source: "lakes", paint: { "fill-color": "#1f5a8f", "fill-opacity": .75, "fill-outline-color": "#3b7fbf" } }, before);
+  map.addLayer({ id: "t3", type: "line", source: "t3", minzoom: 3.5, paint: { "line-color": "#2468a8", "line-width": W(.3, 1.2), "line-opacity": .8 } }, before);
+  map.addLayer({ id: "t2", type: "line", source: "t2", paint: { "line-color": "#2b9be0", "line-width": W(.5, 2) } }, before);
+  map.addLayer({ id: "t1", type: "line", source: "t1", paint: { "line-color": "#38d9ff", "line-width": W(1.1, 4) } }, before);
+  map.addLayer({ id: "stems", type: "line", source: "stems", layout: { "line-cap": "round" },
+    paint: { "line-color": "#7ff3ff", "line-opacity": .55,
+             "line-width": ["interpolate", ["linear"], ["zoom"], 1, ["interpolate", ["linear"], ["get", "dis"], 100, .4, 10000, 1.6, 200000, 3],
+                                                                 8, ["interpolate", ["linear"], ["get", "dis"], 100, 1.5, 10000, 4, 200000, 7]] } }, before);
+  map.addLayer({ id: "hi", type: "line", source: "stems", filter: ["==", ["get", "main"], -1],
+    paint: { "line-color": "#ffcf4d", "line-width": W(2.5, 6), "line-blur": .5 } });
+  for (const s of ["t1", "t2", "t3"])
+    map.addLayer({ id: `hi_${s}`, type: "line", source: s, filter: ["==", ["get", "main"], -1],
+      paint: { "line-color": "#ffcf4d", "line-width": W(1, 3), "line-opacity": .85 } });
+  map.addLayer({ id: "stem_lbl", type: "symbol", source: "stemlab",
+    layout: { "symbol-placement": "line-center", "text-max-angle": 110, "text-padding": 2, "text-allow-overlap": false, "text-field": ["get", "name"], "text-font": ["Noto Sans Italic"],
+              "text-size": ["interpolate", ["linear"], ["get", "dis"], 100, 10, 20000, 14],
+              "symbol-sort-key": ["-", 0, ["get", "dis"]], "text-letter-spacing": .08 },
+    paint: { "text-color": "#bff7ff", "text-halo-color": "#0b1220", "text-halo-width": 1.4 } });
+  map.addLayer({ id: "lake_lbl", type: "symbol", source: "lakes", minzoom: 5, filter: ["has", "name"],
+    layout: { "text-field": ["get", "name"], "text-font": ["Noto Sans Italic"], "text-size": 11 },
+    paint: { "text-color": "#9cc8ef", "text-halo-color": "#0b1220", "text-halo-width": 1.2 } });
+
+  // largest rivers list + search names
+  const named = stems.features.filter(f => f.properties.name);
+  const top = document.getElementById("top");
+  named.slice(0, 15).forEach(f => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${f.properties.name}</span><span>${fmt(f.properties.dis)} m³/s</span>`;
+    li.onclick = () => selectSystem(f.properties.main, true);
+    top.appendChild(li);
+  });
+  const dl = document.getElementById("names"), seen = new Set();
+  named.forEach(f => { if (!seen.has(f.properties.name)) { seen.add(f.properties.name); dl.insertAdjacentHTML("beforeend", `<option value="${f.properties.name}">`); } });
+  lakes.features.filter(f => f.properties.name).forEach(f => { const n = f.properties.name; if (!seen.has(n)) { seen.add(n); dl.insertAdjacentHTML("beforeend", `<option value="${n}">`); } });
+  window._lakes = lakes;
+  status("");
+  loadVisibleT3();
+});
+
+async function loadVisibleT3() {
+  if (map.getZoom() < 3.5 || !document.querySelector('[data-l="t3"]').checked) return;
+  const b = map.getBounds();
+  const want = Object.entries(index).filter(([r, v]) => v.bbox && !loaded.has(r) &&
+    !(v.bbox[0] > b.getEast() || v.bbox[2] < b.getWest() || v.bbox[1] > b.getNorth() || v.bbox[3] < b.getSouth()));
+  if (!want.length) return;
+  want.forEach(([r]) => loaded.add(r));
+  status(`Loading rivers: ${want.map(([, v]) => v.name).join(", ")}…`);
+  const parts = await Promise.all(want.map(([r]) => fetch(`data/rivers_t3_${r}.geojson`).then(x => x.json())));
+  D.t3 = { type: "FeatureCollection", features: D.t3.features.concat(...parts.map(p => p.features)) };
+  map.getSource("t3").setData(D.t3);
+  status("");
+}
+map.on("moveend", loadVisibleT3);
+
+function systemStats(main) {
+  const s = stems.features.find(f => f.properties.main === main);
+  return s ? s.properties : null;
+}
+function selectSystem(main, fly) {
+  selected = main;
+  map.setFilter("hi", ["==", ["get", "main"], main]);
+  for (const s of ["t1", "t2", "t3"]) map.setFilter(`hi_${s}`, ["==", ["get", "main"], main]);
+  const st = systemStats(main);
+  const feats = ["t1", "t2", "t3"].flatMap(s => D[s].features)
+    .filter(f => f.properties.main === main);
+  const p = feats[0]?.properties || {};
+  const name = st?.name || "Unnamed river system";
+  document.getElementById("ib").innerHTML = `<h2>${name}</h2><table>
+    <tr><td>Outlet discharge (avg)</td><td>${fmt(st?.dis ?? p.sdis)} m³/s</td></tr>
+    <tr><td>Basin area</td><td>${fmt(st?.area ?? p.sarea)} km²</td></tr>
+    <tr><td>Main stem length</td><td>${st ? fmt(st.len) + " km" : "–"}</td></tr>
+    <tr><td>Ends in</td><td>${(st?.sink ?? (p.endo ? "inland" : "sea")) === "inland" ? "inland sink (no sea outlet)" : "the sea"}</td></tr>
+    <tr><td>HydroRIVERS system id</td><td>${main}</td></tr></table>
+    <div class="note">Highlighted: this system's main stem and every tributary ≥ 10 m³/s that is loaded. Main stem = from the mouth, always the branch with the largest upstream area.</div>`;
+  document.getElementById("info").style.display = "block";
+  if (fly && st) {
+    const s = stems.features.find(f => f.properties.main === main);
+    const b = new maplibregl.LngLatBounds();
+    (s.geometry.type === "LineString" ? [s.geometry.coordinates] : s.geometry.coordinates).flat().forEach(c => b.extend(c));
+    map.fitBounds(b, { padding: 80, maxZoom: 7 });
+  }
+}
+document.getElementById("ix").onclick = () => {
+  document.getElementById("info").style.display = "none";
+  map.setFilter("hi", ["==", ["get", "main"], -1]);
+  for (const s of ["t1", "t2", "t3"]) map.setFilter(`hi_${s}`, ["==", ["get", "main"], -1]);
+};
+for (const l of ["stems", "t1", "t2", "t3"]) {
+  map.on("click", l, e => selectSystem(e.features[0].properties.main, false));
+  map.on("mouseenter", l, () => map.getCanvas().style.cursor = "pointer");
+  map.on("mouseleave", l, () => map.getCanvas().style.cursor = "");
+}
+map.on("click", "lakes", e => {
+  if (map.queryRenderedFeatures(e.point, { layers: ["stems", "t1", "t2", "t3"] }).length) return;
+  const p = e.features[0].properties;
+  const rows = p.src === "HydroLAKES v1.0" ? `
+    <tr><td>Type</td><td>${p.type}</td></tr><tr><td>Area</td><td>${fmt(p.area)} km²</td></tr>
+    <tr><td>Volume</td><td>${fmt(p.vol)} million m³</td></tr><tr><td>Average depth</td><td>${(+p.depth).toFixed(1)} m</td></tr>
+    <tr><td>Average outflow</td><td>${fmt(p.dis)} m³/s</td></tr><tr><td>Residence time</td><td>${fmt(p.res_days)} days</td></tr>
+    <tr><td>Country</td><td>${p.country}</td></tr>` : `<tr><td>Type</td><td>${p.featurecla}</td></tr>`;
+  document.getElementById("ib").innerHTML = `<h2>${p.name || "Unnamed lake"}</h2><table>${rows}</table><div class="note">Source: ${p.src}</div>`;
+  document.getElementById("info").style.display = "block";
+});
+document.querySelectorAll("[data-l]").forEach(cb => cb.onchange = () => {
+  const ids = { stems: ["stems", "stem_lbl", "hi"], t1: ["t1", "hi_t1"], t2: ["t2", "hi_t2"], t3: ["t3", "hi_t3"], lakes: ["lakes", "lake_lbl"] }[cb.dataset.l];
+  ids.forEach(id => map.setLayoutProperty(id, "visibility", cb.checked ? "visible" : "none"));
+  if (cb.dataset.l === "t3") loadVisibleT3();
+});
+document.getElementById("q").onchange = e => {
+  const v = e.target.value.trim().toLowerCase(); if (!v) return;
+  const s = stems.features.find(f => (f.properties.name || "").toLowerCase() === v);
+  if (s) return selectSystem(s.properties.main, true);
+  const l = window._lakes.features.find(f => (f.properties.name || "").toLowerCase() === v);
+  if (l) { const b = new maplibregl.LngLatBounds(); (l.geometry.type === "Polygon" ? l.geometry.coordinates : l.geometry.coordinates.flat()).flat().forEach(c => b.extend(c)); map.fitBounds(b, { padding: 80, maxZoom: 8 }); }
+};
+</script>
+</body>
+</html>

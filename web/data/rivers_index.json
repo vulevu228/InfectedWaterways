@@ -1,0 +1,67 @@
+{
+ "af": {
+  "name": "Africa",
+  "bbox": [
+   -16.58,
+   -34.41,
+   50.46,
+   37.19
+  ],
+  "segments": 116814,
+  "features": 677,
+  "t3_features": 518,
+  "t3_kb": 1428
+ },
+ "ar": {
+  "name": "North American Arctic",
+  "bbox": [
+   -179.66,
+   52.42,
+   -62.87,
+   83.2
+  ],
+  "segments": 30712,
+  "features": 433,
+  "t3_features": 389,
+  "t3_kb": 578
+ },
+ "as": {
+  "name": "Asia",
+  "bbox": [
+   59.79,
+   1.48,
+   145.29,
+   55.7
+  ],
+  "segments": 155949,
+  "features": 1154,
+  "t3_features": 930,
+  "t3_kb": 1977
+ },
+ "au": {
+  "name": "Australasia",
+  "bbox": [
+   95.3,
+   -46.45,
+   179.35,
+   18.61
+  ],
+  "segments": 73647,
+  "features": 1792,
+  "t3_features": 1542,
+  "t3_kb": 1211
+ },
+ "eu": {
+  "name": "Europe & Middle East",
+  "bbox": [
+   -22.41,
+   12.94,
+   68.66,
+   79.79
+  ],
+  "segments": 76240,
+  "features": 1057,
+  "t3_features": 899,
+  "t3_kb": 1328
+ }
+}
