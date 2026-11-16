@@ -13,7 +13,8 @@ API
       Travel time per reach = length / v, with v = a * Q^b (m/s, Q = mean discharge m3/s): downstream hydraulic
       geometry (Leopold & Maddock 1953). a, b come from the calibration in docs/CALIBRATION.md.
   GET /api/live      KPIs + layers for "the world now": WHO cholera (weekly), WHO DON waterborne reports, GDACS floods,
-                     river flow vs the same season of the last 5 years (GloFAS). Cached 10 minutes. Filled by collect_live.py.
+                     river flow vs the same season of the last 5 years (GloFAS), drinking-water coverage per
+                     country (WHO GHO / JMP). Cached 10 minutes. Filled by collect_live.py.
   GET /api/health
 """
 import datetime as dt
@@ -282,6 +283,10 @@ def live(c) -> dict:
     # ---- overlap: countries with cholera in the last 4 weeks and a river flood now
     chol4 = {x["iso3"]: x["name"] for x in out.get("cholera_countries", []) if x["cases_4w"] > 0}
     out["overlap"] = sorted({chol4[f["iso3"]] for f in cur_fl if f["iso3"] in chol4})
+    # ---- drinking-water coverage per country (WHO GHO / JMP): the outbreak scenario's exposure share
+    if q1(c, "SELECT to_regclass('wash')")[0]:
+        out["wash"] = {i: {"basic": b, "safe": sf, "year": y}
+                       for i, b, sf, y in c.execute("SELECT iso3, basic_pct, safe_pct, year FROM wash").fetchall()}
     out["static"] = dict(c.execute("SELECT key, value FROM meta").fetchall()) if q1(c, "SELECT to_regclass('meta')")[0] else {}
     return out
 

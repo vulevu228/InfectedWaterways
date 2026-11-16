@@ -7,11 +7,14 @@ Sources (all open, no key):
            https://www.who.int/api/news/diseaseoutbreaknews
   floods   GDACS flood events, last 120 days
            https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=FL
+  wash     WHO Global Health Observatory: share of each country's population using at least basic / safely managed
+           drinking-water services (WSH_WATER_BASIC, WSH_WATER_SAFELY_MANAGED; JMP data, latest year per country)
+           https://ghoapi.azureedge.net/api/WSH_WATER_BASIC
   flow     Open-Meteo Flood API (GloFAS v4 river discharge, CC BY 4.0, non-commercial) at one virtual gauge near the
            mouth of each of the 150 largest river systems: last 30 days + 7-day forecast, and the same +-15 day window
            in each of the previous 5 years as the "normal" baseline.
 
-Run:  python3 collect_live.py [cholera] [don] [floods] [flow] [--setup-gauges]   (no args = all four)
+Run:  python3 collect_live.py [cholera] [don] [floods] [wash] [flow] [--setup-gauges]   (no args = all five)
 """
 import csv
 import datetime as dt
@@ -34,6 +37,7 @@ CHOLERA_CSV = "https://who.maps.arcgis.com/sharing/rest/content/items/6d435a537d
 DON_API = "https://www.who.int/api/news/diseaseoutbreaknews"
 GDACS = "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH"
 FLOOD = "https://flood-api.open-meteo.com/v1/flood"
+GHO = "https://ghoapi.azureedge.net/api/"
 N_GAUGES = 150
 BASE_YEARS = 5
 WINDOW = 15            # +- days around today's date in each baseline year
@@ -202,6 +206,34 @@ def store(c, mains, res):
                             [(m, t, q) for t, q in zip(r["daily"]["time"], r["daily"]["river_discharge"]) if q is not None])
 
 
+def wash(c):
+    """Drinking-water service coverage per country (WHO GHO / JMP). Latest year per country, totals only (not urban/rural).
+
+    The outbreak scenario needs the share of people who rely on unimproved or surface water: 100 - "at least basic".
+    """
+    cols = {"basic_pct": "WSH_WATER_BASIC", "safe_pct": "WSH_WATER_SAFELY_MANAGED"}
+    best: dict[str, dict] = {}
+    for col, ind in cols.items():
+        rows = json.loads(get(GHO + ind))["value"]
+        n = 0
+        for r in rows:
+            if r["SpatialDimType"] != "COUNTRY" or r.get("Dim1") != "RESIDENCEAREATYPE_TOTL" or r["NumericValue"] is None:
+                continue
+            k, y = r["SpatialDim"], int(r["TimeDim"])
+            e = best.setdefault(k, {})
+            if y >= e.get(col + "_y", 0):
+                e[col], e[col + "_y"] = round(float(r["NumericValue"]), 1), y
+                n += 1
+        log.info("wash: %s -> %d country-year rows kept", ind, n)
+    rows = [(k, v.get("basic_pct"), v.get("safe_pct"), max(v.get("basic_pct_y", 0), v.get("safe_pct_y", 0)) or None)
+            for k, v in best.items() if v.get("basic_pct") is not None]
+    with c.cursor() as cur:
+        cur.executemany("""INSERT INTO wash (iso3, basic_pct, safe_pct, year) VALUES (%s, %s, %s, %s)
+                           ON CONFLICT (iso3) DO UPDATE SET basic_pct = EXCLUDED.basic_pct,
+                           safe_pct = EXCLUDED.safe_pct, year = EXCLUDED.year""", rows)
+    log.info("wash: %d countries stored", len(rows))
+
+
 def flow(c):
     g = c.execute("SELECT main_riv, glon, glat FROM gauges WHERE glon IS NOT NULL ORDER BY main_riv").fetchall()
     if not g:
@@ -231,11 +263,11 @@ def main(argv):
     if "--setup-gauges" in argv:
         setup_gauges(c)
         return
-    jobs = [a for a in argv if not a.startswith("-")] or ["cholera", "don", "floods", "flow"]
+    jobs = [a for a in argv if not a.startswith("-")] or ["cholera", "don", "floods", "wash", "flow"]
     failed = []
     for j in jobs:
         try:
-            {"cholera": cholera, "don": don, "floods": floods, "flow": flow}[j](c)
+            {"cholera": cholera, "don": don, "floods": floods, "wash": wash, "flow": flow}[j](c)
         except Exception:  # noqa: BLE001  one broken source must not stop the others
             log.exception("%s failed", j)
             failed.append(j)

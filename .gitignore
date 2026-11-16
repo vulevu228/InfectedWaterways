@@ -3,3 +3,8 @@ data/raw/
 data/processed/
 __pycache__/
 *.pyc
+
+# local dev only (headless screenshots)
+node_modules/
+package-lock.json
+package.json

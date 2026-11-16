@@ -30,7 +30,7 @@ button { font:inherit; color:inherit; }
 .stat { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:7px 9px; }
 .stat b { display:block; font-size:16px; font-variant-numeric:tabular-nums; letter-spacing:.2px; }
 .stat span { color:var(--muted); font-size:11px; }
-.modes { display:grid; grid-template-columns:1fr 1fr; background:var(--panel2); border:1px solid var(--line); border-radius:9px; padding:3px; gap:3px; }
+.modes { display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--panel2); border:1px solid var(--line); border-radius:9px; padding:3px; gap:3px; }
 .modes button { border:0; background:transparent; padding:7px 0; border-radius:7px; cursor:pointer; color:var(--muted); font-weight:600; }
 .modes button.on { background:#16304f; color:#fff; box-shadow:inset 0 0 0 1px #2f5b8c; }
 .modes button:disabled { opacity:.4; cursor:not-allowed; }
@@ -114,6 +114,17 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
 .chips button.on { color:#fff; border-color:#c56a1b; background:#2a1a0b; }
 .chips button:disabled { opacity:.4; cursor:not-allowed; }
 .pnote { color:var(--muted); font-size:11.5px; margin:4px 0 6px; }
+.modes button.on.ob { background:#3a1119; box-shadow:inset 0 0 0 1px #8c2f3c; }
+.tile.warn { border-color:#5e2430; background:#1a0e13; }
+.tile.warn b { color:#ff8e9c; }
+.burden-scale { margin:8px 0 2px; display:grid; gap:5px; }
+.bs-row { display:grid; grid-template-columns:86px 1fr auto; gap:8px; align-items:center; font-size:11.5px; color:var(--muted); }
+.bs-row b { color:var(--text); font-variant-numeric:tabular-nums; font-size:11.5px; font-weight:600; }
+.bar { height:9px; background:#0a1424; border:1px solid var(--line); border-radius:5px; overflow:hidden; }
+.bar i { display:block; height:100%; background:#2f5b8c; border-radius:4px; }
+.bar i.u { background:var(--spill); } .bar i.c { background:var(--outbreak); } .bar i.dd { background:#ff2d45; }
+.tl.bl li { grid-template-columns:1fr 64px auto; }
+.tl.bl .bar.sm { height:7px; }
 .status-pill { display:inline-block; font-size:10px; letter-spacing:.8px; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:1px; border:1px solid; }
 .lg-div { width:120px; height:7px; border-radius:4px; background:linear-gradient(90deg,#a0602a,#d6a064,#8d99a8,#5ea6e8,#2a6fd6); }
 @media (max-width:1100px) { #legend { left:12px; bottom:auto; top:auto; display:none; } }
@@ -143,7 +154,8 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
   <div class="asof" id="asof"></div>
   <div class="modes" role="tablist">
     <button id="mExplore" class="on" role="tab">Explore</button>
-    <button id="mTrace" role="tab">Trace downstream</button>
+    <button id="mTrace" role="tab">Trace</button>
+    <button id="mOutbreak" role="tab">Outbreak</button>
   </div>
   <div class="hint" id="hint">Click a river to see its system. Switch to Trace to follow the water.</div>
   <input id="q" list="names" placeholder="Find a river, lake or event…" autocomplete="off">
@@ -510,7 +522,7 @@ function showEvent(id, fly) {
   }
 }
 
-let flowAnim = null, TRACEPTS = [];
+let flowAnim = null, TRACEPTS = [], lastLabel = null;
 function clearTrace() {
   lastTrace = null;
   for (const s of ["trace", "tracepts", "cursor"]) map.getSource(s)?.setData(EMPTY);
@@ -555,10 +567,11 @@ async function runTrace(ll, label) {
   fitGeom({ type: "MultiLineString", coordinates: d.features.map(f => f.geometry.type === "LineString" ? f.geometry.coordinates : f.geometry.coordinates.flat()) }, 9);
 }
 function showTrace(d, label) {
+  lastLabel = label;
   const s = d.summary;
   const cities = d.cities.filter(c => c.pop >= 20000);
   const isos = new Set(d.countries.flatMap(c => c.iso3.split("/")));
-  openInfo(`<div class="kicker">Downstream trace<span class="badge sim">SIMULATED · MEAN FLOW</span></div>
+  openInfo(`<div class="kicker">${mode === "outbreak" ? "Outbreak scenario" : "Downstream trace"}<span class="badge sim">SIMULATED · MEAN FLOW</span></div>
     <h2>${esc(label || s.system || "Unnamed river system")}</h2>
     <div class="note" style="margin-top:-4px">Start snapped to the nearest river ≥ 1 m³/s, ${fmt(s.snap_km, 1)} km from the click · ${fmt(s.reaches)} reaches · ${d.ms} ms</div>
     <div class="tiles"><div class="tile"><b>${fmt(s.km)}</b><span>km to the ${s.ends === "sea" ? "sea" : "inland sink"}</span></div>
@@ -638,6 +651,7 @@ async function loadLive() {
   $("kpis").onclick = e => { const b = e.target.closest(".kpi"); if (b) kpiPanel(b.dataset.k); };
   $("overlap").innerHTML = L.overlap?.length ? `<div class="alert-line" id="ovl">⚠ Cholera in the last 4 weeks <b>and</b> a river flood now: ${esc(L.overlap.join(", "))}</div>` : "";
   if ($("ovl")) $("ovl").onclick = () => kpiPanel("floods");
+  if (lastTrace && mode === "outbreak") showTrace(lastTrace, lastLabel);   // the scenario needs LIVE.wash
   $("asof").innerHTML = `Cholera: WHO, latest reported week ${dshort(ch.latest_week)} (reports lag, so the window ends a week earlier) · floods and flow: today`;
   donChart();
 }
@@ -787,7 +801,7 @@ const PATHOGENS = {
   tracer: { name: "Chemical (no decay)", t90: [Infinity, Infinity, Infinity], src: [],
     note: "A substance that does not break down, like the cyanide or benzene spills on the map: only dilution by tributaries lowers it." },
 };
-let SIM = { p: "cholera", flow: "mean" };
+let SIM = { p: "cholera", flow: "mean", exp: "safe" };
 function simulate(d, T90, r) {
   // relative concentration after full mixing at the release point: dilution (Q0/Q) x decay 10^(-t/T90).
   // Flow scenario r scales every reach's discharge: travel time scales with r^-b, dilution ratios stay the same.
@@ -836,10 +850,124 @@ function setupSim(d) {
     <h3>Concentration left, relative to the release point (log scale)</h3><div class="chart" id="simc"></div>
     <div class="pnote">Line: typical decay. Band: fast to slow decay. Dilution from tributaries plus die-off (T90 = ${isFinite(P.t90[1]) ? P.t90.map(t => fmt(t, t < 1 ? 1 : 0)).join(" / ") + " days" : "none"}).
       Lakes on the way add their residence time to the die-off clock. Assumes full mixing; ignores sediment, regrowth and treatment.</div>
-    ${P.src.length ? `<div class="src">${P.src.map(k => `<a href="${SRC[k][1]}" target="_blank" rel="noopener">${esc(SRC[k][0])}</a>`).join("")}</div>` : ""}`;
+    ${P.src.length ? `<div class="src">${P.src.map(k => `<a href="${SRC[k][1]}" target="_blank" rel="noopener">${esc(SRC[k][0])}</a>`).join("")}</div>` : ""}
+    <div id="burden">${mode === "outbreak" ? burden(d, S) : `<div class="note">Switch to the <b>Outbreak</b> tab to see how many people this stretch could make ill.</div>`}</div>`;
   $("simP").onclick = e => { const b = e.target.closest("button"); if (b) { SIM.p = b.dataset.p; setupSim(d); } };
   $("simF").onclick = e => { const b = e.target.closest("button"); if (b && !b.disabled) { SIM.flow = b.dataset.f; setupSim(d); } };
+  if ($("expo")) $("expo").onclick = e => { const b = e.target.closest("button"); if (b) { SIM.exp = b.dataset.e; setupSim(d); } };
   simChart($("simc"), d, fast, typ, slow, tf);
+}
+// ================================================================================= Milestone 3b: outbreak scenario
+// How many people a contaminated river could make ill. Four steps, each with a published anchor:
+//   1. exposed   people within 5 km of the stretch still carrying >= 0.1 % of the release concentration
+//   2. at risk   exposed x the share of that country's people whose drinking water is unsafe (WHO GHO / JMP)
+//   3. cases     that group x an attack rate measured in a documented outbreak of this pathogen
+//   4. deaths    cases x a case-fatality ratio published for this pathogen
+// Not a forecast: it is the arithmetic of "if this happened here, and nobody responded".
+const SRC2 = {
+  jmp: ["WHO Global Health Observatory: population using at least basic / safely managed drinking-water services (WHO-UNICEF JMP data)", "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/population-using-at-least-basic-drinking-water-services-(-)"],
+  jmp25: ["WHO / UNICEF JMP 2025 report: 2.1 bn people without safely managed drinking water in 2024, of whom 106 m drink untreated surface water", "https://data.unicef.org/resources/jmp-report-2025/"],
+  hti: ["Barzilay et al. 2013, New England Journal of Medicine: cholera surveillance during the Haiti epidemic, the first two years (6.1 % cumulative attack rate)", "https://pubmed.ncbi.nlm.nih.gov/23301694/"],
+  htidep: ["Haiti 2010-12 department-level cholera attack rates: 64.7 to 3,070.9 cases per 10,000 inhabitants (0.65 % to 30.7 %)", "https://pmc.ncbi.nlm.nih.gov/articles/PMC3191723/"],
+  mke: ["Mac Kenzie et al. 1994, New England Journal of Medicine: 403,000 cryptosporidiosis cases in Milwaukee, 1.61 m people served, 69 deaths", "https://pubmed.ncbi.nlm.nih.gov/7818640/"],
+  mkecdc: ["CDC MMWR on the Milwaukee outbreak: 52 % attack rate among those served by the contaminated South plant", "https://www.cdc.gov/mmwr/preview/mmwrhtml/00040818.htm"],
+  walk: ["Walkerton, Ontario, 2000: over 2,300 people ill and 7 deaths in a town of about 4,800 after E. coli O157:H7 entered the water supply", "https://www.foodsafetynews.com/2011/05/72-million-paid-to-victims-of-walkerton-outbreak/"],
+  whocfr: ["WHO: cholera case fatality should stay below 1 % with treatment; recent outbreaks have run near 3 %", "https://healthpolicy-watch.news/who-warns-of-the-unacceptable-death-toll-in-global-cholera-outbreaks/"],
+  whogl: ["WHO 2004 cholera outbreak assessment guideline: untreated severe cholera kills 30-50 % of patients", "https://www.themimu.info/sites/themimu.info/files/documents/Guidelines_Assessment_CholeraOutbreak_WHO_2004.pdf"],
+  typh: ["CDC Yellow Book, typhoid and paratyphoid fever: under 1 % with early treatment, 10-30 % untreated; a 1 % planning value and a 2.49 % (95 % CI 1.65-3.75) meta-analysis are both in use", "https://www.cdc.gov/yellow-book/hcp/travel-associated-infections-diseases/typhoid-and-paratyphoid-fever.html"],
+  hepa: ["WHO hepatitis A fact sheet: 35,569 deaths worldwide in 2023; no case-fatality ratio is published, and waterborne outbreaks follow sewage-contaminated or inadequately treated water", "https://www.who.int/news-room/fact-sheets/detail/hepatitis-a"],
+};
+// Attack rate = share of the people at risk who become a reported case. Every value below was measured in a real outbreak.
+const ATTACK_SETS = {
+  haiti: { rates: [0.0065, 0.061, 0.307], lbl: ["0.65 %", "6.1 %", "30.7 %"], primary: 1, src: ["hti", "htidep"],
+    txt: "Anchored on Haiti 2010-12, the best-measured large waterborne epidemic: 6.1 % of the whole country fell ill over two years, from 0.65 % in the least-affected department to 30.7 % in the worst." },
+  mke: { rates: [0.25, 0.52], lbl: ["25 %", "52 %"], primary: 0, src: ["mke", "mkecdc"],
+    txt: "Anchored on Milwaukee 1993, the largest documented waterborne outbreak: 403,000 cases, a quarter of the 1.61 million people served, and 52 % of the area served by the one contaminated plant." },
+  walk: { rates: [0.48], lbl: ["48 %"], primary: 0, src: ["walk"],
+    txt: "Anchored on Walkerton 2000: over 2,300 of about 4,800 residents fell ill, roughly 48 %, after cattle manure washed into a well." },
+};
+// Case-fatality ratios published for each pathogen, and which outbreak sets its attack rate.
+const BURDEN = {
+  cholera: { set: "haiti", cfr: [0.01, 0.03], cfrTxt: "1 % case fatality, WHO's maximum acceptable with treatment, up to the 3 % recent outbreaks have run", src: ["whocfr", "whogl"],
+    extra: "Untreated severe cholera kills 30-50 % of patients (WHO). Rehydration salts are most of the difference between the two numbers." },
+  typhoid: { set: "haiti", proxy: true, cfr: [0.01, 0.0249], cfrTxt: "1 % case fatality, the standard planning value, up to the 2.49 % (95 % CI 1.65-3.75) of a meta-analysis", src: ["typh"],
+    extra: "Untreated typhoid kills 10-30 % (CDC), and drug resistance is spreading. No typhoid outbreak is well enough measured to set its own attack rate, so cholera's is used." },
+  hepa: { set: "haiti", proxy: true, cfr: null, src: ["hepa"],
+    extra: "WHO publishes no case-fatality ratio for hepatitis A, so no deaths are estimated here; it killed 35,569 people worldwide in 2023. The attack rate shown is cholera's, used as a stand-in." },
+  ecoli: { set: "walk", cfr: [0.003, 0.003], cfrTxt: "0.3 % case fatality, as at Walkerton in 2000 (7 deaths among over 2,300 ill)", src: ["walk"],
+    extra: "Deaths fall on children under 5 and the elderly, through haemolytic uraemic syndrome. Walkerton was a small town on one well: an attack rate that high needs everyone drinking the same contaminated water." },
+  crypto: { set: "mke", cfr: [0.00017, 0.00017], cfrTxt: "0.017 % case fatality, as in Milwaukee in 1993 (69 deaths among 403,000 cases)", src: ["mke"],
+    extra: "Almost every Milwaukee death was someone with AIDS or another immune suppression. Chlorine does not kill it, so it is the pathogen that most rewards filtration - and it survives long enough to reach a whole river's length." },
+  tracer: { set: null, cfr: null, src: [],
+    extra: "A chemical, not an infection: no attack rate or case-fatality ratio applies. The exposed population is shown; illness is not." },
+};
+// Two published definitions of unsafe water, both per country, latest year (WHO GHO / JMP):
+const EXPO = {
+  basic: { k: "basic", lbl: "Unimproved or surface water", pct: w => w.basic == null ? null : 100 - w.basic,
+    txt: "people with no improved source within a 30-minute round trip: they take water from a river, lake, ditch or an unprotected well" },
+  safe: { k: "safe", lbl: "Not safely managed", pct: w => w.safe == null ? null : 100 - w.safe,
+    txt: "people whose water is not from an improved source on their premises, available when needed and free of contamination - the 2.1 bn in WHO's 2025 count" },
+};
+// Exposed population per country: a reach belongs to the country run covering its distance from the start.
+function exposedByCountry(d, iEnd) {
+  const runs = d.countries.map(c => ({ ...c, end: c.km + c.len_km })), by = new Map();
+  for (const f of d.features.slice(0, iEnd)) {
+    const p = f.properties;
+    if (!p.pop) continue;
+    const run = runs.find(r => p.km0 >= r.km && p.km0 < r.end) || runs.at(-1);
+    if (!run) continue;
+    const iso = run.iso3.split("/")[0], e = by.get(iso) || { iso3: iso, name: run.name, pop: 0 };
+    e.pop += p.pop;
+    by.set(iso, e);
+  }
+  const W = LIVE?.wash || {}, def = EXPO[SIM.exp];
+  return [...by.values()].map(e => {
+    const w = W[e.iso3], pct = w ? def.pct(w) : null;
+    return { ...e, pct, basic: w?.basic ?? null, safe: w?.safe ?? null, year: w?.year ?? null, risk: pct == null ? null : e.pop * pct / 100 };
+  }).sort((a, b) => (b.risk ?? -1) - (a.risk ?? -1) || b.pop - a.pop);
+}
+function burden(d, S) {
+  const P = PATHOGENS[SIM.p], B = BURDEN[SIM.p], A = B.set ? ATTACK_SETS[B.set] : null, st = S[1], def = EXPO[SIM.exp];
+  const rows = exposedByCountry(d, st.i), known = rows.filter(r => r.risk != null);
+  const risk = known.reduce((a, r) => a + r.risk, 0);
+  const noData = rows.filter(r => r.risk == null).reduce((a, r) => a + r.pop, 0);
+  const nm = fmtPop;   // one unit convention across the whole block
+  const cases = A ? A.rates.map(r => risk * r) : null, pri = A ? cases[A.primary] : null;
+  const deaths = B.cfr && pri != null ? B.cfr.map(c => pri * c) : null;
+  const maxR = Math.max(...known.map(r => r.risk), 1);
+  const srcs = [...new Set(["jmp", "jmp25", ...(A?.src || []), ...(B.src || [])])];
+  const w = n => Math.min(100, Math.max(n / Math.max(st.pop, 1) * 100, 0.4)).toFixed(1);
+  return `<h3 style="margin-top:16px">If this water were contaminated here<span class="badge sim">HYPOTHETICAL · NOT A FORECAST</span></h3>
+    <div class="pnote">What a flood-driven sewage overflow, a failed treatment plant or an untreated discharge at this point could mean for
+      the people downstream, with no response at all. Each step below multiplies by a published number; all of them are listed at the end.</div>
+    <div class="chips" id="expo">${Object.values(EXPO).map(e => `<button data-e="${e.k}" class="${e.k === SIM.exp ? "on" : ""}">${e.lbl}</button>`).join("")}</div>
+    <div class="tiles">
+      <div class="tile"><b>${fmtPop(st.pop)}</b><span>people live within 5 km of the ${fmt(st.km)} km that still carries ${esc(P.name)}</span></div>
+      <div class="tile"><b>${known.length ? fmtPop(risk) : "–"}</b><span>of them drink water that is ${SIM.exp === "basic" ? "unimproved or straight from the surface" : "not safely managed"} (WHO, per country)</span></div>
+      ${pri != null ? `<div class="tile warn"><b>${nm(pri)}</b><span>could fall ill, at the ${A.lbl[A.primary]} attack rate of ${B.set === "haiti" ? "Haiti 2010-12" : B.set === "mke" ? "Milwaukee 1993" : "Walkerton 2000"}${A.rates.length > 1 ? ` (${A.lbl.filter((_, i) => i !== A.primary).join(" / ")} → ${A.rates.filter((_, i) => i !== A.primary).map(r => nm(risk * r)).join(" / ")})` : ""}</span></div>` : ""}
+      ${deaths ? `<div class="tile warn"><b>${nm(deaths[0])}${deaths[0] !== deaths[1] ? "–" + nm(deaths[1]) : ""}</b><span>could die, at ${esc(B.cfrTxt)}</span></div>`
+      : `<div class="tile"><b>n/a</b><span>${SIM.p === "tracer" ? "a chemical: no attack rate or fatality ratio applies" : "WHO publishes no case-fatality ratio for this one"}</span></div>`}
+    </div>
+    ${pri != null ? `<div class="burden-scale">
+      <div class="bs-row"><span>Exposed</span><div class="bar"><i style="width:100%"></i></div><b>${fmtPop(st.pop)}</b></div>
+      <div class="bs-row"><span>Unsafe water</span><div class="bar"><i class="u" style="width:${w(risk)}%"></i></div><b>${fmtPop(risk)}</b></div>
+      <div class="bs-row"><span>Ill</span><div class="bar"><i class="c" style="width:${w(pri)}%"></i></div><b>${nm(pri)}</b></div>
+      ${deaths ? `<div class="bs-row"><span>Dead</span><div class="bar"><i class="dd" style="width:${w(deaths[1])}%"></i></div><b>${nm(deaths[1])}</b></div>` : ""}
+    </div><div class="note">One scale for all four bars: full width is everyone living within 5 km of the stretch. Bars below 0.4 % are drawn at 0.4 % so they stay visible.</div>` : ""}
+    ${known.length ? `<h3>Who is at risk, by country</h3><ul class="tl bl">${known.slice(0, 12).map(r => `<li>
+      <span class="n">${esc(r.name.replace(" border river", " (border)"))}</span>
+      <span class="bar sm"><i class="u" style="width:${(r.risk / maxR * 100).toFixed(1)}%"></i></span>
+      <span class="k">${fmtPop(r.risk)} of ${fmtPop(r.pop)}</span></li>`).join("")}</ul>
+      <div class="note">Right-hand figure: people on unsafe water, of all people within 5 km of the stretch in that country.
+        ${known.slice(0, 5).map(r => `${esc(r.iso3)} ${fmt(r.pct, 1)} %`).join(" · ")}${known.length > 5 ? " · …" : ""} on unsafe water (WHO GHO, ${String(Math.max(...known.map(r => r.year || 0)))}).
+        ${noData ? `No WHO figure covers ${fmtPop(noData)} of the people on this path, so they are left out of the case count.` : ""}</div>` : `<div class="pnote">No WHO drinking-water figure for the countries on this path, so no case count is shown.</div>`}
+    ${A ? `<div class="pnote">${esc(A.txt)}${B.proxy ? " " : ""}</div>` : ""}
+    <div class="pnote">${esc(B.extra)}</div>
+    <div class="pnote">A real outbreak falls short of this wherever people boil, chlorinate or filter, and wherever rehydration, antibiotics and
+      oral cholera vaccine arrive early. It runs ahead of it where people are displaced into camps, or where the same water is used for washing,
+      irrigation and fishing. Infection also needs an infective dose, which this does not model: everyone beside water still carrying 0.1 % of the
+      release concentration counts as exposed, which is a proxy, not a dose-response curve.</div>
+    <div class="src">${srcs.map(k => `<a href="${SRC2[k][1]}" target="_blank" rel="noopener">${esc(SRC2[k][0])}</a>`).join("")}</div>`;
 }
 function simChart(el, d, fast, typ, slow, tf) {
   const W = 340, H = 150, m = { l: 44, r: 10, t: 8, b: 24 }, X = d.summary.km || 1, km = d.features.map(f => f.properties.km0);
@@ -866,17 +994,27 @@ function simChart(el, d, fast, typ, slow, tf) {
   svg.onpointerleave = () => { tip.style.display = "none"; sx.setAttribute("visibility", "hidden"); map.getSource("cursor").setData(EMPTY); };
 }
 
+const HINT = { explore: "Click a river to see its system. Switch to Trace to follow the water.",
+               trace: "Click anywhere near a river: the water is followed to the sea.",
+               outbreak: "Click anywhere near a river: how many people downstream a contamination there could make ill." };
 function setMode(m) {
+  const was = mode;
   mode = m;
-  $("mExplore").classList.toggle("on", m === "explore"); $("mTrace").classList.toggle("on", m === "trace");
-  $("hint").textContent = m === "trace" ? "Click anywhere near a river: the water is followed to the sea." : "Click a river to see its system. Switch to Trace to follow the water.";
-  map.getCanvas().style.cursor = m === "trace" ? "crosshair" : "";
+  $("mExplore").classList.toggle("on", m === "explore");
+  $("mTrace").classList.toggle("on", m === "trace");
+  $("mOutbreak").classList.toggle("on", m === "outbreak");
+  $("mOutbreak").classList.toggle("ob", m === "outbreak");
+  $("hint").textContent = HINT[m];
+  map.getCanvas().style.cursor = m === "explore" ? "" : "crosshair";
+  // the trace panel reads differently per mode, so re-render it instead of making the user click the river again
+  if (lastTrace && was !== m && (m === "outbreak" || was === "outbreak")) showTrace(lastTrace, lastLabel);
 }
 $("mExplore").onclick = () => setMode("explore");
 $("mTrace").onclick = () => setMode("trace");
+$("mOutbreak").onclick = () => setMode("outbreak");
 const RIVER_LAYERS = ["stems", "t1", "t2", "t3"];
 map.on("click", e => {
-  if (mode === "trace") return runTrace(e.lngLat);
+  if (mode === "trace" || mode === "outbreak") return runTrace(e.lngLat);
   const box = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
   const lv = map.queryRenderedFeatures(box, { layers: ["floods", "gauges", "don"].filter(l => map.getLayoutProperty(l, "visibility") !== "none") })[0];
   if (lv) return lv.layer.id === "floods" ? showFlood(lv.properties.id) : lv.layer.id === "gauges" ? showGauge(+lv.properties.main) : showDon(lv.properties.id);
@@ -922,10 +1060,12 @@ document.querySelectorAll("[data-t]").forEach(cb => cb.onchange = () => {
 // for screenshots / deep links: ?trace=lon,lat  ?event=id  ?river=name
 function deepLinks() {
   const u = new URLSearchParams(location.search);
+  if (u.get("pathogen")) SIM.p = u.get("pathogen");
+  if (u.get("exposure")) SIM.exp = u.get("exposure");
+  if (u.get("mode")) setMode(u.get("mode"));
   const t = u.get("trace"); if (t) { const [lng, lat] = t.split(",").map(Number); runTrace({ lng, lat }); }
   const ev = u.get("event"); if (ev) setTimeout(() => showEvent(ev, true), 300);
   if (u.get("panel")) { const k = u.get("panel"); const t = setInterval(() => { if (LIVE) { clearInterval(t); kpiPanel(k); } }, 300); }
-  if (u.get("pathogen")) SIM.p = u.get("pathogen");
   const rv = u.get("river"); if (rv) { const s = D.stems.features.find(f => (f.properties.name || "").toLowerCase() === rv.toLowerCase()); if (s) showSystem(s.properties.main, true); }
   if (u.get("base")) $("base").querySelector(`[data-b="${u.get("base")}"]`)?.click();
   if (u.get("3d")) { const c = document.querySelector('[data-t="3d"]'); c.checked = true; c.onchange(); }

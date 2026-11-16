@@ -27,3 +27,13 @@ CREATE TABLE IF NOT EXISTS gauge_flow (main_riv bigint, day date, q real, PRIMAR
 
 -- population (GHS-POP R2023A, epoch 2025, 30 arcsec aggregated to 0.025 deg cells): people living along a trace
 CREATE TABLE IF NOT EXISTS pop (id serial PRIMARY KEY, pop real, geom geometry(Point, 4326));
+
+-- Drinking-water service coverage per country (WHO GHO / WHO-UNICEF JMP, latest year per country).
+-- 100 - basic_pct = share of people relying on unimproved sources or untreated surface water: the group the
+-- outbreak scenario treats as exposed when a river they use is contaminated.
+CREATE TABLE IF NOT EXISTS wash (
+  iso3       text PRIMARY KEY,
+  basic_pct  real,   -- population using at least basic drinking-water services (%)
+  safe_pct   real,   -- population using safely managed drinking-water services (%)
+  year       int
+);

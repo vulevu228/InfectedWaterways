@@ -21,8 +21,9 @@ SARS-CoV-2 only shows up in the wastewater early-warning layer, because it doesn
 |---|---|---|
 | 0 | Planning + source check | `docs/SOURCES.md`, this README ✅ |
 | 1 | World waterways map + river graph | ✅ Web map (rivers ≥ 10 m³/s, 1,131 named main stems, 1,708 HydroLAKES ≥ 100 km², OSM waterways at zoom ≥ 7, satellite/Sentinel-2/3D terrain); 2,369,127 HydroRIVERS reaches (≥ 1 m³/s) in PostGIS; downstream trace API (path, travel time, countries incl. border rivers, cities, lakes); 11 historic outbreaks + spills with sources; velocity calibrated on 6 reported arrival times (`docs/CALIBRATION.md`) |
-| 2 | Real-data layer | ✅ Daily collector on the Pi: WHO weekly cholera by country (2023–now), WHO Disease Outbreak News (3,205 reports since 1996, 347 waterborne), GDACS floods, GloFAS river flow at 150 virtual gauges vs. the same season of the previous 5 years; GHS-POP 2025 population (people within 5 km of each trace); KPI panel with comparison periods |
+| 2 | Real-data layer | ✅ Daily collector on the Pi: WHO weekly cholera by country (2023–now), WHO Disease Outbreak News (3,205 reports since 1996, 347 waterborne), GDACS floods, GloFAS river flow at 150 virtual gauges vs. the same season of the previous 5 years, WHO drinking-water coverage for 226 countries; GHS-POP 2025 population (people within 5 km of each trace); KPI panel with comparison periods |
 | 3 | Spread simulator | ✅ Release anywhere: relative concentration = dilution (Q₀/Q) × die-off 10^(−t/T90), per pathogen with fast/typical/slow T90 from the literature; lakes add their residence time; optional today's flow from GloFAS; KPIs: km and days until 99.9 % gone, people and cities on that stretch |
+| 3b | Outbreak scenario | ✅ Third map tab: exposed population → people on unsafe water (WHO drinking-water coverage, 226 countries) → cases at an attack rate measured in a documented outbreak → deaths at that pathogen's published case-fatality ratio, with a per-country breakdown |
 | 4 | Validation | (Travel time already checked in M1.) Replay the 2005 Songhua→Amur benzene spill and the 2010 Haiti Artibonite cholera outbreak, then compare with reported arrival times |
 | 5 | Map + dashboard | Web map (Count Down style) + Power BI report (real cholera vs. floods vs. WASH coverage) |
 | 6 | Showcase scenarios | e.g. Lancang→Mekong→Tonle Sap seasonal flow reversal, Ganges–Brahmaputra delta, Niger, Danube |
@@ -76,6 +77,30 @@ SARS-CoV-2 only shows up in the wastewater early-warning layer, because it doesn
 
 Every trace on the map is labelled **SIMULATED · MEAN FLOW**. It uses long-term mean flow, so it is not a forecast.
 
+7. **Outbreak scenario (Milestone 3b).** The **Outbreak** tab turns the concentration curve into a burden estimate, in four
+   multiplications, each one a published number rather than a guess:
+
+   | Step | What it is | Source |
+   |---|---|---|
+   | exposed | people within 5 km of the stretch still carrying ≥ 0.1 % of the release concentration | GHS-POP 2025 + the simulator above |
+   | × on unsafe water | share of that country's people whose drinking water is **not safely managed** (the 2.1 bn in WHO's 2025 count) or, stricter, **unimproved or straight from the surface** | WHO GHO `WSH_WATER_BASIC` / `WSH_WATER_SAFELY_MANAGED` (WHO-UNICEF JMP), 226 countries, latest year per country |
+   | × attack rate | share of them who fall ill, taken from a documented outbreak of that pathogen | cholera/typhoid/hep A: Haiti 2010–12, 0.65 % / **6.1 %** / 30.7 % (NEJM + department data) · Cryptosporidium: Milwaukee 1993, **25 %** / 52 % · E. coli: Walkerton 2000, **48 %** |
+   | × case fatality | published CFR for that pathogen | cholera 1 % (WHO's maximum with treatment) – 3 % (recent outbreaks) · typhoid 1 – 2.49 % · E. coli 0.3 % (Walkerton) · Cryptosporidium 0.017 % (Milwaukee) · hepatitis A: WHO publishes none, so no deaths are shown |
+
+   The scenario is a contamination event – a flood-driven sewage overflow, a failed treatment plant, an untreated discharge –
+   with no response. It is labelled HYPOTHETICAL · NOT A FORECAST in the panel. It has no dose-response model: everyone beside
+   water above 0.1 % of the release concentration counts as exposed, which is a proxy. Typhoid and hepatitis A borrow cholera's
+   attack rate because no outbreak of theirs is measured well enough; the panel says so. Worked examples at mean flow:
+
+   | Where | Pathogen | Exposed | On unsafe water | Ill | Dead |
+   |---|---|---|---|---|---|
+   | Ganges at Kanpur, whole river | Cryptosporidium | 25 M | 6.7 M | 1.7 M (3.5 M at 52 %) | 284 |
+   | Congo at Kisangani, 1,118 km | Vibrio cholerae | 2.2 M | 1.4 M | 85 k (9 k – 427 k) | 848 – 2,545 |
+   | Rhine at Cologne, 352 km | Vibrio cholerae | 4.6 M | ≈ 0 (100 % basic coverage) | ≈ 0 | ≈ 0 |
+
+   The Rhine row is the point of the layer: the same contamination is a water-treatment story in one country and a mass-casualty
+   one in another. What separates them is coverage, not hydrology.
+
 ## Run / deploy
 ```
 python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio pyarrow
@@ -95,11 +120,24 @@ python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio py
 ```
 Map: MapLibre GL 5.24.0 on a custom OpenFreeMap (OpenMapTiles) style. It offers Esri World Imagery, Sentinel-2 cloudless 2025 (EOX),
 AWS Terrain Tiles hillshade/3D, maplibre-contour contour lines, and a globe view.
-Deep links: `?trace=lon,lat`, `?event=<id>`, `?river=<name>`, `?base=esri|s2`, `?3d=1`, `?panel=cholera|floods|flow|people`, `?pathogen=cholera|typhoid|hepa|ecoli|crypto|tracer`.
+Deep links: `?trace=lon,lat`, `?event=<id>`, `?river=<name>`, `?base=esri|s2`, `?3d=1`, `?panel=cholera|floods|flow|people`, `?pathogen=cholera|typhoid|hepa|ecoli|crypto|tracer`, `?mode=explore|trace|outbreak`, `?exposure=safe|basic`.
 
 Zoom: HydroRIVERS (a ~500 m model network that carries the flow data) fades out from zoom 7.5 to 10 and OpenStreetMap water areas and river lines take over, so the zoomed-in map shows the real banks.
 
 See `docs/SOURCES.md` (access test of every source) and `docs/DATA_ASSESSMENT.md` (login sources, WEL outbreak data).
+
+## Data layers (and what this is not)
+Raw downloads and API pulls land in `data/raw` (one-off reference grids) or go straight into typed PostGIS tables
+(`cholera_week`, `don_reports`, `floods`, `gauges`, `gauge_flow`, `wash`, `pop`, `rivers`, …). KPIs and the outbreak
+scenario are computed **on read**: `/api/live` runs the aggregations per request and caches the result for 10 minutes,
+`/api/trace` walks the river graph per click, and the scenario arithmetic runs in the browser.
+
+This is deliberately **not** a medallion lakehouse like `SkyAndSeaLakehouse` or `MacroConflictLakehouse`: there is no
+immutable bronze landing zone for the daily API pulls and no materialised gold table. The data is small (the largest
+table is 6.9 m population cells) and every KPI is a sub-second query, so a served layer would only add staleness.
+The trade-off is real and worth naming: if WHO silently revises a past week, there is no raw copy to replay, and the
+collector overwrites in place. Adding a bronze landing (one gzipped response per source per day on the SSD) is the
+first thing to do if this project ever needs to reproduce a number as it stood on a given date.
 
 ## Planned stack
 PostGIS 3.5 on Postgres 17, database `waterways`, data on the Pi SSD `/mnt/ssd`. The SSD moves to the Pi 5 when it arrives. Stdlib Python + psycopg 3 API → web map; Power BI later.
