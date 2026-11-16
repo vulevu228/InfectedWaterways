@@ -12,17 +12,7 @@ ALTER TABLE pop ADD PRIMARY KEY (id);
 CREATE INDEX pop_geom_gix ON pop USING gist (geom);
 DROP TABLE pop_raw; ANALYZE pop;
 CREATE TABLE IF NOT EXISTS meta (key text PRIMARY KEY, value text);
-INSERT INTO meta VALUES ('people_total', (SELECT round(sum(pop))::text FROM pop)) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
+INSERT INTO meta VALUES ('people_total', (SELECT round(sum(pop::float8))::text FROM pop)) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 SQL
 echo "pop loaded $(date)"
-psql -q -d waterways <<'SQL'
-SET max_parallel_workers_per_gather = 3;
-INSERT INTO meta VALUES ('people_5km', (
-  SELECT round(sum(p.pop))::text FROM pop p
-  WHERE EXISTS (SELECT 1 FROM rivers r WHERE ST_DWithin(r.geom, p.geom, 0.09)
-                  AND ST_DWithin(r.geom::geography, p.geom::geography, 5000))))
-ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
-INSERT INTO meta VALUES ('pop_source', 'GHS-POP R2023A epoch 2025, 0.025 deg cells') ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
-SQL
-echo "people_5km done $(date)"
-psql -d waterways -Atc "select * from meta"
+# people_5km is computed on the PC (build/people_near_rivers.py): the PostGIS version of that join hung the 1 GB Pi 4

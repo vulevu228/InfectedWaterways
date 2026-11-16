@@ -95,7 +95,7 @@ ORDER BY l.hylak_id, path.n
 
 SQL_POP = """
 WITH path AS (SELECT n, geom FROM unnest(%(ids)s::bigint[]) WITH ORDINALITY u(id, n) JOIN rivers r ON r.hyriv_id = u.id)
-SELECT n, sum(pop) FROM (
+SELECT n, sum(pop::float8) FROM (
   SELECT DISTINCT ON (p.id) p.id, p.pop, path.n
   FROM path JOIN pop p ON ST_DWithin(p.geom, path.geom, 0.09)
   WHERE ST_DWithin(p.geom::geography, path.geom::geography, 5000)
