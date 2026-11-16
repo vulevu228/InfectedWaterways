@@ -1,0 +1,360 @@
+{
+ "updated": "2026-11-16",
+ "note": "Hand-checked. Every number is what the named source reported; where sources differ the range or the cut-off date is given. 'river' events get a downstream trace from the origin; 'site' events are point outbreaks (water system, well, lake intake).",
+ "events": [
+  {
+   "id": "haiti2010",
+   "kind": "outbreak",
+   "mode": "river",
+   "name": "Cholera, Haiti",
+   "agent": "Vibrio cholerae O1, El Tor, Ogawa",
+   "from": "2010-10",
+   "to": "2019-02",
+   "origin": {
+    "place": "Meille, 2 km south of Mirebalais",
+    "lon": -72.105,
+    "lat": 18.815
+   },
+   "river": "Artibonite",
+   "cases": 820000,
+   "deaths": 9792,
+   "count_note": "Suspected cases and deaths, October 2010 - February 2019 (WHO). Haiti's ministry: 819,786 cases, 9,789 deaths to December 2018.",
+   "water": "The first hospitalised patients lived in Meille, beside a UN peacekeeping camp built above a stream that flows into the Artibonite River; sewage from the camp reached the stream. Cases then exploded downstream in the Artibonite delta and coastal plain, among people who drank river water.",
+   "sources": [
+    [
+     "Piarroux et al. 2011, Emerging Infectious Diseases 17(7)",
+     "https://wwwnc.cdc.gov/eid/article/17/7/11-0059"
+    ],
+    [
+     "WHO Disease Outbreak News, Haiti, 2022",
+     "https://www.who.int/emergencies/disease-outbreak-news/item/2022-DON415"
+    ]
+   ]
+  },
+  {
+   "id": "zimbabwe2008",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "Cholera, Zimbabwe",
+   "agent": "Vibrio cholerae O1",
+   "from": "2008-08",
+   "to": "2009-07",
+   "origin": {
+    "place": "Chitungwiza (St Mary's and Zengeza wards), near Harare",
+    "lon": 31.075,
+    "lat": -18.0
+   },
+   "cases": 98585,
+   "deaths": 4287,
+   "count_note": "Reported to the end of July 2009 (Mukandavire et al., PNAS 2011). Other tallies give up to 4,369 deaths.",
+   "water": "First cases reported on 20 August 2008. Broken water supply and overflowing sewers in a crowded town with chronic water shortages; it spread to all provinces.",
+   "sources": [
+    [
+     "Mukandavire et al. 2011, PNAS 108(21)",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC3102413"
+    ]
+   ]
+  },
+  {
+   "id": "yemen2016",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "Cholera, Yemen",
+   "agent": "Vibrio cholerae O1",
+   "from": "2016-10",
+   "to": "2022",
+   "origin": {
+    "place": "Sana'a",
+    "lon": 44.207,
+    "lat": 15.353
+   },
+   "cases": 2526090,
+   "deaths": 3984,
+   "count_note": "Suspected cases and deaths to March 2021 (WHO EMRO); one of the largest cholera outbreaks ever recorded. 2021-2022 added fewer than 40,000 suspected cases.",
+   "water": "War-damaged water and sewage networks; the outbreak peaked in 2017.",
+   "sources": [
+    [
+     "WHO EMRO cholera situation reports",
+     "https://applications.emro.who.int/docs/WHOEMCSR433E-eng.pdf"
+    ],
+    [
+     "WHO EMRO weekly update, December 2016",
+     "https://www.emro.who.int/pandemic-epidemic-diseases/cholera/weekly-update-cholera-cases-in-yemen.html"
+    ]
+   ]
+  },
+  {
+   "id": "malawi2022",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "Cholera, Malawi",
+   "agent": "Vibrio cholerae O1",
+   "from": "2022-03",
+   "to": "2024",
+   "origin": {
+    "place": "Machinga District",
+    "lon": 35.5,
+    "lat": -15.0
+   },
+   "cases": 59334,
+   "deaths": 1774,
+   "count_note": "Cumulative to 7 April 2024 (WHO); Malawi's worst cholera outbreak in decades. Case fatality 3.0 %.",
+   "water": "First case registered in Machinga District on 2 March 2022; by mid-2023 all 29 districts had reported cases.",
+   "sources": [
+    [
+     "WHO Disease Outbreak News, Malawi, 2022",
+     "https://www.who.int/emergencies/disease-outbreak-news/item/2022-DON435"
+    ],
+    [
+     "WHO AFRO, Malawi",
+     "https://www.afro.who.int/countries/malawi/news/malawi-launches-national-end-cholera-campaign"
+    ]
+   ]
+  },
+  {
+   "id": "peru1991",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "Cholera returns to the Americas, Peru",
+   "agent": "Vibrio cholerae O1, El Tor, Inaba",
+   "from": "1991-01",
+   "to": "1991",
+   "origin": {
+    "place": "Chancay (and Chimbote), Peruvian coast",
+    "lon": -77.27,
+    "lat": -11.57
+   },
+   "cases": 285913,
+   "deaths": 3070,
+   "count_note": "All of the Americas to 28 August 1991 (PAHO); most cases were in Peru.",
+   "water": "The first cholera epidemic in South America in the 20th century. It ran along about 2,000 km of the populated coast within two weeks, through untreated drinking water and food.",
+   "sources": [
+    [
+     "CDC MMWR, Cholera - Peru, 1991",
+     "https://www.cdc.gov/mmwr/preview/mmwrhtml/00001912.htm"
+    ],
+    [
+     "PAHO Bulletin special report, 1991",
+     "https://es.ircwash.org/sites/default/files/SpecialReport-1991-Cholera.pdf"
+    ]
+   ]
+  },
+  {
+   "id": "milwaukee1993",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "Cryptosporidium, Milwaukee",
+   "agent": "Cryptosporidium parvum (parasite)",
+   "from": "1993-03",
+   "to": "1993-04",
+   "origin": {
+    "place": "Howard Avenue water treatment plant (Lake Michigan intake)",
+    "lon": -87.885,
+    "lat": 42.975
+   },
+   "cases": 403000,
+   "deaths": null,
+   "count_note": "About 403,000 people fell ill (MacKenzie et al., NEJM 1994). Reported deaths range from 69 to over 100 immunocompromised people, depending on the study.",
+   "water": "The largest documented waterborne outbreak in US history. Oocysts passed the plant's filters; the most likely source was sewage reaching its Lake Michigan intake, but the cause was never officially confirmed.",
+   "sources": [
+    [
+     "CDC Emerging Infectious Diseases 9(4), 2003",
+     "https://wwwnc.cdc.gov/eid/article/9/4/pdfs/02-0260.pdf"
+    ]
+   ]
+  },
+  {
+   "id": "walkerton2000",
+   "kind": "outbreak",
+   "mode": "site",
+   "name": "E. coli O157:H7, Walkerton",
+   "agent": "E. coli O157:H7 and Campylobacter jejuni",
+   "from": "2000-05",
+   "to": "2000-06",
+   "origin": {
+    "place": "Well 5, Walkerton, Ontario",
+    "lon": -81.15,
+    "lat": 44.13
+   },
+   "cases": 2300,
+   "deaths": 7,
+   "count_note": "7 deaths, about 2,300 ill (Walkerton Inquiry, 2002).",
+   "water": "Heavy rain on 8-12 May 2000 washed cattle manure from a nearby farm into a shallow town well; continuous chlorine and turbidity monitoring would have prevented it (O'Connor inquiry).",
+   "sources": [
+    [
+     "Report of the Walkerton Inquiry, Part 1 summary",
+     "https://www.archives.gov.on.ca/en/e_records/walkerton/report1/pdf/WI_Summary.pdf"
+    ]
+   ]
+  },
+  {
+   "id": "baiamare2000",
+   "kind": "spill",
+   "mode": "river",
+   "name": "Cyanide spill, Baia Mare",
+   "agent": "Cyanide and heavy metals (tailings water)",
+   "from": "2000-01-30",
+   "to": "2000-02",
+   "origin": {
+    "place": "Aurul tailings dam, Baia Mare, Romania",
+    "lon": 23.47,
+    "lat": 47.665
+   },
+   "cases": null,
+   "deaths": null,
+   "count_note": "50-100 t of cyanide released; about 1,240 t of fish killed in Hungary.",
+   "water": "Through the Lapus, Somes and Tisza into the Danube; still measurable in the Danube delta about four weeks later.",
+   "checkpoints": [
+    [
+     "Szolnok (Tisza)",
+     20.19,
+     47.175,
+     "2000-02-09"
+    ],
+    [
+     "Hungary-Serbia border (Tisza)",
+     20.1,
+     46.17,
+     "2000-02-11"
+    ],
+    [
+     "Belgrade (Danube)",
+     20.46,
+     44.82,
+     "2000-02-14"
+    ]
+   ],
+   "release": "2000-01-30",
+   "sources": [
+    [
+     "UNEP/OCHA assessment mission, Cyanide spill at Baia Mare, 2000",
+     "https://reliefweb.int/report/romania/cyanide-spill-baia-mare-romania-unepocha-assessment-mission-advance-copy"
+    ],
+    [
+     "ICPDR Danube Watch, the 2000 cyanide incident",
+     "https://www.danube-iad.eu/docs/DN_articles/2000-Cyanide-Incident_mine_Baia_Mare-DanubeNews-Kalbfus.pdf"
+    ]
+   ]
+  },
+  {
+   "id": "songhua2005",
+   "kind": "spill",
+   "mode": "river",
+   "name": "Benzene spill, Songhua River",
+   "agent": "Benzene and nitrobenzene",
+   "from": "2005-11-13",
+   "to": "2005-12",
+   "origin": {
+    "place": "Jilin Petrochemical plant, Jilin City, China",
+    "lon": 126.5,
+    "lat": 43.92
+   },
+   "cases": null,
+   "deaths": null,
+   "count_note": "An explosion released about 100 t of benzene compounds. Harbin shut off its water supply from 23 November.",
+   "water": "The slick moved down the Songhua under forming ice, past Harbin, into the Amur (Heilongjiang) and on to Khabarovsk in Russia.",
+   "checkpoints": [
+    [
+     "Harbin",
+     126.62,
+     45.78,
+     "2005-11-24"
+    ]
+   ],
+   "release": "2005-11-13",
+   "sources": [
+    [
+     "UNEP field mission report, December 2005",
+     "https://archive.eecentre.org/eecentre.org/wp-content/uploads/2019/06/China-december-2005-UNEP-Mission-Report.pdf"
+    ],
+    [
+     "OCHA situation report no. 2",
+     "https://reliefweb.int/report/china/peoples-republic-chinarussian-federation-chemical-spill-ocha-situation-report-no-2"
+    ]
+   ]
+  },
+  {
+   "id": "mariana2015",
+   "kind": "spill",
+   "mode": "river",
+   "name": "Tailings dam collapse, Rio Doce",
+   "agent": "Iron-ore mine tailings (mud)",
+   "from": "2015-11-05",
+   "to": "2015-11",
+   "origin": {
+    "place": "Fundão tailings dam, Mariana, Brazil",
+    "lon": -43.468,
+    "lat": -20.207
+   },
+   "cases": null,
+   "deaths": 19,
+   "count_note": "19 people died. The mud travelled 620-670 km to the Atlantic.",
+   "water": "Through the Gualaxo do Norte and Carmo into the Rio Doce; reached the Atlantic at Regência about 17 days later.",
+   "checkpoints": [
+    [
+     "Rio Doce mouth, Regência",
+     -39.81,
+     -19.64,
+     "2015-11-22"
+    ]
+   ],
+   "release": "2015-11-05",
+   "sources": [
+    [
+     "Marta-Almeida et al. 2016, Fundão Dam collapse: oceanic dispersion of River Doce",
+     "https://agris.fao.org/search/en/records/65df21bd4c5aef494fe021e9"
+    ]
+   ]
+  },
+  {
+   "id": "sandoz1986",
+   "kind": "spill",
+   "mode": "river",
+   "name": "Sandoz chemical fire, Rhine",
+   "agent": "Pesticides and mercury compounds in fire-fighting water",
+   "from": "1986-11-01",
+   "to": "1986-11",
+   "origin": {
+    "place": "Schweizerhalle, near Basel, Switzerland",
+    "lon": 7.675,
+    "lat": 47.535
+   },
+   "cases": null,
+   "deaths": null,
+   "count_note": "Tonnes of agrochemicals washed into the Rhine with fire-fighting water from about 01:30 on 1 November 1986; mass eel kill downstream.",
+   "water": "The red pollution wave moved down the Rhine through Germany and the Netherlands to the North Sea. It led to the Rhine Action Programme of 1987.",
+   "sources": [
+    [
+     "Giger 2009, The Rhine red, the fish dead - the 1986 Schweizerhalle disaster",
+     "https://doc.rero.ch/record/317970?ln=en"
+    ],
+    [
+     "ICPR / CHR Rhine alarm model",
+     "https://chr-khr.org/sites/default/files/chrpublications/brochure_ram_e.pdf"
+    ]
+   ]
+  }
+ ],
+ "references": [
+  {
+   "id": "rhine_transit",
+   "name": "Rhine water transit",
+   "origin": {
+    "place": "Rheinfelden",
+    "lon": 7.79,
+    "lat": 47.555
+   },
+   "checkpoint": [
+    "Lobith (Dutch border)",
+    6.1,
+    51.86
+   ],
+   "days": 9,
+   "note": "Water takes approximately nine days from Rheinfelden to the catchment outlet at Lobith (water itself, not the faster flood wave).",
+   "source": [
+    "GIS-based water balance model for the Rhine drainage basin (ResearchGate)",
+    "https://www.researchgate.net/publication/308161271_Development_and_testing_of_a_GIS_based_water_balance_model_for_the_Rhine_drainage_basin"
+   ]
+  }
+ ]
+}

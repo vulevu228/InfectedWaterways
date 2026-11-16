@@ -25,6 +25,9 @@ OUT = ROOT / "web" / "data"
 TMP = ROOT / "data" / "processed"
 REGIONS = ["af", "ar", "as", "au", "eu", "na", "sa", "si"]
 MIN_OUTLET = 100.0   # m3/s
+# manual names where the lower course has no Natural Earth line (checked against the outlet position)
+OVERRIDES = {70367865: "St. Lawrence",   # outlet at Quebec City; the Great Lakes stretch has no NE river line
+             60545016: "Tocantins"}      # the stem follows the Araguaia branch, but the system and its mouth are the Tocantins
 COLS = ["HYRIV_ID", "NEXT_DOWN", "MAIN_RIV", "LENGTH_KM", "UPLAND_SKM", "ENDORHEIC", "DIS_AV_CMS", "ORD_FLOW"]
 
 
@@ -76,7 +79,10 @@ def stems(region, ne):
     low = j[j["low"]].groupby("i")["nm"].agg(pick)
     allv = j.groupby("i")["nm"].agg(pick)
     share = j.groupby("i")["nm"].apply(lambda s: s.notna().mean())
-    g["name"] = [(low.get(i) or allv.get(i)) if share.get(i, 0) >= 0.25 else None for i in range(len(g))]
+    lowshare = j[j["low"]].groupby("i")["nm"].apply(lambda s: s.notna().mean())
+    # the name near the mouth wins when it covers >= 30 % of the lower stem; else the whole-stem vote if >= 25 % covered
+    g["name"] = [low.get(i) if lowshare.get(i, 0) >= 0.3 and low.get(i) else (allv.get(i) if share.get(i, 0) >= 0.25 else None)
+                 for i in range(len(g))]
     g = g.drop(columns=["ox", "oy"])
     g["geometry"] = g.geometry.simplify(0.005, preserve_topology=False)
     return g
@@ -91,6 +97,8 @@ def main(regions):
         print(r, len(g), "stems;", list(zip(top["name"], top["len"], top["dis"])), flush=True)
     allg = pd.concat([gpd.read_parquet(p) for p in sorted(TMP.glob("mainstems_*.parquet"))], ignore_index=True)
     allg = gpd.GeoDataFrame(allg, crs="EPSG:4326").sort_values("dis", ascending=False)
+    for k, v in OVERRIDES.items():
+        allg.loc[allg["main"] == k, "name"] = v
     p = OUT / "mainstems.geojson"
     if p.exists():
         p.unlink()

@@ -28,7 +28,7 @@ def main():
         # Lake_type: 1 lake, 2 reservoir, 3 lake control (regulated natural lake)
         g["type"] = g["type"].map({1: "lake", 2: "reservoir", 3: "regulated lake"})
         g["src"] = "HydroLAKES v1.0"
-        g["geometry"] = g.geometry.simplify(0.005, preserve_topology=True)
+        g["geometry"] = g.geometry.simplify(0.01, preserve_topology=True)
     else:
         p = f"/vsizip/{RAW.as_posix()}/ne_10m_lakes.zip/ne_10m_lakes.shp"
         g = pyogrio.read_dataframe(p, columns=["name_en", "name", "featurecla", "scalerank"])

@@ -63,5 +63,44 @@
   "features": 1057,
   "t3_features": 899,
   "t3_kb": 1328
+ },
+ "na": {
+  "name": "North & Central America",
+  "bbox": [
+   -137.94,
+   7.36,
+   -53.87,
+   62.17
+  ],
+  "segments": 103288,
+  "features": 1307,
+  "t3_features": 1089,
+  "t3_kb": 1797
+ },
+ "sa": {
+  "name": "South America",
+  "bbox": [
+   -80.87,
+   -54.57,
+   -34.81,
+   11.56
+  ],
+  "segments": 226723,
+  "features": 797,
+  "t3_features": 632,
+  "t3_kb": 2325
+ },
+ "si": {
+  "name": "Siberia",
+  "bbox": [
+   59.6,
+   46.24,
+   180.0,
+   77.34
+  ],
+  "segments": 70108,
+  "features": 364,
+  "t3_features": 297,
+  "t3_kb": 1172
  }
 }

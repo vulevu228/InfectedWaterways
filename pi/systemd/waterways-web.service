@@ -1,0 +1,25 @@
+[Unit]
+Description=Infected Waterways map + trace API (127.0.0.1 + Tailscale only, private)
+After=network-online.target tailscaled.service postgresql.service
+Wants=network-online.target
+RequiresMountsFor=/mnt/ssd
+
+[Service]
+User=emir
+WorkingDirectory=/home/emir/waterways
+Environment=PYTHONUNBUFFERED=1
+Environment=IW_WEB_ROOT=/mnt/ssd/waterways/web/site
+EnvironmentFile=-/home/emir/waterways/velocity.env
+ExecStart=/usr/bin/python3 /home/emir/waterways/pi/web/waterways_web.py
+Restart=always
+RestartSec=20
+MemoryMax=150M
+Nice=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadOnlyPaths=/mnt/ssd/waterways/web
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
