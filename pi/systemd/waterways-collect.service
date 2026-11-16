@@ -1,0 +1,12 @@
+[Unit]
+Description=Infected Waterways daily collector (WHO cholera, WHO DON, GDACS floods, GloFAS river flow)
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=emir
+WorkingDirectory=/home/emir/waterways
+ExecStart=/usr/bin/python3 /home/emir/waterways/pi/collect/collect_live.py
+TimeoutStartSec=3600
+Nice=10

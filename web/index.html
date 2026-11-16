@@ -98,6 +98,24 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
 .maplibregl-ctrl-group { background:#0d1828 !important; } .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter:invert(.85); }
 .maplibregl-ctrl-attrib { background:rgba(9,16,28,.8) !important; color:var(--muted); } .maplibregl-ctrl-attrib a { color:#8fb7e6 !important; }
 .maplibregl-ctrl-scale { background:rgba(9,16,28,.7); color:var(--muted); border-color:var(--muted); }
+.kpis { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; margin:12px 0 4px; }
+.kpi { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:7px 9px; cursor:pointer; text-align:left; }
+.kpi:hover { border-color:#2f5b8c; }
+.kpi .l { color:var(--muted); font-size:10.5px; line-height:1.25; display:block; }
+.kpi b { display:block; font-size:17px; font-variant-numeric:tabular-nums; margin:2px 0 1px; color:#fff; }
+.kpi .c { color:var(--muted); font-size:10.5px; font-variant-numeric:tabular-nums; line-height:1.3; display:block; }
+.kpi .c i { font-style:normal; color:var(--text); }
+.kpi.wide { grid-column:span 2; }
+.asof { color:var(--faint); font-size:10.5px; margin:2px 2px 8px; }
+.alert-line { background:#2a1218; border:1px solid #6b1f2b; color:#ffc2ca; border-radius:8px; padding:6px 9px; font-size:11.5px; margin-bottom:8px; cursor:pointer; }
+.sim { margin-top:12px; padding-top:4px; border-top:1px solid var(--line2); }
+.chips { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
+.chips button { border:1px solid var(--line2); background:#0a1424; border-radius:14px; padding:4px 9px; cursor:pointer; color:var(--muted); font-size:11.5px; }
+.chips button.on { color:#fff; border-color:#c56a1b; background:#2a1a0b; }
+.chips button:disabled { opacity:.4; cursor:not-allowed; }
+.pnote { color:var(--muted); font-size:11.5px; margin:4px 0 6px; }
+.status-pill { display:inline-block; font-size:10px; letter-spacing:.8px; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:1px; border:1px solid; }
+.lg-div { width:120px; height:7px; border-radius:4px; background:linear-gradient(90deg,#a0602a,#d6a064,#8d99a8,#5ea6e8,#2a6fd6); }
 @media (max-width:1100px) { #legend { left:12px; bottom:auto; top:auto; display:none; } }
 @media (max-width:760px) {
   #side { width:auto; right:12px; max-height:46%; }
@@ -118,12 +136,11 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
       <circle cx="24" cy="23" r="3.2" fill="#ff5468"/></svg>
     <div><h1>INFECTED WATERWAYS</h1><div class="tag">Where does river water – and what is in it – go?</div></div>
   </div>
-  <div class="stats">
-    <div class="stat"><b id="sReach">2.37 M</b><span>river reaches ≥ 1 m³/s</span></div>
-    <div class="stat"><b id="sSys">1,131</b><span>river systems (main stems)</span></div>
-    <div class="stat"><b>185 k</b><span>lakes ≥ 1 km² in the trace</span></div>
-    <div class="stat"><b id="sEv">11</b><span>historic outbreaks &amp; spills</span></div>
+  <div class="kpis" id="kpis">
+    <div class="kpi wide"><span class="l">Loading today's numbers…</span><b>–</b><span class="c">WHO cholera · GDACS floods · GloFAS river flow</span></div>
   </div>
+  <div id="overlap"></div>
+  <div class="asof" id="asof"></div>
   <div class="modes" role="tablist">
     <button id="mExplore" class="on" role="tab">Explore</button>
     <button id="mTrace" role="tab">Trace downstream</button>
@@ -139,6 +156,12 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
     <label class="row"><input type="checkbox" data-l="lakes" checked><span class="sw" style="border-color:#2a6aa6;border-top-width:8px"></span>Lakes &amp; reservoirs<small>≥ 100 km²</small></label>
     <label class="row"><input type="checkbox" data-l="events" checked><span class="dot" style="background:var(--outbreak)"></span>History: outbreaks &amp; spills</label>
   </details>
+  <details open><summary>Now (updated daily)</summary>
+    <label class="row"><input type="checkbox" data-l="cholera" checked><span class="dot" style="background:#ff5468;opacity:.6;width:12px;height:12px"></span>Cholera cases by country<small>WHO, 12 weeks</small></label>
+    <label class="row"><input type="checkbox" data-l="flow" checked><span class="lg-div" style="width:24px"></span>River flow vs. normal<small>GloFAS</small></label>
+    <label class="row"><input type="checkbox" data-l="floods" checked><span class="dot" style="background:#fb923c"></span>River floods<small>GDACS</small></label>
+    <label class="row"><input type="checkbox" data-l="don"><span class="dot" style="background:#0b1626;border:2px solid #ff9aa6"></span>WHO outbreak reports<small>3 years</small></label>
+  </details>
   <details open><summary>Basemap &amp; terrain</summary>
     <div class="seg" id="base"><button data-b="dark" class="on">Dark</button><button data-b="esri">Satellite</button><button data-b="s2">Sentinel-2</button></div>
     <label class="row"><input type="checkbox" data-t="hill" checked>Hillshade (valleys)</label>
@@ -149,8 +172,10 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
   </details>
   <details><summary>Largest rivers</summary><ul class="list" id="top"></ul></details>
   <details><summary>History</summary><ul class="list" id="evlist"></ul>
+    <h3 style="margin-top:12px">WHO reports on waterborne outbreaks per year</h3><div class="chart" id="donchart"></div>
     <div class="note">Hand-checked from WHO, PAHO, UNEP, CDC and peer-reviewed sources. Red = waterborne outbreak, amber = river contamination.</div></details>
   <details><summary>Method</summary>
+    <div class="note">On the map: <b id="sReach">2.37 M</b> river reaches ≥ 1 m³/s, <b id="sSys">1,131</b> river systems with a main stem, 185,000 lakes ≥ 1 km² checked by every trace, <b id="sEv">11</b> historic events.</div>
     <div class="note">River network: HydroRIVERS v1.0 – every reach knows the reach it flows into. A trace follows that chain to the sea or an inland sink.</div>
     <div class="note">Travel time per reach = length ÷ v, with <b>v = <span id="va">0.10</span> · Q<sup id="vb">0.30</sup></b> m/s (Q = mean discharge). Calibrated on 6 reported arrival times (spills at Baia Mare 2000, Songhua 2005, Rio Doce 2015 and the Rhine water transit Rheinfelden–Lobith): typical out-of-sample error ×<span id="vf">1.17</span>. Lakes are listed, not added. Mean flow only – not a forecast.</div>
     <div class="note">Data: HydroSHEDS HydroRIVERS &amp; HydroLAKES (CC BY 4.0) · Natural Earth · OpenStreetMap via OpenFreeMap · Esri World Imagery · Sentinel-2 cloudless 2025 by EOX · AWS Terrain Tiles.</div>
@@ -163,6 +188,7 @@ h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--m
   <div><div>Mean flow (line width)</div><div class="wd" style="margin-top:5px"><i style="height:1px"></i><i style="height:2px"></i><i style="height:4px"></i><i style="height:6px"></i></div>
     <div class="lb"><span>10</span><span>100k m³/s</span></div></div>
   <div><div>Trace: days downstream</div><div class="ramp" style="margin-top:6px"></div><div class="lb"><span>0</span><span>3</span><span>10</span><span>30</span><span>90+</span></div></div>
+  <div id="lgFlow"><div>Flow vs. normal</div><div class="lg-div" style="margin-top:6px"></div><div class="lb"><span>½×</span><span>1×</span><span>2×</span></div></div>
   <div><div><span class="dot" style="background:var(--outbreak)"></span>Outbreak</div><div style="margin-top:3px"><span class="dot" style="background:var(--spill)"></span>River spill</div></div>
 </div>
 <div id="status"></div>
@@ -192,8 +218,9 @@ function graticule() {
 const zW = (a, b) => ["interpolate", ["exponential", 1.6], ["zoom"], 1, a, 9, b];
 const lnQ = ["ln", ["max", ["get", "dis"], 1]];
 const flowColor = ["interpolate", ["linear"], lnQ, 2.3, "#2f78c4", 6.9, "#4fb6f5", 9.9, "#86dcff", 12.2, "#c8f4ff"];
-const fadeHigh = ["interpolate", ["linear"], ["zoom"], 9, 1, 11.5, .35];
-const fadeTo = v => ["interpolate", ["linear"], ["zoom"], 9, v, 11.5, v * .35];          // zoom must be the outermost expression
+// HydroRIVERS is a ~500 m model network: it carries the flow data, but OSM draws the real river from zoom ~9 on
+const fadeHigh = ["interpolate", ["linear"], ["zoom"], 7.5, 1, 10, .12];
+const fadeTo = v => ["interpolate", ["linear"], ["zoom"], 7.5, v, 10, v * .12];          // zoom must be the outermost expression
 const zWd = (a, b, k) => ["interpolate", ["exponential", 1.6], ["zoom"], 1, ["*", a, k], 9, ["*", b, k]];
 const dayColor = ["interpolate", ["linear"], ["get", "d"], 0, "#ffe2b0", 3, "#ffb24d", 10, "#f07818", 30, "#c24f0c", 90, "#7f2f08"];
 
@@ -213,6 +240,10 @@ const style = {
     t1: { type: "geojson", data: EMPTY }, t2: { type: "geojson", data: EMPTY }, t3: { type: "geojson", data: EMPTY },
     stems: { type: "geojson", data: EMPTY }, stemlab: { type: "geojson", data: EMPTY, attribution: "Names: Natural Earth" },
     evpaths: { type: "geojson", data: EMPTY }, events: { type: "geojson", data: EMPTY },
+    cholera: { type: "geojson", data: EMPTY, attribution: "Cholera: WHO Global Cholera and AWD Dashboard" },
+    floods: { type: "geojson", data: EMPTY, attribution: "Floods: GDACS" },
+    gauges: { type: "geojson", data: EMPTY, attribution: "River flow: GloFAS v4 via Open-Meteo (CC BY 4.0)" },
+    don: { type: "geojson", data: EMPTY, attribution: "WHO Disease Outbreak News" },
     trace: { type: "geojson", data: EMPTY }, tracepts: { type: "geojson", data: EMPTY }, cursor: { type: "geojson", data: EMPTY },
   },
   layers: [
@@ -229,11 +260,13 @@ const style = {
     { id: "contour-lbl", type: "symbol", source: "contours", "source-layer": "contours", filter: [">", ["get", "level"], 0],
       layout: { visibility: "none", "symbol-placement": "line", "text-size": 10, "text-field": ["concat", ["number-format", ["get", "ele"], {}], " m"], "text-font": F },
       paint: { "text-color": "#86a6cc", "text-halo-color": "#050a12", "text-halo-width": 1 } },
-    { id: "water", type: "fill", source: "omt", "source-layer": "water", paint: { "fill-color": ["match", ["get", "class"], "ocean", "#040b16", "#0c2846"] } },
+    { id: "water", type: "fill", source: "omt", "source-layer": "water", paint: { "fill-color": ["interpolate", ["linear"], ["zoom"], 6, ["match", ["get", "class"], "ocean", "#040b16", "#0c2846"], 10, ["match", ["get", "class"], "ocean", "#040b16", "#164e86"]] } },
+    { id: "water-edge", type: "line", source: "omt", "source-layer": "water", minzoom: 8, filter: ["!=", ["get", "class"], "ocean"],
+      paint: { "line-color": "#4aa3ec", "line-width": ["interpolate", ["linear"], ["zoom"], 8, .3, 14, 1.4], "line-opacity": ["interpolate", ["linear"], ["zoom"], 8, 0, 10, .75] } },
     { id: "osm-waterway", type: "line", source: "omt", "source-layer": "waterway", minzoom: 7,
       filter: ["in", ["get", "class"], ["literal", ["river", "canal", "stream"]]],
-      paint: { "line-color": ["match", ["get", "class"], "canal", "#6fd6c2", "river", "#4fa3e8", "#2f78bd"],
-               "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, .8, 11, 1],
+      paint: { "line-color": ["match", ["get", "class"], "canal", "#6fd6c2", "river", "#6cc6ff", "#3b8bd0"],
+               "line-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, .75, 10, 1],
                "line-width": ["interpolate", ["linear"], ["zoom"], 7, ["match", ["get", "class"], "river", .6, .2], 12, ["match", ["get", "class"], "river", 2.4, "canal", 1.6, .9], 15, ["match", ["get", "class"], "river", 5, 2]] } },
     { id: "road", type: "line", source: "omt", "source-layer": "transportation", minzoom: 5, filter: ["in", ["get", "class"], ["literal", ["motorway", "trunk", "primary"]]],
       paint: { "line-color": ["match", ["get", "class"], "motorway", "#2a3a52", "#1f2b3d"], "line-width": ["interpolate", ["linear"], ["zoom"], 5, .4, 12, 2] } },
@@ -244,8 +277,9 @@ const style = {
     { id: "bnd-2", type: "line", source: "omt", "source-layer": "boundary", filter: ["all", ["==", ["get", "admin_level"], 2], ["!=", ["get", "maritime"], 1]],
       paint: { "line-color": "#53657f", "line-width": ["interpolate", ["linear"], ["zoom"], 1, .5, 8, 1.3] } },
     { id: "grid", type: "line", source: "grid", layout: { visibility: "none" }, paint: { "line-color": "#4d6a91", "line-opacity": .25, "line-width": .7, "line-dasharray": [6, 4] } },
-    { id: "lakes", type: "fill", source: "lakes", paint: { "fill-color": ["match", ["get", "type"], "reservoir", "#1f5f86", "#17518a"], "fill-opacity": .9 } },
-    { id: "lakes-res", type: "line", source: "lakes", filter: ["==", ["get", "type"], "reservoir"], paint: { "line-color": "#7fd4ff", "line-width": .8, "line-dasharray": [2, 1.5], "line-opacity": .7 } },
+    { id: "lakes", type: "fill", source: "lakes", paint: { "fill-color": ["match", ["get", "type"], "reservoir", "#1f5f86", "#17518a"],
+      "fill-opacity": ["interpolate", ["linear"], ["zoom"], 7.5, .9, 10, 0] } },
+    { id: "lakes-res", type: "line", source: "lakes", filter: ["==", ["get", "type"], "reservoir"], paint: { "line-color": "#7fd4ff", "line-width": .8, "line-dasharray": [2, 1.5], "line-opacity": ["interpolate", ["linear"], ["zoom"], 7.5, .7, 10, 0] } },
     { id: "t3", type: "line", source: "t3", minzoom: 3.2, layout: { "line-cap": "round", "line-join": "round" },
       paint: { "line-color": flowColor, "line-width": zW(.25, 1.6), "line-opacity": fadeTo(.85) } },
     { id: "t2", type: "line", source: "t2", layout: { "line-cap": "round", "line-join": "round" },
@@ -257,22 +291,37 @@ const style = {
     { id: "stems", type: "line", source: "stems", layout: { "line-cap": "round", "line-join": "round" },
       paint: { "line-color": "#8af0ff", "line-opacity": fadeTo(.7), "line-width": zWd(.35, 2.2, ["interpolate", ["linear"], lnQ, 4.6, .5, 12.2, 1.6]) } },
     { id: "hi-stem", type: "line", source: "stems", filter: ["==", ["get", "main"], -1], layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": "#ffd166", "line-width": zW(2, 6), "line-blur": .6 } },
+      paint: { "line-color": "#ffd166", "line-width": zW(2, 6), "line-blur": .6, "line-opacity": ["interpolate", ["linear"], ["zoom"], 8, 1, 11, .45] } },
     ...["t1", "t2", "t3"].map(s => ({ id: `hi-${s}`, type: "line", source: s, filter: ["==", ["get", "main"], -1], layout: { "line-cap": "round" },
       paint: { "line-color": "#ffd166", "line-width": zW(.8, 2.6), "line-opacity": .85 } })),
+    { id: "cholera", type: "circle", source: "cholera",
+      paint: { "circle-radius": ["interpolate", ["linear"], ["sqrt", ["get", "cases_12w"]], 0, 3, 30, 9, 300, 34],
+               "circle-color": "#ff5468", "circle-opacity": ["case", [">", ["get", "cases_4w"], 0], .28, .1],
+               "circle-stroke-color": "#ff7a8a", "circle-stroke-width": 1.2, "circle-stroke-opacity": ["case", [">", ["get", "cases_4w"], 0], .9, .35] } },
+    { id: "gauges", type: "circle", source: "gauges",
+      paint: { "circle-radius": ["interpolate", ["linear"], ["ln", ["max", ["get", "dis_av"], 1]], 6, 3.5, 12, 8],
+               "circle-color": ["interpolate", ["linear"], ["ln", ["get", "ratio"]], -0.69, "#a0602a", -0.22, "#d6a064", 0, "#8d99a8", 0.22, "#5ea6e8", 0.69, "#2a6fd6"],
+               "circle-stroke-color": "#050a12", "circle-stroke-width": 1.5 } },
+    { id: "floods", type: "circle", source: "floods", filter: ["get", "current"],
+      paint: { "circle-radius": ["match", ["get", "alert"], "Red", 8, "Orange", 7, 5.5],
+               "circle-color": ["match", ["get", "alert"], "Red", "#ef4444", "Orange", "#fb923c", "#4ade80"],
+               "circle-stroke-color": "#fff", "circle-stroke-width": 1.4 } },
+    { id: "don", type: "circle", source: "don", layout: { visibility: "none" },
+      paint: { "circle-radius": 4, "circle-color": "#0b1626", "circle-stroke-color": "#ff9aa6", "circle-stroke-width": 2,
+               "circle-translate": [9, -9] } },
     { id: "evpath-glow", type: "line", source: "evpaths", layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": ["match", ["get", "kind"], "outbreak", "#ff5468", "#ffb020"], "line-width": zW(4, 12), "line-blur": 6, "line-opacity": .35 } },
+      paint: { "line-color": ["match", ["get", "kind"], "outbreak", "#ff5468", "#ffb020"], "line-width": zW(4, 12), "line-blur": 6, "line-opacity": ["interpolate", ["linear"], ["zoom"], 8, .35, 11, .08] } },
     { id: "evpath", type: "line", source: "evpaths", layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": ["match", ["get", "kind"], "outbreak", "#ff7a8a", "#ffc24d"], "line-width": zW(1.4, 3.6), "line-dasharray": [2, 1.2] } },
+      paint: { "line-color": ["match", ["get", "kind"], "outbreak", "#ff7a8a", "#ffc24d"], "line-width": zW(1.4, 3.6), "line-dasharray": [2, 1.2], "line-opacity": ["interpolate", ["linear"], ["zoom"], 8, 1, 11, .4] } },
     { id: "trace-glow", type: "line", source: "trace", layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": dayColor, "line-width": zW(6, 16), "line-blur": 8, "line-opacity": .45 } },
+      paint: { "line-color": dayColor, "line-width": zW(6, 16), "line-blur": 8, "line-opacity": ["case", ["<=", ["coalesce", ["get", "lr"], 0], -3], .06, .45] } },
     { id: "trace", type: "line", source: "trace", layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": dayColor, "line-width": zW(2.2, 5.5) } },
+      paint: { "line-color": dayColor, "line-width": zW(2.2, 5.5), "line-opacity": ["case", ["<=", ["coalesce", ["get", "lr"], 0], -3], .3, 1] } },
     { id: "trace-flow", type: "line", source: "trace", layout: { "line-cap": "butt", "line-join": "round" },
-      paint: { "line-color": "#fff7e6", "line-width": zW(1, 2.2), "line-opacity": .85, "line-dasharray": [0, 4, 3] } },
+      paint: { "line-color": "#fff7e6", "line-width": zW(1, 2.2), "line-opacity": ["case", ["<=", ["coalesce", ["get", "lr"], 0], -3], 0, .85], "line-dasharray": [0, 4, 3] } },
     { id: "tracepts", type: "circle", source: "tracepts",
       paint: { "circle-radius": ["match", ["get", "k"], "start", 7, "end", 6, "city", ["interpolate", ["linear"], ["ln", ["+", ["get", "pop"], 1]], 9, 3.5, 16, 7], 3],
-               "circle-color": ["match", ["get", "k"], "start", "#ffd166", "end", "#ffffff", "city", "#ffefe0", "#ffb24d"],
+               "circle-color": ["match", ["get", "k"], "start", "#ffd166", "end", "#ffffff", "city", "#ffefe0", "safe", "#7ee0a1", "#ffb24d"],
                "circle-stroke-color": "#050a12", "circle-stroke-width": 2 } },
     { id: "cursor", type: "circle", source: "cursor", paint: { "circle-radius": 7, "circle-color": "#ffffff", "circle-stroke-color": "#ff9d3a", "circle-stroke-width": 3 } },
     { id: "events-halo", type: "circle", source: "events",
@@ -280,6 +329,9 @@ const style = {
     { id: "events", type: "circle", source: "events",
       paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 4.5, 8, 8], "circle-color": ["match", ["get", "kind"], "outbreak", "#ff5468", "#ffb020"],
                "circle-stroke-color": "#fff", "circle-stroke-width": 1.4 } },
+    { id: "osm-lake-lbl", type: "symbol", source: "omt", "source-layer": "water_name", minzoom: 8, filter: ["==", ["get", "class"], "lake"],
+      layout: { "text-field": ["coalesce", ["get", "name:en"], ["get", "name"]], "text-font": FI, "text-size": 12, "text-max-width": 7 },
+      paint: { "text-color": "#a9d4fa", "text-halo-color": "#050a12", "text-halo-width": 1.3 } },
     { id: "water-lbl", type: "symbol", source: "omt", "source-layer": "water_name", filter: ["in", ["get", "class"], ["literal", ["ocean", "sea", "bay"]]],
       layout: { "text-field": ["coalesce", ["get", "name:en"], ["get", "name"]], "text-font": FI, "text-size": ["match", ["get", "class"], "ocean", 13, 11], "text-letter-spacing": .25, "text-max-width": 8 },
       paint: { "text-color": "#3e6ea6", "text-halo-color": "#050a12", "text-halo-width": 1 } },
@@ -290,7 +342,7 @@ const style = {
       layout: { "symbol-placement": "line-center", "text-max-angle": 110, "text-padding": 2, "text-field": ["get", "name"], "text-font": FI,
                 "text-size": ["interpolate", ["linear"], lnQ, 4.6, 10.5, 12.2, 15], "symbol-sort-key": ["-", 0, ["get", "dis"]], "text-letter-spacing": .1 },
       paint: { "text-color": "#bff6ff", "text-halo-color": "#050a12", "text-halo-width": 1.6 } },
-    { id: "lake-lbl", type: "symbol", source: "lakes", minzoom: 4.5, filter: ["all", ["has", "name"], ["!=", ["get", "name"], ""]],
+    { id: "lake-lbl", type: "symbol", source: "lakes", minzoom: 4.5, maxzoom: 8, filter: ["all", ["has", "name"], ["!=", ["get", "name"], ""]],
       layout: { "text-field": ["get", "name"], "text-font": FI, "text-size": 11, "text-max-width": 7 },
       paint: { "text-color": "#9cc8ef", "text-halo-color": "#050a12", "text-halo-width": 1.2 } },
     { id: "place-city", type: "symbol", source: "omt", "source-layer": "place", minzoom: 3.5, filter: ["in", ["get", "class"], ["literal", ["city", "town"]]],
@@ -303,6 +355,14 @@ const style = {
     { id: "grid-lbl", type: "symbol", source: "grid", minzoom: 2, layout: { visibility: "none", "symbol-placement": "line", "symbol-spacing": 420, "text-font": F, "text-size": 9.5,
       "text-field": ["concat", ["to-string", ["abs", ["get", "v"]]], "°", ["case", ["==", ["get", "k"], "lat"], ["case", [">=", ["get", "v"], 0], "N", "S"], ["case", [">=", ["get", "v"], 0], "E", "W"]]] },
       paint: { "text-color": "#5d7ca6", "text-halo-color": "#050a12", "text-halo-width": 1 } },
+    { id: "cholera-lbl", type: "symbol", source: "cholera", minzoom: 2.6, filter: [">", ["get", "cases_4w"], 0],
+      layout: { "text-field": ["concat", ["get", "name"], "\n", ["number-format", ["get", "cases_4w"], {}], " cases · 4 wk"], "text-font": F, "text-size": 10.5,
+                "text-offset": [0, 1.5], "text-anchor": "top", "text-max-width": 10, "symbol-sort-key": ["-", 0, ["get", "cases_4w"]] },
+      paint: { "text-color": "#ffb3bd", "text-halo-color": "#050a12", "text-halo-width": 1.4 } },
+    { id: "gauges-lbl", type: "symbol", source: "gauges", minzoom: 3.5,
+      layout: { "text-field": ["concat", ["get", "name"], " ", ["get", "rtxt"]], "text-font": F, "text-size": 10, "text-offset": [0, 1.1], "text-anchor": "top",
+                "symbol-sort-key": ["-", 0, ["get", "dis_av"]] },
+      paint: { "text-color": "#b9c7d9", "text-halo-color": "#050a12", "text-halo-width": 1.3 } },
     { id: "tracepts-lbl", type: "symbol", source: "tracepts", filter: ["has", "label"],
       layout: { "text-field": ["get", "label"], "text-font": FB, "text-size": 11.5, "text-offset": [0, -1.35], "text-anchor": "bottom", "symbol-sort-key": ["get", "prio"], "text-padding": 3 },
       paint: { "text-color": "#ffe9d1", "text-halo-color": "#050a12", "text-halo-width": 1.6 } },
@@ -326,6 +386,7 @@ const getJSON = u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u}: HTTP
 
 map.on("load", async () => {
   setSky(true);
+  loadLive();
   document.querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show");
   status("Loading the world's rivers…");
   try {
@@ -449,7 +510,7 @@ function showEvent(id, fly) {
   }
 }
 
-let flowAnim = null;
+let flowAnim = null, TRACEPTS = [];
 function clearTrace() {
   lastTrace = null;
   for (const s of ["trace", "tracepts", "cursor"]) map.getSource(s)?.setData(EMPTY);
@@ -488,6 +549,7 @@ async function runTrace(ll, label) {
   d.cities.filter(c => c.pop >= 50000).forEach(c => pts.push({ type: "Feature", geometry: { type: "Point", coordinates: [c.lon, c.lat] },
     properties: { k: "city", pop: c.pop, label: `${c.name} · ${days(c.h / 24)}`, prio: 3 - Math.log10(c.pop) } }));
   map.getSource("tracepts").setData({ type: "FeatureCollection", features: pts });
+  TRACEPTS = pts;
   if (!flowAnim) animateFlow();
   showTrace(d, label);
   fitGeom({ type: "MultiLineString", coordinates: d.features.map(f => f.geometry.type === "LineString" ? f.geometry.coordinates : f.geometry.coordinates.flat()) }, 9);
@@ -503,6 +565,8 @@ function showTrace(d, label) {
       <div class="tile"><b>${days(s.days)}</b><span>travel time at mean flow</span></div>
       <div class="tile"><b>×${fmt(s.dilution)}</b><span>more water at the end (dilution)</span></div>
       <div class="tile"><b>${isos.size}</b><span>${isos.size === 1 ? "country" : "countries"} on the way</span></div></div>
+    ${s.pop_5km ? `<div class="tile" style="margin-top:-2px"><b>${fmtPop(s.pop_5km)}</b><span>people live within 5 km of this river path (GHS-POP 2025)</span></div>` : ""}
+    <div class="sim" id="sim"></div>
     <h3>Mean flow along the way (m³/s, log scale)</h3><div class="chart" id="prof"></div>
     <h3>Countries</h3><ul class="tl">${d.countries.map(c => `<li class="${c.border ? "border" : ""}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name.replaceAll("People's Republic of China", "China"))}</span><span class="k">${fmt(c.len_km)} km</span></li>`).join("")}</ul>
     ${cities.length ? `<h3>Cities on the river (≤ 8 km)</h3><ul class="tl">${cities.map(c => `<li class="click" data-lon="${c.lon}" data-lat="${c.lat}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name)}${c.capital ? " ★" : ""}</span><span class="k">${c.pop >= 1e6 ? fmt(c.pop / 1e6, 1) + " M" : fmt(c.pop / 1e3) + " k"}</span></li>`).join("")}</ul>` : ""}
@@ -511,6 +575,7 @@ function showTrace(d, label) {
     <div class="note">Travel time per reach: v = ${velocity.a} · Q<sup>${velocity.b}</sup> m/s, calibrated on 6 reported arrival times (typical out-of-sample error ×${Math.exp(velocity.loo_rms_log ?? velocity.rms_log).toFixed(2)}). Floods, droughts, tides and dams change real travel times.</div>`);
   $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => map.flyTo({ center: [+li.dataset.lon, +li.dataset.lat], zoom: 10, duration: 1200 }));
   profile($("prof"), d);
+  setupSim(d);
 }
 // single series: distance (km) vs mean discharge (m3/s, log). Hover: crosshair + tooltip + marker on the map.
 function profile(el, d) {
@@ -545,6 +610,262 @@ function profile(el, d) {
   svg.addEventListener("pointerleave", () => { tip.style.display = "none"; cx.setAttribute("visibility", "hidden"); cd.setAttribute("visibility", "hidden"); map.getSource("cursor").setData(EMPTY); });
 }
 
+
+// ================================================================================= Milestone 2: the world now
+let LIVE = null;
+const fmtPop = n => n >= 1e9 ? fmt(n / 1e9, 2) + " bn" : n >= 1e6 ? fmt(n / 1e6, n >= 1e7 ? 0 : 1) + " M" : n >= 1e4 ? fmt(n / 1e3) + " k" : fmt(n);
+const fmtK = n => n >= 1e6 ? fmt(n / 1e6, 1) + " M" : n >= 1e4 ? fmt(n / 1e3) + " k" : fmt(n);
+const pct = (a, b) => !b ? "–" : `${a >= b ? "▲" : "▼"} ${fmt(Math.abs(a / b - 1) * 100)} %`;
+const dshort = d => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+const pt = (x, y, p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [x, y] }, properties: p });
+async function loadLive() {
+  try { LIVE = await getJSON(API + "/api/live"); } catch (e) { $("kpis").innerHTML = `<div class="kpi wide"><span class="l">Live data not reachable</span><span class="c">${esc(e.message)}</span></div>`; return; }
+  if (LIVE.error) return;
+  const L = LIVE, ch = L.cholera || {}, fk = L.flood_kpi || {}, wk = L.flow_kpi || {}, st = L.static || {};
+  map.getSource("cholera").setData({ type: "FeatureCollection", features: (L.cholera_countries || []).map(c => pt(c.lon, c.lat, c)) });
+  map.getSource("floods").setData({ type: "FeatureCollection", features: (L.floods || []).map(f => pt(f.lon, f.lat, f)) });
+  map.getSource("gauges").setData({ type: "FeatureCollection", features: (L.gauges || []).map(g => pt(g.lon, g.lat, { ...g, spark: null, rtxt: `${fmt(g.ratio, 1)}×` })) });
+  map.getSource("don").setData({ type: "FeatureCollection", features: (L.don_reports || []).filter(d => d.lon != null).map(d => pt(d.lon, d.lat, { id: d.id, title: d.title })) });
+  const tiles = [
+    { k: "cholera", l: `Cholera cases · 4 weeks to ${dshort(ch.window_end)}`, v: fmt(ch.cases_4w), c: `<i>${pct(ch.cases_4w, ch.cases_prev4w)}</i> vs. previous 4 weeks (${fmt(ch.cases_prev4w)})` },
+    { k: "cholera", l: "Countries reporting cholera · 4 weeks", v: fmt(ch.countries_4w), c: `previous 4 weeks: <i>${fmt(ch.countries_prev4w)}</i>` },
+    { k: "cholera", l: `Cholera in ${ch.window_end?.slice(0, 4)} so far`, v: fmtK(ch.cases_ytd), c: `<i>${pct(ch.cases_ytd, ch.cases_ytd_prev)}</i> vs. same weeks ${+ch.window_end?.slice(0, 4) - 1} · ${fmt(ch.deaths_ytd)} deaths (${fmt(ch.deaths_ytd_prev)})` },
+    { k: "floods", l: "River floods now · GDACS", v: fmt(fk.current), c: `<i>${fmt(fk.current_orange_red)}</i> orange/red alerts · ${fmt(fk.last30)} active in last 30 days` },
+    { k: "flow", l: `Big rivers above normal · of ${fmt(wk.n)}`, v: wk.n ? fmt(wk.above) : "…", c: wk.n ? `<i>${fmt(wk.below)}</i> below normal · vs. same weeks 2021–25` : "first baseline is still loading" },
+    { k: "people", l: "People within 5 km of a river ≥ 1 m³/s", v: st.people_5km ? fmtPop(+st.people_5km) : "…", c: st.people_5km ? `<i>${fmt(st.people_5km / st.people_total * 100)} %</i> of ${fmtPop(+st.people_total)} people (GHS-POP 2025)` : "population layer is loading" },
+  ];
+  $("kpis").innerHTML = tiles.map((t, i) => `<button class="kpi" data-k="${t.k}" data-i="${i}"><span class="l">${t.l}</span><b>${t.v}</b><span class="c">${t.c}</span></button>`).join("");
+  $("kpis").onclick = e => { const b = e.target.closest(".kpi"); if (b) kpiPanel(b.dataset.k); };
+  $("overlap").innerHTML = L.overlap?.length ? `<div class="alert-line" id="ovl">⚠ Cholera in the last 4 weeks <b>and</b> a river flood now: ${esc(L.overlap.join(", "))}</div>` : "";
+  if ($("ovl")) $("ovl").onclick = () => kpiPanel("floods");
+  $("asof").innerHTML = `Cholera: WHO, latest reported week ${dshort(ch.latest_week)} (reports lag, so the window ends a week earlier) · floods and flow: today`;
+  donChart();
+}
+function kpiPanel(k) {
+  const L = LIVE; if (!L) return;
+  if (k === "cholera") {
+    const cs = [...L.cholera_countries].sort((a, b) => b.cases_4w - a.cases_4w || b.cases_12w - a.cases_12w);
+    openInfo(`<div class="kicker">Cholera now · WHO weekly reports</div><h2>${fmt(L.cholera.cases_4w)} cases in 4 weeks</h2>
+      <div class="note" style="margin-top:-4px">4 weeks to ${dshort(L.cholera.window_end)}, ${fmt(L.cholera.countries_4w)} countries. Click a country for its weekly curve.</div>
+      <table class="cmp"><tr><th>Country</th><th>4 weeks</th><th>previous 4</th><th>${L.cholera.window_end.slice(0, 4)}</th></tr>
+      ${cs.map(c => `<tr class="click" data-iso="${c.iso3}" style="cursor:pointer"><td>${esc(c.name)}</td><td>${fmt(c.cases_4w)}</td><td>${fmt(c.cases_prev4w)}</td><td>${fmtK(c.cases_ytd)}</td></tr>`).join("")}</table>
+      <div class="note">Absence of a report is not absence of cholera. Source: <a href="https://who-global-cholera-and-awd-dashboard-1-who.hub.arcgis.com/" target="_blank" rel="noopener" style="color:#7cc4ff">WHO Global Cholera and AWD Dashboard</a>.</div>`);
+    $("ib").querySelectorAll("tr.click").forEach(r => r.onclick = () => showCholera(r.dataset.iso, true));
+    map.flyTo({ center: [30, 10], zoom: innerWidth > 1200 ? 2.2 : 1.5, duration: 1200 });
+  } else if (k === "floods") {
+    const fs = L.floods.filter(f => f.current);
+    openInfo(`<div class="kicker">River floods now · GDACS</div><h2>${fmt(fs.length)} current flood events</h2>
+      <div class="note" style="margin-top:-4px">Floods speed rivers up and wash sewage and latrines into them – the classic trigger for waterborne outbreaks.</div>
+      <ul class="tl">${fs.map(f => `<li class="click" data-id="${f.id}"><span class="d">${dshort(f.from)}</span><span class="n">${esc(f.name)}${L.overlap.includes(f.country) ? " ⚠" : ""}</span><span class="k">${alertPill(f.alert)}</span></li>`).join("")}</ul>
+      <div class="note">⚠ = the country also reported cholera in the last 4 weeks.</div>`);
+    $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => showFlood(+li.dataset.id, true));
+  } else if (k === "flow") {
+    const gs = [...L.gauges].sort((a, b) => b.ratio - a.ratio);
+    const row = g => `<li class="click" data-m="${g.main}"><span class="d">${fmt(g.ratio, 2)}×</span><span class="n">${esc(g.name)}</span><span class="k">${fmtK(g.now7)} m³/s</span></li>`;
+    openInfo(`<div class="kicker">River flow now vs. normal · GloFAS</div><h2>${fmt(L.flow_kpi.above)} above, ${fmt(L.flow_kpi.below)} below normal</h2>
+      <div class="note" style="margin-top:-4px">One virtual gauge near the mouth of each of the ${fmt(L.flow_kpi.n)} largest river systems. Normal = median flow in the same ±15 days of the previous 5 years. Above = ≥ 1.25×, below = ≤ 0.8×.
+      High flow carries contamination further and faster; low flow dilutes it less.</div>
+      <h3>Highest</h3><ul class="tl">${gs.slice(0, 10).map(row).join("")}</ul><h3>Lowest</h3><ul class="tl">${gs.slice(-10).reverse().map(row).join("")}</ul>`);
+    $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => showGauge(+li.dataset.m, true));
+  } else if (k === "people") {
+    openInfo(`<div class="kicker">Who lives on the rivers</div><h2>${fmtPop(+L.static.people_5km || 0)} people</h2>
+      <div class="note">Live within 5 km of a river with a mean flow of at least 1 m³/s (HydroRIVERS), counted on the GHS-POP 2025 population grid (1 km cells, aggregated to ~2.8 km).
+      These are the people a contaminated river can reach. Every trace adds up the people along its own path.</div>
+      <div class="note">Source: Schiavina et al. 2023, GHS-POP R2023A, European Commission JRC (CC BY 4.0).</div>`);
+  }
+}
+const alertPill = a => { const c = { Red: "#ef4444", Orange: "#fb923c", Green: "#4ade80" }[a] || "#8a9bb5"; return `<span class="status-pill" style="color:${c};border-color:${c}">${esc((a || "?").toUpperCase())}</span>`; };
+function showCholera(iso, fly) {
+  const c = LIVE?.cholera_countries.find(x => x.iso3 === iso); if (!c) return;
+  openInfo(`<div class="kicker">Cholera · WHO weekly reports<span class="badge out">REPORTED</span></div><h2>${esc(c.name)}</h2>
+    <div class="tiles"><div class="tile"><b>${fmt(c.cases_4w)}</b><span>cases, last 4 weeks (${pct(c.cases_4w, c.cases_prev4w)} vs. previous 4)</span></div>
+    <div class="tile"><b>${fmtK(c.cases_ytd)}</b><span>cases in ${LIVE.cholera.window_end.slice(0, 4)}</span></div>
+    <div class="tile"><b>${fmt(c.cases_12w)}</b><span>cases, last 12 weeks</span></div><div class="tile"><b>${fmt(c.deaths_12w)}</b><span>deaths, last 12 weeks</span></div></div>
+    <h3>Cases per week, last 26 weeks</h3><div class="chart" id="cwk"></div>
+    <div class="note">Last week with cases: ${c.last_case_week ? dshort(c.last_case_week) : "–"}. Reports arrive late and get revised.
+    Trace a river in this country (Trace mode) to see where its water goes.</div>`);
+  const end = new Date(LIVE.cholera.window_end + "T00:00:00Z");
+  bars($("cwk"), c.weekly.map((v, i) => ({ v, t: `week to ${new Date(end - (25 - i) * 7 * 864e5).toISOString().slice(0, 10)}: ${fmt(v)} cases` })), "#ff7a8a");
+  if (fly) map.flyTo({ center: [c.lon, c.lat], zoom: 4.5, duration: 1200 });
+}
+function showFlood(id, fly) {
+  const f = LIVE?.floods.find(x => x.id === id); if (!f) return;
+  openInfo(`<div class="kicker">River flood · GDACS ${alertPill(f.alert)}</div><h2>${esc(f.name)}</h2>
+    <table class="kv"><tr><td>Since</td><td>${f.from}</td></tr><tr><td>Last update</td><td>${f.to}</td></tr><tr><td>Status</td><td>${f.current ? "current" : "ended"}</td></tr>
+    ${f.severity ? `<tr><td>Severity</td><td>${esc(f.severity)}</td></tr>` : ""}</table>
+    ${LIVE.overlap.includes(f.country) ? `<div class="alert-line">⚠ ${esc(f.country)} also reported cholera in the last 4 weeks.</div>` : ""}
+    <div class="note">Green, orange and red are GDACS alert levels (expected humanitarian impact). ${f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener" style="color:#7cc4ff">GDACS report</a>` : ""}</div>
+    <button class="btn" id="goTrace">▶ Trace downstream from the flood</button>`);
+  $("goTrace").onclick = () => runTrace({ lng: f.lon, lat: f.lat }, `Downstream of: ${f.name}`);
+  if (fly) map.flyTo({ center: [f.lon, f.lat], zoom: 6, duration: 1200 });
+}
+function showDon(id) {
+  const d = LIVE?.don_reports.find(x => x.id === id); if (!d) return;
+  openInfo(`<div class="kicker">WHO Disease Outbreak News · ${d.date}</div><h2>${esc(d.title)}</h2><div class="note" style="color:var(--text)">${esc(d.summary || "")}</div>
+    <div class="src"><a href="${esc(d.url)}" target="_blank" rel="noopener">Read the WHO report</a></div>`);
+}
+function showGauge(main, fly) {
+  const g = LIVE?.gauges.find(x => x.main === main); if (!g) return;
+  highlight(main);
+  openInfo(`<div class="kicker">River flow now · GloFAS virtual gauge<span class="badge sim">MODEL</span></div><h2>${esc(g.name)}</h2>
+    <div class="tiles"><div class="tile"><b>${fmt(g.ratio, 2)}×</b><span>normal for the season (${g.cls})</span></div>
+    <div class="tile"><b>${fmtK(g.now7)}</b><span>m³/s, mean of the last 7 days</span></div>
+    <div class="tile"><b>${fmtK(g.median)}</b><span>m³/s normal (median, same weeks 2021–25)</span></div>
+    <div class="tile"><b>${g.next7 ? fmtK(g.next7) : "–"}</b><span>m³/s forecast, next 7 days</span></div></div>
+    <h3>Daily flow: last 30 days and 7-day forecast (m³/s)</h3><div class="chart" id="gch"></div>
+    <div class="note">Shaded band: the 10th–90th percentile of the same weeks in the previous 5 years. GloFAS is a hydrological model, not a measurement – good for "wetter or drier than usual", not for exact values.</div>
+    <button class="btn" id="goSys">Show the river system</button>`);
+  $("goSys").onclick = () => showSystem(main, true);
+  flowChart($("gch"), g);
+  if (fly) map.flyTo({ center: [g.lon, g.lat], zoom: 5, duration: 1200 });
+}
+// ---- small charts: one series each, hover tooltip
+function tipFor(el) { let t = el.querySelector(".tip"); if (!t) { t = document.createElement("div"); t.className = "tip"; el.appendChild(t); } return t; }
+function bars(el, data, color, H = 110) {
+  const W = 340, m = { l: 36, r: 6, t: 6, b: 16 }, max = Math.max(1, ...data.map(d => d.v)), bw = (W - m.l - m.r) / data.length;
+  const y = v => m.t + (1 - v / max) * (H - m.t - m.b);
+  const ticks = [0, max / 2, max].map(v => Math.round(v));
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}"><g class="axis">${ticks.map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke-dasharray="2 3" opacity=".6"/><text x="${m.l - 5}" y="${y(v) + 3}" text-anchor="end">${fmtK(v)}</text>`).join("")}</g>
+    ${data.map((d, i) => `<rect x="${m.l + i * bw + 1}" y="${y(d.v)}" width="${Math.max(1, bw - 2)}" height="${Math.max(0, H - m.b - y(d.v))}" rx="2" fill="${color}" data-i="${i}"/>`).join("")}
+    ${data.map((d, i) => `<rect x="${m.l + i * bw}" y="0" width="${bw}" height="${H}" fill="transparent" data-i="${i}"/>`).join("")}
+    ${data[0].lab ? data.map((d, i) => d.lab ? `<text class="axis" x="${m.l + i * bw + bw / 2}" y="${H - 3}" text-anchor="middle" style="fill:var(--muted);font-size:9.5px">${d.lab}</text>` : "").join("") : ""}</svg>`;
+  const tip = tipFor(el), svg = el.querySelector("svg");
+  svg.onpointermove = e => { const i = e.target.dataset?.i; if (i == null) return; const r = svg.getBoundingClientRect(); tip.style.display = "block";
+    tip.style.left = Math.min(Math.max((m.l + (+i + .5) * bw) / W * r.width, 70), r.width - 70) + "px"; tip.style.top = (y(data[i].v) / H * r.height - 6) + "px"; tip.innerHTML = data[i].t; };
+  svg.onpointerleave = () => tip.style.display = "none";
+}
+function flowChart(el, g) {
+  const W = 340, H = 140, m = { l: 44, r: 8, t: 8, b: 20 }, n = g.spark.length;
+  const d0 = new Date(g.spark_from + "T00:00:00Z"), today = new Date(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+  const it = Math.round((today - d0) / 864e5);
+  const lo = Math.min(g.p10, ...g.spark) * .9, hi = Math.max(g.p90, ...g.spark) * 1.05;
+  const x = i => m.l + i / (n - 1) * (W - m.l - m.r), y = v => m.t + (1 - (v - lo) / (hi - lo)) * (H - m.t - m.b);
+  const path = (a, b) => g.spark.slice(a, b + 1).map((v, k) => `${k ? "L" : "M"}${x(a + k).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const ticks = [lo, (lo + hi) / 2, hi];
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}"><g class="axis">${ticks.map(v => `<text x="${m.l - 5}" y="${y(v) + 3}" text-anchor="end">${fmtK(v)}</text>`).join("")}
+    <text x="${x(0)}" y="${H - 5}">${dshort(g.spark_from)}</text><text x="${x(Math.min(it, n - 1))}" y="${H - 5}" text-anchor="middle">today</text></g>
+    <rect x="${m.l}" y="${y(g.p90)}" width="${W - m.l - m.r}" height="${y(g.p10) - y(g.p90)}" fill="#8d99a8" opacity=".14"/>
+    <line x1="${m.l}" x2="${W - m.r}" y1="${y(g.median)}" y2="${y(g.median)}" stroke="#8d99a8" stroke-dasharray="4 3"/>
+    <text x="${W - m.r}" y="${y(g.median) - 4}" text-anchor="end" style="fill:var(--muted);font-size:9.5px">normal</text>
+    <path d="${path(0, Math.min(it, n - 1))}" fill="none" stroke="#5ea6e8" stroke-width="2"/>
+    ${it < n - 1 ? `<path d="${path(it, n - 1)}" fill="none" stroke="#5ea6e8" stroke-width="2" stroke-dasharray="4 3"/>` : ""}
+    <line id="gx" y1="${m.t}" y2="${H - m.b}" stroke="#fff" stroke-opacity=".5" visibility="hidden"/>
+    <rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg>`;
+  const svg = el.querySelector("svg"), tip = tipFor(el), gx = svg.querySelector("#gx");
+  svg.onpointermove = e => { const r = svg.getBoundingClientRect(); const i = Math.max(0, Math.min(n - 1, Math.round(((e.clientX - r.left) / r.width * W - m.l) / (W - m.l - m.r) * (n - 1))));
+    gx.setAttribute("x1", x(i)); gx.setAttribute("x2", x(i)); gx.setAttribute("visibility", "visible");
+    tip.style.display = "block"; tip.style.left = Math.min(Math.max(x(i) / W * r.width, 70), r.width - 70) + "px"; tip.style.top = (y(g.spark[i]) / H * r.height - 6) + "px";
+    tip.innerHTML = `${new Date(+d0 + i * 864e5).toISOString().slice(0, 10)}${i > it ? " (forecast)" : ""}: <b>${fmt(g.spark[i])} m³/s</b> · ${fmt(g.spark[i] / g.median, 2)}× normal`; };
+  svg.onpointerleave = () => { tip.style.display = "none"; gx.setAttribute("visibility", "hidden"); };
+}
+function donChart() {
+  const by = LIVE?.don?.by_year; if (!by?.length) return;
+  const y0 = by[0].year, y1 = new Date().getFullYear(), m = Object.fromEntries(by.map(b => [b.year, b.n]));
+  bars($("donchart"), Array.from({ length: y1 - y0 + 1 }, (_, i) => ({ v: m[y0 + i] || 0, t: `${y0 + i}: ${m[y0 + i] || 0} reports`,
+    lab: (y0 + i) % 10 === 0 ? String(y0 + i) : "" })), "#ff9aa6", 90);
+  $("donchart").insertAdjacentHTML("beforeend", `<div class="note">Cholera, typhoid, hepatitis A/E, shigellosis, E. coli and similar (${fmt(by.reduce((a, b) => a + b.n, 0))} of all WHO Disease Outbreak News since ${y0}). Since 2023 WHO reports cholera in monthly multi-country updates instead, so recent years look quieter than they are.</div>`);
+}
+
+// ================================================================================= Milestone 3: spread simulator
+const SRC = {
+  gwpp: ["Global Water Pathogen Project: Persistence of pathogens in sewage and other water types", "https://waterpathogens.org/book/persistence-in-sewage"],
+  sed: ["Abia et al.: Survival of E. coli, V. cholerae, Salmonella and Shigella in riverbed sediments (PubMed 27193001)", "https://pubmed.ncbi.nlm.nih.gov/27193001/"],
+  vir: ["Boehm et al. 2019: Decay rates of waterborne mammalian viruses in surface waters, meta-analysis (Water Research)", "https://www.sciencedirect.com/science/article/abs/pii/S0043135419306724"],
+};
+// T90 = days until 90 % are inactivated, in the river water column at ~20 °C: [fast, typical, slow]
+const PATHOGENS = {
+  cholera: { name: "Vibrio cholerae", t90: [1, 3, 32], src: ["gwpp", "sed"],
+    note: "Cholera. No reference decay value for river water exists (a listed data gap). It dies fast in cold fresh water, but survives for weeks in river sediment (T90 32 d, slow case) and can even grow in warm, brackish estuaries." },
+  typhoid: { name: "Salmonella Typhi", t90: [0.5, 4, 48], src: ["gwpp"],
+    note: "Typhoid. Extremely sensitive to sunlight: T90 under an hour in clear sunlit water, 48–96 d in the dark at 15 °C. The typical value is our middle assumption for turbid, partly shaded rivers." },
+  hepa: { name: "Hepatitis A virus", t90: [2.6, 10, 33], src: ["vir"],
+    note: "Viruses outlast bacteria: mammalian viruses decay at k = 0.07–0.9 per day in surface water (T90 ≈ 2.6–33 d); hepatitis A sits mid-range." },
+  ecoli: { name: "E. coli (sewage indicator)", t90: [0.5, 2, 7], src: ["gwpp"],
+    note: "What water labs measure as the sign of faecal pollution. T90 2.2 d in sunlit river water at 15 °C, under 7 d at 20–30 °C." },
+  crypto: { name: "Cryptosporidium", t90: [5, 40, 86], src: ["gwpp"],
+    note: "Chlorine-resistant parasite. T90 38–86 d in the dark at 20–25 °C, faster at 30 °C. Travels almost the whole length of most rivers." },
+  tracer: { name: "Chemical (no decay)", t90: [Infinity, Infinity, Infinity], src: [],
+    note: "A substance that does not break down, like the cyanide or benzene spills on the map: only dilution by tributaries lowers it." },
+};
+let SIM = { p: "cholera", flow: "mean" };
+function simulate(d, T90, r) {
+  // relative concentration after full mixing at the release point: dilution (Q0/Q) x decay 10^(-t/T90).
+  // Flow scenario r scales every reach's discharge: travel time scales with r^-b, dilution ratios stay the same.
+  const f = d.features, q0 = f[0].properties.q, tf = Math.pow(r, -velocity.b);
+  const lakes = d.lakes.map(l => ({ km: l.km, days: Math.min(l.res_days || 0, 3650) }));
+  return f.map(x => {
+    const p = x.properties, tLake = lakes.filter(l => l.km < p.km0).reduce((a, l) => a + l.days, 0);
+    const t = p.h0 / 24 * tf + tLake;
+    return Math.max(-12, Math.log10(q0 / p.q) - (isFinite(T90) ? t / T90 : 0));
+  });
+}
+function stretch(d, lr) {
+  const f = d.features, i = lr.findIndex(v => v <= -3);
+  const end = i < 0 ? f.length : i, kmEnd = i < 0 ? d.summary.km : f[i].properties.km0;
+  return { i: end, km: kmEnd, h: i < 0 ? null : f[i].properties.h0, pop: f.slice(0, end).reduce((a, x) => a + (x.properties.pop || 0), 0),
+           cities: d.cities.filter(c => c.km < kmEnd && c.pop >= 20000), countries: d.countries.filter(c => c.km < kmEnd) };
+}
+function setupSim(d) {
+  const sys = d.summary.system_id, g = LIVE?.gauges?.find(x => x.main === sys);
+  const P = PATHOGENS[SIM.p], r = SIM.flow === "today" && g ? g.ratio : 1;
+  const tf = Math.pow(r, -velocity.b);
+  const [fast, typ, slow] = P.t90.map(t => simulate(d, t, r));
+  const S = [fast, typ, slow].map(lr => stretch(d, lr));
+  d.features.forEach((x, i) => x.properties.lr = typ[i]);
+  map.getSource("trace").setData(d);
+  // marker where 99.9 % are gone (typical case)
+  const pts = TRACEPTS.filter(p => p.properties.k !== "safe");
+  if (S[1].i < d.features.length) {
+    const c = firstCoord(d.features[S[1].i].geometry);
+    pts.push({ type: "Feature", geometry: { type: "Point", coordinates: c }, properties: { k: "safe", label: `99.9 % gone · ${days(d.features[S[1].i].properties.h0 / 24 * tf)}`, prio: 0.5 } });
+  }
+  map.getSource("tracepts").setData({ type: "FeatureCollection", features: pts });
+  const dayTxt = s => s.h == null ? "never" : days(s.h / 24 * tf);
+  const lastLr = typ.at(-1), endTxt = lastLr <= -3 ? "" : `Still 1/${fmt(Math.pow(10, -lastLr))} of the start concentration where it ${d.summary.ends === "sea" ? "reaches the sea" : "ends"}.`;
+  $("sim").innerHTML = `<h3 style="margin-top:6px">Simulate a release here<span class="badge sim">HYPOTHETICAL</span></h3>
+    <div class="chips" id="simP">${Object.entries(PATHOGENS).map(([k, v]) => `<button data-p="${k}" class="${k === SIM.p ? "on" : ""}">${v.name}</button>`).join("")}</div>
+    <div class="chips" id="simF"><button data-f="mean" class="${SIM.flow === "mean" ? "on" : ""}">Long-term mean flow</button>
+      <button data-f="today" class="${SIM.flow === "today" && g ? "on" : ""}" ${g ? "" : "disabled title='No GloFAS gauge on this river system'"}>Today's flow${g ? ` (${fmt(g.ratio, 2)}× normal)` : ""}</button></div>
+    <div class="pnote">${esc(P.note)}</div>
+    <div class="tiles">
+      <div class="tile"><b>${S[1].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[1].km)} km</b><span>until 99.9 % is gone (range ${fmt(S[0].km)}–${S[2].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[2].km)} km)</span></div>
+      <div class="tile"><b>${dayTxt(S[1])}</b><span>until 99.9 % is gone (fast case ${dayTxt(S[0])})</span></div>
+      <div class="tile"><b>${S[1].pop ? fmtPop(S[1].pop) : "–"}</b><span>people within 5 km of that stretch (range ${fmtPop(S[0].pop)}–${fmtPop(S[2].pop)})</span></div>
+      <div class="tile"><b>${fmt(S[1].cities.length)}</b><span>${S[1].cities.length === 1 ? "city" : "cities"} ≥ 20 k on it${S[1].cities.length ? ": " + esc(S[1].cities.slice(0, 3).map(c => c.name).join(", ")) : ""}</span></div></div>
+    ${endTxt ? `<div class="pnote">${endTxt}</div>` : ""}
+    <h3>Concentration left, relative to the release point (log scale)</h3><div class="chart" id="simc"></div>
+    <div class="pnote">Line: typical decay. Band: fast to slow decay. Dilution from tributaries plus die-off (T90 = ${isFinite(P.t90[1]) ? P.t90.map(t => fmt(t, t < 1 ? 1 : 0)).join(" / ") + " days" : "none"}).
+      Lakes on the way add their residence time to the die-off clock. Assumes full mixing; ignores sediment, regrowth and treatment.</div>
+    ${P.src.length ? `<div class="src">${P.src.map(k => `<a href="${SRC[k][1]}" target="_blank" rel="noopener">${esc(SRC[k][0])}</a>`).join("")}</div>` : ""}`;
+  $("simP").onclick = e => { const b = e.target.closest("button"); if (b) { SIM.p = b.dataset.p; setupSim(d); } };
+  $("simF").onclick = e => { const b = e.target.closest("button"); if (b && !b.disabled) { SIM.flow = b.dataset.f; setupSim(d); } };
+  simChart($("simc"), d, fast, typ, slow, tf);
+}
+function simChart(el, d, fast, typ, slow, tf) {
+  const W = 340, H = 150, m = { l: 44, r: 10, t: 8, b: 24 }, X = d.summary.km || 1, km = d.features.map(f => f.properties.km0);
+  const lo = Math.max(-8, Math.floor(Math.min(-3.5, ...typ, ...slow.filter(isFinite)))), hi = 0;
+  const x = v => m.l + v / X * (W - m.l - m.r), y = v => m.t + (hi - Math.max(lo, Math.min(hi, v))) / (hi - lo) * (H - m.t - m.b);
+  const line = a => a.map((v, i) => `${i ? "L" : "M"}${x(km[i]).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const band = line(slow) + fast.map((v, i) => [km[i], v]).reverse().map(([k, v]) => `L${x(k).toFixed(1)},${y(v).toFixed(1)}`).join("") + "Z";
+  const yt = []; for (let v = hi; v >= lo; v -= lo < -6 ? 2 : 1) yt.push(v);
+  const lab = v => { if (v === 0) return "start"; const k = Math.round(-v); return "1/" + (k < 3 ? fmt(10 ** k) : k < 6 ? fmt(10 ** (k - 3)) + "k" : fmt(10 ** (k - 6)) + " M"); };
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Relative concentration along the river"><g class="axis">
+    ${yt.map(v => `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke-dasharray="2 3" opacity=".6"/><text x="${m.l - 5}" y="${y(v) + 3}" text-anchor="end">${lab(v)}</text>`).join("")}
+    ${[0, .5, 1].map((f, i) => `<text x="${x(f * X)}" y="${H - 8}" text-anchor="${["start", "middle", "end"][i]}">${fmt(f * X)} km</text>`).join("")}</g>
+    <line x1="${m.l}" x2="${W - m.r}" y1="${y(-3)}" y2="${y(-3)}" stroke="#7ee0a1" stroke-opacity=".7"/><text x="${W - m.r}" y="${y(-3) - 4}" text-anchor="end" style="fill:#7ee0a1;font-size:9.5px">99.9 % gone</text>
+    <path d="${band}" fill="#ff9d3a" opacity=".16"/><path d="${line(typ)}" fill="none" stroke="#ff9d3a" stroke-width="2"/>
+    <line id="sx" y1="${m.t}" y2="${H - m.b}" stroke="#fff" stroke-opacity=".5" visibility="hidden"/>
+    <rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg>`;
+  const svg = el.querySelector("svg"), tip = tipFor(el), sx = svg.querySelector("#sx");
+  svg.onpointermove = e => { const r = svg.getBoundingClientRect(), k = Math.max(0, Math.min(X, ((e.clientX - r.left) / r.width * W - m.l) / (W - m.l - m.r) * X));
+    let i = km.findIndex(v => v > k); i = i < 0 ? km.length - 1 : Math.max(0, i - 1);
+    sx.setAttribute("x1", x(km[i])); sx.setAttribute("x2", x(km[i])); sx.setAttribute("visibility", "visible");
+    tip.style.display = "block"; tip.style.left = Math.min(Math.max(x(km[i]) / W * r.width, 80), r.width - 80) + "px"; tip.style.top = (y(typ[i]) / H * r.height - 6) + "px";
+    tip.innerHTML = `<b>${fmt(km[i])} km</b> · ${days(d.features[i].properties.h0 / 24 * tf)} · ${typ[i] > -0.005 ? "100 %" : typ[i] > -2 ? fmt(Math.pow(10, typ[i]) * 100, 1) + " %" : lab(typ[i])} left`;
+    map.getSource("cursor").setData({ type: "Feature", geometry: { type: "Point", coordinates: firstCoord(d.features[i].geometry) }, properties: {} }); };
+  svg.onpointerleave = () => { tip.style.display = "none"; sx.setAttribute("visibility", "hidden"); map.getSource("cursor").setData(EMPTY); };
+}
+
 function setMode(m) {
   mode = m;
   $("mExplore").classList.toggle("on", m === "explore"); $("mTrace").classList.toggle("on", m === "trace");
@@ -557,19 +878,24 @@ const RIVER_LAYERS = ["stems", "t1", "t2", "t3"];
 map.on("click", e => {
   if (mode === "trace") return runTrace(e.lngLat);
   const box = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
+  const lv = map.queryRenderedFeatures(box, { layers: ["floods", "gauges", "don"].filter(l => map.getLayoutProperty(l, "visibility") !== "none") })[0];
+  if (lv) return lv.layer.id === "floods" ? showFlood(lv.properties.id) : lv.layer.id === "gauges" ? showGauge(+lv.properties.main) : showDon(lv.properties.id);
   const ev = map.queryRenderedFeatures(box, { layers: ["events"] })[0];
   if (ev) return showEvent(ev.properties.id, false);
   const r = map.queryRenderedFeatures(box, { layers: RIVER_LAYERS })[0];
   if (r) return showSystem(r.properties.main, false, e.lngLat);
   const l = map.queryRenderedFeatures(e.point, { layers: ["lakes"] })[0];
   if (l) return showLake(l.properties);
+  const ch = map.queryRenderedFeatures(box, { layers: ["cholera"] })[0];
+  if (ch) return showCholera(ch.properties.iso3);
 });
-for (const l of [...RIVER_LAYERS, "events", "lakes"]) {
+for (const l of [...RIVER_LAYERS, "events", "lakes", "cholera", "floods", "gauges", "don"]) {
   map.on("mouseenter", l, () => { if (mode === "explore") map.getCanvas().style.cursor = "pointer"; });
   map.on("mouseleave", l, () => { if (mode === "explore") map.getCanvas().style.cursor = ""; });
 }
 
-const LAYERS = { stems: ["stems", "stems-glow", "stem-lbl", "hi-stem"], rivers: ["t1", "t2", "t3", "hi-t1", "hi-t2", "hi-t3"], osm: ["osm-waterway", "osm-waterway-lbl"],
+const LAYERS = { cholera: ["cholera", "cholera-lbl"], flow: ["gauges", "gauges-lbl"], floods: ["floods"], don: ["don"],
+                 stems: ["stems", "stems-glow", "stem-lbl", "hi-stem"], rivers: ["t1", "t2", "t3", "hi-t1", "hi-t2", "hi-t3"], osm: ["osm-waterway", "osm-waterway-lbl"],
                  lakes: ["lakes", "lakes-res", "lake-lbl"], events: ["events", "events-halo", "events-lbl", "evpath", "evpath-glow"] };
 const vis = (id, on) => map.getLayer(id) && map.setLayoutProperty(id, "visibility", on ? "visible" : "none");
 document.querySelectorAll("[data-l]").forEach(cb => cb.onchange = () => { LAYERS[cb.dataset.l].forEach(id => vis(id, cb.checked)); if (cb.dataset.l === "rivers") loadVisibleT3(); });
@@ -598,6 +924,8 @@ function deepLinks() {
   const u = new URLSearchParams(location.search);
   const t = u.get("trace"); if (t) { const [lng, lat] = t.split(",").map(Number); runTrace({ lng, lat }); }
   const ev = u.get("event"); if (ev) setTimeout(() => showEvent(ev, true), 300);
+  if (u.get("panel")) { const k = u.get("panel"); const t = setInterval(() => { if (LIVE) { clearInterval(t); kpiPanel(k); } }, 300); }
+  if (u.get("pathogen")) SIM.p = u.get("pathogen");
   const rv = u.get("river"); if (rv) { const s = D.stems.features.find(f => (f.properties.name || "").toLowerCase() === rv.toLowerCase()); if (s) showSystem(s.properties.main, true); }
   if (u.get("base")) $("base").querySelector(`[data-b="${u.get("base")}"]`)?.click();
   if (u.get("3d")) { const c = document.querySelector('[data-t="3d"]'); c.checked = true; c.onchange(); }

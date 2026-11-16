@@ -12,8 +12,11 @@ API
       plus the cities (Natural Earth, <= 8 km from the river), countries and lakes (HydroLAKES) on the way.
       Travel time per reach = length / v, with v = a * Q^b (m/s, Q = mean discharge m3/s): downstream hydraulic
       geometry (Leopold & Maddock 1953). a, b come from the calibration in docs/CALIBRATION.md.
+  GET /api/live      KPIs + layers for "the world now": WHO cholera (weekly), WHO DON waterborne reports, GDACS floods,
+                     river flow vs the same season of the last 5 years (GloFAS). Cached 10 minutes. Filled by collect_live.py.
   GET /api/health
 """
+import datetime as dt
 import gzip
 import http.server
 import ipaddress
@@ -90,6 +93,15 @@ FROM path JOIN lakes_sub s ON ST_Intersects(s.geom, path.geom) JOIN lakes l USIN
 ORDER BY l.hylak_id, path.n
 """
 
+SQL_POP = """
+WITH path AS (SELECT n, geom FROM unnest(%(ids)s::bigint[]) WITH ORDINALITY u(id, n) JOIN rivers r ON r.hyriv_id = u.id)
+SELECT n, sum(pop) FROM (
+  SELECT DISTINCT ON (p.id) p.id, p.pop, path.n
+  FROM path JOIN pop p ON ST_DWithin(p.geom, path.geom, 0.09)
+  WHERE ST_DWithin(p.geom::geography, path.geom::geography, 5000)
+  ORDER BY p.id, path.n) x
+GROUP BY n
+"""
 
 SANDWICH_KM = 220
 NOISE_KM = 12   # runs shorter than this are absorbed into the previous run (river lines wobble around borders)
@@ -125,6 +137,10 @@ def countries_along(rows, cum, total_km):
              "len_km": round(r["end"] - r["km"], 1)} for r in out]
 
 
+def q1(c, sql, args=None):
+    return c.execute(sql, args or {}).fetchone()
+
+
 def trace(lon: float, lat: float, a: float, b: float) -> dict:
     c = db()
     snaps = c.execute(SQL_SNAP, {"lon": lon, "lat": lat}).fetchall()
@@ -154,6 +170,11 @@ def trace(lon: float, lat: float, a: float, b: float) -> dict:
     lakes = sorted(({"name": nm or "Unnamed lake", "type": t, "area_km2": round(ar or 0, 1), "res_days": round(r or 0, 1),
                      "km": round(cum[n][0], 1), "h": round(cum[n][1], 2)}
                     for nm, t, ar, r, n in c.execute(SQL_LAKES, {"ids": ids}).fetchall()), key=lambda r: r["km"])
+    pop_by_n = {}
+    if q1(c, "SELECT to_regclass('pop')")[0]:
+        pop_by_n = {n: float(v) for n, v in c.execute(SQL_POP, {"ids": ids}).fetchall()}
+    for f in feats:
+        f["properties"]["pop"] = round(pop_by_n.get(f["properties"]["n"], 0))
     main = rows[-1][5] if rows else None
     name = c.execute("SELECT nullif(name, '') FROM mainstems WHERE main_riv = %s", (main,)).fetchone()
     return {"type": "FeatureCollection", "features": feats,
@@ -161,8 +182,108 @@ def trace(lon: float, lat: float, a: float, b: float) -> dict:
                         "hours": round(hours, 1), "days": round(hours / 24, 2), "q_start": feats[0]["properties"]["q"],
                         "q_end": feats[-1]["properties"]["q"], "dilution": round(feats[-1]["properties"]["q"] / feats[0]["properties"]["q"], 1),
                         "ends": "inland sink" if rows[-1][6] else "sea", "system": name[0] if name else None,
-                        "system_id": main, "velocity": {"a": a, "b": b, "formula": "v = a * Q^b (m/s)"}},
+                        "system_id": main, "pop_5km": round(sum(pop_by_n.values())), "velocity": {"a": a, "b": b, "formula": "v = a * Q^b (m/s)"}},
             "cities": cities, "countries": seq, "lakes": lakes}
+
+
+LIVE_TTL = 600
+_live_cache = {"t": 0, "v": None}
+
+
+def live(c) -> dict:
+    """Milestone 2: what is happening now. Every KPI comes with a comparison period."""
+    out = {"generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+    # ---- cholera (WHO weekly). Reports lag by weeks: the window ends one week before the newest reported week.
+    latest = q1(c, "SELECT max(week) FROM cholera_week")[0]
+    if latest:
+        end = latest - dt.timedelta(days=7)
+        r = q1(c, """SELECT
+              sum(cases) FILTER (WHERE week > %(e)s - 28 AND week <= %(e)s),
+              sum(cases) FILTER (WHERE week > %(e)s - 56 AND week <= %(e)s - 28),
+              count(DISTINCT iso3) FILTER (WHERE week > %(e)s - 28 AND week <= %(e)s AND cases > 0),
+              count(DISTINCT iso3) FILTER (WHERE week > %(e)s - 56 AND week <= %(e)s - 28 AND cases > 0),
+              sum(cases) FILTER (WHERE week >= date_trunc('year', %(e)s::date) AND week <= %(e)s),
+              sum(cases) FILTER (WHERE week >= date_trunc('year', %(e)s::date) - interval '1 year' AND week <= %(e)s - interval '1 year'),
+              sum(deaths) FILTER (WHERE week >= date_trunc('year', %(e)s::date) AND week <= %(e)s),
+              sum(deaths) FILTER (WHERE week >= date_trunc('year', %(e)s::date) - interval '1 year' AND week <= %(e)s - interval '1 year')
+            FROM cholera_week""", {"e": end})
+        out["cholera"] = {"latest_week": str(latest), "window_end": str(end), "cases_4w": r[0] or 0, "cases_prev4w": r[1] or 0,
+                          "countries_4w": r[2], "countries_prev4w": r[3], "cases_ytd": r[4] or 0, "cases_ytd_prev": r[5] or 0,
+                          "deaths_ytd": r[6] or 0, "deaths_ytd_prev": r[7] or 0}
+        rows = c.execute("""
+            WITH w AS (SELECT generate_series(%(e)s::date - 7 * 25, %(e)s::date, interval '7 days')::date AS wk),
+            spark AS (
+              SELECT k.iso3, array_agg(coalesce(s.c, 0) ORDER BY w.wk) AS weekly
+              FROM (SELECT DISTINCT iso3 FROM cholera_week) k CROSS JOIN w
+              LEFT JOIN LATERAL (SELECT sum(cases) c FROM cholera_week x WHERE x.iso3 = k.iso3 AND x.week > w.wk - 7 AND x.week <= w.wk) s ON true
+              GROUP BY k.iso3)
+            SELECT k.iso3, max(k.country), max(k.lon), max(k.lat),
+                   sum(k.cases) FILTER (WHERE k.week > %(e)s - 28 AND k.week <= %(e)s),
+                   sum(k.cases) FILTER (WHERE k.week > %(e)s - 56 AND k.week <= %(e)s - 28),
+                   sum(k.cases) FILTER (WHERE k.week > %(e)s - 84 AND k.week <= %(e)s),
+                   sum(k.deaths) FILTER (WHERE k.week > %(e)s - 84 AND k.week <= %(e)s),
+                   sum(k.cases) FILTER (WHERE k.week >= date_trunc('year', %(e)s::date) AND k.week <= %(e)s),
+                   max(k.week) FILTER (WHERE k.cases > 0), max(sp.weekly)
+            FROM cholera_week k JOIN spark sp USING (iso3) GROUP BY k.iso3""", {"e": end}).fetchall()
+        out["cholera_countries"] = [{"iso3": i, "name": n, "lon": x, "lat": y, "cases_4w": a or 0, "cases_prev4w": b or 0,
+                                     "cases_12w": d or 0, "deaths_12w": e or 0, "cases_ytd": f or 0, "last_case_week": str(g) if g else None,
+                                     "weekly": [int(v) for v in sp]}
+                                    for i, n, x, y, a, b, d, e, f, g, sp in rows if (d or 0) > 0 or (f or 0) > 0]
+    # ---- WHO Disease Outbreak News: waterborne reports
+    r = q1(c, """SELECT count(*) FILTER (WHERE published > now() - interval '365 days'),
+                        count(*) FILTER (WHERE published <= now() - interval '365 days' AND published > now() - interval '730 days')
+                 FROM don_reports WHERE kind = 'waterborne'""")
+    out["don"] = {"waterborne_365": r[0], "waterborne_prev365": r[1],
+                  "by_year": [{"year": int(y), "n": n} for y, n in c.execute(
+                      "SELECT extract(year FROM published), count(*) FROM don_reports WHERE kind = 'waterborne' GROUP BY 1 ORDER BY 1")]}
+    out["don_reports"] = [{"id": u, "date": str(p.date()), "title": t, "disease": d, "country": co, "iso3": i, "summary": sm,
+                           "lon": x, "lat": y, "url": f"https://www.who.int/emergencies/disease-outbreak-news/item/{u}"}
+                          for u, p, t, d, co, i, sm, x, y in c.execute("""
+        SELECT d.url_name, d.published, d.title, d.disease, d.country, d.iso3, d.summary, ST_X(ct.p), ST_Y(ct.p)
+        FROM don_reports d LEFT JOIN LATERAL (SELECT ST_PointOnSurface(geom) p FROM countries WHERE iso3 = d.iso3
+                                              ORDER BY ST_Area(geom) DESC LIMIT 1) ct ON true
+        WHERE d.kind = 'waterborne' AND d.published > now() - interval '3 years' ORDER BY d.published DESC""")]
+    # ---- GDACS floods
+    fl = c.execute("""SELECT eventid, name, country, iso3, alert, from_date::date, to_date::date, is_current, report_url,
+                             ST_X(geom), ST_Y(geom), props->'severitydata'->>'severitytext'
+                      FROM floods WHERE is_current OR to_date > now() - interval '30 days' ORDER BY to_date DESC""").fetchall()
+    out["floods"] = [{"id": e, "name": n, "country": co, "iso3": i, "alert": a, "from": str(f), "to": str(t), "current": cur,
+                      "url": u, "lon": x, "lat": y, "severity": sv} for e, n, co, i, a, f, t, cur, u, x, y, sv in fl]
+    cur_fl = [f for f in out["floods"] if f["current"]]
+    out["flood_kpi"] = {"current": len(cur_fl), "current_orange_red": sum(f["alert"] in ("Orange", "Red") for f in cur_fl),
+                        "last30": len(out["floods"]), "countries": sorted({f["country"] for f in cur_fl if f["country"]})}
+    # ---- river flow now vs the same season in the previous 5 years (GloFAS via Open-Meteo)
+    g = c.execute("""
+        WITH base AS (
+          SELECT f.main_riv, percentile_cont(0.5) WITHIN GROUP (ORDER BY f.q) AS med,
+                 percentile_cont(0.1) WITHIN GROUP (ORDER BY f.q) AS p10, percentile_cont(0.9) WITHIN GROUP (ORDER BY f.q) AS p90
+          FROM gauge_flow f, generate_series(1, 5) y
+          WHERE abs(f.day - (current_date - make_interval(years => y))::date) <= 15 GROUP BY 1),
+        cur AS (
+          SELECT main_riv, avg(q) FILTER (WHERE day > current_date - 7 AND day <= current_date) AS now7,
+                 avg(q) FILTER (WHERE day > current_date AND day <= current_date + 7) AS next7,
+                 array_agg(q ORDER BY day) AS spark, min(day) AS d0
+          FROM gauge_flow WHERE day > current_date - 30 GROUP BY 1)
+        SELECT g.main_riv, g.name, g.lon, g.lat, g.dis_av, cur.now7, cur.next7, base.med, base.p10, base.p90, cur.spark, cur.d0
+        FROM gauges g JOIN cur USING (main_riv) JOIN base USING (main_riv) WHERE base.med > 0""").fetchall()
+    gauges = []
+    for m, n, x, y, dis, now7, next7, med, p10, p90, spark, d0 in g:
+        if now7 is None or (dis or 0) > 0 and p90 < 0.1 * dis:   # GloFAS cell missed the channel: seasonal high < 10 % of the mean
+            continue
+        ratio = now7 / med
+        gauges.append({"main": m, "name": n, "lon": x, "lat": y, "dis_av": round(dis or 0), "now7": round(now7, 1),
+                       "next7": round(next7, 1) if next7 else None, "median": round(med, 1), "p10": round(p10, 1), "p90": round(p90, 1),
+                       "ratio": round(ratio, 2), "spark": [round(v, 1) for v in spark], "spark_from": str(d0),
+                       "cls": "very high" if ratio >= 2 else "high" if ratio >= 1.25 else "very low" if ratio <= 0.5
+                       else "low" if ratio <= 0.8 else "normal"})
+    out["gauges"] = gauges
+    out["flow_kpi"] = {"n": len(gauges), "above": sum(x["ratio"] >= 1.25 for x in gauges), "below": sum(x["ratio"] <= 0.8 for x in gauges),
+                       "far_above": sum(x["ratio"] >= 2 for x in gauges), "far_below": sum(x["ratio"] <= 0.5 for x in gauges)}
+    # ---- overlap: countries with cholera in the last 4 weeks and a river flood now
+    chol4 = {x["iso3"]: x["name"] for x in out.get("cholera_countries", []) if x["cases_4w"] > 0}
+    out["overlap"] = sorted({chol4[f["iso3"]] for f in cur_fl if f["iso3"] in chol4})
+    out["static"] = dict(c.execute("SELECT key, value FROM meta").fetchall()) if q1(c, "SELECT to_regclass('meta')")[0] else {}
+    return out
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -204,6 +325,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._json({"ok": True, "reaches": n})
             except Exception as e:  # noqa: BLE001
                 return self._json({"ok": False, "error": str(e)[:200]}, 503)
+        if u.path == "/api/live":
+            try:
+                if time.time() - _live_cache["t"] > LIVE_TTL:
+                    _live_cache["v"], _live_cache["t"] = live(db()), time.time()
+                return self._json(_live_cache["v"])
+            except Exception as e:  # noqa: BLE001
+                log.exception("live failed")
+                _local.conn = None
+                return self._json({"error": "live failed: " + str(e)[:160]}, 500)
         if u.path == "/api/trace":
             q = urllib.parse.parse_qs(u.query)
             try:
