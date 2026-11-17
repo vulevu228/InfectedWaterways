@@ -1,0 +1,123 @@
+table DimCountry
+	lineageTag: 6ad76a36-7f21-52c7-8b8d-cfc7483c40d4
+
+	column iso3
+		dataType: string
+		lineageTag: f9c5f610-a599-54b5-bc97-44633919c498
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 1ef78775-bb17-5a7e-b9f7-104d0a4c5704
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column who_region
+		dataType: string
+		lineageTag: 58592c84-7d18-597b-8712-514e27ff252c
+		summarizeBy: none
+		sourceColumn: who_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column pop
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 99af4fa3-567f-5df5-b1f8-8a113b9dad18
+		summarizeBy: none
+		sourceColumn: pop
+
+		annotation SummarizationSetBy = Automatic
+
+	column pop_year
+		dataType: int64
+		formatString: 0
+		lineageTag: bcb04abc-5325-57b7-af46-fbaa1367e783
+		summarizeBy: none
+		sourceColumn: pop_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column basic_pct
+		dataType: double
+		formatString: 0.0
+		lineageTag: 27884d62-a400-59f1-aef2-954423deb7d3
+		summarizeBy: none
+		sourceColumn: basic_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column safe_pct
+		dataType: double
+		formatString: 0.0
+		lineageTag: 803dd935-f5ab-54ba-ad73-c3f15c024bd4
+		summarizeBy: none
+		sourceColumn: safe_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column wash_year
+		dataType: int64
+		formatString: 0
+		lineageTag: ce579cca-3cf7-57ed-9eaa-c9e982606d20
+		summarizeBy: none
+		sourceColumn: wash_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column unsafe_pct
+		dataType: double
+		formatString: 0.0
+		lineageTag: 05566972-1f68-5dbf-9b6f-8c5c52e2c6a0
+		summarizeBy: none
+		sourceColumn: unsafe_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column unsafe_band
+		dataType: string
+		lineageTag: 770d7db0-9540-5b87-a37e-efe98ea4c414
+		summarizeBy: none
+		sourceColumn: unsafe_band
+		sortByColumn: band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column band_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fede8f1e-410d-5d9d-b86b-c1e27841854d
+		summarizeBy: none
+		sourceColumn: band_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_cholera
+		dataType: boolean
+		lineageTag: 35a70b75-ea7a-5598-8886-01a82ff0e577
+		summarizeBy: none
+		sourceColumn: has_cholera
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCountry = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "country.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"iso3", "country", "who_region", "pop", "pop_year", "basic_pct", "safe_pct", "wash_year", "unsafe_pct", "unsafe_band", "band_order", "has_cholera"}),
+				    Nulls = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Nulls, {{"iso3", type text}, {"country", type text}, {"who_region", type text}, {"pop", Int64.Type}, {"pop_year", Int64.Type}, {"basic_pct", type number}, {"safe_pct", type number}, {"wash_year", Int64.Type}, {"unsafe_pct", type number}, {"unsafe_band", type text}, {"band_order", Int64.Type}}, "en-US"),
+				    Flags = Table.TransformColumns(Typed, {{"has_cholera", each _ = "t", type logical}})
+				in
+				    Flags
+
+	annotation PBI_ResultType = Table
+

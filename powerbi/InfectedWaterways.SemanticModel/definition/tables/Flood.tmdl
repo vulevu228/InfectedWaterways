@@ -1,0 +1,92 @@
+table Flood
+	lineageTag: eebb1d04-1c97-5ac6-bbe0-9a3c54fb77ae
+
+	column eventid
+		dataType: int64
+		formatString: 0
+		lineageTag: 186ce5f4-638b-5f44-bea1-99db1c4ea0d2
+		summarizeBy: none
+		sourceColumn: eventid
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso3
+		dataType: string
+		lineageTag: f3128a29-b845-5e28-afb2-91735abb1757
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert
+		dataType: string
+		lineageTag: 8bab5bfd-0752-5133-bfd8-46e9a468e57e
+		summarizeBy: none
+		sourceColumn: alert
+		sortByColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ff9f56bd-3e85-567a-93a4-965a9a4b593c
+		summarizeBy: none
+		sourceColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column from_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 7f3c31b8-f567-577e-a057-b0d64cbb4af8
+		summarizeBy: none
+		sourceColumn: from_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 78bd85b1-5c9f-522d-8c81-14faeee007d4
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column days
+		dataType: int64
+		formatString: 0
+		lineageTag: 54903583-825f-54f8-99e5-c955330fe19a
+		summarizeBy: none
+		sourceColumn: days
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 970274fc-28b0-53b4-b00f-327973e94e3c
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Flood = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "flood.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"eventid", "iso3", "alert", "alert_order", "from_date", "week", "days", "name"}),
+				    Nulls = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Nulls, {{"eventid", Int64.Type}, {"iso3", type text}, {"alert", type text}, {"alert_order", Int64.Type}, {"from_date", type date}, {"week", type date}, {"days", Int64.Type}, {"name", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

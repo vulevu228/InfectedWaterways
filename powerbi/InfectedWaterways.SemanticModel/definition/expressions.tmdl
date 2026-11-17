@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\emira\Projects\GitHub-Projects\InfectedWaterways\powerbi\data\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: d9add80a-138a-542f-a177-d36373ddce10
+
+	annotation PBI_ResultType = Text
+

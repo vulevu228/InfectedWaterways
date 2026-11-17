@@ -5,7 +5,7 @@ Sources (all open, no key):
            https://who.maps.arcgis.com/sharing/rest/content/items/6d435a537d534bac95b072fd6d999355/data
   don      WHO Disease Outbreak News API, every report since 1996 (incremental after the first run)
            https://www.who.int/api/news/diseaseoutbreaknews
-  floods   GDACS flood events, last 120 days
+  floods   GDACS flood events, last 120 days (one-time history: --backfill-floods 2023-01-01)
            https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=FL
   wash     WHO Global Health Observatory: share of each country's population using at least basic / safely managed
            drinking-water services (WSH_WATER_BASIC, WSH_WATER_SAFELY_MANAGED; JMP data, latest year per country)
@@ -137,17 +137,33 @@ def don(c):
 
 
 # ----------------------------------------------------------------------------------------------------- floods
-def floods(c):
-    today = dt.date.today()
+def gdacs_window(start, end):
     feats = []
     for page in range(1, 30):   # 100 events per page; green alerts are hidden unless asked for
-        q = urllib.parse.urlencode({"eventlist": "FL", "fromdate": str(today - dt.timedelta(days=120)), "todate": str(today),
+        q = urllib.parse.urlencode({"eventlist": "FL", "fromdate": str(start), "todate": str(end),
                                     "alertlevel": "green;orange;red", "pagenumber": page})
         got = json.loads(get(f"{GDACS}?{q}")).get("features") or []
         feats += got
         if len(got) < 100:
             break
         time.sleep(1)
+    return feats
+
+
+def floods(c, since=None):
+    """Last 120 days. With since=YYYY-MM-DD (one-time backfill, --backfill-floods) every 60-day window since then."""
+    today = dt.date.today()
+    if since:
+        feats, a = [], dt.date.fromisoformat(since)
+        while a < today:
+            b = min(a + dt.timedelta(days=60), today)
+            got = gdacs_window(a, b)
+            log.info("floods backfill %s..%s: %d", a, b, len(got))
+            feats += got
+            a = b
+            time.sleep(2)
+    else:
+        feats = gdacs_window(today - dt.timedelta(days=120), today)
     feats = list({f["properties"]["eventid"]: f for f in feats}.values())
     for f in feats:
         p = f["properties"]
@@ -234,6 +250,24 @@ def wash(c):
     log.info("wash: %d countries stored", len(rows))
 
 
+def country_pop(c):
+    """Total population per country (World Bank SP.POP.TOTL, latest non-empty year): denominator for cases per 100k."""
+    rows = json.loads(get("https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=20000&date=2018:2026"))[1]
+    best = {}
+    for r in rows:
+        k, v = r["countryiso3code"], r["value"]
+        if not k or v is None or (k in best and best[k][1] >= int(r["date"])):
+            continue
+        best[k] = (int(v), int(r["date"]))
+    c.execute("CREATE TABLE IF NOT EXISTS country_pop (iso3 text PRIMARY KEY, name text, pop bigint, year int)")
+    names = {r["countryiso3code"]: r["country"]["value"] for r in rows}
+    with c.cursor() as cur:
+        cur.executemany("""INSERT INTO country_pop VALUES (%s,%s,%s,%s) ON CONFLICT (iso3) DO UPDATE
+                           SET name=EXCLUDED.name, pop=EXCLUDED.pop, year=EXCLUDED.year""",
+                        [(k, names[k], v, y) for k, (v, y) in best.items()])
+    log.info("country_pop: %d rows (incl. World Bank aggregates; join on iso3 drops them)", len(best))
+
+
 def flow(c):
     g = c.execute("SELECT main_riv, glon, glat FROM gauges WHERE glon IS NOT NULL ORDER BY main_riv").fetchall()
     if not g:
@@ -263,11 +297,14 @@ def main(argv):
     if "--setup-gauges" in argv:
         setup_gauges(c)
         return
-    jobs = [a for a in argv if not a.startswith("-")] or ["cholera", "don", "floods", "wash", "flow"]
+    if "--backfill-floods" in argv:
+        floods(c, since=argv[argv.index("--backfill-floods") + 1])
+        return
+    jobs = [a for a in argv if not a.startswith("-")] or ["cholera", "don", "floods", "wash", "country_pop", "flow"]
     failed = []
     for j in jobs:
         try:
-            {"cholera": cholera, "don": don, "floods": floods, "wash": wash, "flow": flow}[j](c)
+            {"cholera": cholera, "don": don, "floods": floods, "wash": wash, "country_pop": country_pop, "flow": flow}[j](c)
         except Exception:  # noqa: BLE001  one broken source must not stop the others
             log.exception("%s failed", j)
             failed.append(j)

@@ -1,0 +1,227 @@
+iso3,country,who_region,pop,pop_year,basic_pct,safe_pct,wash_year,unsafe_pct,unsafe_band,band_order,has_cholera
+AFG,Afghanistan,E. Mediterranean,43844111,2025,80.8,30.6,2024,19.2,15–30 %,2,t
+ALB,Albania,No WHO cholera data,2349580,2025,95.1,70.8,2024,4.9,Under 5 %,0,f
+DZA,Algeria,No WHO cholera data,47435312,2025,92.4,69,2024,7.6,5–15 %,1,f
+ASM,American Samoa,No WHO cholera data,46029,2025,100,90.5,2024,0,Under 5 %,0,f
+AND,Andorra,No WHO cholera data,82904,2025,100,90.6,2024,0,Under 5 %,0,f
+AGO,Angola,Africa,39040039,2025,68,,2024,32,30 % +,3,t
+ATG,Antigua and Barbuda,No WHO cholera data,94209,2025,98.9,,2024,1.1,Under 5 %,0,f
+ARG,Argentina,No WHO cholera data,45851378,2025,99,,2016,1,Under 5 %,0,f
+ARM,Armenia,No WHO cholera data,3086700,2025,99.9,82.1,2024,0.1,Under 5 %,0,f
+ABW,Aruba,No WHO cholera data,108785,2025,96.7,,2016,3.3,Under 5 %,0,f
+AUS,Australia,No WHO cholera data,27614411,2025,100,,2024,0,Under 5 %,0,f
+AUT,Austria,No WHO cholera data,9208163,2025,100,98.9,2024,0,Under 5 %,0,f
+AZE,Azerbaijan,No WHO cholera data,10246996,2025,97.7,57.8,2024,2.3,Under 5 %,0,f
+BHS,"Bahamas, The",No WHO cholera data,403033,2025,98.9,,2019,1.1,Under 5 %,0,f
+BHR,Bahrain,No WHO cholera data,1600366,2025,99.9,98.9,2024,0.1,Under 5 %,0,f
+BGD,Bangladesh,SE Asia,175686899,2025,98.8,59.1,2024,1.2,Under 5 %,0,t
+BRB,Barbados,No WHO cholera data,282623,2025,99.2,,2024,0.8,Under 5 %,0,f
+BLR,Belarus,No WHO cholera data,9085991,2025,99.9,93.1,2024,0.1,Under 5 %,0,f
+BEL,Belgium,No WHO cholera data,11941781,2025,100,99.5,2024,0,Under 5 %,0,f
+BLZ,Belize,No WHO cholera data,422924,2025,94.8,,2024,5.2,5–15 %,1,f
+BEN,Benin,No WHO cholera data,14814460,2025,69.6,17.7,2024,30.4,30 % +,3,f
+BMU,Bermuda,No WHO cholera data,64555,2025,100,,2024,0,Under 5 %,0,f
+BTN,Bhutan,No WHO cholera data,796682,2025,99.5,65.6,2024,0.5,Under 5 %,0,f
+BOL,Bolivia,No WHO cholera data,12581843,2025,93.4,,2024,6.6,5–15 %,1,f
+BIH,Bosnia and Herzegovina,No WHO cholera data,3140095,2025,96.1,86.4,2024,3.9,Under 5 %,0,f
+BWA,Botswana,No WHO cholera data,2562122,2025,91.8,63.3,2024,8.2,5–15 %,1,f
+BRA,Brazil,No WHO cholera data,212812405,2025,100,88.6,2024,0,Under 5 %,0,f
+VGB,British Virgin Islands,No WHO cholera data,39732,2025,99.9,,2024,0.1,Under 5 %,0,f
+BRN,Brunei Darussalam,No WHO cholera data,466330,2025,100,,2024,0,Under 5 %,0,f
+BGR,Bulgaria,No WHO cholera data,6433302,2025,99.2,96.2,2024,0.8,Under 5 %,0,f
+BFA,Burkina Faso,No WHO cholera data,24074580,2025,50,,2024,50,30 % +,3,f
+BDI,Burundi,Africa,14390003,2025,65.9,,2024,34.1,30 % +,3,t
+CPV,Cabo Verde,No WHO cholera data,527326,2025,92.3,,2024,7.7,5–15 %,1,f
+KHM,Cambodia,No WHO cholera data,17847982,2025,82.8,30,2024,17.2,15–30 %,2,f
+CMR,Cameroon,Africa,29879337,2025,71.4,,2024,28.6,15–30 %,2,t
+CAN,Canada,No WHO cholera data,41651653,2025,98.3,96.9,2024,1.7,Under 5 %,0,f
+CYM,Cayman Islands,No WHO cholera data,75844,2025,95.5,,2024,4.5,Under 5 %,0,f
+CAF,Central African Rep.,Africa,5513282,2025,36.5,6.2,2024,63.5,30 % +,3,t
+TCD,Chad,Africa,21003705,2025,52.2,6.3,2024,47.8,30 % +,3,t
+CHL,Chile,No WHO cholera data,19859921,2025,99.1,97.8,2024,0.9,Under 5 %,0,f
+CHN,China,No WHO cholera data,1406585000,2025,96.1,,2024,3.9,Under 5 %,0,f
+COL,Colombia,No WHO cholera data,53425635,2025,97.1,74.3,2024,2.9,Under 5 %,0,f
+COM,Comoros,Africa,882847,2025,85.1,,2024,14.9,5–15 %,1,t
+COD,DR Congo,Africa,112832473,2025,35.7,11.9,2024,64.3,30 % +,3,t
+COG,Congo,Africa,6484437,2025,73.5,45.9,2021,26.5,15–30 %,2,t
+CRI,Costa Rica,No WHO cholera data,5152950,2025,99.8,80.5,2024,0.2,Under 5 %,0,f
+CIV,Côte d’Ivoire,Africa,32711547,2025,77.2,36.4,2024,22.8,15–30 %,2,t
+HRV,Croatia,No WHO cholera data,3876200,2025,99.9,87.3,2024,0.1,Under 5 %,0,f
+CUB,Cuba,No WHO cholera data,10937203,2025,95.1,,2024,4.9,Under 5 %,0,f
+CUW,Curacao,No WHO cholera data,156263,2025,100,,2024,0,Under 5 %,0,f
+CYP,Cyprus,No WHO cholera data,1370754,2025,99.7,99.7,2024,0.3,Under 5 %,0,f
+CZE,Czechia,No WHO cholera data,10886878,2025,98.7,98.1,2024,1.3,Under 5 %,0,f
+DNK,Denmark,No WHO cholera data,6009169,2025,100,99.9,2024,0,Under 5 %,0,f
+DJI,Djibouti,No WHO cholera data,1184076,2025,79.7,,2024,20.3,15–30 %,2,f
+DMA,Dominica,No WHO cholera data,65871,2025,97,,2024,3,Under 5 %,0,f
+DOM,Dominican Republic,Americas,11520487,2025,97.5,45.3,2024,2.5,Under 5 %,0,t
+ECU,Ecuador,No WHO cholera data,18289896,2025,92.1,69.9,2024,7.9,5–15 %,1,f
+EGY,"Egypt, Arab Rep.",No WHO cholera data,118365995,2025,97.3,78.9,2024,2.7,Under 5 %,0,f
+SLV,El Salvador,No WHO cholera data,6365503,2025,91.6,,2024,8.4,5–15 %,1,f
+GNQ,Equatorial Guinea,No WHO cholera data,1938431,2025,64.7,,2017,35.3,30 % +,3,f
+ERI,Eritrea,No WHO cholera data,3607003,2025,51.8,,2016,48.2,30 % +,3,f
+EST,Estonia,No WHO cholera data,1366475,2025,100,98.9,2024,0,Under 5 %,0,f
+SWZ,Eswatini,Africa,1256174,2025,80.4,38.2,2024,19.6,15–30 %,2,t
+ETH,Ethiopia,Africa,135472051,2025,55.6,13.5,2024,44.4,30 % +,3,t
+FRO,Faroe Islands,No WHO cholera data,54900,2025,100,,2024,0,Under 5 %,0,f
+FJI,Fiji,No WHO cholera data,933154,2025,95.6,42.1,2024,4.4,Under 5 %,0,f
+FIN,Finland,No WHO cholera data,5646436,2025,100,99.6,2024,0,Under 5 %,0,f
+FRA,France,No WHO cholera data,68720337,2025,100,99.7,2024,0,Under 5 %,0,f
+PYF,French Polynesia,No WHO cholera data,282465,2025,100,90.4,2024,0,Under 5 %,0,f
+GAB,Gabon,No WHO cholera data,2593130,2025,88.6,,2024,11.4,5–15 %,1,f
+GMB,"Gambia, The",No WHO cholera data,2822093,2025,87.1,48.2,2024,12.9,5–15 %,1,f
+GEO,Georgia,No WHO cholera data,3935766,2025,97.3,70.5,2024,2.7,Under 5 %,0,f
+DEU,Germany,No WHO cholera data,83491249,2025,100,99.9,2024,0,Under 5 %,0,f
+GHA,Ghana,Africa,35064272,2025,89.9,42.9,2024,10.1,5–15 %,1,t
+GIB,Gibraltar,No WHO cholera data,40126,2025,100,100,2024,0,Under 5 %,0,f
+GRC,Greece,No WHO cholera data,10413962,2025,100,96.7,2024,0,Under 5 %,0,f
+GRL,Greenland,No WHO cholera data,56831,2025,100,,2024,0,Under 5 %,0,f
+GRD,Grenada,No WHO cholera data,117303,2025,95.6,89.9,2017,4.4,Under 5 %,0,f
+GUM,Guam,No WHO cholera data,168999,2025,99.5,94,2024,0.5,Under 5 %,0,f
+GTM,Guatemala,No WHO cholera data,18687881,2025,93.2,48.8,2024,6.8,5–15 %,1,f
+GIN,Guinea,No WHO cholera data,15099727,2025,74.2,,2024,25.8,15–30 %,2,f
+GNB,Guinea-Bissau,No WHO cholera data,2249515,2025,61.8,24,2024,38.2,30 % +,3,f
+GUY,Guyana,No WHO cholera data,835986,2025,95.6,67.2,2024,4.4,Under 5 %,0,f
+HTI,Haiti,Americas,11906095,2025,73.3,,2024,26.7,15–30 %,2,t
+HND,Honduras,No WHO cholera data,11005850,2025,95.7,65.5,2024,4.3,Under 5 %,0,f
+HUN,Hungary,No WHO cholera data,9514251,2025,100,100,2024,0,Under 5 %,0,f
+ISL,Iceland,No WHO cholera data,392404,2025,100,100,2024,0,Under 5 %,0,f
+IND,India,SE Asia,1463865525,2025,95.7,76.4,2024,4.3,Under 5 %,0,t
+IDN,Indonesia,No WHO cholera data,285721236,2025,89,30.5,2024,11,5–15 %,1,f
+IRN,Iran,No WHO cholera data,92417681,2025,97.9,94.4,2024,2.1,Under 5 %,0,f
+IRQ,Iraq,E. Mediterranean,47020774,2025,98.4,59.8,2024,1.6,Under 5 %,0,t
+IRL,Ireland,No WHO cholera data,5484367,2025,97.1,96.1,2024,2.9,Under 5 %,0,f
+IMN,Isle of Man,No WHO cholera data,84118,2025,100,99.9,2024,0,Under 5 %,0,f
+ISR,Israel,No WHO cholera data,10122800,2025,100,99.5,2024,0,Under 5 %,0,f
+ITA,Italy,No WHO cholera data,58915656,2025,99.9,96.8,2024,0.1,Under 5 %,0,f
+JAM,Jamaica,No WHO cholera data,2837077,2025,87.6,,2024,12.4,5–15 %,1,f
+JPN,Japan,No WHO cholera data,123366734,2025,99.2,98.7,2024,0.8,Under 5 %,0,f
+JOR,Jordan,No WHO cholera data,11520684,2025,99.3,89,2024,0.7,Under 5 %,0,f
+KAZ,Kazakhstan,No WHO cholera data,20843754,2025,97.8,91.5,2024,2.2,Under 5 %,0,f
+KEN,Kenya,Africa,57532493,2025,65.6,,2024,34.4,30 % +,3,t
+KIR,Kiribati,No WHO cholera data,136488,2025,79.1,15.1,2024,20.9,15–30 %,2,f
+PRK,North Korea,No WHO cholera data,26571036,2025,93.9,66.6,2023,6.1,5–15 %,1,f
+KOR,South Korea,No WHO cholera data,51684564,2025,100,99.3,2024,0,Under 5 %,0,f
+KWT,Kuwait,No WHO cholera data,4865298,2025,100,100,2024,0,Under 5 %,0,f
+KGZ,Kyrgyz Republic,No WHO cholera data,7343064,2025,94.9,73.9,2024,5.1,5–15 %,1,f
+LAO,Laos,No WHO cholera data,7873046,2025,95.9,35.2,2024,4.1,Under 5 %,0,f
+LVA,Latvia,No WHO cholera data,1847785,2025,98.8,97,2024,1.2,Under 5 %,0,f
+LBN,Lebanon,E. Mediterranean,5849421,2025,92.6,47.7,2024,7.4,5–15 %,1,t
+LSO,Lesotho,No WHO cholera data,2363325,2025,78.1,31.3,2024,21.9,15–30 %,2,f
+LBR,Liberia,No WHO cholera data,5731206,2025,78.8,,2024,21.2,15–30 %,2,f
+LBY,Libya,No WHO cholera data,7458555,2025,96.4,,2024,3.6,Under 5 %,0,f
+LIE,Liechtenstein,No WHO cholera data,41024,2025,100,100,2024,0,Under 5 %,0,f
+LTU,Lithuania,No WHO cholera data,2888774,2025,99.9,96.7,2024,0.1,Under 5 %,0,f
+LUX,Luxembourg,No WHO cholera data,686970,2025,100,99.7,2024,0,Under 5 %,0,f
+MDG,Madagascar,No WHO cholera data,32740678,2025,55.3,22.1,2024,44.7,30 % +,3,f
+MWI,Malawi,Africa,22216120,2025,73.1,18.2,2024,26.9,15–30 %,2,t
+MYS,Malaysia,No WHO cholera data,35977838,2025,97.9,94.7,2024,2.1,Under 5 %,0,f
+MDV,Maldives,No WHO cholera data,529676,2025,99.8,,2024,0.2,Under 5 %,0,f
+MLI,Mali,No WHO cholera data,25198821,2025,86.4,,2024,13.6,5–15 %,1,f
+MLT,Malta,No WHO cholera data,579704,2025,100,99.8,2024,0,Under 5 %,0,f
+MHL,Marshall Islands,No WHO cholera data,36282,2025,87.4,,2024,12.6,5–15 %,1,f
+MRT,Mauritania,No WHO cholera data,5315065,2025,77.3,,2024,22.7,15–30 %,2,f
+MUS,Mauritius,No WHO cholera data,1243741,2025,99.9,,2024,0.1,Under 5 %,0,f
+MEX,Mexico,No WHO cholera data,131946900,2025,99.5,43,2024,0.5,Under 5 %,0,f
+FSM,Micronesia,No WHO cholera data,113683,2025,89.9,,2020,10.1,5–15 %,1,f
+MDA,Moldova,No WHO cholera data,2360527,2025,92.7,75.8,2024,7.3,5–15 %,1,f
+MCO,Monaco,No WHO cholera data,38341,2025,100,100,2024,0,Under 5 %,0,f
+MNG,Mongolia,No WHO cholera data,3568978,2025,86.1,43.4,2024,13.9,5–15 %,1,f
+MNE,Montenegro,No WHO cholera data,623129,2025,99.3,85.5,2024,0.7,Under 5 %,0,f
+MAR,Morocco,No WHO cholera data,38430770,2025,92.2,80,2024,7.8,5–15 %,1,f
+MOZ,Mozambique,Africa,35631653,2025,66.6,27.5,2024,33.4,30 % +,3,t
+MMR,Myanmar,SE Asia,54850648,2025,85.7,59.7,2024,14.3,5–15 %,1,t
+NAM,Namibia,Africa,3092816,2025,86.5,,2024,13.5,5–15 %,1,t
+NRU,Naoero,No WHO cholera data,12025,2025,97.8,18.7,2024,2.2,Under 5 %,0,f
+NPL,Nepal,SE Asia,29618118,2025,93.6,16.5,2024,6.4,5–15 %,1,t
+NLD,Netherlands,No WHO cholera data,18087633,2025,100,100,2024,0,Under 5 %,0,f
+NCL,New Caledonia,No WHO cholera data,295333,2025,99.5,96.9,2024,0.5,Under 5 %,0,f
+NZL,New Zealand,No WHO cholera data,5324700,2025,100,100,2024,0,Under 5 %,0,f
+NER,Niger,Africa,27917831,2025,53.4,,2024,46.6,30 % +,3,t
+NGA,Nigeria,Africa,237527782,2025,82.2,29.9,2024,17.8,15–30 %,2,t
+MKD,North Macedonia,No WHO cholera data,1820909,2025,98.2,80.8,2024,1.8,Under 5 %,0,f
+MNP,Northern Mariana Islands,No WHO cholera data,43541,2025,100,81.5,2024,0,Under 5 %,0,f
+NOR,Norway,No WHO cholera data,5610870,2025,100,99.1,2024,0,Under 5 %,0,f
+OMN,Oman,No WHO cholera data,5494691,2025,92.7,91.1,2024,7.3,5–15 %,1,f
+PAK,Pakistan,E. Mediterranean,255219554,2025,90.7,45,2024,9.3,5–15 %,1,t
+PLW,Palau,No WHO cholera data,17663,2025,99.5,90.8,2024,0.5,Under 5 %,0,f
+PAN,Panama,No WHO cholera data,4571189,2025,95.3,,2024,4.7,Under 5 %,0,f
+PNG,Papua New Guinea,No WHO cholera data,10762817,2025,53.3,,2024,46.7,30 % +,3,f
+PRY,Paraguay,No WHO cholera data,7013078,2025,99.6,64.4,2024,0.4,Under 5 %,0,f
+PER,Peru,No WHO cholera data,34576665,2025,95.6,49.4,2024,4.4,Under 5 %,0,f
+PHL,Philippines,W. Pacific,116786962,2025,95.9,48.5,2024,4.1,Under 5 %,0,t
+POL,Poland,No WHO cholera data,36435861,2025,90.1,88.7,2024,9.9,5–15 %,1,f
+PRT,Portugal,No WHO cholera data,10804871,2025,99.3,95.2,2024,0.7,Under 5 %,0,f
+PRI,Puerto Rico (US),No WHO cholera data,3184835,2025,100,98.9,2024,0,Under 5 %,0,f
+QAT,Qatar,No WHO cholera data,2972215,2025,100,95.3,2024,0,Under 5 %,0,f
+ROU,Romania,No WHO cholera data,19020271,2025,100,82.2,2024,0,Under 5 %,0,f
+RUS,Russia,No WHO cholera data,143513328,2025,96.9,76.3,2024,3.1,Under 5 %,0,f
+RWA,Rwanda,Africa,14569341,2025,61.4,,2024,38.6,30 % +,3,t
+WSM,Samoa,No WHO cholera data,219306,2025,99.4,62.5,2024,0.6,Under 5 %,0,f
+SMR,San Marino,No WHO cholera data,34109,2025,100,100,2024,0,Under 5 %,0,f
+STP,Sao Tome and Principe,No WHO cholera data,240254,2025,78,36.7,2024,22,15–30 %,2,f
+SAU,Saudi Arabia,No WHO cholera data,36973555,2025,99,,2024,1,Under 5 %,0,f
+SEN,Senegal,No WHO cholera data,18931966,2025,88,27.2,2024,12,5–15 %,1,f
+SRB,Serbia,No WHO cholera data,6549143,2025,95.4,75,2024,4.6,Under 5 %,0,f
+SYC,Seychelles,No WHO cholera data,122730,2025,97.7,64.7,2024,2.3,Under 5 %,0,f
+SLE,Sierra Leone,No WHO cholera data,8819794,2025,68.1,10.9,2024,31.9,30 % +,3,f
+SGP,Singapore,No WHO cholera data,6111175,2025,100,100,2024,0,Under 5 %,0,f
+SXM,Sint Maarten (Dutch part),No WHO cholera data,43923,2025,99.3,,2017,0.7,Under 5 %,0,f
+SVK,Slovak Republic,No WHO cholera data,5413813,2025,99.8,99.6,2024,0.2,Under 5 %,0,f
+SVN,Slovenia,No WHO cholera data,2130986,2025,99.6,99.6,2024,0.4,Under 5 %,0,f
+SLB,Solomon Islands,No WHO cholera data,838645,2025,71.6,,2024,28.4,15–30 %,2,f
+SOM,Somalia,E. Mediterranean,19654739,2025,75.3,,2024,24.7,15–30 %,2,t
+ZAF,South Africa,Africa,64747319,2025,90.2,68,2024,9.8,5–15 %,1,t
+SSD,South Sudan,Africa,12188788,2025,39.7,,2024,60.3,30 % +,3,t
+ESP,Spain,No WHO cholera data,49355143,2025,99.9,99.5,2024,0.1,Under 5 %,0,f
+LKA,Sri Lanka,No WHO cholera data,21756000,2025,90.2,46.9,2024,9.8,5–15 %,1,f
+KNA,St. Kitts and Nevis,No WHO cholera data,46922,2025,98.6,,2017,1.4,Under 5 %,0,f
+LCA,St. Lucia,No WHO cholera data,180149,2025,98.1,,2024,1.9,Under 5 %,0,f
+VCT,St. Vincent and the Grenadines,No WHO cholera data,99924,2025,97.7,,2018,2.3,Under 5 %,0,f
+SDN,Sudan,E. Mediterranean,51662147,2025,64.9,,2024,35.1,30 % +,3,t
+SUR,Suriname,No WHO cholera data,639850,2025,98,55.8,2024,2,Under 5 %,0,f
+SWE,Sweden,No WHO cholera data,10596620,2025,99.8,99.8,2024,0.2,Under 5 %,0,f
+CHE,Switzerland,No WHO cholera data,9092436,2025,100,96.7,2024,0,Under 5 %,0,f
+SYR,Syria,E. Mediterranean,25620427,2025,94.1,,2024,5.9,5–15 %,1,t
+TJK,Tajikistan,No WHO cholera data,10786734,2025,89.2,65.1,2024,10.8,5–15 %,1,f
+TZA,Tanzania,Africa,70545865,2025,64.6,31.3,2024,35.4,30 % +,3,t
+THA,Thailand,SE Asia,71619863,2025,100,,2024,0,Under 5 %,0,t
+TLS,Timor-Leste,No WHO cholera data,1418517,2025,87.3,,2024,12.7,5–15 %,1,f
+TGO,Togo,Africa,8591626,2025,64.8,20.5,2024,35.2,30 % +,3,t
+TON,Tonga,No WHO cholera data,103742,2025,98.9,29.6,2024,1.1,Under 5 %,0,f
+TTO,Trinidad and Tobago,No WHO cholera data,1367764,2025,99.3,69.4,2024,0.7,Under 5 %,0,f
+TUN,Tunisia,No WHO cholera data,12348573,2025,96.7,65,2024,3.3,Under 5 %,0,f
+TUR,Turkiye,No WHO cholera data,85878556,2025,96,,2024,4,Under 5 %,0,f
+TKM,Turkmenistan,No WHO cholera data,7618847,2025,99.9,94.9,2024,0.1,Under 5 %,0,f
+TCA,Turks and Caicos Islands,No WHO cholera data,46855,2025,98.8,47,2024,1.2,Under 5 %,0,f
+TUV,Tuvalu,No WHO cholera data,9492,2025,98.7,8.7,2024,1.3,Under 5 %,0,f
+UGA,Uganda,Africa,51384894,2025,63,18.1,2024,37,30 % +,3,t
+UKR,Ukraine,No WHO cholera data,38980376,2025,93.5,87.9,2024,6.5,5–15 %,1,f
+ARE,United Arab Emirates,No WHO cholera data,11513149,2025,100,98.6,2024,0,Under 5 %,0,f
+GBR,United Kingdom,No WHO cholera data,69487000,2025,100,99.8,2024,0,Under 5 %,0,f
+USA,United States,No WHO cholera data,341784857,2025,100,97.6,2024,0,Under 5 %,0,f
+URY,Uruguay,No WHO cholera data,3384688,2025,99.6,,2024,0.4,Under 5 %,0,f
+UZB,Uzbekistan,No WHO cholera data,37053428,2025,97.3,81.9,2024,2.7,Under 5 %,0,f
+VUT,Vanuatu,No WHO cholera data,335169,2025,87.1,19.2,2024,12.9,5–15 %,1,f
+VEN,Venezuela,No WHO cholera data,28516896,2025,93.3,,2024,6.7,5–15 %,1,f
+VNM,Viet Nam,No WHO cholera data,101598527,2025,98.8,58.6,2024,1.2,Under 5 %,0,f
+VIR,Virgin Islands (U.S.),No WHO cholera data,103792,2025,99.5,98.7,2024,0.5,Under 5 %,0,f
+PSE,Palestine,No WHO cholera data,5413596,2025,98.8,80.6,2024,1.2,Under 5 %,0,f
+YEM,Yemen,E. Mediterranean,41773878,2025,75,,2024,25,15–30 %,2,t
+ZMB,Zambia,Africa,21913874,2025,73.4,,2024,26.6,15–30 %,2,t
+ZWE,Zimbabwe,Africa,16950795,2025,67.2,25.5,2024,32.8,30 % +,3,t
+GUF,GUF,No WHO cholera data,,,94.8,92.2,2024,5.2,5–15 %,1,f
+MTQ,MTQ,No WHO cholera data,,,99.6,99,2024,0.4,Under 5 %,0,f
+TKL,TKL,No WHO cholera data,,,100,,2024,0,Under 5 %,0,f
+SHN,SHN,No WHO cholera data,,,99.3,98.4,2024,0.7,Under 5 %,0,f
+GLP,GLP,No WHO cholera data,,,99.9,96.7,2024,0.1,Under 5 %,0,f
+SPM,SPM,No WHO cholera data,,,98.2,96,2024,1.8,Under 5 %,0,f
+MYT,Mayotte,Europe,,,96.4,92.5,2023,3.6,Under 5 %,0,t
+REU,REU,No WHO cholera data,,,99.9,95.7,2024,0.1,Under 5 %,0,f
+COK,COK,No WHO cholera data,,,99.6,,2024,0.4,Under 5 %,0,f
+BES,BES,No WHO cholera data,,,100,100,2024,0,Under 5 %,0,f
+AIA,AIA,No WHO cholera data,,,97.5,,2017,2.5,Under 5 %,0,f
+NIU,NIU,No WHO cholera data,,,98.1,93,2024,1.9,Under 5 %,0,f
+MSR,MSR,No WHO cholera data,,,98.1,,2024,1.9,Under 5 %,0,f
+WLF,WLF,No WHO cholera data,,,99.3,68.9,2024,0.7,Under 5 %,0,f
+FLK,FLK,No WHO cholera data,,,95.3,,2020,4.7,Under 5 %,0,f

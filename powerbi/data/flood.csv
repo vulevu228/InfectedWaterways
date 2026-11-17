@@ -1,0 +1,2453 @@
+eventid,iso3,alert,alert_order,from_date,week,days,name
+1104123,CHN,Orange,1,2026-08-22,2026-08-17,5,Flood in China
+1104124,NPL,Red,2,2026-08-26,2026-08-24,7,Flood in Nepal
+1104081,CHN,Orange,1,2026-07-31,2026-07-27,59,Flood in China
+1104051,CHN,Red,2,2026-07-25,2026-07-20,7,Flood in China
+1104270,FRA,Green,0,2026-11-04,2026-11-02,13,Flood in France
+1104216,BRA,Green,0,2026-10-01,2026-09-28,46,Flood in Brazil
+1104277,ARG,Green,0,2026-11-08,2026-11-02,9,Flood in Argentina
+1104220,ITA,Green,0,2026-10-07,2026-10-05,41,Flood in Italy
+1104283,THA,Green,0,2026-11-06,2026-11-02,8,Flood in Thailand
+1104271,VNM,Green,0,2026-11-06,2026-11-02,8,Flood in Vietnam
+1104280,MMR,Green,0,2026-11-10,2026-11-09,3,Flood in Myanmar
+1104167,ECU,Green,0,2026-09-15,2026-09-14,61,Flood in Ecuador
+1104269,COD,Green,0,2026-11-01,2026-10-26,11,Flood in Democratic Republic of Congo
+1104239,MYS,Green,0,2026-10-15,2026-10-12,27,Flood in Malaysia
+1104272,IRQ,Green,0,2026-11-07,2026-11-02,3,Flood in Iraq
+1104276,PRT,Green,0,2026-11-07,2026-11-02,6,Flood in Portugal
+1104274,SYR,Green,0,2026-11-07,2026-11-02,3,Flood in Syria
+1104273,ISR,Green,0,2026-11-07,2026-11-02,3,Flood in Israel
+1104284,LKA,Green,0,2026-11-06,2026-11-02,3,Flood in Sri Lanka
+1104275,VEN,Green,0,2026-11-07,2026-11-02,3,Flood in Venezuela
+1104099,MEX,Green,0,2026-08-17,2026-08-17,84,Flood in Mexico
+1104282,CAN,Green,0,2026-11-05,2026-11-02,3,Flood in Canada
+1104254,TUR,Green,0,2026-10-26,2026-10-26,12,Flood in Türkiye
+1104200,COL,Green,0,2026-09-26,2026-09-21,44,Flood in Colombia
+1104248,IND,Green,0,2026-10-20,2026-10-19,16,Flood in India
+1104279,UGA,Green,0,2026-10-31,2026-10-26,4,Flood in Uganda
+1104266,PHL,Green,0,2026-10-29,2026-10-26,6,Flood in Philippines
+1104267,BGR,Green,0,2026-11-02,2026-11-02,3,Flood in Bulgaria
+1104263,SYR,Green,0,2026-10-27,2026-10-26,3,Flood in Syria
+1104261,ISR,Green,0,2026-10-27,2026-10-26,3,Flood in Israel
+1104260,ROU,Green,0,2026-10-27,2026-10-26,3,Flood in Romania
+1104265,BTN,Green,0,2026-10-29,2026-10-26,3,Flood in Bhutan
+1104241,THA,Green,0,2026-10-18,2026-10-12,11,Flood in Thailand
+1104257,DEU,Green,0,2026-10-26,2026-10-26,2,Flood in Germany
+1104256,CAF,Green,0,2026-10-25,2026-10-19,3,Flood in Central African Republic
+1104250,ARG,Green,0,2026-10-22,2026-10-19,7,Flood in Argentina
+1104258,IRL,Green,0,2026-10-24,2026-10-19,2,Flood in Ireland
+1104247,IRN,Green,0,2026-10-23,2026-10-19,3,Flood in Islamic Republic of Iran
+1104246,AUS,Green,0,2026-10-22,2026-10-19,3,Flood in Australia
+1104186,NGA,Green,0,2026-09-21,2026-09-21,36,Flood in Nigeria
+1104262,PER,Green,0,2026-10-19,2026-10-19,3,Flood in Peru
+1104249,JAM,Green,0,2026-10-19,2026-10-19,3,Flood in Jamaica
+1104242,UKR,Green,0,2026-10-19,2026-10-19,3,Flood in Ukraine
+1104217,CHL,Green,0,2026-10-06,2026-10-05,19,Flood in Chile
+1104240,KOR,Green,0,2026-10-18,2026-10-12,3,Flood in South Korea
+1104235,ESP,Green,0,2026-10-17,2026-10-12,4,Flood in Spain
+1104244,GTM,Green,0,2026-10-18,2026-10-12,3,Flood in Guatemala
+1104227,CRI,Green,0,2026-10-09,2026-10-05,12,Flood in Costa Rica
+1104236,SLV,Green,0,2026-10-15,2026-10-12,3,Flood in El Salvador
+1104218,ARG,Green,0,2026-10-06,2026-10-05,11,Flood in Argentina
+1104237,NIC,Green,0,2026-10-16,2026-10-12,3,Flood in Nicaragua
+1104230,TUR,Green,0,2026-10-12,2026-10-12,5,Flood in Türkiye
+1104224,IDN,Green,0,2026-10-09,2026-10-05,6,Flood in Indonesia
+1104225,NPL,Green,0,2026-10-11,2026-10-05,3,Flood in Nepal
+1104231,LBY,Green,0,2026-10-13,2026-10-12,3,Flood in Libya
+1104233,SYR,Green,0,2026-10-12,2026-10-12,3,Flood in Syria
+1104228,PAN,Green,0,2026-10-09,2026-10-05,3,Flood in Panama
+1104222,PRY,Green,0,2026-10-06,2026-10-05,6,Flood in Paraguay
+1104223,CHN,Green,0,2026-10-07,2026-10-05,4,Flood in China
+1104251,ECU,Green,0,2026-10-07,2026-10-05,5,Flood in Ecuador
+1104226,MAR,Green,0,2026-10-07,2026-10-05,3,Flood in Morocco
+1104219,VEN,Green,0,2026-10-07,2026-10-05,3,Flood in Venezuela
+1104141,VNM,Green,0,2026-09-03,2026-08-31,37,Flood in Vietnam
+1104209,HND,Green,0,2026-10-02,2026-09-28,9,Flood in Honduras
+1104169,THA,Green,0,2026-10-05,2026-10-05,4,Flood in Thailand
+1104191,MEX,Green,0,2026-10-05,2026-10-05,3,Flood in Mexico
+1104199,ESP,Green,0,2026-09-28,2026-09-28,11,Flood in Spain
+1104121,IND,Orange,1,2026-08-09,2026-08-03,60,Flood in India
+1104213,GTM,Green,0,2026-10-03,2026-09-28,3,Flood in Guatemala
+1104178,GIN,Green,0,2026-09-18,2026-09-14,18,Flood in Guinea
+1104176,PHL,Green,0,2026-09-18,2026-09-14,17,Flood in Philippines
+1104229,BRA,Green,0,2026-10-03,2026-09-28,3,Flood in Brazil
+1104210,NIC,Green,0,2026-10-02,2026-09-28,3,Flood in Nicaragua
+1104207,MYS,Green,0,2026-10-01,2026-09-28,3,Flood in Malaysia
+1104122,THA,Green,0,2026-08-18,2026-08-17,47,Flood in Thailand
+1104212,PRT,Green,0,2026-09-29,2026-09-28,6,Flood in Portugal
+1104205,TCD,Green,0,2026-09-29,2026-09-28,3,Flood in Chad
+1104214,VNM,Green,0,2026-09-28,2026-09-28,3,Flood in Vietnam
+1104196,GHA,Green,0,2026-09-23,2026-09-21,8,Flood in Ghana
+1104011,MMR,Green,0,2026-07-04,2026-06-29,91,Flood in Myanmar
+1104201,ECU,Green,0,2026-09-27,2026-09-21,3,Flood in Ecuador
+1104183,TUR,Green,0,2026-09-18,2026-09-14,12,Flood in Türkiye
+1104132,KHM,Green,0,2026-08-28,2026-08-24,33,Flood in Cambodia
+1104206,IRN,Green,0,2026-09-27,2026-09-21,3,Flood in Islamic Republic of Iran
+1104166,COD,Green,0,2026-09-15,2026-09-14,14,Flood in Democratic Republic of Congo
+1104197,CRI,Green,0,2026-09-25,2026-09-21,3,Flood in Costa Rica
+1104179,DZA,Green,0,2026-09-18,2026-09-14,11,Flood in Algeria
+1104053,ITA,Green,0,2026-07-26,2026-07-20,64,Flood in Italy
+1104193,UKR,Green,0,2026-09-23,2026-09-21,3,Flood in Ukraine
+1104190,CHL,Green,0,2026-09-23,2026-09-21,4,Flood in Chile
+1104192,ARG,Green,0,2026-09-23,2026-09-21,3,Flood in Argentina
+1104208,THA,Green,0,2026-09-18,2026-09-14,9,Flood in Thailand
+1104184,MYS,Green,0,2026-09-20,2026-09-14,3,Flood in Malaysia
+1104187,BRA,Green,0,2026-09-20,2026-09-14,4,Flood in Brazil
+1104182,JPN,Green,0,2026-09-20,2026-09-14,3,Flood in Japan
+1104188,GTM,Green,0,2026-09-21,2026-09-21,3,Flood in Guatemala
+1104173,HND,Green,0,2026-09-15,2026-09-14,8,Flood in Honduras
+1104185,UGA,Green,0,2026-09-20,2026-09-14,3,Flood in Uganda
+1104194,CIV,Green,0,2026-09-20,2026-09-14,3,Flood in Cote d'Ivoire
+1104234,COG,Green,0,2026-09-20,2026-09-14,3,Flood in Republic of Congo
+1104174,KHM,Green,0,2026-09-17,2026-09-14,3,Flood in Cambodia
+1104151,ESP,Green,0,2026-09-09,2026-09-07,11,Flood in Spain
+1104153,HRV,Green,0,2026-09-11,2026-09-07,9,Flood in Croatia
+1104145,PER,Green,0,2026-09-05,2026-08-31,16,Flood in Peru
+1104177,ZAF,Green,0,2026-09-17,2026-09-14,3,Flood in South Africa
+1104170,SOM,Green,0,2026-09-16,2026-09-14,3,Flood in Somalia
+1104154,IND,Green,0,2026-09-12,2026-09-07,5,Flood in India
+1104181,MLI,Green,0,2026-09-17,2026-09-14,3,Flood in Mali
+1104157,NPL,Green,0,2026-09-12,2026-09-07,4,Flood in Nepal
+1104164,ALB,Green,0,2026-09-12,2026-09-07,3,Flood in Albania
+1104159,KEN,Green,0,2026-09-12,2026-09-07,3,Flood in Kenya
+1104161,SEN,Green,0,2026-09-15,2026-09-14,2,Flood in Senegal
+1104152,SVN,Green,0,2026-09-10,2026-09-07,3,Flood in Slovenia
+1104148,BRA,Green,0,2026-09-02,2026-08-31,11,Flood in Brazil
+1104156,BGD,Green,0,2026-09-10,2026-09-07,3,Flood in Bangladesh
+1104165,CMR,Green,0,2026-09-10,2026-09-07,3,Flood in Cameroon
+1104140,JPN,Green,0,2026-09-02,2026-08-31,10,Flood in Japan
+1104163,CAF,Green,0,2026-09-08,2026-09-07,3,Flood in Central African Republic
+1104149,FRA,Green,0,2026-09-09,2026-09-07,3,Flood in France
+1104105,NGA,Green,0,2026-08-13,2026-08-10,30,Flood in Nigeria
+1104150,DEU,Green,0,2026-09-08,2026-09-07,2,Flood in Germany
+1104143,CAN,Green,0,2026-09-02,2026-08-31,8,Flood in Canada
+1104131,TUR,Green,0,2026-08-28,2026-08-24,12,Flood in Türkiye
+1104171,SYC,Green,0,2026-09-08,2026-09-07,3,Flood in Seychelles
+1104172,EST,Green,0,2026-09-04,2026-08-31,2,Flood in Estonia
+1104142,HTI,Green,0,2026-09-01,2026-08-31,3,Flood in Haiti
+1104162,IND,Green,0,2026-09-03,2026-08-31,3,Flood in India
+1104144,POL,Green,0,2026-09-05,2026-08-31,2,Flood in Poland
+1104137,AUT,Green,0,2026-08-31,2026-08-31,2,Flood in Austria
+1104135,CRI,Green,0,2026-08-30,2026-08-24,3,Flood in Costa Rica
+1104129,LBN,Green,0,2026-08-29,2026-08-24,3,Flood in Lebanon
+1104136,PAK,Green,0,2026-08-31,2026-08-31,3,Flood in Pakistan
+1104126,NZL,Green,0,2026-08-27,2026-08-24,3,Flood in New Zealand
+1104130,PHL,Green,0,2026-08-28,2026-08-24,3,Flood in Philippines
+1104127,IRL,Green,0,2026-08-27,2026-08-24,3,Flood in Ireland
+1104089,LAO,Green,0,2026-08-03,2026-08-03,28,Flood in Laos
+1104125,PRK,Green,0,2026-08-23,2026-08-17,5,Flood in North Korea
+1104071,PER,Green,0,2026-08-02,2026-07-27,26,Flood in Peru
+1104139,DEU,Green,0,2026-08-28,2026-08-24,1,Flood in Germany
+1104084,FRA,Green,0,2026-08-08,2026-08-03,21,Flood in France
+1104104,IDN,Green,0,2026-08-15,2026-08-10,12,Flood in Indonesia
+1104080,ESP,Green,0,2026-08-06,2026-08-03,20,Flood in Spain
+1104120,BGR,Green,0,2026-08-24,2026-08-24,3,Flood in Bulgaria
+1104029,VNM,Green,0,2026-07-15,2026-07-13,43,Flood in Vietnam
+1104102,POL,Green,0,2026-08-17,2026-08-17,7,Flood in Poland
+1104096,VEN,Green,0,2026-08-15,2026-08-10,10,Flood in Venezuela
+1104118,CZE,Green,0,2026-08-20,2026-08-17,4,Flood in Czech Republic
+1104094,SDN,Green,0,2026-08-11,2026-08-10,14,Flood in Sudan
+1104113,SEN,Green,0,2026-08-19,2026-08-17,3,Flood in Senegal
+1104106,BRA,Green,0,2026-08-16,2026-08-10,4,Flood in Brazil
+1104115,AUT,Green,0,2026-08-20,2026-08-17,2,Flood in Austria
+1104090,JPN,Green,0,2026-08-13,2026-08-10,11,Flood in Japan
+1104112,URY,Green,0,2026-08-16,2026-08-10,3,Flood in Uruguay
+1104134,NGA,Green,0,2026-08-16,2026-08-10,2,Flood in Nigeria
+1104095,KOR,Green,0,2026-08-15,2026-08-10,3,Flood in South Korea
+1104097,COL,Green,0,2026-08-14,2026-08-10,5,Flood in Colombia
+1104110,SSD,Green,0,2026-08-15,2026-08-10,3,Flood in South Sudan
+1104092,AND,Green,0,2026-08-15,2026-08-10,2,Flood in Andorra
+1104093,DZA,Green,0,2026-08-14,2026-08-10,3,Flood in Algeria
+1104101,CRI,Green,0,2026-08-15,2026-08-10,3,Flood in Costa Rica
+1104088,ROU,Green,0,2026-08-12,2026-08-10,3,Flood in Romania
+1104103,GEO,Green,0,2026-08-14,2026-08-10,2,Flood in Georgia
+1104116,RUS,Green,0,2026-08-13,2026-08-10,3,Flood in Russia
+1104083,MAR,Green,0,2026-08-08,2026-08-03,8,Flood in Morocco
+1104114,SEN,Green,0,2026-08-08,2026-08-03,6,Flood in Senegal
+1104086,TCD,Green,0,2026-08-11,2026-08-10,3,Flood in Chad
+1104085,AUS,Green,0,2026-08-09,2026-08-03,3,Flood in Australia
+1104067,THA,Green,0,2026-07-30,2026-07-27,16,Flood in Thailand
+1104064,POL,Green,0,2026-07-31,2026-07-27,9,Flood in Poland
+1104079,PRT,Green,0,2026-08-05,2026-08-03,3,Flood in Portugal
+1104066,DEU,Green,0,2026-07-31,2026-07-27,8,Flood in Germany
+1104059,AUT,Green,0,2026-07-28,2026-07-27,13,Flood in Austria
+1104077,AFG,Green,0,2026-08-03,2026-08-03,3,Flood in Afghanistan
+1104078,CMR,Green,0,2026-08-04,2026-08-03,3,Flood in Cameroon
+1104058,CAN,Green,0,2026-07-27,2026-07-27,10,Flood in Canada
+1103942,PHL,Green,0,2026-06-13,2026-06-08,55,Flood in Philippines
+1104070,CRI,Green,0,2026-08-01,2026-07-27,3,Flood in Costa Rica
+1104069,LTU,Green,0,2026-08-01,2026-07-27,3,Flood in Lithuania
+1104065,BLR,Green,0,2026-08-01,2026-07-27,3,Flood in Belarus
+1104075,LKA,Green,0,2026-08-02,2026-07-27,3,Flood in Sri Lanka
+1103972,IND,Green,0,2026-06-23,2026-06-22,42,Flood in India
+1104074,IDN,Green,0,2026-07-30,2026-07-27,3,Flood in Indonesia
+1104072,VEN,Green,0,2026-07-30,2026-07-27,3,Flood in Venezuela
+1104073,MNG,Green,0,2026-08-01,2026-07-27,3,Flood in Mongolia
+1104087,GIN,Green,0,2026-07-27,2026-07-27,4,Flood in Guinea
+1104062,XXK,Green,0,2026-07-27,2026-07-27,3,Flood in Kosovo
+1104060,UKR,Green,0,2026-07-28,2026-07-27,2,Flood in Ukraine
+1104068,YEM,Green,0,2026-07-25,2026-07-20,7,Flood in Yemen
+1104050,FRA,Green,0,2026-07-25,2026-07-20,3,Flood in France
+1104052,MYS,Green,0,2026-07-24,2026-07-20,3,Flood in Malaysia
+1104014,COL,Green,0,2026-07-08,2026-07-06,18,Flood in Colombia
+1104054,ESP,Green,0,2026-07-25,2026-07-20,3,Flood in Spain
+1104048,RUS,Green,0,2026-07-23,2026-07-20,2,"Flood in Russia, Ukraine"
+1104036,BGR,Green,0,2026-07-19,2026-07-13,6,Flood in Bulgaria
+1104047,ECU,Green,0,2026-07-21,2026-07-20,3,Flood in Ecuador
+1104049,KAZ,Green,0,2026-07-23,2026-07-20,2,Flood in Kazakhstan
+1104045,PAK,Green,0,2026-07-19,2026-07-13,4,Flood in Pakistan
+1104018,GEO,Green,0,2026-07-11,2026-07-06,12,Flood in Georgia
+1104000,PER,Green,0,2026-07-01,2026-06-29,22,Flood in Peru
+1104055,SEN,Green,0,2026-07-20,2026-07-20,3,Flood in Senegal
+1104033,AFG,Green,0,2026-07-19,2026-07-13,3,Flood in Afghanistan
+1104010,CHL,Green,0,2026-07-07,2026-07-06,15,Flood in Chile
+1103981,MEX,Green,0,2026-06-28,2026-06-22,24,Flood in Mexico
+1104037,LVA,Green,0,2026-07-20,2026-07-20,2,Flood in Latvia
+1104039,ROU,Green,0,2026-07-19,2026-07-13,3,Flood in Romania
+1104038,MDA,Green,0,2026-07-19,2026-07-13,2,Flood in Moldova
+1104032,KOR,Green,0,2026-07-18,2026-07-13,3,Flood in South Korea
+1104040,CRI,Green,0,2026-07-19,2026-07-13,3,Flood in Costa Rica
+1104024,CZE,Green,0,2026-07-14,2026-07-13,7,Flood in Czech Republic
+1104044,BRA,Green,0,2026-07-17,2026-07-13,3,Flood in Brazil
+1104025,POL,Green,0,2026-07-14,2026-07-13,7,Flood in Poland
+1104034,JPN,Green,0,2026-07-17,2026-07-13,3,Flood in Japan
+1104281,DOM,Green,0,2026-11-06,2026-11-02,12,Flood in Dominican Republic
+1104259,PER,Green,0,2026-10-26,2026-10-26,22,Flood in Peru
+1104285,HRV,Green,0,2026-11-12,2026-11-09,3,Flood in Croatia
+1104278,AGO,Green,0,2026-11-04,2026-11-02,5,Flood in Angola
+1104255,UGA,Green,0,2026-10-11,2026-10-05,17,Flood in Uganda
+1104268,ESP,Green,0,2026-11-01,2026-10-26,3,Flood in Spain
+1104264,EGY,Green,0,2026-10-26,2026-10-26,3,Flood in Egypt
+1104243,FRA,Green,0,2026-10-19,2026-10-19,6,Flood in France
+1104232,JOR,Green,0,2026-10-10,2026-10-05,3,Flood in Jordan
+1104221,SVN,Green,0,2026-10-08,2026-10-05,3,Flood in Slovenia
+1104252,COD,Green,0,2026-10-16,2026-10-12,5,Flood in Democratic Republic of Congo
+1104238,URY,Green,0,2026-10-13,2026-10-12,3,Flood in Uruguay
+1104203,SEN,Green,0,2026-09-27,2026-09-21,10,Flood in Senegal
+1104215,MRT,Green,0,2026-10-03,2026-09-28,2,Flood in Mauritania
+1104211,ISL,Green,0,2026-09-30,2026-09-28,3,Flood in Iceland
+1104168,IDN,Green,0,2026-09-16,2026-09-14,15,Flood in Indonesia
+1104198,IND,Green,0,2026-09-24,2026-09-21,3,"Flood in India, Nepal"
+1104195,LBY,Green,0,2026-09-23,2026-09-21,3,Flood in Libya
+1104189,SLV,Green,0,2026-09-20,2026-09-14,3,Flood in El Salvador
+1104175,CYP,Green,0,2026-09-18,2026-09-14,3,Flood in Cyprus
+1104160,LKA,Green,0,2026-09-14,2026-09-14,3,Flood in Sri Lanka
+1104155,MDV,Green,0,2026-09-11,2026-09-07,3,Flood in Maldives
+1104158,GHA,Green,0,2026-09-08,2026-09-07,4,Flood in Ghana
+1104147,IRN,Green,0,2026-09-07,2026-09-07,4,Flood in Islamic Republic of Iran
+1104138,LTU,Green,0,2026-09-01,2026-08-31,2,Flood in Lithuania
+1104133,KOR,Green,0,2026-08-29,2026-08-24,3,Flood in South Korea
+1104128,GEO,Green,0,2026-08-27,2026-08-24,2,Flood in Georgia
+1104119,AUS,Green,0,2026-08-24,2026-08-24,3,Flood in Australia
+1104108,KHM,Green,0,2026-08-14,2026-08-10,10,Flood in Cambodia
+1104107,PHL,Green,0,2026-08-17,2026-08-17,3,Flood in Philippines
+1104100,GTM,Green,0,2026-08-15,2026-08-10,3,Flood in Guatemala
+1104098,TUN,Green,0,2026-08-14,2026-08-10,3,Flood in Tunisia
+1104061,MEX,Green,0,2026-07-29,2026-07-27,12,Flood in Mexico
+1104109,NGA,Green,0,2026-08-01,2026-07-27,6,Flood in Nigeria
+1104082,SVK,Green,0,2026-08-03,2026-08-03,2,Flood in Slovakia
+1104076,PAK,Green,0,2026-08-01,2026-07-27,3,Flood in Pakistan
+1104057,ARG,Green,0,2026-07-24,2026-07-20,4,Flood in Argentina
+1104111,URY,Green,0,2026-07-16,2026-07-13,10,Flood in Uruguay
+1104056,PAN,Green,0,2026-07-21,2026-07-20,3,Flood in Panama
+1104043,MKD,Green,0,2026-07-20,2026-07-20,2,Flood in The Republic of North Macedonia
+1101832,PER,Green,0,2023-01-16,2023-01-16,93,Flood in Peru
+1101852,USA,Green,0,2023-02-08,2023-02-06,36,Flood in United States
+1101875,IDN,Green,0,2023-02-24,2023-02-20,13,Flood in Indonesia
+1104046,UKR,Green,0,2026-07-19,2026-07-13,2,Flood in Ukraine
+1101879,AUS,Green,0,2023-03-01,2023-02-27,7,Flood in Australia
+1101876,MYS,Green,0,2023-02-27,2023-02-27,4,Flood in Malaysia
+1101886,PER,Green,0,2023-02-22,2023-02-20,8,Flood in Peru
+1101878,ESP,Green,0,2023-02-27,2023-02-27,3,Flood in Spain
+1101877,ITA,Green,0,2023-02-27,2023-02-27,2,Flood in Italy
+1101874,DEU,Green,0,2023-02-24,2023-02-20,3,Flood in Germany
+1101866,PHL,Green,0,2023-02-13,2023-02-13,12,Flood in Philippines
+1101870,COD,Green,0,2023-02-22,2023-02-20,2,Flood in Democratic Republic of the Congo
+1101872,LKA,Green,0,2023-02-20,2023-02-20,3,Flood in Sri Lanka
+1101871,FRA,Green,0,2023-02-20,2023-02-20,3,Flood in France
+1101869,ROU,Green,0,2023-02-18,2023-02-13,4,Flood in Romania
+1101868,BRA,Green,0,2023-02-18,2023-02-13,3,Flood in Brazil
+1101867,PRY,Green,0,2023-02-16,2023-02-13,5,Flood in Paraguay
+1101822,BRA,Green,0,2023-01-17,2023-01-16,34,Flood in Brazil
+1101863,CHL,Green,0,2023-02-16,2023-02-13,3,Flood in Chile
+1101862,FJI,Green,0,2023-02-16,2023-02-13,3,Flood in Fiji
+1101860,PNG,Green,0,2023-02-10,2023-02-06,7,Flood in Papua New Guinea
+1101859,NZL,Green,0,2023-02-12,2023-02-06,3,Flood in New Zealand
+1101858,MWI,Green,0,2023-02-12,2023-02-06,3,Flood in Malawi
+1101856,MOZ,Green,0,2023-02-08,2023-02-06,3,Flood in Mozambique
+1101855,AUS,Green,0,2023-02-08,2023-02-06,3,Flood in Australia
+1101854,SYR,Green,0,2023-02-08,2023-02-06,3,Flood in Syria
+1101853,VEN,Green,0,2023-02-08,2023-02-06,2,Flood in Venezuela
+1101849,MYS,Green,0,2023-02-06,2023-02-06,2,Flood in Malaysia
+1101847,CHL,Green,0,2023-02-04,2023-01-30,3,Flood in Chile
+1101846,MEX,Green,0,2023-02-04,2023-01-30,3,Flood in Mexico
+1101839,ARG,Green,0,2023-01-29,2023-01-23,9,Flood in Argentina
+1101824,IDN,Green,0,2023-01-21,2023-01-16,17,Flood in Indonesia
+1101848,BOL,Green,0,2023-02-02,2023-01-30,4,Flood in Bolivia
+1101845,FJI,Green,0,2023-02-03,2023-01-30,3,Flood in Fiji
+1101851,KAZ,Green,0,2023-02-02,2023-01-30,3,Flood in Kazakhstan
+1101850,LBN,Green,0,2023-02-03,2023-01-30,2,Flood in Lebanon
+1101840,ZAF,Green,0,2023-02-01,2023-01-30,4,Flood in South Africa
+1101864,BDI,Green,0,2023-01-30,2023-01-30,5,Flood in Burundi
+1101843,IND,Green,0,2023-02-01,2023-01-30,3,"Flood in India, Sri Lanka"
+1101841,URY,Green,0,2023-02-02,2023-01-30,2,Flood in Uruguay
+1101857,CAF,Green,0,2023-01-27,2023-01-23,6,Flood in Central African Republic
+1101836,NZL,Green,0,2023-01-27,2023-01-23,3,Flood in New Zealand
+1101816,FRA,Green,0,2023-01-14,2023-01-09,16,Flood in France
+1101831,ITA,Green,0,2023-01-22,2023-01-16,7,Flood in Italy
+1101796,USA,Green,0,2022-12-22,2022-12-19,38,Flood in United States
+1101844,IDN,Green,0,2023-01-24,2023-01-23,3,Flood in Indonesia
+1101835,GRC,Green,0,2023-01-24,2023-01-23,3,Flood in Greece
+1101825,MYS,Green,0,2023-01-24,2023-01-23,2,Flood in Malaysia
+1101826,AUS,Green,0,2023-01-24,2023-01-23,1,Flood in Australia
+1101823,CHN,Green,0,2023-01-23,2023-01-23,2,Flood in China
+1101778,PHL,Orange,1,2022-12-10,2022-12-05,45,Flood in Philippines
+1101833,CHL,Green,0,2023-01-20,2023-01-16,3,Flood in Chile
+1101830,HUN,Green,0,2023-01-19,2023-01-16,3,Flood in Hungary
+1101827,MDG,Green,0,2023-01-19,2023-01-16,3,Flood in Madagascar
+1101838,ZMB,Green,0,2023-01-17,2023-01-16,3,Flood in Zambia
+1101842,MOZ,Green,0,2023-01-16,2023-01-16,3,Flood in Mozambique
+1101821,MEX,Green,0,2023-01-15,2023-01-09,4,Flood in Mexico
+1101807,ITA,Green,0,2023-01-08,2023-01-02,11,Flood in Italy
+1101800,GBR,Green,0,2022-12-29,2022-12-26,21,Flood in United Kingdom
+1101818,KHM,Green,0,2023-01-12,2023-01-09,6,Flood in Cambodia
+1101808,COL,Green,0,2023-01-09,2023-01-09,9,Flood in Colombia
+1101805,ESP,Green,0,2023-01-01,2022-12-26,17,Flood in Spain
+1101829,FIN,Green,0,2023-01-14,2023-01-09,3,Flood in Finland
+1101819,PAK,Green,0,2023-01-14,2023-01-09,3,Flood in Pakistan
+1101817,NAM,Green,0,2023-01-14,2023-01-09,3,Flood in Namibia
+1101811,ECU,Green,0,2023-01-14,2023-01-09,3,Flood in Ecuador
+1101815,DEU,Green,0,2023-01-12,2023-01-09,4,Flood in Germany
+1101814,MYS,Green,0,2023-01-11,2023-01-09,5,Flood in Malaysia
+1101813,CYP,Green,0,2023-01-14,2023-01-09,2,Flood in Cyprus
+1101812,AUS,Green,0,2023-01-13,2023-01-09,3,Flood in Australia
+1101873,UGA,Green,0,2023-01-10,2023-01-09,5,Flood in Uganda
+1101820,THA,Green,0,2023-01-07,2023-01-02,8,Flood in Thailand
+1101810,PAN,Green,0,2023-01-12,2023-01-09,2,Flood in Panama
+1101837,PER,Green,0,2023-01-10,2023-01-09,3,Flood in Peru
+1101809,TUR,Green,0,2023-01-10,2023-01-09,3,Flood in Türkiye
+1101861,ZWE,Green,0,2023-01-07,2023-01-02,3,Flood in Zimbabwe
+1101777,IDN,Green,0,2022-12-08,2022-12-05,33,Flood in Indonesia
+1101792,BRA,Green,0,2022-12-19,2022-12-19,19,Flood in Brazil
+1101735,COD,Green,0,2022-11-01,2022-10-31,67,Flood in Democratic Republic of the Congo
+1101804,LVA,Green,0,2023-01-03,2023-01-02,3,Flood in Latvia
+1101802,AUS,Green,0,2022-12-29,2022-12-26,8,Flood in Australia
+1101865,BOL,Green,0,2023-01-01,2022-12-26,3,Flood in Bolivia
+1101803,PRT,Green,0,2023-01-01,2022-12-26,3,Flood in Portugal
+1101799,FRA,Green,0,2022-12-30,2022-12-26,4,Flood in France
+1101976,ITA,Green,0,2023-05-01,2023-05-01,26,Flood in Italy
+1101974,FRA,Green,0,2023-04-30,2023-04-24,15,Flood in France
+1101981,COD,Orange,1,2023-05-01,2023-05-01,10,Flood in Democratic Republic of Congo
+1101967,CAN,Green,0,2023-04-29,2023-04-24,12,Flood in Canada
+1101977,RWA,Orange,1,2023-05-01,2023-05-01,3,Flood in Rwanda
+1101975,IND,Green,0,2023-05-01,2023-05-01,3,Flood in India
+1101969,AUT,Green,0,2023-04-29,2023-04-24,5,Flood in Austria
+1101934,COL,Green,0,2023-04-06,2023-04-03,28,Flood in Colombia
+1101979,AZE,Green,0,2023-04-30,2023-04-24,3,Flood in Azerbaijan
+1101968,USA,Green,0,2023-04-30,2023-04-24,3,Flood in United States
+1101965,PAK,Green,0,2023-04-30,2023-04-24,3,Flood in Pakistan
+1101960,GTM,Green,0,2023-04-24,2023-04-24,9,Flood in Guatemala
+1101978,CHL,Green,0,2023-04-27,2023-04-24,4,Flood in Chile
+1101973,SLV,Green,0,2023-04-15,2023-04-10,16,Flood in El Salvador
+1101972,VNM,Green,0,2023-04-28,2023-04-24,3,Flood in Vietnam
+1101971,IDN,Green,0,2023-04-28,2023-04-24,3,Flood in Indonesia
+1101958,VEN,Green,0,2023-04-23,2023-04-17,8,Flood in Venezuela
+1101933,USA,Green,0,2023-04-06,2023-04-03,25,Flood in United States
+1101964,TUR,Green,0,2023-04-26,2023-04-24,3,Flood in Türkiye
+1101966,UGA,Green,0,2023-04-24,2023-04-24,3,Flood in Uganda
+1101961,TTO,Green,0,2023-04-24,2023-04-24,3,Flood in Trinidad  and  Tobago
+1101956,NGA,Green,0,2023-04-24,2023-04-24,3,Flood in Nigeria
+1101962,OMN,Green,0,2023-04-23,2023-04-17,3,Flood in Oman
+1101957,TGO,Green,0,2023-04-22,2023-04-17,3,Flood in Togo
+1101954,AGO,Green,0,2023-04-01,2023-03-27,24,Flood in Angola
+1101955,GRC,Green,0,2023-04-22,2023-04-17,2,Flood in Greece
+1101959,BRA,Green,0,2023-04-20,2023-04-17,3,Flood in Brazil
+1101963,LKA,Green,0,2023-04-19,2023-04-17,3,Flood in Sri Lanka
+1101953,CAN,Green,0,2023-04-18,2023-04-17,3,Flood in Canada
+1101952,BGR,Green,0,2023-04-18,2023-04-17,3,Flood in Bulgaria
+1101948,PAK,Green,0,2023-04-18,2023-04-17,3,Flood in Pakistan
+1101950,FRA,Green,0,2023-04-17,2023-04-17,3,Flood in France
+1101932,TZA,Green,0,2023-04-05,2023-04-03,15,Flood in Tanzania
+1101949,COD,Green,0,2023-04-15,2023-04-10,3,Flood in Democratic Republic of Congo
+1101947,IDN,Green,0,2023-04-15,2023-04-10,3,Flood in Indonesia
+1101945,POL,Green,0,2023-04-16,2023-04-10,2,Flood in Poland
+1101944,ITA,Green,0,2023-04-15,2023-04-10,3,Flood in Italy
+1101946,MWI,Green,0,2023-04-14,2023-04-10,3,Flood in Malawi
+1101943,AUT,Green,0,2023-04-14,2023-04-10,3,Flood in Austria
+1101925,UKR,Green,0,2023-04-05,2023-04-03,12,Flood in Ukraine
+1101940,ARG,Green,0,2023-04-13,2023-04-10,3,Flood in Argentina
+1101919,COD,Orange,1,2023-04-01,2023-03-27,15,Flood in Democratic Republic of Congo
+1101912,MEX,Green,0,2023-03-29,2023-03-27,18,Flood in Mexico
+1101951,NOR,Green,0,2023-04-12,2023-04-10,3,Flood in Norway
+1101939,IRN,Green,0,2023-04-12,2023-04-10,3,Flood in Islamic Republic of Iran
+1101938,IRQ,Green,0,2023-04-12,2023-04-10,3,Flood in Iraq
+1101908,SOM,Orange,1,2023-03-20,2023-03-20,26,Flood in Somalia
+1101936,NGA,Green,0,2023-04-11,2023-04-10,3,Flood in Nigeria
+1101935,ISR,Green,0,2023-04-10,2023-04-10,3,Flood in Israel
+1101929,OMN,Green,0,2023-04-08,2023-04-03,3,Flood in Oman
+1101928,ECU,Green,0,2023-04-05,2023-04-03,3,Flood in Ecuador
+1101930,ITA,Green,0,2023-04-03,2023-04-03,4,Flood in Italy
+1101941,TZA,Green,0,2023-04-03,2023-04-03,3,Flood in Tanzania
+1101922,CAN,Green,0,2023-04-01,2023-03-27,5,Flood in Canada
+1101920,IDN,Green,0,2023-03-29,2023-03-27,8,Flood in Indonesia
+1101937,PHL,Green,0,2023-04-02,2023-03-27,3,Flood in Philippines
+1101927,YEM,Green,0,2023-04-01,2023-03-27,3,Flood in Yemen
+1101924,AUS,Green,0,2023-04-02,2023-03-27,2,Flood in Australia
+1101918,IND,Green,0,2023-04-01,2023-03-27,3,Flood in India
+1101896,PAK,Green,0,2023-03-17,2023-03-13,18,Flood in Pakistan
+1101923,PNG,Green,0,2023-04-01,2023-03-27,2,Flood in Papua New Guinea
+1101916,BDI,Green,0,2023-04-01,2023-03-27,2,Flood in Burundi
+1101921,LVA,Green,0,2023-03-30,2023-03-27,3,Flood in Latvia
+1101942,ZMB,Green,0,2023-03-24,2023-03-20,8,Flood in Zambia
+1101915,AFG,Green,0,2023-03-25,2023-03-20,7,Flood in Afghanistan
+1101913,URY,Green,0,2023-03-29,2023-03-27,3,Flood in Uruguay
+1101881,BRA,Green,0,2023-03-05,2023-02-27,27,Flood in Brazil
+1101911,OMN,Green,0,2023-03-28,2023-03-27,3,Flood in Oman
+1101917,BLR,Green,0,2023-03-27,2023-03-27,3,Flood in Belarus
+1101907,USA,Green,0,2023-03-24,2023-03-20,5,Flood in United States
+1101909,EGY,Green,0,2023-03-25,2023-03-20,3,Flood in Egypt
+1101901,BOL,Green,0,2023-03-22,2023-03-20,6,Flood in Bolivia
+1101891,COL,Green,0,2023-03-08,2023-03-06,19,Flood in Colombia
+1101926,KAZ,Green,0,2023-03-23,2023-03-20,3,Flood in Kazakhstan
+1101906,GBR,Green,0,2023-03-23,2023-03-20,3,Flood in United Kingdom
+1101905,IRL,Green,0,2023-03-23,2023-03-20,3,Flood in Ireland
+1101903,ZAF,Green,0,2023-03-23,2023-03-20,3,Flood in South Africa
+1101904,FRA,Green,0,2023-03-23,2023-03-20,2,Flood in France
+1101902,KEN,Green,0,2023-03-22,2023-03-20,3,Flood in Kenya
+1101899,ARG,Green,0,2023-03-21,2023-03-20,3,Flood in Argentina
+1101897,HND,Green,0,2023-03-21,2023-03-20,3,Flood in Honduras
+1101892,UGA,Green,0,2023-03-14,2023-03-13,10,Flood in Uganda
+1101914,ETH,Green,0,2023-03-20,2023-03-20,3,Flood in Ethiopia
+1101931,RWA,Green,0,2023-03-19,2023-03-13,3,Flood in Rwanda
+1101910,LKA,Green,0,2023-03-18,2023-03-13,4,Flood in Sri Lanka
+1101895,CMR,Green,0,2023-03-18,2023-03-13,3,Flood in Cameroon
+1101900,YEM,Green,0,2023-03-13,2023-03-13,6,Flood in Yemen
+1101894,SYR,Green,0,2023-03-16,2023-03-13,3,Flood in Syria
+1101890,MWI,Orange,1,2023-03-13,2023-03-13,4,Flood in Malawi
+1101889,TUR,Green,0,2023-03-14,2023-03-13,3,Flood in Türkiye
+1101893,PHL,Green,0,2023-03-13,2023-03-13,3,Flood in Philippines
+1101888,SAU,Green,0,2023-03-12,2023-03-06,3,Flood in Saudi Arabia
+1101887,CHL,Green,0,2023-03-12,2023-03-06,3,Flood in Chile
+1101885,IRQ,Green,0,2023-03-09,2023-03-06,3,Flood in Iraq
+1101884,FRA,Green,0,2023-03-08,2023-03-06,3,Flood in France
+1101883,GHA,Green,0,2023-03-07,2023-03-06,3,Flood in Ghana
+1101898,CIV,Green,0,2023-03-05,2023-02-27,3,Flood in Côte d'Ivoire
+1101880,NZL,Green,0,2023-03-05,2023-02-27,2,Flood in New Zealand
+1101882,ECU,Green,0,2023-03-04,2023-02-27,3,Flood in Ecuador
+1102075,USA,Green,0,2023-06-16,2023-06-12,70,Flood in United States
+1102095,CHN,Orange,1,2023-06-27,2023-06-26,27,Flood in China
+1102069,IND,Green,0,2023-06-13,2023-06-12,38,Flood in India
+1102109,IDN,Green,0,2023-06-29,2023-06-26,17,Flood in Indonesia
+1102085,ESP,Green,0,2023-06-21,2023-06-19,17,Flood in Spain
+1102070,NGA,Green,0,2023-06-15,2023-06-12,23,Flood in Nigeria
+1102111,KOR,Green,0,2023-06-29,2023-06-26,2,Flood in South Korea
+1102108,AFG,Green,0,2023-06-27,2023-06-26,3,Flood in Afghanistan
+1102105,LVA,Green,0,2023-06-28,2023-06-26,2,Flood in Latvia
+1102103,NAM,Green,0,2023-06-27,2023-06-26,3,Flood in Namibia
+1102100,ZAF,Green,0,2023-06-27,2023-06-26,3,Flood in South Africa
+1102107,CHL,Green,0,2023-06-22,2023-06-19,7,Flood in Chile
+1102098,COL,Green,0,2023-06-26,2023-06-26,3,Flood in Colombia
+1102097,CRI,Green,0,2023-06-26,2023-06-26,3,Flood in Costa Rica
+1102096,PAK,Green,0,2023-06-26,2023-06-26,2,Flood in Pakistan
+1102091,ITA,Green,0,2023-06-25,2023-06-19,3,Flood in Italy
+1102092,ROU,Green,0,2023-06-25,2023-06-19,2,Flood in Romania
+1102084,DEU,Green,0,2023-06-21,2023-06-19,6,Flood in Germany
+1102093,ARG,Green,0,2023-06-23,2023-06-19,3,Flood in Argentina
+1102089,XXK,Green,0,2023-06-24,2023-06-19,2,Flood in Kosovo
+1102101,BRB,Green,0,2023-06-22,2023-06-19,3,"Flood in Barbados, Dominican Republic, France, St. Lucia, St. Vincent  and  the Grenadines"
+1102087,SLV,Green,0,2023-06-22,2023-06-19,3,Flood in El Salvador
+1102099,CIV,Green,0,2023-06-21,2023-06-19,3,Flood in Cote d'Ivoire
+1102090,BGD,Green,0,2023-06-21,2023-06-19,3,Flood in Bangladesh
+1102088,UGA,Green,0,2023-06-21,2023-06-19,3,Flood in Uganda
+1102086,AUS,Green,0,2023-06-23,2023-06-19,1,Flood in Australia
+1102081,GHA,Green,0,2023-06-11,2023-06-05,13,Flood in Ghana
+1102104,ZAF,Green,0,2023-06-20,2023-06-19,3,Flood in South Africa
+1102083,FRA,Green,0,2023-06-20,2023-06-19,3,Flood in France
+1102082,BEL,Green,0,2023-06-20,2023-06-19,3,Flood in Belgium
+1102080,MEX,Green,0,2023-06-21,2023-06-19,2,Flood in Mexico
+1102102,PHL,Green,0,2023-06-19,2023-06-19,3,Flood in Philippines
+1102078,VEN,Green,0,2023-06-19,2023-06-19,3,Flood in Venezuela
+1102094,BOL,Green,0,2023-06-14,2023-06-12,7,Flood in Bolivia
+1102074,NPL,Green,0,2023-06-17,2023-06-12,3,Flood in Nepal
+1102064,GBR,Green,0,2023-06-11,2023-06-05,9,Flood in United Kingdom
+1102079,VNM,Green,0,2023-06-16,2023-06-12,3,Flood in Vietnam
+1102073,GEO,Green,0,2023-06-15,2023-06-12,4,Flood in Georgia
+1102071,GRC,Green,0,2023-06-17,2023-06-12,2,Flood in Greece
+1102076,BRA,Green,0,2023-06-14,2023-06-12,4,Flood in Brazil
+1102072,IRL,Green,0,2023-06-17,2023-06-12,1,Flood in Ireland
+1102077,IND,Orange,1,2023-06-14,2023-06-12,3,"Flood in India, Pakistan"
+1102057,IRN,Green,0,2023-06-07,2023-06-05,10,Flood in Islamic Republic of Iran
+1102054,ITA,Green,0,2023-06-05,2023-06-05,11,Flood in Italy
+1102068,AFG,Green,0,2023-06-11,2023-06-05,4,Flood in Afghanistan
+1102067,RUS,Green,0,2023-06-13,2023-06-12,2,Flood in Russia
+1102065,TTO,Green,0,2023-06-11,2023-06-05,4,Flood in Trinidad  and  Tobago
+1102061,ROU,Green,0,2023-06-11,2023-06-05,3,Flood in Romania
+1102045,TUR,Green,0,2023-06-02,2023-05-29,12,Flood in Türkiye
+1102018,COL,Green,0,2023-05-16,2023-05-15,29,Flood in Colombia
+1102062,SRB,Green,0,2023-06-10,2023-06-05,3,Flood in Serbia
+1102060,CIV,Green,0,2023-06-10,2023-06-05,3,Flood in Cote d'Ivoire
+1102044,CHN,Green,0,2023-06-01,2023-05-29,12,Flood in China
+1102066,ZAF,Green,0,2023-06-09,2023-06-05,3,Flood in South Africa
+1102063,PAK,Green,0,2023-06-10,2023-06-05,2,Flood in Pakistan
+1102059,CUB,Green,0,2023-06-08,2023-06-05,3,Flood in Cuba
+1102056,SVN,Green,0,2023-06-07,2023-06-05,3,Flood in Slovenia
+1102055,HUN,Green,0,2023-06-07,2023-06-05,3,Flood in Hungary
+1102115,NER,Green,0,2023-06-03,2023-05-29,6,Flood in Niger
+1102058,WSM,Green,0,2023-06-07,2023-06-05,2,Flood in Samoa
+1102053,PHL,Green,0,2023-06-05,2023-06-05,4,Flood in Philippines
+1102052,AZE,Green,0,2023-06-06,2023-06-05,3,Flood in Azerbaijan
+1102051,PRT,Green,0,2023-06-05,2023-06-05,3,Flood in Portugal
+1102049,ECU,Green,0,2023-05-22,2023-05-22,16,Flood in Ecuador
+1102028,USA,Green,0,2023-05-26,2023-05-22,12,Flood in United States
+1102016,ESP,Green,0,2023-05-20,2023-05-15,18,Flood in Spain
+1102047,DOM,Green,0,2023-06-03,2023-05-29,3,Flood in Dominican Republic
+1102046,FRA,Green,0,2023-06-03,2023-05-29,3,Flood in France
+1102041,JPN,Green,0,2023-06-02,2023-05-29,3,Flood in Japan
+1102025,DZA,Green,0,2023-05-24,2023-05-22,12,Flood in Algeria
+1102043,HTI,Green,0,2023-05-30,2023-05-29,5,Flood in Haiti
+1102039,IND,Green,0,2023-06-01,2023-05-29,3,Flood in India
+1102042,PAK,Green,0,2023-05-30,2023-05-29,3,Flood in Pakistan
+1102034,VEN,Green,0,2023-05-30,2023-05-29,3,Flood in Venezuela
+1102050,CAF,Green,0,2023-05-24,2023-05-22,8,Flood in Central African Republic
+1102040,IDN,Green,0,2023-05-29,2023-05-29,3,Flood in Indonesia
+1102038,GIN,Green,0,2023-05-17,2023-05-15,15,Flood in Guinea
+1102037,SAU,Green,0,2023-05-29,2023-05-29,3,Flood in Saudi Arabia
+1102035,BGR,Green,0,2023-05-30,2023-05-29,2,Flood in Bulgaria
+1102033,JOR,Green,0,2023-05-29,2023-05-29,3,Flood in Jordan
+1102031,NIC,Green,0,2023-05-29,2023-05-29,3,Flood in Nicaragua
+1102011,NZL,Green,0,2023-05-21,2023-05-15,11,Flood in New Zealand
+1102036,HRV,Green,0,2023-05-30,2023-05-29,1,"Flood in Croatia, Serbia"
+1102029,UGA,Green,0,2023-05-25,2023-05-22,5,Flood in Uganda
+1102027,IRN,Green,0,2023-05-27,2023-05-22,3,Flood in Islamic Republic of Iran
+1102032,ARG,Green,0,2023-05-25,2023-05-22,4,Flood in Argentina
+1102030,ROU,Green,0,2023-05-26,2023-05-22,3,Flood in Romania
+1102026,MKD,Green,0,2023-05-25,2023-05-22,2,Flood in The Republic of North Macedonia
+1102023,BRA,Green,0,2023-05-24,2023-05-22,3,Flood in Brazil
+1102021,AFG,Green,0,2023-05-23,2023-05-22,3,Flood in Afghanistan
+1102048,COL,Green,0,2023-05-22,2023-05-22,3,Flood in Colombia
+1102020,DEU,Green,0,2023-05-22,2023-05-22,3,Flood in Germany
+1101991,AUT,Green,0,2023-05-10,2023-05-08,15,Flood in Austria
+1102019,FRA,Green,0,2023-05-22,2023-05-22,2,Flood in France
+1102012,IND,Green,0,2023-05-19,2023-05-15,5,Flood in India
+1102017,TUR,Green,0,2023-05-17,2023-05-15,6,Flood in Türkiye
+1101998,MEX,Green,0,2023-05-13,2023-05-08,10,Flood in Mexico
+1102014,TGO,Green,0,2023-05-18,2023-05-15,4,Flood in Togo
+1102013,IRQ,Green,0,2023-05-20,2023-05-15,2,Flood in Iraq
+1101994,USA,Green,0,2023-05-10,2023-05-08,11,Flood in United States
+1101995,BRA,Green,0,2023-05-11,2023-05-08,10,Flood in Brazil
+1102007,GHA,Green,0,2023-05-15,2023-05-15,5,Flood in Ghana
+1102009,POL,Green,0,2023-05-18,2023-05-15,2,Flood in Poland
+1102010,PHL,Green,0,2023-05-14,2023-05-08,5,Flood in Philippines
+1102008,SRB,Green,0,2023-05-17,2023-05-15,2,Flood in Serbia
+1102015,GAB,Green,0,2023-05-15,2023-05-15,3,Flood in Gabon
+1102006,IDN,Green,0,2023-05-12,2023-05-08,6,Flood in Indonesia
+1102005,BIH,Green,0,2023-05-14,2023-05-08,3,Flood in Bosnia  and  Herzegovina
+1102002,ZAF,Green,0,2023-05-14,2023-05-08,3,Flood in South Africa
+1101999,LKA,Green,0,2023-05-14,2023-05-08,3,Flood in Sri Lanka
+1101997,DOM,Green,0,2023-05-14,2023-05-08,3,Flood in Dominican Republic
+1102000,BGD,Red,2,2023-05-13,2023-05-08,3,"Flood in Bangladesh, India, Myanmar"
+1102001,DZA,Green,0,2023-05-12,2023-05-08,4,"Flood in Algeria, Tunisia"
+1102003,THA,Green,0,2023-05-13,2023-05-08,3,Flood in Thailand
+1102004,GTM,Green,0,2023-05-13,2023-05-08,3,Flood in Guatemala
+1101986,HRV,Green,0,2023-05-07,2023-05-01,8,Flood in Croatia
+1101996,UGA,Green,0,2023-05-10,2023-05-08,3,Flood in Uganda
+1102024,BDI,Green,0,2023-05-10,2023-05-08,3,Flood in Burundi
+1101992,SLE,Green,0,2023-05-09,2023-05-08,3,Flood in Sierra Leone
+1101989,NZL,Green,0,2023-05-09,2023-05-08,3,Flood in New Zealand
+1101990,GBR,Green,0,2023-05-09,2023-05-08,3,Flood in United Kingdom
+1101987,DEU,Green,0,2023-05-07,2023-05-01,3,Flood in Germany
+1101985,JPN,Green,0,2023-05-07,2023-05-01,3,Flood in Japan
+1101988,ESP,Green,0,2023-05-07,2023-05-01,2,Flood in Spain
+1101984,CHN,Green,0,2023-05-06,2023-05-01,3,Flood in China
+1101983,AFG,Green,0,2023-05-05,2023-05-01,3,Flood in Afghanistan
+1102022,PNG,Green,0,2023-05-05,2023-05-01,3,Flood in Papua New Guinea
+1101980,PHL,Green,0,2023-05-03,2023-05-01,3,Flood in Philippines
+1101982,ECU,Green,0,2023-05-02,2023-05-01,3,Flood in Ecuador
+1101993,LKA,Green,0,2023-05-02,2023-05-01,3,Flood in Sri Lanka
+1102216,TUR,Green,0,2023-08-24,2023-08-21,2,Flood in Türkiye
+1102196,PAN,Green,0,2023-08-22,2023-08-21,4,Flood in Panama
+1102179,ITA,Green,0,2023-08-13,2023-08-07,13,Flood in Italy
+1102197,BEN,Green,0,2023-08-21,2023-08-21,3,Flood in Benin
+1102194,SAU,Green,0,2023-08-22,2023-08-21,2,Flood in Saudi Arabia
+1102191,MEX,Green,0,2023-08-17,2023-08-14,7,Flood in Mexico
+1102193,DOM,Green,0,2023-08-20,2023-08-14,3,Flood in Dominican Republic
+1102190,CHL,Green,0,2023-08-19,2023-08-14,3,Flood in Chile
+1102182,PHL,Green,0,2023-08-12,2023-08-07,10,Flood in Philippines
+1102178,RUS,Green,0,2023-08-11,2023-08-07,11,Flood in Russia
+1102192,PAK,Orange,1,2023-08-16,2023-08-14,3,Flood in Pakistan
+1102189,POL,Green,0,2023-08-16,2023-08-14,3,Flood in Poland
+1102188,DZA,Green,0,2023-08-16,2023-08-14,3,Flood in Algeria
+1102186,CMR,Green,0,2023-08-16,2023-08-14,3,Flood in Cameroon
+1102176,IND,Green,0,2023-08-09,2023-08-07,10,Flood in India
+1102187,SRB,Green,0,2023-08-15,2023-08-14,3,Flood in Serbia
+1102185,THA,Green,0,2023-08-14,2023-08-14,3,Flood in Thailand
+1102184,DEU,Green,0,2023-08-15,2023-08-14,2,Flood in Germany
+1102183,SLV,Green,0,2023-08-14,2023-08-14,3,"Flood in El Salvador, Honduras"
+1102180,JPN,Green,0,2023-08-14,2023-08-14,3,Flood in Japan
+1102148,CHN,Green,0,2023-07-31,2023-07-31,16,Flood in China
+1102181,IDN,Green,0,2023-08-12,2023-08-07,3,Flood in Indonesia
+1102250,TCD,Green,0,2023-08-11,2023-08-07,3,Flood in Chad
+1102167,AUT,Green,0,2023-08-03,2023-07-31,11,Flood in Austria
+1102173,KOR,Green,0,2023-08-10,2023-08-07,3,Flood in South Korea
+1102198,GHA,Green,0,2023-08-09,2023-08-07,3,Flood in Ghana
+1102177,NGA,Green,0,2023-08-09,2023-08-07,3,Flood in Nigeria
+1102175,CAN,Green,0,2023-08-10,2023-08-07,2,Flood in Canada
+1102174,GIN,Green,0,2023-08-05,2023-07-31,6,Flood in Guinea
+1102172,HRV,Green,0,2023-08-04,2023-07-31,6,Flood in Croatia
+1102171,NPL,Green,0,2023-08-03,2023-07-31,7,Flood in Nepal
+1102170,NOR,Green,0,2023-08-06,2023-07-31,3,"Flood in Norway, Sweden"
+1102164,MNG,Green,0,2023-08-05,2023-07-31,4,Flood in Mongolia
+1102163,BGD,Green,0,2023-08-06,2023-07-31,3,Flood in Bangladesh
+1102162,LAO,Green,0,2023-07-30,2023-07-24,9,Flood in Laos
+1102168,DNK,Green,0,2023-08-04,2023-07-31,3,Flood in Denmark
+1102160,IRL,Green,0,2023-08-04,2023-07-31,3,"Flood in Ireland, United Kingdom"
+1102159,KHM,Green,0,2023-08-03,2023-07-31,4,Flood in Cambodia
+1102158,AZE,Green,0,2023-08-02,2023-07-31,5,Flood in Azerbaijan
+1102157,MRT,Green,0,2023-07-30,2023-07-24,8,Flood in Mauritania
+1102169,HUN,Green,0,2023-08-04,2023-07-31,2,Flood in Hungary
+1102161,IRN,Green,0,2023-08-03,2023-07-31,3,Flood in Islamic Republic of Iran
+1102155,SVN,Green,0,2023-08-03,2023-07-31,3,Flood in Slovenia
+1102154,GEO,Green,0,2023-08-03,2023-07-31,3,Flood in Georgia
+1102166,THA,Green,0,2023-08-02,2023-07-31,3,Flood in Thailand
+1102165,MMR,Green,0,2023-08-02,2023-07-31,3,Flood in Myanmar
+1102152,GBR,Green,0,2023-08-02,2023-07-31,3,Flood in United Kingdom
+1102149,VNM,Green,0,2023-07-27,2023-07-24,9,Flood in Vietnam
+1102195,PNG,Green,0,2023-08-01,2023-07-31,3,Flood in Papua New Guinea
+1102150,NOR,Green,0,2023-07-30,2023-07-24,4,Flood in Norway
+1102153,MEX,Green,0,2023-07-26,2023-07-24,6,Flood in Mexico
+1102151,POL,Green,0,2023-07-30,2023-07-24,2,Flood in Poland
+1102134,NGA,Green,0,2023-07-16,2023-07-10,16,Flood in Nigeria
+1102147,PHL,Green,0,2023-07-25,2023-07-24,3,Flood in Philippines
+1102146,VEN,Green,0,2023-07-25,2023-07-24,3,Flood in Venezuela
+1102156,LBR,Green,0,2023-07-24,2023-07-24,3,Flood in Liberia
+1102145,CRI,Green,0,2023-07-23,2023-07-17,3,Flood in Costa Rica
+1102142,AFG,Green,0,2023-07-22,2023-07-17,3,Flood in Afghanistan
+1102144,IRL,Green,0,2023-07-22,2023-07-17,2,"Flood in Ireland, United Kingdom"
+1102143,BTN,Green,0,2023-07-20,2023-07-17,4,Flood in Bhutan
+1102106,CAN,Green,0,2023-07-01,2023-06-26,23,Flood in Canada
+1102141,SVK,Green,0,2023-07-20,2023-07-17,2,Flood in Slovakia
+1102140,CMR,Green,0,2023-07-18,2023-07-17,3,Flood in Cameroon
+1102137,MAR,Green,0,2023-07-18,2023-07-17,3,Flood in Morocco
+1102129,COL,Green,0,2023-07-10,2023-07-10,10,Flood in Colombia
+1102136,POL,Green,0,2023-07-17,2023-07-17,2,Flood in Poland
+1102138,NPL,Green,0,2023-07-15,2023-07-10,3,Flood in Nepal
+1102132,PHL,Green,0,2023-07-14,2023-07-10,4,Flood in Philippines
+1102131,KOR,Green,0,2023-07-13,2023-07-10,3,Flood in South Korea
+1102110,JPN,Green,0,2023-07-01,2023-06-26,14,Flood in Japan
+1102128,MEX,Green,0,2023-07-11,2023-07-10,3,Flood in Mexico
+1102127,FRA,Green,0,2023-07-11,2023-07-10,3,Flood in France
+1102130,ECU,Green,0,2023-07-10,2023-07-10,3,Flood in Ecuador
+1102125,BRA,Green,0,2023-07-07,2023-07-03,5,Flood in Brazil
+1102135,IND,Orange,1,2023-07-07,2023-07-03,4,Flood in India
+1102117,RUS,Green,0,2023-07-01,2023-06-26,10,Flood in Russia
+1102123,GBR,Green,0,2023-07-08,2023-07-03,2,Flood in United Kingdom
+1102122,FIN,Green,0,2023-07-08,2023-07-03,2,Flood in Finland
+1102126,PAN,Green,0,2023-07-05,2023-07-03,4,Flood in Panama
+1102120,PAK,Green,0,2023-07-05,2023-07-03,4,Flood in Pakistan
+1102133,SOM,Green,0,2023-07-05,2023-07-03,3,Flood in Somalia
+1102124,ITA,Green,0,2023-07-05,2023-07-03,3,Flood in Italy
+1102119,MNG,Green,0,2023-07-05,2023-07-03,3,Flood in Mongolia
+1102121,CIV,Green,0,2023-07-04,2023-07-03,3,Flood in Cote d'Ivoire
+1102118,SRB,Green,0,2023-07-05,2023-07-03,2,Flood in Serbia
+1102113,NPL,Green,0,2023-07-01,2023-06-26,5,Flood in Nepal
+1102116,SVN,Green,0,2023-07-03,2023-07-03,2,Flood in Slovenia
+1102114,PHL,Green,0,2023-07-02,2023-06-26,3,Flood in Philippines
+1102139,NER,Green,0,2023-07-01,2023-06-26,3,Flood in Niger
+1102112,THA,Green,0,2023-07-01,2023-06-26,3,Flood in Thailand
+1102288,KEN,Orange,1,2023-10-23,2023-10-23,45,Flood in Kenya
+1102258,SOM,Orange,1,2023-10-04,2023-10-02,64,Flood in Somalia
+1102284,GBR,Green,0,2023-10-19,2023-10-16,25,Flood in United Kingdom
+1102295,COL,Green,0,2023-10-24,2023-10-23,15,Flood in Colombia
+1102294,BRA,Green,0,2023-10-27,2023-10-23,10,Flood in Brazil
+1102262,MEX,Green,0,2023-10-06,2023-10-02,29,Flood in Mexico
+1102302,SLV,Green,0,2023-10-28,2023-10-23,3,"Flood in El Salvador, Honduras"
+1102299,VNM,Green,0,2023-10-24,2023-10-23,7,Flood in Vietnam
+1102293,USA,Green,0,2023-10-26,2023-10-23,5,Flood in United States
+1102300,COD,Green,0,2023-10-27,2023-10-23,3,Flood in Democratic Republic of Congo
+1102298,VEN,Green,0,2023-10-27,2023-10-23,3,Flood in Venezuela
+1102296,PRY,Green,0,2023-10-27,2023-10-23,3,Flood in Paraguay
+1102319,PNG,Green,0,2023-10-27,2023-10-23,2,Flood in Papua New Guinea
+1102297,PER,Green,0,2023-10-25,2023-10-23,3,Flood in Peru
+1102292,IND,Green,0,2023-10-24,2023-10-23,3,Flood in India
+1102291,BGD,Orange,1,2023-10-24,2023-10-23,3,Flood in Bangladesh
+1102272,PHL,Green,0,2023-10-10,2023-10-09,17,Flood in Philippines
+1102354,CAF,Green,0,2023-10-23,2023-10-23,3,Flood in Central African Republic
+1102285,OMN,Green,0,2023-10-23,2023-10-23,3,"Flood in Oman, Yemen"
+1102282,IRL,Green,0,2023-10-18,2023-10-16,8,Flood in Ireland
+1102277,ITA,Green,0,2023-10-16,2023-10-16,10,Flood in Italy
+1102289,ESP,Green,0,2023-10-22,2023-10-16,3,Flood in Spain
+1102281,FRA,Green,0,2023-10-18,2023-10-16,7,Flood in France
+1102280,ZAF,Green,0,2023-10-16,2023-10-16,9,Flood in South Africa
+1102275,BDI,Green,0,2023-10-15,2023-10-09,10,Flood in Burundi
+1102265,MYS,Green,0,2023-10-06,2023-10-02,19,Flood in Malaysia
+1102290,DEU,Green,0,2023-10-20,2023-10-16,3,Flood in Germany
+1102287,URY,Green,0,2023-10-20,2023-10-16,3,Flood in Uruguay
+1102309,IDN,Green,0,2023-10-19,2023-10-16,3,Flood in Indonesia
+1102271,KHM,Green,0,2023-10-13,2023-10-09,9,Flood in Cambodia
+1102270,NGA,Green,0,2023-10-06,2023-10-02,13,Flood in Nigeria
+1102390,BDI,Green,0,2023-10-15,2023-10-09,3,Flood in Burundi
+1102279,ZWE,Green,0,2023-10-15,2023-10-09,3,Flood in Zimbabwe
+1102278,TZA,Green,0,2023-10-14,2023-10-09,4,Flood in Tanzania
+1102276,GTM,Green,0,2023-10-15,2023-10-09,3,Flood in Guatemala
+1102283,ARG,Green,0,2023-10-14,2023-10-09,3,Flood in Argentina
+1102274,COL,Green,0,2023-10-10,2023-10-09,7,Flood in Colombia
+1102273,VNM,Green,0,2023-10-13,2023-10-09,3,Flood in Vietnam
+1102254,IND,Green,0,2023-10-03,2023-10-02,13,Flood in India
+1102269,GHA,Green,0,2023-10-11,2023-10-09,3,Flood in Ghana
+1102266,CMR,Green,0,2023-10-08,2023-10-02,3,Flood in Cameroon
+1102264,MMR,Green,0,2023-10-08,2023-10-02,3,Flood in Myanmar
+1102263,PER,Green,0,2023-10-08,2023-10-02,2,Flood in Peru
+1102261,CAN,Green,0,2023-10-07,2023-10-02,3,Flood in Canada
+1102260,GBR,Green,0,2023-10-07,2023-10-02,3,Flood in United Kingdom
+1102286,NGA,Green,0,2023-10-01,2023-09-25,8,Flood in Nigeria
+1102244,COD,Green,0,2023-09-27,2023-09-25,12,Flood in Democratic Republic of Congo
+1102256,RUS,Green,0,2023-10-05,2023-10-02,3,Flood in Russia
+1102268,BRA,Green,0,2023-10-04,2023-10-02,3,Flood in Brazil
+1102259,IRN,Green,0,2023-10-04,2023-10-02,3,Flood in Islamic Republic of Iran
+1102255,HND,Green,0,2023-10-02,2023-10-02,4,Flood in Honduras
+1102253,AUS,Green,0,2023-10-03,2023-10-02,3,Flood in Australia
+1102252,IDN,Green,0,2023-10-02,2023-10-02,3,Flood in Indonesia
+1102239,VNM,Green,0,2023-09-25,2023-09-25,10,Flood in Vietnam
+1102236,GTM,Green,0,2023-09-25,2023-09-25,10,Flood in Guatemala
+1102251,RWA,Green,0,2023-10-02,2023-10-02,2,Flood in Rwanda
+1102248,SYR,Green,0,2023-10-01,2023-09-25,3,Flood in Syria
+1102242,TUR,Green,0,2023-09-28,2023-09-25,5,Flood in Türkiye
+1102245,KHM,Green,0,2023-09-27,2023-09-25,4,Flood in Cambodia
+1102206,USA,Green,0,2023-09-09,2023-09-04,22,Flood in United States
+1102247,LKA,Green,0,2023-09-27,2023-09-25,3,Flood in Sri Lanka
+1102246,THA,Green,0,2023-09-26,2023-09-25,4,Flood in Thailand
+1102241,IRL,Green,0,2023-09-27,2023-09-25,3,"Flood in Ireland, United Kingdom"
+1102249,VEN,Green,0,2023-09-26,2023-09-25,3,Flood in Venezuela
+1102238,JAM,Green,0,2023-09-25,2023-09-25,3,Flood in Jamaica
+1102240,CIV,Green,0,2023-09-23,2023-09-18,4,Flood in Cote d'Ivoire
+1102237,ROU,Green,0,2023-09-25,2023-09-25,2,Flood in Romania
+1102235,MEX,Green,0,2023-09-25,2023-09-25,2,Flood in Mexico
+1102233,MYS,Green,0,2023-09-22,2023-09-18,3,Flood in Malaysia
+1102224,IDN,Green,0,2023-09-15,2023-09-11,10,Flood in Indonesia
+1102223,IND,Green,0,2023-09-15,2023-09-11,10,Flood in India
+1102205,GHA,Green,0,2023-09-11,2023-09-11,14,Flood in Ghana
+1102243,BRA,Green,0,2023-09-21,2023-09-18,3,Flood in Brazil
+1102230,NZL,Green,0,2023-09-21,2023-09-18,3,Flood in New Zealand
+1102231,SLV,Green,0,2023-09-20,2023-09-18,3,Flood in El Salvador
+1102234,PHL,Green,0,2023-09-19,2023-09-18,3,Flood in Philippines
+1102222,UGA,Green,0,2023-09-12,2023-09-11,10,Flood in Uganda
+1102219,NGA,Green,0,2023-09-14,2023-09-11,8,Flood in Nigeria
+1102228,COM,Green,0,2023-09-19,2023-09-18,2,Flood in Comoros
+1102229,AZE,Green,0,2023-09-17,2023-09-11,3,Flood in Azerbaijan
+1102218,GBR,Green,0,2023-09-17,2023-09-11,3,Flood in United Kingdom
+1102226,COD,Green,0,2023-09-16,2023-09-11,3,Flood in Democratic Republic of Congo
+1102225,YEM,Green,0,2023-09-14,2023-09-11,5,Flood in Yemen
+1102220,ZAF,Green,0,2023-09-16,2023-09-11,3,Flood in South Africa
+1102210,FRA,Green,0,2023-09-12,2023-09-11,7,Flood in France
+1102202,ESP,Green,0,2023-09-02,2023-08-28,17,Flood in Spain
+1102208,CHL,Green,0,2023-09-10,2023-09-04,7,Flood in Chile
+1102267,MMR,Green,0,2023-09-06,2023-09-04,9,Flood in Myanmar
+1102204,LBY,Red,2,2023-09-08,2023-09-04,7,Flood in Libya
+1102217,VNM,Green,0,2023-09-11,2023-09-11,3,Flood in Vietnam
+1102232,MYS,Green,0,2023-09-10,2023-09-04,3,Flood in Malaysia
+1102209,URY,Green,0,2023-09-07,2023-09-04,6,Flood in Uruguay
+1102227,PHL,Green,0,2023-09-08,2023-09-04,4,Flood in Philippines
+1102213,JPN,Green,0,2023-09-08,2023-09-04,4,Flood in Japan
+1102211,CHN,Green,0,2023-09-07,2023-09-04,5,Flood in China
+1102199,GRC,Green,0,2023-09-04,2023-09-04,8,Flood in Greece
+1102257,ETH,Green,0,2023-09-08,2023-09-04,3,Flood in Ethiopia
+1102212,GEO,Green,0,2023-09-08,2023-09-04,3,Flood in Georgia
+1102203,DZA,Green,0,2023-09-02,2023-08-28,7,Flood in Algeria
+1102200,TUR,Green,0,2023-09-04,2023-09-04,5,Flood in Türkiye
+1102201,BGR,Green,0,2023-09-04,2023-09-04,5,Flood in Bulgaria
+1102215,THA,Green,0,2023-09-01,2023-08-28,7,Flood in Thailand
+1102207,BRA,Green,0,2023-09-03,2023-08-28,3,Flood in Brazil
+1102221,SDN,Green,0,2023-09-01,2023-08-28,3,Flood in Sudan
+1102417,PER,Green,0,2023-12-26,2023-12-25,78,Flood in Peru
+1102409,BDI,Green,0,2023-12-26,2023-12-25,47,Flood in Burundi
+1102407,DEU,Orange,1,2023-12-18,2023-12-18,17,Flood in Germany
+1102420,BRA,Green,0,2023-12-23,2023-12-18,12,Flood in Brazil
+1102419,ECU,Green,0,2023-12-18,2023-12-18,14,Flood in Ecuador
+1102416,ZWE,Green,0,2023-12-20,2023-12-18,12,Flood in Zimbabwe
+1102412,COD,Green,0,2023-12-20,2023-12-18,11,Flood in Democratic Republic of Congo
+1102368,USA,Green,0,2023-12-02,2023-11-27,29,Flood in United States
+1102426,AUS,Green,0,2023-12-25,2023-12-25,5,Flood in Australia
+1102405,ZAF,Green,0,2023-12-18,2023-12-18,12,Flood in South Africa
+1102413,DEU,Green,0,2023-12-25,2023-12-25,3,Flood in Germany
+1102399,MYS,Green,0,2023-12-17,2023-12-11,10,Flood in Malaysia
+1102423,LBN,Green,0,2023-12-23,2023-12-18,3,Flood in Lebanon
+1102398,THA,Green,0,2023-12-14,2023-12-11,11,Flood in Thailand
+1102402,TTO,Green,0,2023-12-19,2023-12-18,3,Flood in Trinidad  and  Tobago
+1102403,NOR,Green,0,2023-12-16,2023-12-11,5,Flood in Norway
+1102404,URY,Green,0,2023-12-17,2023-12-11,3,Flood in Uruguay
+1102401,TUN,Green,0,2023-12-17,2023-12-11,3,Flood in Tunisia
+1102400,IND,Green,0,2023-12-16,2023-12-11,3,Flood in India
+1102395,AUS,Green,0,2023-12-13,2023-12-11,3,Flood in Australia
+1102388,ITA,Green,0,2023-12-01,2023-11-27,15,Flood in Italy
+1102397,GTM,Green,0,2023-12-12,2023-12-11,3,Flood in Guatemala
+1102394,LKA,Green,0,2023-12-09,2023-12-04,6,Flood in Sri Lanka
+1102369,IDN,Green,0,2023-11-30,2023-11-27,15,Flood in Indonesia
+1102365,ARG,Green,0,2023-11-26,2023-11-20,19,Flood in Argentina
+1102396,CHE,Green,0,2023-12-11,2023-12-11,3,Flood in Switzerland
+1102383,PER,Green,0,2023-12-05,2023-12-04,9,Flood in Peru
+1102347,COD,Green,0,2023-11-13,2023-11-13,30,Flood in Democratic Republic of Congo
+1102393,UGA,Green,0,2023-12-09,2023-12-04,3,Flood in Uganda
+1102384,TUR,Green,0,2023-12-06,2023-12-04,6,Flood in Türkiye
+1102382,GBR,Green,0,2023-12-04,2023-12-04,8,Flood in United Kingdom
+1102389,DZA,Green,0,2023-12-08,2023-12-04,3,Flood in Algeria
+1102360,BRA,Green,0,2023-11-28,2023-11-27,13,Flood in Brazil
+1102391,HND,Green,0,2023-12-07,2023-12-04,3,Flood in Honduras
+1102406,FRA,Green,0,2023-12-01,2023-11-27,8,Flood in France
+1102386,VNM,Green,0,2023-12-06,2023-12-04,3,Flood in Vietnam
+1102392,BOL,Green,0,2023-12-05,2023-12-04,3,Flood in Bolivia
+1102387,SYC,Green,0,2023-12-07,2023-12-04,1,Flood in Seychelles
+1102381,MEX,Green,0,2023-12-05,2023-12-04,2,Flood in Mexico
+1102379,CAN,Green,0,2023-12-04,2023-12-04,3,Flood in Canada
+1102308,ETH,Orange,1,2023-11-01,2023-10-30,36,Flood in Ethiopia
+1102374,PRY,Green,0,2023-12-03,2023-11-27,3,Flood in Paraguay
+1102372,IND,Green,0,2023-12-03,2023-11-27,3,Flood in India
+1102380,SVN,Green,0,2023-12-02,2023-11-27,3,Flood in Slovenia
+1102378,ROU,Green,0,2023-12-01,2023-11-27,4,Flood in Romania
+1102377,HRV,Green,0,2023-11-30,2023-11-27,5,Flood in Croatia
+1102370,TZA,Green,0,2023-12-02,2023-11-27,3,Flood in Tanzania
+1102385,MYS,Green,0,2023-12-01,2023-11-27,3,Flood in Malaysia
+1102371,URY,Green,0,2023-12-01,2023-11-27,3,Flood in Uruguay
+1102362,AGO,Green,0,2023-11-28,2023-11-27,6,Flood in Angola
+1102367,ESP,Green,0,2023-11-30,2023-11-27,3,Flood in Spain
+1102375,PRT,Green,0,2023-11-30,2023-11-27,1,Flood in Portugal
+1102364,AUS,Green,0,2023-11-28,2023-11-27,3,Flood in Australia
+1102366,GHA,Green,0,2023-11-27,2023-11-27,3,Flood in Ghana
+1102355,RUS,Green,0,2023-11-26,2023-11-20,3,"Flood in Russia, Ukraine"
+1102363,GAB,Green,0,2023-11-25,2023-11-20,3,Flood in Gabon
+1102361,RUS,Green,0,2023-11-26,2023-11-20,2,Flood in Russia
+1102344,TUR,Green,0,2023-11-18,2023-11-13,10,Flood in Türkiye
+1102356,COL,Green,0,2023-11-24,2023-11-20,3,Flood in Colombia
+1102357,IND,Green,0,2023-11-21,2023-11-20,4,Flood in India
+1102352,DZA,Green,0,2023-11-22,2023-11-20,3,Flood in Algeria
+1102351,GRC,Green,0,2023-11-22,2023-11-20,3,Flood in Greece
+1102350,ITA,Green,0,2023-11-21,2023-11-20,3,Flood in Italy
+1102349,MNE,Green,0,2023-11-21,2023-11-20,3,Flood in Montenegro
+1102348,GTM,Green,0,2023-11-21,2023-11-20,3,Flood in Guatemala
+1102337,MYS,Green,0,2023-11-15,2023-11-13,9,Flood in Malaysia
+1102330,IDN,Green,0,2023-11-12,2023-11-06,11,Flood in Indonesia
+1102359,PER,Green,0,2023-11-19,2023-11-13,3,Flood in Peru
+1102346,IRQ,Green,0,2023-11-19,2023-11-13,3,Flood in Iraq
+1102345,BGD,Green,0,2023-11-17,2023-11-13,5,Flood in Bangladesh
+1102338,PHL,Green,0,2023-11-15,2023-11-13,7,Flood in Philippines
+1102358,LKA,Green,0,2023-11-16,2023-11-13,3,Flood in Sri Lanka
+1102353,THA,Green,0,2023-11-16,2023-11-13,3,Flood in Thailand
+1102343,IRN,Green,0,2023-11-16,2023-11-13,3,Flood in Islamic Republic of Iran
+1102342,DOM,Green,0,2023-11-16,2023-11-13,3,"Flood in Dominican Republic, Haiti, Jamaica"
+1102341,BRA,Green,0,2023-11-15,2023-11-13,4,Flood in Brazil
+1102339,SAU,Green,0,2023-11-15,2023-11-13,3,Flood in Saudi Arabia
+1102340,USA,Green,0,2023-11-14,2023-11-13,3,Flood in United States
+1102336,DEU,Green,0,2023-11-14,2023-11-13,3,Flood in Germany
+1102335,FRA,Green,0,2023-11-14,2023-11-13,3,Flood in France
+1102333,VNM,Green,0,2023-11-13,2023-11-13,3,Flood in Vietnam
+1102331,IRL,Green,0,2023-11-12,2023-11-06,3,Flood in Ireland
+1102328,CUB,Green,0,2023-11-12,2023-11-06,3,Flood in Cuba
+1102329,MEX,Green,0,2023-11-11,2023-11-06,3,Flood in Mexico
+1102322,UGA,Green,0,2023-11-02,2023-10-30,12,Flood in Uganda
+1102334,BDI,Green,0,2023-11-08,2023-11-06,5,Flood in Burundi
+1102327,BEL,Green,0,2023-11-10,2023-11-06,3,Flood in Belgium
+1102326,PAK,Green,0,2023-11-09,2023-11-06,3,Flood in Pakistan
+1102312,IDN,Green,0,2023-11-02,2023-10-30,10,Flood in Indonesia
+1102325,DOM,Green,0,2023-11-07,2023-11-06,3,Flood in Dominican Republic
+1102324,NZL,Green,0,2023-11-07,2023-11-06,3,Flood in New Zealand
+1102321,TTO,Green,0,2023-11-07,2023-11-06,3,Flood in Trinidad  and  Tobago
+1102323,LKA,Green,0,2023-11-04,2023-10-30,5,Flood in Sri Lanka
+1102317,IND,Green,0,2023-11-06,2023-11-06,3,Flood in India
+1102318,TUR,Green,0,2023-11-05,2023-10-30,3,Flood in Türkiye
+1102316,CRI,Green,0,2023-11-05,2023-10-30,3,Flood in Costa Rica
+1102306,FRA,Green,0,2023-11-01,2023-10-30,6,Flood in France
+1102307,HND,Green,0,2023-11-03,2023-10-30,3,Flood in Honduras
+1102320,TZA,Green,0,2023-11-03,2023-10-30,3,Flood in Tanzania
+1102314,PHL,Green,0,2023-11-03,2023-10-30,3,Flood in Philippines
+1102315,ESP,Green,0,2023-11-03,2023-10-30,3,Flood in Spain
+1102311,GTM,Green,0,2023-11-03,2023-10-30,3,Flood in Guatemala
+1102310,PRT,Green,0,2023-11-04,2023-10-30,1,Flood in Portugal
+1102313,IRN,Green,0,2023-11-02,2023-10-30,3,Flood in Islamic Republic of Iran
+1102301,ITA,Green,0,2023-10-30,2023-10-30,6,Flood in Italy
+1102332,ARG,Green,0,2023-11-01,2023-10-30,3,Flood in Argentina
+1102376,AGO,Green,0,2023-11-01,2023-10-30,3,Flood in Angola
+1102305,MWI,Green,0,2023-10-30,2023-10-30,3,Flood in Malawi
+1102303,ECU,Green,0,2023-10-29,2023-10-23,3,Flood in Ecuador
+1102304,AUT,Green,0,2023-10-30,2023-10-30,2,Flood in Austria
+1102458,IDN,Orange,1,2024-02-03,2024-01-29,131,Flood in Indonesia
+1102465,BRA,Green,0,2024-02-08,2024-02-05,66,Flood in Brazil
+1102494,ITA,Green,0,2024-02-24,2024-02-19,17,Flood in Italy
+1102492,BOL,Green,0,2024-02-23,2024-02-19,6,Flood in Bolivia
+1102493,BIH,Green,0,2024-02-24,2024-02-19,3,"Flood in Bosnia  and  Herzegovina, Croatia"
+1102491,ARG,Green,0,2024-02-22,2024-02-19,3,Flood in Argentina
+1102486,NGA,Green,0,2024-02-20,2024-02-19,5,Flood in Nigeria
+1102490,CIV,Green,0,2024-02-21,2024-02-19,3,Flood in Cote d'Ivoire
+1102425,AUS,Green,0,2024-01-01,2024-01-01,54,Flood in Australia
+1102489,PER,Green,0,2024-02-19,2024-02-19,3,Flood in Peru
+1102487,COL,Green,0,2024-02-19,2024-02-19,3,Flood in Colombia
+1102484,USA,Green,0,2024-02-18,2024-02-12,3,Flood in United States
+1102472,ECU,Green,0,2024-02-10,2024-02-05,11,Flood in Ecuador
+1102483,PAK,Green,0,2024-02-17,2024-02-12,3,Flood in Pakistan
+1102482,KEN,Green,0,2024-02-17,2024-02-12,3,Flood in Kenya
+1102467,GBR,Green,0,2024-02-09,2024-02-05,11,Flood in United Kingdom
+1102481,SYR,Green,0,2024-02-16,2024-02-12,3,Flood in Syria
+1102480,MYS,Green,0,2024-02-16,2024-02-12,3,Flood in Malaysia
+1102479,ISR,Green,0,2024-02-16,2024-02-12,3,Flood in Israel
+1102478,DZA,Green,0,2024-02-16,2024-02-12,3,Flood in Algeria
+1102477,IRQ,Green,0,2024-02-15,2024-02-12,3,Flood in Iraq
+1102475,MDG,Green,0,2024-02-14,2024-02-12,3,Flood in Madagascar
+1102462,TUR,Green,0,2024-02-06,2024-02-05,11,Flood in Türkiye
+1102485,BOL,Green,0,2024-02-10,2024-02-05,5,Flood in Bolivia
+1102474,GRC,Green,0,2024-02-12,2024-02-12,3,Flood in Greece
+1102470,FJI,Green,0,2024-02-12,2024-02-12,3,Flood in Fiji
+1102476,MAR,Green,0,2024-02-11,2024-02-05,3,Flood in Morocco
+1102469,OMN,Green,0,2024-02-11,2024-02-05,3,"Flood in Oman, United Arab Emirates"
+1102471,ITA,Green,0,2024-02-09,2024-02-05,3,Flood in Italy
+1102468,FRA,Green,0,2024-02-09,2024-02-05,3,Flood in France
+1102466,LBN,Green,0,2024-02-09,2024-02-05,3,Flood in Lebanon
+1102488,KAZ,Green,0,2024-02-08,2024-02-05,3,Flood in Kazakhstan
+1102464,ARG,Green,0,2024-02-08,2024-02-05,3,Flood in Argentina
+1102455,PHL,Green,0,2024-01-29,2024-01-29,12,Flood in Philippines
+1102473,AGO,Green,0,2024-02-06,2024-02-05,3,Flood in Angola
+1102463,MEX,Green,0,2024-02-06,2024-02-05,3,Flood in Mexico
+1102461,GEO,Green,0,2024-02-05,2024-02-05,3,Flood in Georgia
+1102459,POL,Green,0,2024-02-05,2024-02-05,3,Flood in Poland
+1102457,PAK,Green,0,2024-02-03,2024-01-29,3,Flood in Pakistan
+1102430,USA,Green,0,2024-01-09,2024-01-08,26,Flood in United States
+1102456,CAN,Green,0,2024-01-29,2024-01-29,3,Flood in Canada
+1102454,ECU,Green,0,2024-01-29,2024-01-29,3,Flood in Ecuador
+1102440,BOL,Green,0,2024-01-15,2024-01-15,17,Flood in Bolivia
+1102437,BRA,Green,0,2024-01-13,2024-01-08,19,Flood in Brazil
+1102453,COD,Green,0,2024-01-27,2024-01-22,3,Flood in Democratic Republic of Congo
+1102452,THA,Green,0,2024-01-27,2024-01-22,3,Flood in Thailand
+1102449,MYS,Green,0,2024-01-24,2024-01-22,3,Flood in Malaysia
+1102448,MEX,Green,0,2024-01-22,2024-01-22,3,Flood in Mexico
+1102447,DOM,Green,0,2024-01-22,2024-01-22,3,Flood in Dominican Republic
+1102450,GBR,Green,0,2024-01-21,2024-01-15,3,Flood in United Kingdom
+1102451,MHL,Green,0,2024-01-19,2024-01-15,3,Flood in Marshall Is.
+1102444,ESP,Green,0,2024-01-19,2024-01-15,3,Flood in Spain
+1102446,PRT,Green,0,2024-01-18,2024-01-15,3,Flood in Portugal
+1102422,ARG,Green,0,2024-01-01,2024-01-01,18,Flood in Argentina
+1102443,PHL,Green,0,2024-01-15,2024-01-15,3,Flood in Philippines
+1102442,GRC,Green,0,2024-01-15,2024-01-15,3,Flood in Greece
+1102428,IDN,Green,0,2024-01-06,2024-01-01,12,Flood in Indonesia
+1102441,COD,Green,0,2024-01-10,2024-01-08,7,Flood in Democratic Republic of Congo
+1102435,ZAF,Green,0,2024-01-08,2024-01-08,9,Flood in South Africa
+1102439,FRA,Green,0,2024-01-13,2024-01-08,3,"Flood in France, Mauritius"
+1102438,LBN,Green,0,2024-01-13,2024-01-08,3,Flood in Lebanon
+1102460,PER,Green,0,2024-01-04,2024-01-01,11,Flood in Peru
+1102434,KEN,Green,0,2024-01-12,2024-01-08,3,Flood in Kenya
+1102433,COL,Green,0,2024-01-12,2024-01-08,3,Flood in Colombia
+1102445,MWI,Green,0,2024-01-10,2024-01-08,3,Flood in Malawi
+1102432,CAN,Green,0,2024-01-10,2024-01-08,3,Flood in Canada
+1102436,TZA,Green,0,2024-01-09,2024-01-08,3,Flood in Tanzania
+1102431,LKA,Green,0,2024-01-08,2024-01-08,3,Flood in Sri Lanka
+1102414,ITA,Green,0,2024-01-06,2024-01-01,3,Flood in Italy
+1102429,MYS,Green,0,2024-01-04,2024-01-01,3,Flood in Malaysia
+1102411,FRA,Green,0,2024-01-02,2024-01-01,3,"Flood in France, Luxembourg"
+1102410,BEL,Green,0,2024-01-02,2024-01-01,3,Flood in Belgium
+1102408,FRA,Orange,1,2023-12-30,2023-12-25,5,Flood in France
+1102415,MDG,Green,0,2024-01-01,2024-01-01,3,Flood in Madagascar
+1102424,MDV,Green,0,2023-12-31,2023-12-25,3,Flood in Maldives
+1102421,DOM,Green,0,2023-12-31,2023-12-25,3,Flood in Dominican Republic
+1102418,GBR,Green,0,2023-12-28,2023-12-25,5,Flood in United Kingdom
+1102427,PNG,Green,0,2023-12-28,2023-12-25,3,Flood in Papua New Guinea
+1102592,BRA,Orange,1,2024-04-23,2024-04-22,25,Flood in Brazil
+1102590,ECU,Green,0,2024-04-21,2024-04-15,26,Flood in Ecuador
+1102604,KEN,Orange,1,2024-04-12,2024-04-08,25,Flood in Kenya
+1102586,TUR,Green,0,2024-04-20,2024-04-15,17,Flood in Türkiye
+1102544,BDI,Orange,1,2024-03-17,2024-03-11,48,Flood in Burundi
+1102591,IND,Green,0,2024-04-25,2024-04-22,7,Flood in India
+1102596,UKR,Green,0,2024-04-25,2024-04-22,6,Flood in Ukraine
+1102555,TZA,Orange,1,2024-03-28,2024-03-25,32,Flood in Tanzania
+1102593,COL,Green,0,2024-04-23,2024-04-22,5,Flood in Colombia
+1102583,SLV,Green,0,2024-04-22,2024-04-22,3,Flood in El Salvador
+1102587,MUS,Green,0,2024-04-21,2024-04-15,3,Flood in Mauritius
+1102585,NPL,Green,0,2024-04-21,2024-04-15,3,Flood in Nepal
+1102607,IRQ,Green,0,2024-04-15,2024-04-15,8,Flood in Iraq
+1102589,ESP,Green,0,2024-04-20,2024-04-15,3,Flood in Spain
+1102584,KGZ,Green,0,2024-04-20,2024-04-15,3,Flood in Kyrgyzstan
+1102574,PRY,Green,0,2024-04-11,2024-04-08,12,Flood in Paraguay
+1102588,SOM,Green,0,2024-04-19,2024-04-15,3,Flood in Somalia
+1102580,CHN,Green,0,2024-04-18,2024-04-15,3,Flood in China
+1102579,YEM,Green,0,2024-04-16,2024-04-15,3,Flood in Yemen
+1102552,RUS,Green,0,2024-03-28,2024-03-25,22,Flood in Russia
+1102582,BHR,Green,0,2024-04-15,2024-04-15,3,"Flood in Bahrain, United Arab Emirates"
+1102578,DOM,Green,0,2024-04-15,2024-04-15,3,Flood in Dominican Republic
+1102573,CHL,Green,0,2024-04-14,2024-04-08,3,Flood in Chile
+1102570,IRN,Green,0,2024-04-14,2024-04-08,3,Flood in Islamic Republic of Iran
+1102562,ZAF,Green,0,2024-04-08,2024-04-08,9,Flood in South Africa
+1102577,FIN,Green,0,2024-04-13,2024-04-08,3,Flood in Finland
+1102571,MYS,Green,0,2024-04-14,2024-04-08,2,Flood in Malaysia
+1102568,DZA,Green,0,2024-04-13,2024-04-08,3,Flood in Algeria
+1102566,OMN,Green,0,2024-04-13,2024-04-08,3,Flood in Oman
+1102560,COD,Green,0,2024-04-04,2024-04-01,12,Flood in Democratic Republic of Congo
+1102572,PAK,Green,0,2024-04-12,2024-04-08,3,Flood in Pakistan
+1102567,CAN,Green,0,2024-04-11,2024-04-08,4,Flood in Canada
+1102556,USA,Green,0,2024-04-02,2024-04-01,13,Flood in United States
+1102625,SDN,Green,0,2024-04-11,2024-04-08,3,Flood in Sudan
+1102576,AFG,Green,0,2024-04-11,2024-04-08,3,Flood in Afghanistan
+1102575,MWI,Green,0,2024-04-11,2024-04-08,3,Flood in Malawi
+1102563,ESP,Green,0,2024-04-10,2024-04-08,3,Flood in Spain
+1102554,AUS,Green,0,2024-03-30,2024-03-25,14,Flood in Australia
+1102548,KAZ,Orange,1,2024-03-28,2024-03-25,14,Flood in Kazakhstan
+1102561,KEN,Green,0,2024-04-08,2024-04-08,3,Flood in Kenya
+1102581,BDI,Green,0,2024-04-08,2024-04-08,3,Flood in Burundi
+1102559,GBR,Green,0,2024-04-06,2024-04-01,3,Flood in United Kingdom
+1102543,PER,Green,0,2024-03-24,2024-03-18,14,Flood in Peru
+1102515,ECU,Green,0,2024-03-01,2024-02-26,35,Flood in Ecuador
+1102564,RUS,Green,0,2024-04-01,2024-04-01,3,Flood in Russia
+1102558,UGA,Green,0,2024-04-01,2024-04-01,3,Flood in Uganda
+1102551,ITA,Green,0,2024-03-30,2024-03-25,3,Flood in Italy
+1102550,FRA,Green,0,2024-03-29,2024-03-25,4,Flood in France
+1102549,MAR,Green,0,2024-03-30,2024-03-25,3,Flood in Morocco
+1102553,PAK,Green,0,2024-03-29,2024-03-25,3,Flood in Pakistan
+1102531,COL,Green,0,2024-03-14,2024-03-11,17,Flood in Colombia
+1102547,MDG,Green,0,2024-03-27,2024-03-25,3,Flood in Madagascar
+1102546,PRT,Green,0,2024-03-27,2024-03-25,3,Flood in Portugal
+1102538,ESP,Green,0,2024-03-22,2024-03-18,8,Flood in Spain
+1102510,COD,Green,0,2024-03-05,2024-03-04,25,Flood in Democratic Republic of Congo
+1102565,PNG,Green,0,2024-03-25,2024-03-25,3,Flood in Papua New Guinea
+1102545,DJI,Green,0,2024-03-25,2024-03-25,3,Flood in Djibouti
+1102542,GBR,Green,0,2024-03-25,2024-03-25,3,Flood in United Kingdom
+1102540,KEN,Green,0,2024-03-23,2024-03-18,5,Flood in Kenya
+1102532,IRN,Green,0,2024-03-19,2024-03-18,9,Flood in Islamic Republic of Iran
+1102514,USA,Green,0,2024-03-05,2024-03-04,21,Flood in United States
+1102541,MOZ,Green,0,2024-03-22,2024-03-18,3,Flood in Mozambique
+1102539,KGZ,Green,0,2024-03-21,2024-03-18,3,Flood in Kyrgyzstan
+1102537,URY,Green,0,2024-03-20,2024-03-18,3,Flood in Uruguay
+1102536,BOL,Green,0,2024-03-20,2024-03-18,3,Flood in Bolivia
+1102535,AFG,Green,0,2024-03-20,2024-03-18,3,Flood in Afghanistan
+1102530,IRQ,Green,0,2024-03-19,2024-03-18,3,Flood in Iraq
+1102533,TUR,Green,0,2024-03-18,2024-03-18,3,Flood in Türkiye
+1102507,ARG,Green,0,2024-03-03,2024-02-26,15,Flood in Argentina
+1102529,FJI,Green,0,2024-03-14,2024-03-11,3,Flood in Fiji
+1102522,PNG,Green,0,2024-03-12,2024-03-11,3,Flood in Papua New Guinea
+1102521,MOZ,Green,0,2024-03-12,2024-03-11,3,Flood in Mozambique
+1102520,MEX,Green,0,2024-03-12,2024-03-11,3,Flood in Mexico
+1102509,FRA,Green,0,2024-03-04,2024-03-04,11,Flood in France
+1102508,BDI,Green,0,2024-02-26,2024-02-26,18,Flood in Burundi
+1102525,GAB,Green,0,2024-03-10,2024-03-04,3,Flood in Gabon
+1102524,URY,Green,0,2024-03-11,2024-03-11,2,Flood in Uruguay
+1102519,AUS,Green,0,2024-03-10,2024-03-04,3,Flood in Australia
+1102518,BOL,Green,0,2024-03-08,2024-03-04,5,Flood in Bolivia
+1102517,HRV,Green,0,2024-03-10,2024-03-04,3,Flood in Croatia
+1102516,RWA,Green,0,2024-03-09,2024-03-04,3,Flood in Rwanda
+1102526,YEM,Green,0,2024-03-08,2024-03-04,3,Flood in Yemen
+1102523,PNG,Green,0,2024-02-26,2024-02-26,11,Flood in Papua New Guinea
+1102513,ROU,Green,0,2024-03-05,2024-03-04,3,Flood in Romania
+1102512,POL,Green,0,2024-03-05,2024-03-04,3,Flood in Poland
+1102511,TUR,Green,0,2024-03-05,2024-03-04,3,Flood in Türkiye
+1102534,ECU,Green,0,2024-03-04,2024-03-04,3,Flood in Ecuador
+1102557,BRA,Green,0,2024-03-03,2024-02-26,3,Flood in Brazil
+1102528,IDN,Green,0,2024-03-03,2024-02-26,3,Flood in Indonesia
+1102505,GBR,Green,0,2024-03-02,2024-02-26,3,Flood in United Kingdom
+1102527,AGO,Green,0,2024-03-01,2024-02-26,3,Flood in Angola
+1102506,PAK,Green,0,2024-03-01,2024-02-26,3,Flood in Pakistan
+1102504,PHL,Green,0,2024-03-01,2024-02-26,3,Flood in Philippines
+1102503,MYS,Green,0,2024-03-01,2024-02-26,3,Flood in Malaysia
+1102502,AFG,Green,0,2024-03-01,2024-02-26,3,Flood in Afghanistan
+1102501,CAN,Green,0,2024-02-29,2024-02-26,3,Flood in Canada
+1102500,LVA,Green,0,2024-02-28,2024-02-26,3,Flood in Latvia
+1102495,ESP,Green,0,2024-02-27,2024-02-26,3,Flood in Spain
+1102497,MWI,Green,0,2024-02-27,2024-02-26,3,Flood in Malawi
+1102498,DZA,Green,0,2024-02-27,2024-02-26,3,Flood in Algeria
+1102499,GRC,Green,0,2024-02-29,2024-02-26,1,Flood in Greece
+1102496,IRN,Green,0,2024-02-26,2024-02-26,3,"Flood in Islamic Republic of Iran, Pakistan"
+1102720,NGA,Green,0,2024-06-23,2024-06-17,93,Flood in Nigeria
+1102678,IND,Orange,1,2024-06-10,2024-06-10,99,Flood in India
+1102594,USA,Green,0,2024-04-29,2024-04-29,109,Flood in United States
+1102714,ITA,Green,0,2024-06-21,2024-06-17,45,Flood in Italy
+1102719,THA,Green,0,2024-06-22,2024-06-17,40,Flood in Thailand
+1102734,IDN,Green,0,2024-06-22,2024-06-17,31,Flood in Indonesia
+1102691,MEX,Green,0,2024-06-14,2024-06-10,33,Flood in Mexico
+1102703,PHL,Green,0,2024-06-14,2024-06-10,27,Flood in Philippines
+1102727,PAK,Green,0,2024-06-24,2024-06-24,14,Flood in Pakistan
+1102707,POL,Green,0,2024-06-19,2024-06-17,15,Flood in Poland
+1102716,MYS,Green,0,2024-06-23,2024-06-17,10,Flood in Malaysia
+1102713,CHE,Green,0,2024-06-21,2024-06-17,11,Flood in Switzerland
+1102677,FRA,Green,0,2024-06-08,2024-06-03,24,Flood in France
+1102712,DEU,Green,0,2024-06-21,2024-06-17,8,Flood in Germany
+1102711,CHL,Green,0,2024-06-20,2024-06-17,9,Flood in Chile
+1102667,VNM,Green,0,2024-06-04,2024-06-03,25,Flood in Vietnam
+1102722,AFG,Green,0,2024-06-23,2024-06-17,4,Flood in Afghanistan
+1102718,BIH,Green,0,2024-06-24,2024-06-24,3,Flood in Bosnia  and  Herzegovina
+1102725,XXK,Green,0,2024-06-23,2024-06-17,3,Flood in Kosovo
+1102715,SOM,Green,0,2024-06-23,2024-06-17,3,Flood in Somalia
+1102697,ECU,Green,0,2024-06-15,2024-06-10,9,Flood in Ecuador
+1102709,COM,Green,0,2024-06-19,2024-06-17,3,Flood in Comoros
+1102717,NPL,Green,0,2024-06-18,2024-06-17,3,Flood in Nepal
+1102708,TUR,Green,0,2024-06-18,2024-06-17,3,Flood in Türkiye
+1102706,NLD,Green,0,2024-06-18,2024-06-17,3,Flood in Netherlands
+1102705,BEL,Green,0,2024-06-18,2024-06-17,3,Flood in Belgium
+1102692,COL,Green,0,2024-06-15,2024-06-10,6,Flood in Colombia
+1102702,MNG,Green,0,2024-06-17,2024-06-17,3,Flood in Mongolia
+1102701,KGZ,Green,0,2024-06-17,2024-06-17,3,Flood in Kyrgyzstan
+1102700,BGD,Green,0,2024-06-17,2024-06-17,3,Flood in Bangladesh
+1102693,CHN,Green,0,2024-06-14,2024-06-10,6,Flood in China
+1102698,BRA,Green,0,2024-06-16,2024-06-10,3,Flood in Brazil
+1102699,HND,Green,0,2024-06-15,2024-06-10,3,Flood in Honduras
+1102695,CRI,Green,0,2024-06-15,2024-06-10,3,Flood in Costa Rica
+1102681,GTM,Green,0,2024-06-09,2024-06-03,9,Flood in Guatemala
+1102710,LBR,Green,0,2024-06-14,2024-06-10,3,Flood in Liberia
+1102696,NIC,Green,0,2024-06-14,2024-06-10,3,Flood in Nicaragua
+1102638,ITA,Green,0,2024-05-20,2024-05-20,28,Flood in Italy
+1102694,JPN,Green,0,2024-06-12,2024-06-10,3,Flood in Japan
+1102704,TJK,Green,0,2024-06-11,2024-06-10,3,Flood in Tajikistan
+1102689,NGA,Green,0,2024-05-27,2024-05-27,17,Flood in Nigeria
+1102685,SLV,Green,0,2024-06-09,2024-06-03,4,Flood in El Salvador
+1102682,ESP,Green,0,2024-06-10,2024-06-10,3,Flood in Spain
+1102679,THA,Green,0,2024-06-10,2024-06-10,3,Flood in Thailand
+1102683,BFA,Green,0,2024-06-09,2024-06-03,3,Flood in Burkina Faso
+1102663,CHE,Green,0,2024-05-31,2024-05-27,12,Flood in Switzerland
+1102680,TUR,Green,0,2024-06-08,2024-06-03,3,Flood in Türkiye
+1102664,AUT,Green,0,2024-06-03,2024-06-03,8,Flood in Austria
+1102684,HND,Green,0,2024-06-05,2024-06-03,3,Flood in Honduras
+1102675,BRA,Green,0,2024-06-05,2024-06-03,3,Flood in Brazil
+1102674,DOM,Green,0,2024-06-05,2024-06-03,3,Flood in Dominican Republic
+1102657,COL,Green,0,2024-05-30,2024-05-27,9,Flood in Colombia
+1102687,GHA,Green,0,2024-05-25,2024-05-20,13,Flood in Ghana
+1102686,COD,Green,0,2024-06-04,2024-06-03,3,Flood in Democratic Republic of Congo
+1102670,PER,Green,0,2024-06-02,2024-05-27,5,Flood in Peru
+1102669,CHL,Green,0,2024-06-04,2024-06-03,3,Flood in Chile
+1102666,POL,Green,0,2024-06-04,2024-06-03,3,Flood in Poland
+1102659,ZAF,Green,0,2024-06-01,2024-05-27,6,Flood in South Africa
+1102690,BIH,Green,0,2024-06-03,2024-06-03,3,Flood in Bosnia  and  Herzegovina
+1102673,CAN,Green,0,2024-06-03,2024-06-03,3,Flood in Canada
+1102672,SVN,Green,0,2024-06-03,2024-06-03,3,Flood in Slovenia
+1102671,DZA,Green,0,2024-06-03,2024-06-03,3,Flood in Algeria
+1102665,CZE,Green,0,2024-06-03,2024-06-03,3,Flood in Czech Republic
+1102602,DEU,Green,0,2024-05-02,2024-04-29,35,Flood in Germany
+1102668,AUS,Green,0,2024-06-02,2024-05-27,3,Flood in Australia
+1102662,PRT,Green,0,2024-06-02,2024-05-27,3,Flood in Portugal
+1102688,NER,Green,0,2024-06-01,2024-05-27,3,Flood in Niger
+1102660,LKA,Green,0,2024-06-01,2024-05-27,3,Flood in Sri Lanka
+1102656,SVK,Green,0,2024-05-30,2024-05-27,3,Flood in Slovakia
+1102652,BGD,Green,0,2024-05-26,2024-05-20,6,Flood in Bangladesh
+1102658,MMR,Green,0,2024-05-28,2024-05-27,3,Flood in Myanmar
+1102653,IND,Green,0,2024-05-26,2024-05-20,5,Flood in India
+1102643,GBR,Green,0,2024-05-21,2024-05-20,10,Flood in United Kingdom
+1102650,MEX,Green,0,2024-05-25,2024-05-20,5,Flood in Mexico
+1102661,IDN,Green,0,2024-05-25,2024-05-20,3,Flood in Indonesia
+1102655,TJK,Green,0,2024-05-25,2024-05-20,3,Flood in Tajikistan
+1102654,KGZ,Green,0,2024-05-25,2024-05-20,3,Flood in Kyrgyzstan
+1102651,GEO,Green,0,2024-05-25,2024-05-20,3,Flood in Georgia
+1102649,PHL,Green,0,2024-05-24,2024-05-20,3,Flood in Philippines
+1102647,ARM,Green,0,2024-05-24,2024-05-20,3,Flood in Armenia
+1102646,PNG,Green,0,2024-05-24,2024-05-20,3,Flood in Papua New Guinea
+1102595,FRA,Green,0,2024-04-27,2024-04-22,30,Flood in France
+1102648,THA,Green,0,2024-05-23,2024-05-20,3,Flood in Thailand
+1102616,AFG,Orange,1,2024-05-09,2024-05-06,17,Flood in Afghanistan
+1102645,TGO,Green,0,2024-05-22,2024-05-20,3,Flood in Togo
+1102642,SRB,Green,0,2024-05-21,2024-05-20,3,Flood in Serbia
+1102676,COL,Green,0,2024-05-20,2024-05-20,3,Flood in Colombia
+1102641,NZL,Green,0,2024-05-20,2024-05-20,3,Flood in New Zealand
+1102644,ESP,Green,0,2024-05-21,2024-05-20,1,Flood in Spain
+1102640,COM,Green,0,2024-05-19,2024-05-13,3,Flood in Comoros
+1102635,LKA,Green,0,2024-05-19,2024-05-13,3,Flood in Sri Lanka
+1102632,NLD,Green,0,2024-05-17,2024-05-13,5,Flood in Netherlands
+1102636,CHN,Green,0,2024-05-18,2024-05-13,3,Flood in China
+1102631,DZA,Green,0,2024-05-18,2024-05-13,2,Flood in Algeria
+1102619,BEL,Green,0,2024-05-12,2024-05-06,8,Flood in Belgium
+1102633,RUS,Green,0,2024-05-16,2024-05-13,3,Flood in Russia
+1102629,MYS,Green,0,2024-05-16,2024-05-13,3,Flood in Malaysia
+1102630,IND,Green,0,2024-05-17,2024-05-13,1,Flood in India
+1102626,IRN,Green,0,2024-05-15,2024-05-13,3,Flood in Islamic Republic of Iran
+1102624,FJI,Green,0,2024-05-14,2024-05-13,3,Flood in Fiji
+1102628,MEX,Green,0,2024-05-14,2024-05-13,3,Flood in Mexico
+1102634,TKM,Green,0,2024-05-13,2024-05-13,3,Flood in Turkmenistan
+1102623,VNM,Green,0,2024-05-12,2024-05-06,3,Flood in Vietnam
+1102620,PHL,Green,0,2024-05-11,2024-05-06,3,Flood in Philippines
+1102617,IDN,Green,0,2024-05-07,2024-05-06,6,Flood in Indonesia
+1102601,UGA,Green,0,2024-05-01,2024-04-29,12,Flood in Uganda
+1102615,GRC,Green,0,2024-05-10,2024-05-06,3,Flood in Greece
+1102639,COM,Green,0,2024-04-26,2024-04-22,15,Flood in Comoros
+1102609,COL,Green,0,2024-05-04,2024-04-29,7,Flood in Colombia
+1102614,ITA,Green,0,2024-05-08,2024-05-06,3,Flood in Italy
+1102621,ARG,Green,0,2024-05-08,2024-05-06,3,Flood in Argentina
+1102622,GUY,Green,0,2024-05-08,2024-05-06,3,Flood in Guyana
+1102612,ROU,Green,0,2024-05-07,2024-05-06,3,Flood in Romania
+1102613,BGR,Green,0,2024-05-08,2024-05-06,2,Flood in Bulgaria
+1102610,CZE,Green,0,2024-05-06,2024-05-06,3,Flood in Czech Republic
+1102627,PNG,Green,0,2024-05-06,2024-05-06,3,Flood in Papua New Guinea
+1102618,URY,Green,0,2024-05-05,2024-04-29,3,Flood in Uruguay
+1102611,TJK,Green,0,2024-05-04,2024-04-29,3,Flood in Tajikistan
+1102608,IRQ,Green,0,2024-05-01,2024-04-29,6,Flood in Iraq
+1102606,SRB,Green,0,2024-05-03,2024-04-29,3,Flood in Serbia
+1102603,NLD,Green,0,2024-05-02,2024-04-29,2,Flood in Netherlands
+1102598,CHN,Green,0,2024-05-01,2024-04-29,3,Flood in China
+1102600,LBN,Green,0,2024-04-29,2024-04-29,3,Flood in Lebanon
+1102637,ETH,Orange,1,2024-04-29,2024-04-29,3,Flood in Ethiopia
+1102599,SAU,Green,0,2024-04-28,2024-04-22,3,Flood in Saudi Arabia
+1102605,RWA,Green,0,2024-04-28,2024-04-22,3,Flood in Rwanda
+1102597,CUB,Green,0,2024-04-27,2024-04-22,3,"Flood in Cuba, Dominican Republic, United States"
+1102833,ITA,Green,0,2024-08-14,2024-08-12,58,Flood in Italy
+1102859,USA,Green,0,2024-08-16,2024-08-12,34,Flood in United States
+1102783,IDN,Green,0,2024-07-24,2024-07-22,48,Flood in Indonesia
+1102782,CHN,Green,0,2024-07-27,2024-07-22,41,Flood in China
+1102851,SAU,Green,0,2024-08-22,2024-08-19,10,Flood in Saudi Arabia
+1102855,PHL,Green,0,2024-08-21,2024-08-19,10,Flood in Philippines
+1102779,VNM,Green,0,2024-07-23,2024-07-22,39,Flood in Vietnam
+1102839,RUS,Green,0,2024-08-19,2024-08-19,10,Flood in Russia
+1102835,AUT,Green,0,2024-08-13,2024-08-12,16,Flood in Austria
+1102856,MAR,Green,0,2024-08-23,2024-08-19,5,Flood in Morocco
+1102812,JPN,Green,0,2024-08-07,2024-08-05,21,Flood in Japan
+1102836,NPL,Green,0,2024-08-16,2024-08-12,11,Flood in Nepal
+1102850,OMN,Green,0,2024-08-23,2024-08-19,3,Flood in Oman
+1102846,THA,Green,0,2024-08-15,2024-08-12,11,Flood in Thailand
+1102834,GIN,Green,0,2024-08-14,2024-08-12,12,Flood in Guinea
+1102852,TWN,Green,0,2024-08-23,2024-08-19,2,Flood in Taiwan
+1102849,LAO,Green,0,2024-08-20,2024-08-19,3,Flood in Laos
+1102848,COL,Green,0,2024-08-20,2024-08-19,3,Flood in Colombia
+1102845,PRK,Green,0,2024-08-20,2024-08-19,3,"Flood in North Korea, South Korea"
+1102844,MYS,Green,0,2024-08-20,2024-08-19,3,Flood in Malaysia
+1102841,SVK,Green,0,2024-08-20,2024-08-19,2,Flood in Slovakia
+1102847,BGD,Green,0,2024-08-18,2024-08-12,3,Flood in Bangladesh
+1102843,KGZ,Green,0,2024-08-18,2024-08-12,3,Flood in Kyrgyzstan
+1102842,HRV,Green,0,2024-08-19,2024-08-19,2,Flood in Croatia
+1102840,POL,Green,0,2024-08-18,2024-08-12,3,Flood in Poland
+1102819,VEN,Green,0,2024-08-10,2024-08-05,11,Flood in Venezuela
+1102936,SLE,Green,0,2024-08-16,2024-08-12,3,Flood in Sierra Leone
+1102837,GTM,Green,0,2024-08-12,2024-08-12,7,Flood in Guatemala
+1102818,CAN,Green,0,2024-08-10,2024-08-05,9,Flood in Canada
+1102831,BEL,Green,0,2024-08-14,2024-08-12,3,Flood in Belgium
+1102832,VGB,Green,0,2024-08-13,2024-08-12,3,"Flood in British Virgin Is., France, United States"
+1102828,ESP,Green,0,2024-08-13,2024-08-12,3,Flood in Spain
+1102825,MDV,Green,0,2024-08-13,2024-08-12,3,Flood in Maldives
+1102803,DEU,Green,0,2024-08-01,2024-07-29,15,Flood in Germany
+1102790,MEX,Green,0,2024-07-25,2024-07-22,22,Flood in Mexico
+1102893,CAF,Green,0,2024-08-12,2024-08-12,3,Flood in Central African Republic
+1102838,SLV,Green,0,2024-08-12,2024-08-12,3,Flood in El Salvador
+1102827,NLD,Green,0,2024-08-13,2024-08-12,2,Flood in Netherlands
+1102823,CHE,Green,0,2024-08-12,2024-08-12,3,Flood in Switzerland
+1102829,LBY,Green,0,2024-08-11,2024-08-05,3,Flood in Libya
+1102826,TTO,Green,0,2024-08-12,2024-08-12,2,Flood in Trinidad  and  Tobago
+1102824,ETH,Green,0,2024-08-11,2024-08-05,3,Flood in Ethiopia
+1102817,BTN,Green,0,2024-08-10,2024-08-05,3,Flood in Bhutan
+1102798,MYS,Green,0,2024-08-04,2024-07-29,9,Flood in Malaysia
+1102821,IDN,Green,0,2024-08-09,2024-08-05,3,Flood in Indonesia
+1102789,UGA,Green,0,2024-07-24,2024-07-22,19,Flood in Uganda
+1102822,ZAF,Green,0,2024-08-08,2024-08-05,3,Flood in South Africa
+1102820,EGY,Green,0,2024-08-08,2024-08-05,3,Flood in Egypt
+1102816,POL,Green,0,2024-08-08,2024-08-05,2,Flood in Poland
+1102810,EST,Green,0,2024-08-06,2024-08-05,3,Flood in Estonia
+1102785,PAK,Green,0,2024-07-29,2024-07-29,10,Flood in Pakistan
+1102780,RUS,Green,0,2024-07-26,2024-07-22,13,Flood in Russia
+1102813,TJK,Green,0,2024-08-04,2024-07-29,3,Flood in Tajikistan
+1102809,OMN,Green,0,2024-08-04,2024-07-29,3,Flood in Oman
+1102815,SDN,Orange,1,2024-08-03,2024-07-29,3,Flood in Sudan
+1102811,COL,Green,0,2024-08-03,2024-07-29,3,Flood in Colombia
+1102806,SWE,Green,0,2024-08-04,2024-07-29,2,Flood in Sweden
+1102802,CHL,Green,0,2024-08-01,2024-07-29,4,Flood in Chile
+1102799,SAU,Green,0,2024-08-03,2024-07-29,2,Flood in Saudi Arabia
+1102830,NGA,Green,0,2024-08-01,2024-07-29,3,Flood in Nigeria
+1102805,CZE,Green,0,2024-08-01,2024-07-29,2,Flood in Czech Republic
+1102801,BEL,Green,0,2024-08-01,2024-07-29,2,Flood in Belgium
+1102795,GBR,Green,0,2024-08-01,2024-07-29,2,Flood in United Kingdom
+1102788,CAN,Green,0,2024-07-30,2024-07-29,4,Flood in Canada
+1102771,FRA,Green,0,2024-07-20,2024-07-15,13,Flood in France
+1102808,NPL,Green,0,2024-07-30,2024-07-29,2,Flood in Nepal
+1102807,LAO,Green,0,2024-07-18,2024-07-15,14,Flood in Laos
+1102797,CMR,Green,0,2024-07-28,2024-07-22,4,Flood in Cameroon
+1102796,GIN,Green,0,2024-07-29,2024-07-29,3,Flood in Guinea
+1102794,PAN,Green,0,2024-07-25,2024-07-22,7,Flood in Panama
+1102793,COG,Green,0,2024-07-31,2024-07-29,1,Flood in Republic of Congo
+1102792,MLI,Green,0,2024-07-22,2024-07-22,10,Flood in Mali
+1102787,ARG,Green,0,2024-07-22,2024-07-22,10,Flood in Argentina
+1102786,TUR,Green,0,2024-07-30,2024-07-29,2,Flood in Türkiye
+1102784,PRK,Green,0,2024-07-27,2024-07-22,5,Flood in North Korea
+1102781,EST,Green,0,2024-07-29,2024-07-29,3,"Flood in Estonia, Latvia, Lithuania"
+1102777,JPN,Green,0,2024-07-25,2024-07-22,3,Flood in Japan
+1102778,TWN,Green,0,2024-07-24,2024-07-22,3,Flood in Taiwan
+1102791,SDN,Green,0,2024-07-23,2024-07-22,3,Flood in Sudan
+1102751,DEU,Green,0,2024-07-10,2024-07-08,15,Flood in Germany
+1102814,YEM,Green,0,2024-07-21,2024-07-15,3,Flood in Yemen
+1102804,THA,Green,0,2024-07-21,2024-07-15,3,Flood in Thailand
+1102774,HRV,Green,0,2024-07-22,2024-07-22,2,Flood in Croatia
+1102800,TCD,Green,0,2024-07-20,2024-07-15,3,Flood in Chad
+1102775,SVN,Green,0,2024-07-20,2024-07-15,3,Flood in Slovenia
+1102772,TUR,Green,0,2024-07-20,2024-07-15,3,Flood in Türkiye
+1102757,NLD,Green,0,2024-07-12,2024-07-08,11,Flood in Netherlands
+1102752,KOR,Green,0,2024-07-09,2024-07-08,13,Flood in South Korea
+1102770,BLR,Green,0,2024-07-18,2024-07-15,3,Flood in Belarus
+1102773,CMR,Green,0,2024-07-17,2024-07-15,3,Flood in Cameroon
+1102769,TTO,Green,0,2024-07-17,2024-07-15,3,Flood in Trinidad  and  Tobago
+1102776,GNB,Green,0,2024-07-16,2024-07-15,3,Flood in Guinea-Bissau
+1102754,POL,Green,0,2024-07-11,2024-07-08,8,Flood in Poland
+1102765,AUS,Green,0,2024-07-15,2024-07-15,3,Flood in Australia
+1102762,AFG,Green,0,2024-07-15,2024-07-15,3,Flood in Afghanistan
+1102764,UZB,Green,0,2024-07-14,2024-07-08,3,Flood in Uzbekistan
+1102756,CAN,Green,0,2024-07-10,2024-07-08,6,Flood in Canada
+1102763,TJK,Green,0,2024-07-13,2024-07-08,3,Flood in Tajikistan
+1102759,IRN,Green,0,2024-07-12,2024-07-08,3,Flood in Islamic Republic of Iran
+1102760,JPN,Green,0,2024-07-12,2024-07-08,3,Flood in Japan
+1102761,VNM,Green,0,2024-07-12,2024-07-08,3,Flood in Vietnam
+1102767,UGA,Green,0,2024-07-12,2024-07-08,3,Flood in Uganda
+1102768,PAN,Green,0,2024-07-12,2024-07-08,3,Flood in Panama
+1102747,NPL,Green,0,2024-07-05,2024-07-01,9,Flood in Nepal
+1102755,KGZ,Green,0,2024-07-10,2024-07-08,3,Flood in Kyrgyzstan
+1102758,SVK,Green,0,2024-07-10,2024-07-08,3,Flood in Slovakia
+1102766,SDN,Green,0,2024-07-10,2024-07-08,3,Flood in Sudan
+1102750,CZE,Green,0,2024-07-10,2024-07-08,2,Flood in Czech Republic
+1102742,TUR,Green,0,2024-07-03,2024-07-01,8,Flood in Türkiye
+1102749,BEL,Green,0,2024-07-09,2024-07-08,1,Flood in Belgium
+1102748,HND,Green,0,2024-07-06,2024-07-01,3,Flood in Honduras
+1102744,COL,Green,0,2024-07-05,2024-07-01,3,Flood in Colombia
+1102743,BGD,Green,0,2024-07-01,2024-07-01,6,Flood in Bangladesh
+1102741,ZAF,Green,0,2024-07-03,2024-07-01,3,Flood in South Africa
+1102746,GRC,Green,0,2024-07-04,2024-07-01,2,Flood in Greece
+1102745,SEN,Green,0,2024-07-01,2024-07-01,3,Flood in Senegal
+1102737,GIN,Green,0,2024-07-01,2024-07-01,3,Flood in Guinea
+1102738,BRB,Green,0,2024-07-01,2024-07-01,3,"Flood in Barbados, Grenada, St. Lucia"
+1102739,GTM,Green,0,2024-07-01,2024-07-01,3,Flood in Guatemala
+1102740,VEN,Green,0,2024-07-01,2024-07-01,3,Flood in Venezuela
+1102735,MMR,Green,0,2024-06-30,2024-06-24,3,Flood in Myanmar
+1102736,CAN,Green,0,2024-06-30,2024-06-24,3,Flood in Canada
+1102732,BEL,Green,0,2024-06-29,2024-06-24,3,Flood in Belgium
+1102733,PRT,Green,0,2024-06-29,2024-06-24,2,Flood in Portugal
+1102730,ESP,Green,0,2024-06-28,2024-06-24,3,Flood in Spain
+1102731,AUT,Green,0,2024-06-27,2024-06-24,2,Flood in Austria
+1102729,SRB,Green,0,2024-06-27,2024-06-24,2,Flood in Serbia
+1102724,MKD,Green,0,2024-06-26,2024-06-24,3,Flood in The Republic of North Macedonia
+1102723,NZL,Green,0,2024-06-25,2024-06-24,3,Flood in New Zealand
+1102728,BEN,Green,0,2024-06-25,2024-06-24,3,Flood in Benin
+1102726,IRN,Green,0,2024-06-25,2024-06-24,3,Flood in Islamic Republic of Iran
+1102721,ROU,Green,0,2024-06-25,2024-06-24,2,Flood in Romania
+1102955,ESP,Green,0,2024-10-11,2024-10-07,36,Flood in Spain
+1102928,IDN,Green,0,2024-09-18,2024-09-16,59,Flood in Indonesia
+1102961,ITA,Green,0,2024-10-16,2024-10-14,13,Flood in Italy
+1102974,IND,Red,2,2024-10-20,2024-10-14,7,Flood in India
+1102931,FRA,Green,0,2024-10-01,2024-09-30,26,Flood in France
+1102978,PER,Green,0,2024-10-22,2024-10-21,3,Flood in Peru
+1102976,JPN,Green,0,2024-10-22,2024-10-21,3,Flood in Japan
+1102969,USA,Green,0,2024-10-19,2024-10-14,6,Flood in United States
+1102980,IRN,Green,0,2024-10-21,2024-10-21,3,Flood in Islamic Republic of Iran
+1102975,GAB,Green,0,2024-10-21,2024-10-21,3,Flood in Gabon
+1102973,CUB,Green,0,2024-10-21,2024-10-21,3,Flood in Cuba
+1102965,AZE,Green,0,2024-10-12,2024-10-07,12,Flood in Azerbaijan
+1102959,ZAF,Green,0,2024-10-15,2024-10-14,9,Flood in South Africa
+1102952,PHL,Green,0,2024-10-12,2024-10-07,12,Flood in Philippines
+1102971,GEO,Green,0,2024-10-20,2024-10-14,3,Flood in Georgia
+1102964,MEX,Green,0,2024-10-16,2024-10-14,7,Flood in Mexico
+1102968,COD,Green,0,2024-10-19,2024-10-14,3,Flood in Democratic Republic of Congo
+1102967,CAN,Green,0,2024-10-19,2024-10-14,3,Flood in Canada
+1102925,THA,Green,0,2024-10-01,2024-09-30,21,Flood in Thailand
+1102977,CRI,Green,0,2024-10-18,2024-10-14,3,Flood in Costa Rica
+1102963,COG,Green,0,2024-10-09,2024-10-07,12,Flood in Republic of Congo
+1102972,UGA,Green,0,2024-10-17,2024-10-14,3,Flood in Uganda
+1102970,NGA,Green,0,2024-10-14,2024-10-14,6,Flood in Nigeria
+1102962,VNM,Green,0,2024-10-15,2024-10-14,4,Flood in Vietnam
+1102960,TCD,Orange,1,2024-09-01,2024-08-26,47,Flood in Chad
+1102956,OMN,Green,0,2024-10-15,2024-10-14,3,Flood in Oman
+1102954,TGO,Green,0,2024-10-12,2024-10-07,3,Flood in Togo
+1102953,MAR,Green,0,2024-10-12,2024-10-07,3,Flood in Morocco
+1102958,MRT,Green,0,2024-10-10,2024-10-07,3,Flood in Mauritania
+1102951,BEL,Green,0,2024-10-09,2024-10-07,3,Flood in Belgium
+1102949,USA,Green,0,2024-10-09,2024-10-07,3,Flood in United States
+1102957,LKA,Green,0,2024-10-08,2024-10-07,3,Flood in Sri Lanka
+1102948,PER,Green,0,2024-10-09,2024-10-07,2,Flood in Peru
+1102947,PAK,Green,0,2024-10-07,2024-10-07,4,Flood in Pakistan
+1102946,MYS,Green,0,2024-10-07,2024-10-07,3,Flood in Malaysia
+1102943,BFA,Green,0,2024-09-01,2024-08-26,39,Flood in Burkina Faso
+1102944,BRA,Green,0,2024-10-07,2024-10-07,2,Flood in Brazil
+1102945,IND,Green,0,2024-09-20,2024-09-16,18,Flood in India
+1102939,IRL,Green,0,2024-10-05,2024-09-30,3,Flood in Ireland
+1102937,BGD,Green,0,2024-10-05,2024-09-30,3,Flood in Bangladesh
+1102926,VNM,Green,0,2024-09-29,2024-09-23,9,Flood in Vietnam
+1102940,GRC,Green,0,2024-10-04,2024-09-30,3,Flood in Greece
+1102938,TWN,Green,0,2024-10-03,2024-09-30,4,Flood in Taiwan
+1102935,MNE,Green,0,2024-10-04,2024-09-30,3,Flood in Montenegro
+1102934,ALB,Green,0,2024-10-04,2024-09-30,3,"Flood in Albania, The Republic of North Macedonia"
+1102966,CIV,Green,0,2024-10-03,2024-09-30,3,Flood in Cote d'Ivoire
+1102933,BIH,Orange,1,2024-10-03,2024-09-30,3,Flood in Bosnia  and  Herzegovina
+1102932,NZL,Green,0,2024-10-03,2024-09-30,3,Flood in New Zealand
+1102930,HRV,Green,0,2024-10-02,2024-09-30,3,"Flood in Croatia, Slovakia"
+1102929,LBR,Green,0,2024-10-02,2024-09-30,3,Flood in Liberia
+1102885,MEX,Green,0,2024-08-30,2024-08-26,36,Flood in Mexico
+1102950,SEN,Green,0,2024-10-01,2024-09-30,3,Flood in Senegal
+1102927,ECU,Green,0,2024-10-01,2024-09-30,3,Flood in Ecuador
+1102922,IRN,Green,0,2024-10-01,2024-09-30,3,Flood in Islamic Republic of Iran
+1102924,PHL,Green,0,2024-09-30,2024-09-30,3,Flood in Philippines
+1102919,PAN,Green,0,2024-09-29,2024-09-23,3,Flood in Panama
+1102920,CMR,Green,0,2024-09-27,2024-09-23,4,Flood in Cameroon
+1102918,DNK,Green,0,2024-09-27,2024-09-23,3,Flood in Denmark
+1102923,NPL,Orange,1,2024-09-26,2024-09-23,3,Flood in Nepal
+1102917,USA,Green,0,2024-09-26,2024-09-23,3,Flood in United States
+1102921,PRT,Green,0,2024-09-25,2024-09-23,3,Flood in Portugal
+1102915,ALB,Green,0,2024-09-24,2024-09-23,3,"Flood in Albania, Montenegro"
+1102914,TUN,Green,0,2024-09-23,2024-09-23,3,Flood in Tunisia
+1102907,ITA,Green,0,2024-09-17,2024-09-16,9,Flood in Italy
+1102913,COG,Green,0,2024-09-19,2024-09-16,5,Flood in Republic of Congo
+1102912,DZA,Green,0,2024-09-21,2024-09-16,3,Flood in Algeria
+1102910,JPN,Green,0,2024-09-21,2024-09-16,3,Flood in Japan
+1102909,GBR,Green,0,2024-09-21,2024-09-16,3,Flood in United Kingdom
+1102911,KOR,Green,0,2024-09-20,2024-09-16,3,Flood in South Korea
+1102908,MAR,Green,0,2024-09-20,2024-09-16,3,Flood in Morocco
+1102896,TUR,Green,0,2024-09-11,2024-09-09,12,Flood in Türkiye
+1102916,VNM,Green,0,2024-09-19,2024-09-16,3,Flood in Vietnam
+1102942,KHM,Green,0,2024-09-05,2024-09-02,16,Flood in Cambodia
+1102903,ESP,Green,0,2024-09-18,2024-09-16,3,Flood in Spain
+1102892,GRC,Green,0,2024-09-10,2024-09-09,11,Flood in Greece
+1102905,MYS,Green,0,2024-09-17,2024-09-16,3,Flood in Malaysia
+1102899,AUT,Orange,1,2024-09-12,2024-09-09,7,"Flood in Austria, Czech Republic, Germany, Poland, Romania, Slovakia"
+1102906,SEN,Green,0,2024-09-15,2024-09-09,3,Flood in Senegal
+1102904,SVK,Green,0,2024-09-14,2024-09-09,3,Flood in Slovakia
+1102902,POL,Green,0,2024-09-13,2024-09-09,3,Flood in Poland
+1102901,LBY,Green,0,2024-09-13,2024-09-09,3,Flood in Libya
+1102897,BGD,Green,0,2024-09-12,2024-09-09,3,Flood in Bangladesh
+1102895,SVN,Green,0,2024-09-12,2024-09-09,3,Flood in Slovenia
+1102884,GTM,Green,0,2024-09-01,2024-08-26,14,Flood in Guatemala
+1102894,BGR,Green,0,2024-09-11,2024-09-09,3,"Flood in Bulgaria, Romania"
+1102891,THA,Green,0,2024-09-10,2024-09-09,3,Flood in Thailand
+1102890,LAO,Green,0,2024-09-09,2024-09-09,3,Flood in Laos
+1102883,HRV,Green,0,2024-09-09,2024-09-09,3,Flood in Croatia
+1102877,NOR,Green,0,2024-09-03,2024-09-02,9,Flood in Norway
+1102889,VNM,Green,0,2024-09-07,2024-09-02,3,Flood in Vietnam
+1102882,UGA,Green,0,2024-09-06,2024-09-02,4,Flood in Uganda
+1102880,GBR,Green,0,2024-09-06,2024-09-02,4,Flood in United Kingdom
+1102879,ESP,Green,0,2024-08-29,2024-08-26,12,Flood in Spain
+1102872,FRA,Green,0,2024-09-04,2024-09-02,6,Flood in France
+1102864,DZA,Green,0,2024-09-07,2024-09-02,3,Flood in Algeria
+1102861,MYS,Green,0,2024-09-07,2024-09-02,3,Flood in Malaysia
+1102869,MAR,Green,0,2024-09-06,2024-09-02,3,Flood in Morocco
+1102866,GIN,Green,0,2024-09-06,2024-09-02,3,Flood in Guinea
+1102862,NPL,Green,0,2024-09-05,2024-09-02,4,Flood in Nepal
+1102881,CHE,Green,0,2024-09-01,2024-08-26,8,Flood in Switzerland
+1102874,DEU,Green,0,2024-09-05,2024-09-02,2,Flood in Germany
+1102868,KEN,Green,0,2024-09-03,2024-09-02,4,Flood in Kenya
+1102870,NGA,Green,0,2024-08-30,2024-08-26,8,Flood in Nigeria
+1102853,PNG,Green,0,2024-08-24,2024-08-19,14,Flood in Papua New Guinea
+1102865,COG,Green,0,2024-08-26,2024-08-26,11,Flood in Republic of Congo
+1102888,VEN,Green,0,2024-09-01,2024-08-26,5,Flood in Venezuela
+1102876,NLD,Green,0,2024-09-02,2024-09-02,3,Flood in Netherlands
+1102887,PAN,Green,0,2024-09-01,2024-08-26,3,Flood in Panama
+1102871,BEL,Green,0,2024-09-02,2024-09-02,2,Flood in Belgium
+1102873,FRA,Green,0,2024-08-30,2024-08-26,4,Flood in France
+1102867,DJI,Green,0,2024-08-31,2024-08-26,3,Flood in Djibouti
+1102875,ITA,Green,0,2024-09-01,2024-08-26,2,Flood in Italy
+1102878,ROU,Green,0,2024-08-30,2024-08-26,4,Flood in Romania
+1102863,IND,Green,0,2024-08-30,2024-08-26,3,Flood in India
+1102886,MEX,Green,0,2024-08-29,2024-08-26,2,Flood in Mexico
+1102857,TUR,Green,0,2024-08-24,2024-08-19,6,Flood in Türkiye
+1102860,DZA,Green,0,2024-08-28,2024-08-26,2,Flood in Algeria
+1102858,UGA,Green,0,2024-08-25,2024-08-19,3,Flood in Uganda
+1102854,SDN,Green,0,2024-08-25,2024-08-19,2,Flood in Sudan
+1103025,IDN,Green,0,2024-11-17,2024-11-11,70,Flood in Indonesia
+1103032,PHL,Green,0,2024-11-29,2024-11-25,29,Flood in Philippines
+1103058,TUR,Green,0,2024-12-21,2024-12-16,3,Flood in Türkiye
+1103050,CAN,Green,0,2024-12-14,2024-12-09,10,Flood in Canada
+1103059,BRA,Green,0,2024-12-20,2024-12-16,3,Flood in Brazil
+1103056,KEN,Green,0,2024-12-19,2024-12-16,3,Flood in Kenya
+1103055,COL,Green,0,2024-12-17,2024-12-16,4,Flood in Colombia
+1103054,VNM,Green,0,2024-12-18,2024-12-16,3,Flood in Vietnam
+1103053,GBR,Green,0,2024-12-18,2024-12-16,3,Flood in United Kingdom
+1103057,ZAF,Green,0,2024-12-17,2024-12-16,3,Flood in South Africa
+1103051,MDV,Green,0,2024-12-17,2024-12-16,3,Flood in Maldives
+1103052,RUS,Green,0,2024-12-16,2024-12-16,3,Flood in Russia
+1103047,GRC,Green,0,2024-12-14,2024-12-09,3,Flood in Greece
+1103039,ITA,Green,0,2024-12-07,2024-12-02,10,Flood in Italy
+1103046,ARG,Green,0,2024-12-13,2024-12-09,3,Flood in Argentina
+1103045,USA,Green,0,2024-12-11,2024-12-09,5,Flood in United States
+1103049,THA,Green,0,2024-12-12,2024-12-09,3,Flood in Thailand
+1103048,IND,Green,0,2024-12-12,2024-12-09,3,Flood in India
+1103043,MYS,Green,0,2024-12-10,2024-12-09,3,Flood in Malaysia
+1103041,TUR,Green,0,2024-12-08,2024-12-02,3,Flood in Türkiye
+1103044,PNG,Green,0,2024-12-07,2024-12-02,3,Flood in Papua New Guinea
+1103042,FRA,Green,0,2024-12-07,2024-12-02,3,Flood in France
+1103038,BRA,Green,0,2024-12-06,2024-12-02,4,Flood in Brazil
+1103037,IRL,Green,0,2024-12-06,2024-12-02,3,Flood in Ireland
+1103040,AGO,Green,0,2024-12-05,2024-12-02,3,Flood in Angola
+1103036,LBY,Green,0,2024-12-04,2024-12-02,3,Flood in Libya
+1103028,BRA,Green,0,2024-11-26,2024-11-25,11,Flood in Brazil
+1103035,CRI,Green,0,2024-12-03,2024-12-02,3,Flood in Costa Rica
+1102982,COG,Green,0,2024-10-24,2024-10-21,43,Flood in Republic of Congo
+1103031,IND,Green,0,2024-12-01,2024-11-25,3,Flood in India
+1103020,BOL,Green,0,2024-11-22,2024-11-18,12,Flood in Bolivia
+1103034,HTI,Green,0,2024-11-30,2024-11-25,3,Flood in Haiti
+1103033,FIN,Green,0,2024-11-25,2024-11-25,6,Flood in Finland
+1103029,GAB,Green,0,2024-11-25,2024-11-25,5,Flood in Gabon
+1103026,UGA,Green,0,2024-11-25,2024-11-25,5,Flood in Uganda
+1103030,KEN,Green,0,2024-11-26,2024-11-25,3,Flood in Kenya
+1103027,THA,Green,0,2024-11-26,2024-11-25,3,Flood in Thailand
+1103005,MYS,Green,0,2024-11-10,2024-11-04,19,Flood in Malaysia
+1103024,TZA,Green,0,2024-11-25,2024-11-25,3,Flood in Tanzania
+1103019,USA,Green,0,2024-11-20,2024-11-18,6,Flood in United States
+1103018,GBR,Green,0,2024-11-23,2024-11-18,3,Flood in United Kingdom
+1103022,IRL,Green,0,2024-11-22,2024-11-18,3,Flood in Ireland
+1103021,COL,Green,0,2024-11-20,2024-11-18,5,Flood in Colombia
+1103017,ISR,Green,0,2024-11-19,2024-11-18,3,Flood in Israel
+1103023,LKA,Green,0,2024-11-18,2024-11-18,3,Flood in Sri Lanka
+1103016,NIC,Green,0,2024-11-17,2024-11-11,3,Flood in Nicaragua
+1103015,SLV,Green,0,2024-11-17,2024-11-11,3,Flood in El Salvador
+1103014,TUR,Green,0,2024-11-19,2024-11-18,1,Flood in Türkiye
+1103012,BLZ,Green,0,2024-11-16,2024-11-11,3,Flood in Belize
+1103010,HND,Green,0,2024-11-14,2024-11-11,3,Flood in Honduras
+1103011,HTI,Green,0,2024-11-10,2024-11-04,6,Flood in Haiti
+1103008,PRT,Green,0,2024-11-14,2024-11-11,2,Flood in Portugal
+1103007,MDG,Green,0,2024-11-12,2024-11-11,4,Flood in Madagascar
+1102997,BRA,Green,0,2024-11-05,2024-11-04,11,Flood in Brazil
+1103013,THA,Green,0,2024-11-12,2024-11-11,3,Flood in Thailand
+1103006,PER,Green,0,2024-11-09,2024-11-04,5,Flood in Peru
+1103003,ITA,Green,0,2024-11-08,2024-11-04,6,Flood in Italy
+1103009,GRD,Green,0,2024-11-10,2024-11-04,3,"Flood in Grenada, Spain, Trinidad  and  Tobago"
+1103004,LBN,Green,0,2024-11-10,2024-11-04,3,Flood in Lebanon
+1102998,PHL,Orange,1,2024-11-07,2024-11-04,6,Flood in Philippines
+1103000,VEN,Green,0,2024-11-09,2024-11-04,3,Flood in Venezuela
+1102988,COL,Green,0,2024-10-31,2024-10-28,12,Flood in Colombia
+1102999,CUB,Green,0,2024-11-03,2024-10-28,8,"Flood in Cuba, Jamaica"
+1102990,USA,Green,0,2024-11-04,2024-11-04,7,Flood in United States
+1103001,FRA,Green,0,2024-11-07,2024-11-04,3,Flood in France
+1102996,CRI,Green,0,2024-11-06,2024-11-04,3,Flood in Costa Rica
+1102995,TUN,Green,0,2024-11-06,2024-11-04,3,Flood in Tunisia
+1102992,CMR,Green,0,2024-11-04,2024-11-04,4,Flood in Cameroon
+1102985,VNM,Green,0,2024-10-27,2024-10-21,12,Flood in Vietnam
+1102993,BOL,Green,0,2024-11-03,2024-10-28,4,Flood in Bolivia
+1102994,PRT,Green,0,2024-11-02,2024-10-28,4,Flood in Portugal
+1102983,ESP,Orange,1,2024-10-27,2024-10-21,9,Flood in Spain
+1102991,DOM,Green,0,2024-11-02,2024-10-28,3,Flood in Dominican Republic
+1102989,ISR,Green,0,2024-11-02,2024-10-28,3,Flood in Israel
+1103002,NGA,Green,0,2024-11-01,2024-10-28,3,Flood in Nigeria
+1102987,PAN,Green,0,2024-11-01,2024-10-28,3,Flood in Panama
+1102986,CYP,Green,0,2024-11-01,2024-10-28,3,Flood in Cyprus
+1102981,DZA,Green,0,2024-10-24,2024-10-21,11,Flood in Algeria
+1102984,NOR,Green,0,2024-10-31,2024-10-28,3,Flood in Norway
+1102979,URY,Green,0,2024-10-23,2024-10-21,3,Flood in Uruguay
+1103107,PER,Green,0,2025-01-22,2025-01-20,413,Flood in Peru
+1103103,IDN,Green,0,2025-01-21,2025-01-20,154,Flood in Indonesia
+1103117,ECU,Green,0,2025-02-01,2025-01-27,46,Flood in Ecuador
+1103129,ZAF,Green,0,2025-02-17,2025-02-17,27,Flood in South Africa
+1103118,MDG,Green,0,2025-02-14,2025-02-10,25,Flood in Madagascar
+1103130,MYS,Green,0,2025-02-18,2025-02-17,19,Flood in Malaysia
+1103101,BRA,Green,0,2025-01-28,2025-01-27,37,Flood in Brazil
+1103120,PER,Green,0,2025-02-10,2025-02-10,22,Flood in Peru
+1103128,BWA,Green,0,2025-02-17,2025-02-17,14,Flood in Botswana
+1103131,BRA,Green,0,2025-02-18,2025-02-17,6,Flood in Brazil
+1103112,PHL,Green,0,2025-02-08,2025-02-03,15,Flood in Philippines
+1103133,ZWE,Green,0,2025-01-28,2025-01-27,24,Flood in Zimbabwe
+1103141,ARG,Green,0,2025-02-17,2025-02-17,3,Flood in Argentina
+1103116,CHL,Green,0,2025-02-14,2025-02-10,3,Flood in Chile
+1103115,ITA,Green,0,2025-02-12,2025-02-10,5,Flood in Italy
+1103088,AUS,Green,0,2025-01-17,2025-01-13,31,Flood in Australia
+1103106,USA,Green,0,2025-02-02,2025-01-27,14,Flood in United States
+1103136,COL,Green,0,2025-02-10,2025-02-10,4,Flood in Colombia
+1103113,CHN,Green,0,2025-02-08,2025-02-03,3,Flood in China
+1103102,PHL,Green,0,2025-01-25,2025-01-20,16,Flood in Philippines
+1103110,JOR,Green,0,2025-02-05,2025-02-03,3,Flood in Jordan
+1103111,BOL,Green,0,2025-02-04,2025-02-03,3,Flood in Bolivia
+1103109,MDG,Green,0,2025-02-04,2025-02-03,3,Flood in Madagascar
+1103098,ARG,Green,0,2025-01-25,2025-01-20,13,Flood in Argentina
+1103114,TZA,Green,0,2025-02-03,2025-02-03,3,Flood in Tanzania
+1103108,NAM,Green,0,2025-02-03,2025-02-03,3,Flood in Namibia
+1103124,COD,Green,0,2025-02-01,2025-01-27,3,Flood in Democratic Republic of Congo
+1103100,ITA,Green,0,2025-01-27,2025-01-27,8,Flood in Italy
+1103105,MAR,Green,0,2025-01-29,2025-01-27,3,Flood in Morocco
+1103104,ALB,Green,0,2025-01-29,2025-01-27,3,Flood in Albania
+1103097,FRA,Green,0,2025-01-25,2025-01-20,7,Flood in France
+1103099,MYS,Green,0,2025-01-27,2025-01-27,3,Flood in Malaysia
+1103096,IRL,Green,0,2025-01-23,2025-01-20,3,"Flood in Ireland, United Kingdom"
+1103095,BOL,Green,0,2025-01-16,2025-01-13,8,Flood in Bolivia
+1103094,ECU,Green,0,2025-01-21,2025-01-20,3,Flood in Ecuador
+1103093,PRT,Green,0,2025-01-21,2025-01-20,3,Flood in Portugal
+1103091,ESP,Green,0,2025-01-20,2025-01-20,3,Flood in Spain
+1103092,DZA,Green,0,2025-01-18,2025-01-13,3,Flood in Algeria
+1103089,TUN,Green,0,2025-01-17,2025-01-13,4,Flood in Tunisia
+1103081,MYS,Green,0,2025-01-10,2025-01-06,9,Flood in Malaysia
+1103080,BRA,Green,0,2025-01-01,2024-12-30,18,Flood in Brazil
+1103075,ITA,Green,0,2025-01-07,2025-01-06,12,Flood in Italy
+1103090,LKA,Green,0,2025-01-15,2025-01-13,3,Flood in Sri Lanka
+1103086,NZL,Green,0,2025-01-15,2025-01-13,3,Flood in New Zealand
+1103087,ALB,Green,0,2025-01-13,2025-01-13,4,Flood in Albania
+1103085,COG,Green,0,2025-01-14,2025-01-13,3,Flood in Republic of Congo
+1103084,THA,Green,0,2025-01-11,2025-01-06,3,Flood in Thailand
+1103083,BRA,Green,0,2025-01-11,2025-01-06,3,Flood in Brazil
+1103082,FRA,Green,0,2025-01-11,2025-01-06,3,"Flood in France, Madagascar"
+1103119,BWA,Green,0,2025-01-06,2025-01-06,7,Flood in Botswana
+1103078,FRA,Green,0,2025-01-08,2025-01-06,3,Flood in France
+1103077,MOZ,Green,0,2025-01-08,2025-01-06,3,Flood in Mozambique
+1103074,PHL,Green,0,2025-01-04,2024-12-30,7,Flood in Philippines
+1103079,CRI,Green,0,2025-01-07,2025-01-06,3,Flood in Costa Rica
+1103076,BOL,Green,0,2025-01-06,2025-01-06,3,Flood in Bolivia
+1103066,GBR,Green,0,2025-01-01,2024-12-30,8,Flood in United Kingdom
+1103073,GRC,Green,0,2025-01-04,2024-12-30,3,Flood in Greece
+1103072,COD,Green,0,2025-01-03,2024-12-30,4,Flood in Democratic Republic of Congo
+1103068,NAM,Green,0,2025-01-04,2024-12-30,3,Flood in Namibia
+1103070,ZMB,Green,0,2025-01-03,2024-12-30,3,Flood in Zambia
+1103071,MDV,Green,0,2025-01-02,2024-12-30,3,Flood in Maldives
+1103069,ZAF,Green,0,2025-01-01,2024-12-30,3,Flood in South Africa
+1103065,MYS,Green,0,2024-12-29,2024-12-23,3,Flood in Malaysia
+1103063,ECU,Green,0,2024-12-26,2024-12-23,3,Flood in Ecuador
+1103061,GRC,Green,0,2024-12-25,2024-12-23,2,Flood in Greece
+1103064,HTI,Green,0,2024-12-22,2024-12-16,3,Flood in Haiti
+1103228,USA,Green,0,2025-04-18,2025-04-14,60,Flood in United States
+1103215,COL,Green,0,2025-04-10,2025-04-07,42,Flood in Colombia
+1103220,ITA,Green,0,2025-04-14,2025-04-14,24,Flood in Italy
+1103218,BOL,Orange,1,2025-04-16,2025-04-14,21,Flood in Bolivia
+1103195,ECU,Green,0,2025-04-01,2025-03-31,33,Flood in Ecuador
+1103291,VEN,Green,0,2025-04-16,2025-04-14,13,Flood in Venezuela
+1103227,POL,Green,0,2025-04-18,2025-04-14,9,Flood in Poland
+1103225,KEN,Green,0,2025-04-18,2025-04-14,7,Flood in Kenya
+1103198,BRA,Green,0,2025-04-04,2025-03-31,18,Flood in Brazil
+1103230,AZE,Green,0,2025-04-15,2025-04-14,6,Flood in Azerbaijan
+1103226,FRA,Green,0,2025-04-16,2025-04-14,5,Flood in France
+1103224,THA,Green,0,2025-04-13,2025-04-07,6,Flood in Thailand
+1103223,NGA,Green,0,2025-04-16,2025-04-14,3,Flood in Nigeria
+1103210,COD,Orange,1,2025-03-28,2025-03-24,21,Flood in Democratic Republic of Congo
+1103249,SOM,Green,0,2025-04-15,2025-04-14,3,Flood in Somalia
+1103219,DZA,Green,0,2025-04-15,2025-04-14,3,Flood in Algeria
+1103204,CAN,Green,0,2025-04-01,2025-03-31,16,Flood in Canada
+1103222,VNM,Green,0,2025-04-12,2025-04-07,4,Flood in Vietnam
+1103232,BOL,Green,0,2025-04-12,2025-04-07,3,Flood in Bolivia
+1103217,AGO,Green,0,2025-04-13,2025-04-07,2,Flood in Angola
+1103216,PRT,Green,0,2025-04-12,2025-04-07,3,Flood in Portugal
+1103213,MAR,Green,0,2025-04-12,2025-04-07,3,Flood in Morocco
+1103200,ESP,Green,0,2025-04-07,2025-04-07,8,Flood in Spain
+1103212,HTI,Green,0,2025-04-11,2025-04-07,3,Flood in Haiti
+1103211,DOM,Green,0,2025-04-11,2025-04-07,3,Flood in Dominican Republic
+1103174,AUS,Green,0,2025-03-20,2025-03-17,25,Flood in Australia
+1103214,RWA,Green,0,2025-04-10,2025-04-07,3,Flood in Rwanda
+1103209,TJK,Green,0,2025-04-09,2025-04-07,3,Flood in Tajikistan
+1103181,PHL,Green,0,2025-03-19,2025-03-17,24,Flood in Philippines
+1103208,PAN,Green,0,2025-04-10,2025-04-07,1,"Flood in Panama, Paraguay"
+1103206,AFG,Green,0,2025-04-08,2025-04-07,3,Flood in Afghanistan
+1103202,IND,Green,0,2025-04-07,2025-04-07,1,Flood in India
+1103205,ZAF,Green,0,2025-04-04,2025-03-31,4,Flood in South Africa
+1103221,PER,Green,0,2025-04-01,2025-03-31,6,Flood in Peru
+1103172,USA,Green,0,2025-03-19,2025-03-17,19,Flood in United States
+1103193,PRY,Green,0,2025-04-03,2025-03-31,2,Flood in Paraguay
+1103201,NAM,Green,0,2025-04-02,2025-03-31,3,Flood in Namibia
+1103199,MYS,Green,0,2025-04-01,2025-03-31,3,Flood in Malaysia
+1103207,TZA,Green,0,2025-03-21,2025-03-17,11,Flood in Tanzania
+1103166,ITA,Green,0,2025-03-14,2025-03-10,17,Flood in Italy
+1103194,AGO,Green,0,2025-03-27,2025-03-24,3,Flood in Angola
+1103191,BIH,Green,0,2025-03-27,2025-03-24,3,Flood in Bosnia  and  Herzegovina
+1103188,MDG,Green,0,2025-03-23,2025-03-17,6,Flood in Madagascar
+1103190,MEX,Green,0,2025-03-26,2025-03-24,3,Flood in Mexico
+1103187,UGA,Green,0,2025-03-26,2025-03-24,3,Flood in Uganda
+1103189,HRV,Green,0,2025-03-26,2025-03-24,2,Flood in Croatia
+1103196,PRY,Green,0,2025-03-24,2025-03-24,3,Flood in Paraguay
+1103186,DEU,Green,0,2025-03-24,2025-03-24,3,Flood in Germany
+1103152,BRA,Green,0,2025-03-07,2025-03-03,19,Flood in Brazil
+1103182,CZE,Green,0,2025-03-23,2025-03-17,3,Flood in Czech Republic
+1103151,ARG,Green,0,2025-03-01,2025-02-24,25,Flood in Argentina
+1103183,PRT,Green,0,2025-03-24,2025-03-24,1,"Flood in Portugal, Spain"
+1103192,PNG,Green,0,2025-03-22,2025-03-17,3,Flood in Papua New Guinea
+1103180,AUS,Green,0,2025-03-18,2025-03-17,6,Flood in Australia
+1103162,PRT,Green,0,2025-03-10,2025-03-10,14,Flood in Portugal
+1103169,VEN,Green,0,2025-03-18,2025-03-17,5,Flood in Venezuela
+1103184,IRN,Green,0,2025-03-20,2025-03-17,3,Flood in Islamic Republic of Iran
+1103168,ESP,Green,0,2025-03-17,2025-03-17,6,Flood in Spain
+1103160,BOL,Green,0,2025-03-04,2025-03-03,19,Flood in Bolivia
+1103132,COL,Green,0,2025-02-20,2025-02-17,31,Flood in Colombia
+1103179,MYS,Green,0,2025-03-19,2025-03-17,3,Flood in Malaysia
+1103176,TUR,Green,0,2025-03-19,2025-03-17,3,Flood in Türkiye
+1103173,CHN,Green,0,2025-03-18,2025-03-17,3,Flood in China
+1103170,CAN,Green,0,2025-03-16,2025-03-10,3,Flood in Canada
+1103143,USA,Green,0,2025-02-27,2025-02-24,19,Flood in United States
+1103163,ARM,Green,0,2025-03-14,2025-03-10,3,Flood in Armenia
+1103165,MEX,Green,0,2025-03-13,2025-03-10,3,Flood in Mexico
+1103185,UGA,Green,0,2025-03-12,2025-03-10,3,Flood in Uganda
+1103167,KEN,Green,0,2025-03-12,2025-03-10,3,Flood in Kenya
+1103157,COD,Green,0,2025-03-03,2025-03-03,11,Flood in Democratic Republic of Congo
+1103161,MWI,Green,0,2025-03-11,2025-03-10,3,Flood in Malawi
+1103178,BOL,Green,0,2025-03-06,2025-03-03,7,Flood in Bolivia
+1103164,ZWE,Green,0,2025-03-09,2025-03-03,3,Flood in Zimbabwe
+1103158,MOZ,Green,0,2025-03-09,2025-03-03,3,Flood in Mozambique
+1103159,URY,Green,0,2025-03-02,2025-02-24,9,Flood in Uruguay
+1103155,AUS,Green,0,2025-03-07,2025-03-03,3,Flood in Australia
+1103145,ESP,Green,0,2025-03-01,2025-02-24,8,Flood in Spain
+1103171,COL,Green,0,2025-03-01,2025-02-24,8,Flood in Colombia
+1103156,IRQ,Green,0,2025-03-06,2025-03-03,3,Flood in Iraq
+1103154,MAR,Green,0,2025-03-05,2025-03-03,4,Flood in Morocco
+1103137,DZA,Green,0,2025-02-23,2025-02-17,14,Flood in Algeria
+1103147,FRA,Green,0,2025-02-27,2025-02-24,8,Flood in France
+1103153,PHL,Green,0,2025-03-04,2025-03-03,3,Flood in Philippines
+1103150,MDV,Green,0,2025-03-01,2025-02-24,3,Flood in Maldives
+1103149,ISL,Green,0,2025-03-01,2025-02-24,3,Flood in Iceland
+1103144,IND,Green,0,2025-02-27,2025-02-24,5,Flood in India
+1103146,CUB,Green,0,2025-02-24,2025-02-24,5,Flood in Cuba
+1103148,PNG,Green,0,2025-02-23,2025-02-17,6,Flood in Papua New Guinea
+1103142,PAK,Green,0,2025-02-26,2025-02-24,3,Flood in Pakistan
+1103139,ITA,Green,0,2025-02-26,2025-02-24,3,Flood in Italy
+1103138,AFG,Green,0,2025-02-24,2025-02-24,3,Flood in Afghanistan
+1103134,THA,Green,0,2025-02-21,2025-02-17,5,Flood in Thailand
+1103135,ZMB,Green,0,2025-02-22,2025-02-17,3,Flood in Zambia
+1103140,PRT,Green,0,2025-02-21,2025-02-17,2,Flood in Portugal
+1103339,USA,Orange,1,2025-06-15,2025-06-09,99,Flood in United States
+1103277,CHN,Orange,1,2025-05-16,2025-05-12,95,Flood in China
+1103331,MEX,Green,0,2025-06-15,2025-06-09,21,Flood in Mexico
+1103335,BRA,Green,0,2025-06-15,2025-06-09,18,Flood in Brazil
+1103318,VNM,Green,0,2025-06-07,2025-06-02,24,Flood in Vietnam
+1103334,IND,Green,0,2025-06-16,2025-06-16,11,Flood in India
+1103340,NPL,Green,0,2025-06-18,2025-06-16,3,Flood in Nepal
+1103338,MKD,Green,0,2025-06-18,2025-06-16,2,Flood in The Republic of North Macedonia
+1103333,CMR,Green,0,2025-06-18,2025-06-16,1,Flood in Cameroon
+1103329,COD,Orange,1,2025-06-13,2025-06-09,6,Flood in Democratic Republic of Congo
+1103337,HND,Green,0,2025-06-16,2025-06-16,3,Flood in Honduras
+1103336,CHL,Green,0,2025-06-15,2025-06-09,3,Flood in Chile
+1103332,CHN,Green,0,2025-06-15,2025-06-09,3,"Flood in China, Vietnam"
+1103330,ITA,Green,0,2025-06-15,2025-06-09,2,Flood in Italy
+1103328,DEU,Green,0,2025-06-14,2025-06-09,2,Flood in Germany
+1103325,ESP,Green,0,2025-06-13,2025-06-09,3,Flood in Spain
+1103316,FRA,Green,0,2025-06-06,2025-06-02,10,Flood in France
+1103323,ZAF,Orange,1,2025-06-09,2025-06-09,6,Flood in South Africa
+1103315,PHL,Green,0,2025-06-06,2025-06-02,9,Flood in Philippines
+1103350,LAO,Green,0,2025-06-11,2025-06-09,3,Flood in Laos
+1103327,TTO,Green,0,2025-06-11,2025-06-09,3,Flood in Trinidad  and  Tobago
+1103326,KOR,Green,0,2025-06-12,2025-06-09,2,Flood in South Korea
+1103309,COL,Green,0,2025-06-01,2025-05-26,13,Flood in Colombia
+1103324,CIV,Green,0,2025-06-10,2025-06-09,3,Flood in Cote d'Ivoire
+1103322,CHE,Green,0,2025-06-10,2025-06-09,3,Flood in Switzerland
+1103321,ROU,Green,0,2025-06-09,2025-06-09,3,Flood in Romania
+1103319,JPN,Green,0,2025-06-09,2025-06-09,3,Flood in Japan
+1103305,MMR,Green,0,2025-05-25,2025-05-19,18,Flood in Myanmar
+1103320,NGA,Green,0,2025-06-07,2025-06-02,4,Flood in Nigeria
+1103317,IDN,Green,0,2025-06-01,2025-05-26,9,Flood in Indonesia
+1103314,ESP,Green,0,2025-06-03,2025-06-02,3,Flood in Spain
+1103313,GTM,Green,0,2025-06-03,2025-06-02,3,Flood in Guatemala
+1103289,MEX,Green,0,2025-05-20,2025-05-19,17,Flood in Mexico
+1103308,BGD,Green,0,2025-05-30,2025-05-26,6,Flood in Bangladesh
+1103310,TUR,Green,0,2025-06-03,2025-06-02,2,Flood in Türkiye
+1103312,PER,Green,0,2025-06-01,2025-05-26,3,Flood in Peru
+1103311,POL,Green,0,2025-06-02,2025-06-02,2,Flood in Poland
+1103306,AUT,Green,0,2025-06-01,2025-05-26,3,Flood in Austria
+1103307,SVK,Green,0,2025-06-01,2025-05-26,2,Flood in Slovakia
+1103301,DEU,Green,0,2025-05-28,2025-05-26,6,Flood in Germany
+1103280,IND,Green,0,2025-05-18,2025-05-12,15,Flood in India
+1103269,BRA,Green,0,2025-05-12,2025-05-12,19,Flood in Brazil
+1103303,NGA,Orange,1,2025-05-28,2025-05-26,3,Flood in Nigeria
+1103302,MEX,Green,0,2025-05-29,2025-05-26,1,Flood in Mexico
+1103304,MDA,Green,0,2025-05-27,2025-05-26,3,Flood in Moldova
+1103300,PRY,Green,0,2025-05-27,2025-05-26,3,Flood in Paraguay
+1103290,CIV,Green,0,2025-05-20,2025-05-19,10,Flood in Cote d'Ivoire
+1103276,ITA,Green,0,2025-05-15,2025-05-12,15,Flood in Italy
+1103299,ARG,Green,0,2025-05-26,2025-05-26,3,Flood in Argentina
+1103298,CRI,Green,0,2025-05-26,2025-05-26,3,Flood in Costa Rica
+1103295,SLV,Green,0,2025-05-25,2025-05-19,3,Flood in El Salvador
+1103263,VNM,Green,0,2025-05-09,2025-05-05,19,Flood in Vietnam
+1103273,KEN,Green,0,2025-05-12,2025-05-12,16,Flood in Kenya
+1103292,THA,Green,0,2025-05-23,2025-05-19,4,Flood in Thailand
+1103296,ROU,Green,0,2025-05-23,2025-05-19,3,Flood in Romania
+1103288,CAN,Green,0,2025-05-21,2025-05-19,5,Flood in Canada
+1103293,HRV,Green,0,2025-05-22,2025-05-19,2,Flood in Croatia
+1103267,ESP,Green,0,2025-05-10,2025-05-05,14,Flood in Spain
+1103246,PHL,Green,0,2025-04-26,2025-04-21,27,Flood in Philippines
+1103294,UKR,Green,0,2025-05-22,2025-05-19,1,Flood in Ukraine
+1103271,FRA,Green,0,2025-05-13,2025-05-12,9,Flood in France
+1103283,AUS,Green,0,2025-05-16,2025-05-12,5,Flood in Australia
+1103286,SVN,Green,0,2025-05-20,2025-05-19,1,Flood in Slovenia
+1103285,DOM,Green,0,2025-05-18,2025-05-12,3,Flood in Dominican Republic
+1103284,GHA,Green,0,2025-05-18,2025-05-12,3,Flood in Ghana
+1103278,CHE,Green,0,2025-05-17,2025-05-12,3,Flood in Switzerland
+1103282,TUR,Green,0,2025-05-16,2025-05-12,3,Flood in Türkiye
+1103279,ARG,Green,0,2025-05-16,2025-05-12,3,Flood in Argentina
+1103272,DZA,Green,0,2025-05-14,2025-05-12,3,Flood in Algeria
+1103270,IDN,Green,0,2025-05-14,2025-05-12,3,Flood in Indonesia
+1103275,TZA,Green,0,2025-05-14,2025-05-12,3,Flood in Tanzania
+1103268,SOM,Green,0,2025-05-08,2025-05-05,8,Flood in Somalia
+1103262,THA,Green,0,2025-05-10,2025-05-05,6,Flood in Thailand
+1103255,COD,Orange,1,2025-05-01,2025-04-28,14,Flood in Democratic Republic of Congo
+1103265,HTI,Green,0,2025-05-04,2025-04-28,10,Flood in Haiti
+1103281,NPL,Green,0,2025-05-11,2025-05-05,3,Flood in Nepal
+1103264,KHM,Green,0,2025-05-10,2025-05-05,3,Flood in Cambodia
+1103297,ARG,Green,0,2025-05-08,2025-05-05,3,Flood in Argentina
+1103274,PNG,Green,0,2025-05-08,2025-05-05,3,Flood in Papua New Guinea
+1103252,AFG,Green,0,2025-05-02,2025-04-28,9,Flood in Afghanistan
+1103287,COL,Green,0,2025-05-07,2025-05-05,3,Flood in Colombia
+1103266,MEX,Green,0,2025-05-08,2025-05-05,2,Flood in Mexico
+1103261,SRB,Green,0,2025-05-08,2025-05-05,1,Flood in Serbia
+1103260,ROU,Green,0,2025-05-06,2025-05-05,3,Flood in Romania
+1103259,HRV,Green,0,2025-05-05,2025-05-05,3,Flood in Croatia
+1103239,BGR,Green,0,2025-04-26,2025-04-21,12,Flood in Bulgaria
+1103258,JOR,Green,0,2025-05-04,2025-04-28,3,Flood in Jordan
+1103256,FRA,Green,0,2025-05-04,2025-04-28,3,Flood in France
+1103257,PAK,Green,0,2025-05-04,2025-04-28,2,Flood in Pakistan
+1103251,SVK,Green,0,2025-05-03,2025-04-28,3,Flood in Slovakia
+1103254,BRA,Green,0,2025-05-01,2025-04-28,4,Flood in Brazil
+1103250,DEU,Green,0,2025-05-03,2025-04-28,2,Flood in Germany
+1103248,CAN,Green,0,2025-05-01,2025-04-28,3,Flood in Canada
+1103247,MYS,Green,0,2025-05-01,2025-04-28,3,Flood in Malaysia
+1103245,NZL,Green,0,2025-05-01,2025-04-28,3,Flood in New Zealand
+1103244,MMR,Green,0,2025-04-29,2025-04-28,3,"Flood in Myanmar, Thailand"
+1103241,PER,Green,0,2025-04-28,2025-04-28,3,Flood in Peru
+1103243,THA,Green,0,2025-04-27,2025-04-21,3,Flood in Thailand
+1103253,DOM,Green,0,2025-04-27,2025-04-21,3,Flood in Dominican Republic
+1103242,AUS,Green,0,2025-04-26,2025-04-21,3,Flood in Australia
+1103240,DZA,Green,0,2025-04-26,2025-04-21,3,Flood in Algeria
+1103235,IND,Green,0,2025-04-24,2025-04-21,4,Flood in India
+1103236,ZAF,Green,0,2025-04-25,2025-04-21,3,Flood in South Africa
+1103237,BIH,Green,0,2025-04-24,2025-04-21,4,Flood in Bosnia  and  Herzegovina
+1103238,CZE,Green,0,2025-04-24,2025-04-21,4,Flood in Czech Republic
+1103229,ESP,Green,0,2025-04-22,2025-04-21,3,Flood in Spain
+1103233,DEU,Green,0,2025-04-22,2025-04-21,3,Flood in Germany
+1103231,MEX,Green,0,2025-04-21,2025-04-21,3,Flood in Mexico
+1103234,ROU,Green,0,2025-04-21,2025-04-21,2,Flood in Romania
+1103425,MEX,Green,0,2025-08-06,2025-08-04,72,Flood in Mexico
+1103434,IND,Orange,1,2025-08-16,2025-08-11,55,Flood in India
+1103442,SEN,Green,0,2025-08-15,2025-08-11,37,Flood in Senegal
+1103506,SSD,Orange,1,2025-07-15,2025-07-14,67,Flood in South Sudan
+1103454,SDN,Green,0,2025-08-17,2025-08-11,28,Flood in Sudan
+1103443,ITA,Green,0,2025-08-15,2025-08-11,29,Flood in Italy
+1103445,CHN,Green,0,2025-08-16,2025-08-11,24,Flood in China
+1103451,THA,Green,0,2025-08-15,2025-08-11,21,Flood in Thailand
+1103433,PHL,Green,0,2025-08-11,2025-08-11,21,Flood in Philippines
+1103439,BRA,Green,0,2025-08-14,2025-08-11,13,Flood in Brazil
+1103435,PAK,Orange,1,2025-08-14,2025-08-11,13,Flood in Pakistan
+1103463,YEM,Green,0,2025-08-18,2025-08-18,7,Flood in Yemen
+1103444,ROU,Green,0,2025-08-16,2025-08-11,9,Flood in Romania
+1103438,COL,Green,0,2025-08-16,2025-08-11,7,Flood in Colombia
+1103431,GIN,Green,0,2025-08-12,2025-08-11,11,Flood in Guinea
+1103453,CAF,Green,0,2025-08-11,2025-08-11,11,Flood in Central African Republic
+1103447,VEN,Green,0,2025-08-17,2025-08-11,4,Flood in Venezuela
+1103457,UGA,Green,0,2025-08-18,2025-08-18,3,Flood in Uganda
+1103409,NGA,Green,0,2025-07-23,2025-07-21,29,Flood in Nigeria
+1103452,CAN,Green,0,2025-08-16,2025-08-11,4,Flood in Canada
+1103450,ESP,Green,0,2025-08-18,2025-08-18,2,Flood in Spain
+1103465,CZE,Green,0,2025-08-16,2025-08-11,3,Flood in Czech Republic
+1103449,MKD,Green,0,2025-08-17,2025-08-11,2,Flood in The Republic of North Macedonia
+1103448,BIH,Green,0,2025-08-17,2025-08-11,2,Flood in Bosnia  and  Herzegovina
+1103437,AUT,Green,0,2025-08-14,2025-08-11,5,Flood in Austria
+1103469,COD,Green,0,2025-08-04,2025-08-04,14,Flood in Democratic Republic of Congo
+1103460,KEN,Green,0,2025-08-15,2025-08-11,3,Flood in Kenya
+1103441,MRT,Green,0,2025-08-15,2025-08-11,3,"Flood in Mauritania, Western Sahara"
+1103440,SLV,Green,0,2025-08-15,2025-08-11,3,Flood in El Salvador
+1103436,ISL,Green,0,2025-08-15,2025-08-11,3,Flood in Iceland
+1103432,IDN,Green,0,2025-08-14,2025-08-11,1,Flood in Indonesia
+1103464,VNM,Green,0,2025-08-12,2025-08-11,3,Flood in Vietnam
+1103456,ETH,Green,0,2025-08-03,2025-07-28,12,Flood in Ethiopia
+1103430,KOR,Green,0,2025-08-12,2025-08-11,3,Flood in South Korea
+1103461,CPV,Orange,1,2025-08-10,2025-08-04,3,Flood in Cape Verde
+1103429,CMR,Green,0,2025-08-08,2025-08-04,5,Flood in Cameroon
+1103428,POL,Green,0,2025-08-10,2025-08-04,3,Flood in Poland
+1103427,JPN,Green,0,2025-08-07,2025-08-04,3,Flood in Japan
+1103426,LAO,Green,0,2025-08-08,2025-08-04,1,Flood in Laos
+1103421,COL,Green,0,2025-08-02,2025-07-28,6,Flood in Colombia
+1103414,IND,Green,0,2025-07-26,2025-07-21,12,Flood in India
+1103366,USA,Green,0,2025-07-03,2025-06-30,34,Flood in United States
+1103424,MMR,Green,0,2025-08-03,2025-07-28,3,Flood in Myanmar
+1103423,VEN,Green,0,2025-08-01,2025-07-28,5,Flood in Venezuela
+1103418,AUS,Green,0,2025-08-02,2025-07-28,3,Flood in Australia
+1103413,UKR,Green,0,2025-07-27,2025-07-21,9,Flood in Ukraine
+1103400,ROU,Green,0,2025-07-21,2025-07-21,15,Flood in Romania
+1103419,SDN,Green,0,2025-08-01,2025-07-28,3,Flood in Sudan
+1103355,AUT,Green,0,2025-06-30,2025-06-30,35,Flood in Austria
+1103422,TUR,Green,0,2025-08-01,2025-07-28,2,Flood in Türkiye
+1103405,VNM,Green,0,2025-07-21,2025-07-21,13,Flood in Vietnam
+1103420,CHL,Green,0,2025-07-28,2025-07-28,3,Flood in Chile
+1103417,KGZ,Green,0,2025-07-28,2025-07-28,3,Flood in Kyrgyzstan
+1103412,BLR,Green,0,2025-07-26,2025-07-21,4,Flood in Belarus
+1103408,POL,Green,0,2025-07-27,2025-07-21,3,Flood in Poland
+1103446,FRA,Green,0,2025-07-22,2025-07-21,7,"Flood in France, South Korea"
+1103410,HRV,Green,0,2025-07-26,2025-07-21,3,Flood in Croatia
+1103403,CZE,Green,0,2025-07-21,2025-07-21,8,Flood in Czech Republic
+1103394,DEU,Green,0,2025-07-16,2025-07-14,13,Flood in Germany
+1103406,ESP,Green,0,2025-07-24,2025-07-21,3,Flood in Spain
+1103402,ITA,Green,0,2025-07-22,2025-07-21,5,Flood in Italy
+1103404,PHL,Orange,1,2025-07-24,2025-07-21,1,"Flood in Philippines, Vietnam"
+1103547,USA,Green,0,2025-07-15,2025-07-14,10,Flood in United States
+1103384,DNK,Green,0,2025-07-15,2025-07-14,10,Flood in Denmark
+1103385,PHL,Orange,1,2025-07-12,2025-07-07,12,Flood in Philippines
+1103382,THA,Green,0,2025-07-09,2025-07-07,15,Flood in Thailand
+1103505,FRA,Green,0,2025-07-18,2025-07-14,5,Flood in France
+1103396,GIN,Green,0,2025-06-28,2025-06-23,25,Flood in Guinea
+1103386,MEX,Green,0,2025-07-14,2025-07-14,9,Flood in Mexico
+1103507,CAF,Green,0,2025-07-14,2025-07-14,7,Flood in Central African Republic
+1103398,MDA,Green,0,2025-07-16,2025-07-14,5,Flood in Moldova
+1103395,TUR,Green,0,2025-07-19,2025-07-14,2,Flood in Türkiye
+1103399,YEM,Green,0,2025-07-16,2025-07-14,3,Flood in Yemen
+1103392,SDN,Green,0,2025-07-14,2025-07-14,5,Flood in Sudan
+1103390,FJI,Green,0,2025-07-16,2025-07-14,3,Flood in Fiji
+1103389,PAK,Orange,1,2025-07-14,2025-07-14,4,Flood in Pakistan
+1103393,BLR,Green,0,2025-07-15,2025-07-14,3,Flood in Belarus
+1103391,LAO,Green,0,2025-07-15,2025-07-14,3,Flood in Laos
+1103388,KOR,Green,0,2025-07-16,2025-07-14,2,Flood in South Korea
+1103383,SEN,Green,0,2025-07-14,2025-07-14,3,Flood in Senegal
+1103380,JPN,Green,0,2025-07-09,2025-07-07,8,Flood in Japan
+1103372,NPL,Green,0,2025-07-08,2025-07-07,8,Flood in Nepal
+1103369,VEN,Green,0,2025-07-03,2025-06-30,13,Flood in Venezuela
+1103370,ESP,Green,0,2025-07-04,2025-06-30,11,Flood in Spain
+1103401,TCD,Green,0,2025-07-12,2025-07-07,3,Flood in Chad
+1103373,POL,Green,0,2025-07-08,2025-07-07,7,Flood in Poland
+1103368,ITA,Green,0,2025-07-05,2025-06-30,10,Flood in Italy
+1103381,NZL,Green,0,2025-07-11,2025-07-07,3,Flood in New Zealand
+1103378,UKR,Green,0,2025-07-10,2025-07-07,3,Flood in Ukraine
+1103375,ROU,Green,0,2025-07-09,2025-07-07,3,Flood in Romania
+1103367,IDN,Green,0,2025-07-07,2025-07-07,5,Flood in Indonesia
+1103376,GTM,Green,0,2025-07-09,2025-07-07,3,Flood in Guatemala
+1103387,MMR,Green,0,2025-07-08,2025-07-07,3,Flood in Myanmar
+1103361,NGA,Green,0,2025-06-29,2025-06-23,12,Flood in Nigeria
+1103379,IRN,Green,0,2025-07-07,2025-07-07,3,Flood in Islamic Republic of Iran
+1103341,COL,Green,0,2025-06-22,2025-06-16,17,Flood in Colombia
+1103377,URY,Green,0,2025-06-26,2025-06-23,12,Flood in Uruguay
+1103374,IND,Green,0,2025-07-05,2025-06-30,3,Flood in India
+1103371,LAO,Green,0,2025-07-02,2025-06-30,3,Flood in Laos
+1103362,SLV,Green,0,2025-07-01,2025-06-30,3,Flood in El Salvador
+1103358,AUS,Green,0,2025-07-01,2025-06-30,3,Flood in Australia
+1103364,PER,Green,0,2025-07-01,2025-06-30,3,Flood in Peru
+1103365,DEU,Green,0,2025-07-02,2025-06-30,1,Flood in Germany
+1103359,CHE,Green,0,2025-06-30,2025-06-30,3,Flood in Switzerland
+1103360,DZA,Green,0,2025-06-30,2025-06-30,3,Flood in Algeria
+1103363,ECU,Green,0,2025-06-30,2025-06-30,3,Flood in Ecuador
+1103356,FRA,Green,0,2025-06-30,2025-06-30,3,Flood in France
+1103357,FRA,Green,0,2025-06-30,2025-06-30,3,"Flood in France, Italy"
+1103347,PAK,Green,0,2025-06-26,2025-06-23,5,Flood in Pakistan
+1103354,KGZ,Green,0,2025-06-27,2025-06-23,3,Flood in Kyrgyzstan
+1103352,NZL,Green,0,2025-06-27,2025-06-23,3,Flood in New Zealand
+1103348,THA,Green,0,2025-06-26,2025-06-23,3,Flood in Thailand
+1103349,CZE,Green,0,2025-06-26,2025-06-23,2,Flood in Czech Republic
+1103343,PHL,Green,0,2025-06-21,2025-06-16,7,Flood in Philippines
+1103345,ESP,Green,0,2025-06-25,2025-06-23,2,Flood in Spain
+1103344,ZAF,Green,0,2025-06-23,2025-06-23,3,Flood in South Africa
+1103346,VEN,Green,0,2025-06-23,2025-06-23,3,Flood in Venezuela
+1103342,AND,Green,0,2025-06-23,2025-06-23,1,Flood in Andorra
+1103351,MYS,Green,0,2025-06-20,2025-06-16,4,Flood in Malaysia
+1103563,ITA,Green,0,2025-10-15,2025-10-13,53,Flood in Italy
+1103494,IDN,Green,0,2025-09-09,2025-09-08,79,Flood in Indonesia
+1103558,COL,Green,0,2025-10-12,2025-10-06,42,Flood in Colombia
+1103571,IND,Green,0,2025-10-17,2025-10-13,15,Flood in India
+1103568,PHL,Green,0,2025-10-17,2025-10-13,11,Flood in Philippines
+1103588,AGO,Green,0,2025-10-16,2025-10-13,8,Flood in Angola
+1103567,DZA,Green,0,2025-10-16,2025-10-13,4,Flood in Algeria
+1103592,NIC,Green,0,2025-10-16,2025-10-13,3,Flood in Nicaragua
+1103570,ARG,Green,0,2025-10-16,2025-10-13,3,Flood in Argentina
+1103569,CRI,Green,0,2025-10-16,2025-10-13,3,Flood in Costa Rica
+1103560,MYS,Green,0,2025-10-14,2025-10-13,3,Flood in Malaysia
+1103562,COD,Green,0,2025-10-08,2025-10-06,8,Flood in Democratic Republic of Congo
+1103561,VEN,Green,0,2025-10-13,2025-10-13,3,Flood in Venezuela
+1103565,NZL,Green,0,2025-10-13,2025-10-13,3,Flood in New Zealand
+1103500,USA,Green,0,2025-09-12,2025-09-08,34,Flood in United States
+1103559,GTM,Green,0,2025-10-12,2025-10-06,3,Flood in Guatemala
+1103556,ESP,Green,0,2025-10-09,2025-10-06,6,Flood in Spain
+1103557,FRA,Green,0,2025-10-09,2025-10-06,3,Flood in France
+1103479,NGA,Orange,1,2025-08-31,2025-08-25,41,Flood in Nigeria
+1103552,GEO,Green,0,2025-10-09,2025-10-06,1,Flood in Georgia
+1103551,CHN,Green,0,2025-10-07,2025-10-06,3,Flood in China
+1103550,BGR,Green,0,2025-10-03,2025-09-29,7,Flood in Bulgaria
+1103542,ROU,Green,0,2025-10-02,2025-09-29,8,Flood in Romania
+1103545,TCD,Green,0,2025-10-08,2025-10-06,1,Flood in Chad
+1103548,PHL,Green,0,2025-10-06,2025-10-06,3,Flood in Philippines
+1103533,SEN,Green,0,2025-10-01,2025-09-29,7,Flood in Senegal
+1103553,SLV,Green,0,2025-10-05,2025-09-29,3,Flood in El Salvador
+1103543,PAN,Green,0,2025-10-05,2025-09-29,3,Flood in Panama
+1103522,VNM,Green,0,2025-09-27,2025-09-22,11,Flood in Vietnam
+1103540,NPL,Orange,1,2025-10-03,2025-09-29,4,Flood in Nepal
+1103566,MMR,Green,0,2025-09-20,2025-09-15,17,Flood in Myanmar
+1103541,NOR,Green,0,2025-10-04,2025-09-29,3,Flood in Norway
+1103539,MYS,Green,0,2025-10-04,2025-09-29,3,Flood in Malaysia
+1103538,BTN,Green,0,2025-10-04,2025-09-29,3,Flood in Bhutan
+1103510,ITA,Green,0,2025-09-21,2025-09-15,14,Flood in Italy
+1103555,CAF,Green,0,2025-10-01,2025-09-29,3,Flood in Central African Republic
+1103537,SDN,Green,0,2025-09-29,2025-09-29,5,Flood in Sudan
+1103536,GTM,Green,0,2025-10-01,2025-09-29,3,Flood in Guatemala
+1103535,CRI,Green,0,2025-10-01,2025-09-29,3,Flood in Costa Rica
+1103534,JPN,Green,0,2025-10-01,2025-09-29,3,Flood in Japan
+1103523,COL,Green,0,2025-09-26,2025-09-22,8,Flood in Colombia
+1103530,UKR,Green,0,2025-09-30,2025-09-29,3,Flood in Ukraine
+1103549,HND,Green,0,2025-09-29,2025-09-29,3,Flood in Honduras
+1103532,LAO,Green,0,2025-09-29,2025-09-29,3,Flood in Laos
+1103512,ESP,Green,0,2025-09-20,2025-09-15,12,Flood in Spain
+1103546,AGO,Green,0,2025-09-28,2025-09-22,3,Flood in Angola
+1103529,NIC,Green,0,2025-09-28,2025-09-22,3,Flood in Nicaragua
+1103526,HTI,Green,0,2025-09-29,2025-09-29,1,Flood in Haiti
+1103528,CUB,Green,0,2025-09-27,2025-09-22,3,Flood in Cuba
+1103524,GEO,Green,0,2025-09-26,2025-09-22,3,Flood in Georgia
+1103520,ISL,Green,0,2025-09-26,2025-09-22,3,Flood in Iceland
+1103531,GNB,Green,0,2025-09-25,2025-09-22,3,Flood in Guinea-Bissau
+1103527,KHM,Green,0,2025-09-25,2025-09-22,3,Flood in Cambodia
+1103525,AZE,Green,0,2025-09-25,2025-09-22,3,Flood in Azerbaijan
+1103521,DOM,Green,0,2025-09-25,2025-09-22,3,Flood in Dominican Republic
+1103504,YEM,Orange,1,2025-09-16,2025-09-15,10,Flood in Yemen
+1103517,DZA,Green,0,2025-09-23,2025-09-22,3,Flood in Algeria
+1103516,HRV,Green,0,2025-09-23,2025-09-22,3,Flood in Croatia
+1103515,BRA,Green,0,2025-09-23,2025-09-22,3,Flood in Brazil
+1103514,CHN,Red,2,2025-09-23,2025-09-22,3,Flood in China
+1103511,FRA,Green,0,2025-09-20,2025-09-15,5,Flood in France
+1103502,THA,Green,0,2025-09-15,2025-09-15,10,Flood in Thailand
+1103518,SLV,Green,0,2025-09-21,2025-09-15,4,Flood in El Salvador
+1103496,PHL,Green,0,2025-09-08,2025-09-08,17,Flood in Philippines
+1103513,TUR,Green,0,2025-09-20,2025-09-15,3,Flood in Türkiye
+1103554,CAF,Green,0,2025-09-16,2025-09-15,5,Flood in Central African Republic
+1103509,BGD,Green,0,2025-09-18,2025-09-15,3,Flood in Bangladesh
+1103508,HND,Green,0,2025-09-17,2025-09-15,3,Flood in Honduras
+1103519,HTI,Green,0,2025-09-16,2025-09-15,3,Flood in Haiti
+1103503,SVN,Green,0,2025-09-16,2025-09-15,3,Flood in Slovenia
+1103488,POL,Green,0,2025-09-05,2025-09-01,12,Flood in Poland
+1103491,VNM,Green,0,2025-08-31,2025-08-25,16,Flood in Vietnam
+1103499,CRI,Green,0,2025-09-12,2025-09-08,3,Flood in Costa Rica
+1103498,CAN,Green,0,2025-09-11,2025-09-08,3,Flood in Canada
+1103481,JPN,Green,0,2025-09-02,2025-09-01,11,Flood in Japan
+1103471,HRV,Green,0,2025-08-29,2025-08-25,15,Flood in Croatia
+1103497,MYS,Green,0,2025-09-09,2025-09-08,3,Flood in Malaysia
+1103493,ESP,Green,0,2025-09-09,2025-09-08,3,Flood in Spain
+1103492,DEU,Green,0,2025-09-08,2025-09-08,3,Flood in Germany
+1103483,FRA,Green,0,2025-09-02,2025-09-01,9,Flood in France
+1103490,COL,Green,0,2025-09-05,2025-09-01,5,Flood in Colombia
+1103495,KOR,Green,0,2025-09-05,2025-09-01,4,Flood in South Korea
+1103487,SWE,Green,0,2025-09-03,2025-09-01,6,Flood in Sweden
+1103486,BEL,Green,0,2025-09-04,2025-09-01,3,Flood in Belgium
+1103484,GTM,Green,0,2025-09-02,2025-09-01,3,Flood in Guatemala
+1103474,SVN,Green,0,2025-08-29,2025-08-25,7,Flood in Slovenia
+1103482,CHE,Green,0,2025-09-01,2025-09-01,3,Flood in Switzerland
+1103501,GMB,Green,0,2025-08-30,2025-08-25,3,Flood in The Gambia
+1103478,ARG,Green,0,2025-08-30,2025-08-25,3,Flood in Argentina
+1103485,ALB,Green,0,2025-08-29,2025-08-25,3,Flood in Albania
+1103475,HUN,Green,0,2025-08-30,2025-08-25,2,Flood in Hungary
+1103473,NLD,Green,0,2025-08-29,2025-08-25,2,Flood in Netherlands
+1103472,IRL,Green,0,2025-08-28,2025-08-25,2,Flood in Ireland
+1103476,KEN,Green,0,2025-08-26,2025-08-25,3,Flood in Kenya
+1103468,COD,Green,0,2025-08-27,2025-08-25,1,Flood in Democratic Republic of Congo
+1103467,LAO,Green,0,2025-08-25,2025-08-25,3,Flood in Laos
+1103466,MMR,Green,0,2025-08-24,2025-08-18,3,Flood in Myanmar
+1103462,AUS,Green,0,2025-08-20,2025-08-18,6,Flood in Australia
+1103480,IDN,Green,0,2025-08-24,2025-08-18,2,Flood in Indonesia
+1103459,JPN,Green,0,2025-08-21,2025-08-18,3,Flood in Japan
+1103458,VNM,Green,0,2025-08-19,2025-08-18,3,Flood in Vietnam
+1103455,FRA,Green,0,2025-08-19,2025-08-18,3,Flood in France
+1103470,MRT,Green,0,2025-08-19,2025-08-18,3,Flood in Mauritania
+1103670,BRA,Green,0,2025-12-10,2025-12-08,44,Flood in Brazil
+1103633,IDN,Orange,1,2025-11-17,2025-11-17,48,Flood in Indonesia
+1103725,IDN,Green,0,2025-12-08,2025-12-08,19,Flood in Indonesia
+1103669,MEX,Green,0,2025-12-11,2025-12-08,16,Flood in Mexico
+1103668,MAR,Green,0,2025-12-13,2025-12-08,13,Flood in Morocco
+1103664,BOL,Green,0,2025-12-13,2025-12-08,12,Flood in Bolivia
+1103657,USA,Green,0,2025-12-09,2025-12-08,16,Flood in United States
+1103671,FRA,Green,0,2025-12-15,2025-12-15,8,Flood in France
+1103676,BRA,Green,0,2025-12-08,2025-12-08,12,Flood in Brazil
+1103666,ESP,Green,0,2025-12-12,2025-12-08,6,Flood in Spain
+1103660,COD,Green,0,2025-12-10,2025-12-08,7,Flood in Democratic Republic of Congo
+1103667,CUB,Green,0,2025-12-13,2025-12-08,3,Flood in Cuba
+1103665,PRY,Green,0,2025-12-12,2025-12-08,3,Flood in Paraguay
+1103662,ISR,Green,0,2025-12-11,2025-12-08,3,Flood in Israel
+1103661,IRL,Green,0,2025-12-09,2025-12-08,5,"Flood in Ireland, United Kingdom"
+1103663,MYS,Orange,1,2025-12-12,2025-12-08,1,"Flood in Malaysia, Thailand"
+1103659,CAN,Green,0,2025-12-09,2025-12-08,3,Flood in Canada
+1103655,IRQ,Green,0,2025-12-09,2025-12-08,3,Flood in Iraq
+1103658,ARG,Green,0,2025-12-08,2025-12-08,3,Flood in Argentina
+1103654,IRN,Green,0,2025-12-08,2025-12-08,3,Flood in Islamic Republic of Iran
+1103649,VNM,Green,0,2025-12-03,2025-12-01,7,Flood in Vietnam
+1103689,PNG,Green,0,2025-12-07,2025-12-01,3,Flood in Papua New Guinea
+1103653,COL,Green,0,2025-12-07,2025-12-01,3,Flood in Colombia
+1103652,CYP,Green,0,2025-12-07,2025-12-01,3,Flood in Cyprus
+1103651,BGR,Green,0,2025-12-05,2025-12-01,3,Flood in Bulgaria
+1103650,LBY,Green,0,2025-12-05,2025-12-01,3,Flood in Libya
+1103638,TUR,Green,0,2025-11-28,2025-11-24,10,Flood in Türkiye
+1103656,FRA,Green,0,2025-12-04,2025-12-01,3,Flood in France
+1103646,IDN,Red,2,2025-12-03,2025-12-01,4,"Flood in Indonesia, Malaysia, Thailand"
+1103640,LKA,Orange,1,2025-11-28,2025-11-24,8,Flood in Sri Lanka
+1103647,DZA,Green,0,2025-12-03,2025-12-01,3,Flood in Algeria
+1103643,BOL,Green,0,2025-12-03,2025-12-01,1,"Flood in Bolivia, Spain"
+1103644,BRA,Green,0,2025-12-01,2025-12-01,3,"Flood in Brazil, Colombia"
+1103621,THA,Orange,1,2025-11-17,2025-11-17,15,Flood in Thailand
+1103645,PER,Green,0,2025-11-27,2025-11-24,4,Flood in Peru
+1103642,PAN,Green,0,2025-11-27,2025-11-24,3,Flood in Panama
+1103639,SRB,Green,0,2025-11-28,2025-11-24,2,Flood in Serbia
+1103624,ZAF,Green,0,2025-11-23,2025-11-17,7,Flood in South Africa
+1103628,MEX,Green,0,2025-11-22,2025-11-17,7,Flood in Mexico
+1103634,MYS,Green,0,2025-11-21,2025-11-17,7,Flood in Malaysia
+1103635,SVK,Green,0,2025-11-25,2025-11-24,3,Flood in Slovakia
+1103632,LKA,Green,0,2025-11-26,2025-11-24,1,Flood in Sri Lanka
+1103631,LBN,Green,0,2025-11-24,2025-11-24,3,Flood in Lebanon
+1103630,JOR,Green,0,2025-11-24,2025-11-24,3,Flood in Jordan
+1103629,ISR,Green,0,2025-11-24,2025-11-24,3,Flood in Israel
+1103637,MKD,Green,0,2025-11-20,2025-11-17,6,Flood in The Republic of North Macedonia
+1103613,BRA,Green,0,2025-11-15,2025-11-10,11,Flood in Brazil
+1103607,FRA,Green,0,2025-11-14,2025-11-10,12,Flood in France
+1103616,ALB,Green,0,2025-11-18,2025-11-17,7,Flood in Albania
+1103627,BGR,Green,0,2025-11-21,2025-11-17,3,Flood in Bulgaria
+1103648,PNG,Green,0,2025-11-20,2025-11-17,3,Flood in Papua New Guinea
+1103614,USA,Green,0,2025-11-14,2025-11-10,9,Flood in United States
+1103615,PHL,Green,0,2025-11-15,2025-11-10,7,Flood in Philippines
+1103622,KHM,Green,0,2025-11-18,2025-11-17,3,Flood in Cambodia
+1103619,MNE,Green,0,2025-11-18,2025-11-17,3,Flood in Montenegro
+1103600,AGO,Green,0,2025-11-06,2025-11-03,15,Flood in Angola
+1103618,IND,Green,0,2025-11-19,2025-11-17,1,Flood in India
+1103608,IRN,Green,0,2025-11-16,2025-11-10,4,Flood in Islamic Republic of Iran
+1103620,BOL,Green,0,2025-11-17,2025-11-17,3,Flood in Bolivia
+1103626,ZMB,Green,0,2025-11-16,2025-11-10,3,Flood in Zambia
+1103617,SVN,Green,0,2025-11-16,2025-11-10,3,Flood in Slovenia
+1103603,VNM,Green,0,2025-11-13,2025-11-10,6,Flood in Vietnam
+1103612,PRT,Green,0,2025-11-17,2025-11-17,1,"Flood in Portugal, United Kingdom"
+1103623,MOZ,Green,0,2025-11-15,2025-11-10,3,Flood in Mozambique
+1103611,CRI,Green,0,2025-11-15,2025-11-10,3,Flood in Costa Rica
+1103610,AUS,Green,0,2025-11-15,2025-11-10,3,Flood in Australia
+1103609,IRQ,Green,0,2025-11-15,2025-11-10,3,Flood in Iraq
+1103606,IRL,Green,0,2025-11-14,2025-11-10,3,Flood in Ireland
+1103602,ISR,Green,0,2025-11-13,2025-11-10,3,Flood in Israel
+1103583,ESP,Green,0,2025-10-28,2025-10-27,19,Flood in Spain
+1103604,COD,Green,0,2025-11-14,2025-11-10,1,Flood in Democratic Republic of Congo
+1103601,PRT,Green,0,2025-11-12,2025-11-10,3,Flood in Portugal
+1103584,BRA,Green,0,2025-10-24,2025-10-20,21,Flood in Brazil
+1103636,PER,Green,0,2025-11-10,2025-11-10,3,Flood in Peru
+1103605,MEX,Green,0,2025-11-10,2025-11-10,3,Flood in Mexico
+1103598,ZAF,Green,0,2025-11-09,2025-11-03,3,Flood in South Africa
+1103596,AUS,Green,0,2025-11-06,2025-11-03,4,"Flood in Australia, Serbia"
+1103597,LBY,Green,0,2025-11-05,2025-11-03,4,Flood in Libya
+1103589,KEN,Green,0,2025-10-28,2025-10-27,11,Flood in Kenya
+1103641,CHN,Green,0,2025-11-04,2025-11-03,3,Flood in China
+1103599,COD,Green,0,2025-11-04,2025-11-03,3,Flood in Democratic Republic of Congo
+1103595,MYS,Green,0,2025-11-03,2025-11-03,3,Flood in Malaysia
+1103593,DOM,Green,0,2025-11-01,2025-10-27,3,Flood in Dominican Republic
+1103580,USA,Green,0,2025-10-25,2025-10-20,8,Flood in United States
+1103594,PAN,Green,0,2025-10-24,2025-10-20,8,Flood in Panama
+1103590,UGA,Green,0,2025-10-29,2025-10-27,3,Flood in Uganda
+1103587,JAM,Green,0,2025-10-28,2025-10-27,3,Flood in Jamaica
+1103585,CUB,Orange,1,2025-10-28,2025-10-27,3,Flood in Cuba
+1103582,PRT,Green,0,2025-10-24,2025-10-20,7,Flood in Portugal
+1103574,FRA,Green,0,2025-10-22,2025-10-20,9,Flood in France
+1103581,VNM,Green,0,2025-10-26,2025-10-20,3,Flood in Vietnam
+1103579,DZA,Green,0,2025-10-27,2025-10-27,2,Flood in Algeria
+1103578,MKD,Green,0,2025-10-26,2025-10-20,3,Flood in The Republic of North Macedonia
+1103577,SDN,Green,0,2025-10-25,2025-10-20,3,Flood in Sudan
+1103575,CAN,Green,0,2025-10-25,2025-10-20,3,Flood in Canada
+1103572,MYS,Green,0,2025-10-24,2025-10-20,3,Flood in Malaysia
+1103576,CHN,Green,0,2025-10-21,2025-10-20,6,Flood in China
+1103586,HTI,Green,0,2025-10-23,2025-10-20,3,Flood in Haiti
+1103573,TUR,Green,0,2025-10-23,2025-10-20,2,Flood in Türkiye
+1103757,BRA,Orange,1,2026-02-03,2026-02-02,57,Flood in Brazil
+1103761,ECU,Green,0,2026-01-24,2026-01-19,58,Flood in Ecuador
+1103776,ECU,Green,0,2026-02-14,2026-02-09,30,Flood in Ecuador
+1103742,AUS,Green,0,2026-01-28,2026-01-26,47,Flood in Australia
+1103784,COD,Orange,1,2026-02-11,2026-02-09,23,Flood in Democratic Republic of Congo
+1103762,TUR,Green,0,2026-02-07,2026-02-02,18,Flood in Türkiye
+1103721,IDN,Green,0,2025-12-30,2025-12-29,55,Flood in Indonesia
+1103764,MYS,Green,0,2026-02-12,2026-02-09,10,Flood in Malaysia
+1103754,ITA,Green,0,2026-02-06,2026-02-02,16,Flood in Italy
+1103760,FRA,Green,0,2026-02-03,2026-02-02,18,Flood in France
+1103732,COL,Green,0,2026-01-22,2026-01-19,30,Flood in Colombia
+1103727,ESP,Green,0,2026-01-16,2026-01-12,36,Flood in Spain
+1103766,NZL,Green,0,2026-02-12,2026-02-09,5,Flood in New Zealand
+1103771,MKD,Green,0,2026-02-14,2026-02-09,3,Flood in The Republic of North Macedonia
+1103768,UKR,Green,0,2026-02-14,2026-02-09,3,Flood in Ukraine
+1103765,AFG,Green,0,2026-02-13,2026-02-09,3,Flood in Afghanistan
+1103767,IRL,Green,0,2026-02-12,2026-02-09,3,Flood in Ireland
+1103753,PRT,Green,0,2026-02-03,2026-02-02,11,Flood in Portugal
+1103763,BRA,Green,0,2026-02-12,2026-02-09,1,"Flood in Brazil, Peru"
+1103759,ZAF,Green,0,2026-02-08,2026-02-02,3,Flood in South Africa
+1103777,ECU,Green,0,2026-01-25,2026-01-19,16,Flood in Ecuador
+1103749,PHL,Green,0,2026-01-31,2026-01-26,10,Flood in Philippines
+1103756,ARG,Green,0,2026-02-06,2026-02-02,3,Flood in Argentina
+1103755,SYR,Green,0,2026-02-06,2026-02-02,3,Flood in Syria
+1103758,ROU,Green,0,2026-02-05,2026-02-02,3,Flood in Romania
+1103752,DZA,Green,0,2026-02-04,2026-02-02,3,Flood in Algeria
+1103751,PER,Green,0,2026-02-03,2026-02-02,3,Flood in Peru
+1103747,MAR,Green,0,2026-01-28,2026-01-26,7,Flood in Morocco
+1103733,CHL,Green,0,2026-01-23,2026-01-19,11,Flood in Chile
+1103748,CAN,Green,0,2026-01-29,2026-01-26,3,Flood in Canada
+1103774,MWI,Green,0,2026-01-20,2026-01-19,11,Flood in Malawi
+1103745,GBR,Green,0,2026-01-29,2026-01-26,1,Flood in United Kingdom
+1103744,SYR,Green,0,2026-01-29,2026-01-26,1,Flood in Syria
+1103750,COD,Green,0,2026-01-27,2026-01-26,3,Flood in Democratic Republic of Congo
+1103726,ITA,Green,0,2026-01-19,2026-01-19,11,Flood in Italy
+1103746,BGR,Green,0,2026-01-26,2026-01-26,3,Flood in Bulgaria
+1103741,MYS,Green,0,2026-01-26,2026-01-26,3,Flood in Malaysia
+1103739,ROU,Green,0,2026-01-26,2026-01-26,3,Flood in Romania
+1103738,MEX,Green,0,2026-01-26,2026-01-26,3,Flood in Mexico
+1103737,ESP,Green,0,2026-01-26,2026-01-26,3,Flood in Spain
+1103736,IRL,Green,0,2026-01-26,2026-01-26,3,Flood in Ireland
+1103730,ARG,Green,0,2026-01-23,2026-01-19,6,Flood in Argentina
+1103717,FRA,Green,0,2026-01-15,2026-01-12,12,Flood in France
+1103694,MOZ,Orange,1,2025-12-22,2025-12-22,36,Flood in Mozambique
+1103740,PRT,Green,0,2026-01-22,2026-01-19,3,Flood in Portugal
+1103734,MDG,Green,0,2026-01-22,2026-01-19,3,Flood in Madagascar
+1103731,TUR,Green,0,2026-01-22,2026-01-19,3,Flood in Türkiye
+1103773,ZMB,Green,0,2026-01-20,2026-01-19,3,Flood in Zambia
+1103724,TUN,Green,0,2026-01-19,2026-01-19,3,Flood in Tunisia
+1103729,HND,Green,0,2026-01-19,2026-01-19,3,Flood in Honduras
+1103728,DZA,Green,0,2026-01-19,2026-01-19,3,Flood in Algeria
+1103735,MOZ,Orange,1,2026-01-19,2026-01-19,1,"Flood in Mozambique, South Africa, Zimbabwe"
+1103720,NZL,Green,0,2026-01-17,2026-01-12,3,Flood in New Zealand
+1103710,AUS,Green,0,2026-01-11,2026-01-05,9,Flood in Australia
+1103719,PHL,Green,0,2026-01-16,2026-01-12,3,Flood in Philippines
+1103711,CAN,Green,0,2026-01-11,2026-01-05,6,Flood in Canada
+1103716,ZAF,Green,0,2026-01-12,2026-01-12,4,Flood in South Africa
+1103713,PER,Green,0,2026-01-13,2026-01-12,3,Flood in Peru
+1103714,COD,Green,0,2026-01-12,2026-01-12,3,Flood in Democratic Republic of Congo
+1103709,SYR,Green,0,2026-01-12,2026-01-12,3,Flood in Syria
+1103708,ISR,Green,0,2026-01-12,2026-01-12,3,Flood in Israel
+1103718,ECU,Green,0,2026-01-11,2026-01-05,3,Flood in Ecuador
+1103692,USA,Green,0,2026-01-01,2025-12-29,13,Flood in United States
+1103712,SLV,Green,0,2026-01-10,2026-01-05,3,Flood in El Salvador
+1103707,BEL,Green,0,2026-01-09,2026-01-05,4,Flood in Belgium
+1103705,ARG,Green,0,2026-01-07,2026-01-05,6,Flood in Argentina
+1103701,COL,Green,0,2026-01-06,2026-01-05,6,Flood in Colombia
+1103706,ZMB,Green,0,2026-01-09,2026-01-05,1,Flood in Zambia
+1103693,TZA,Green,0,2025-12-28,2025-12-22,13,Flood in Tanzania
+1103703,BGR,Green,0,2026-01-07,2026-01-05,3,Flood in Bulgaria
+1103722,IDN,Green,0,2026-01-08,2026-01-05,1,Flood in Indonesia
+1103704,MKD,Green,0,2026-01-06,2026-01-05,3,Flood in The Republic of North Macedonia
+1103700,XXK,Green,0,2026-01-06,2026-01-05,3,Flood in Kosovo
+1103697,MNE,Green,0,2026-01-05,2026-01-05,3,Flood in Montenegro
+1103696,ITA,Green,0,2026-01-04,2025-12-29,4,Flood in Italy
+1103699,DOM,Green,0,2026-01-04,2025-12-29,3,Flood in Dominican Republic
+1103698,BIH,Green,0,2026-01-04,2025-12-29,3,Flood in Bosnia  and  Herzegovina
+1103681,ESP,Green,0,2025-12-27,2025-12-22,11,Flood in Spain
+1103715,ZWE,Green,0,2026-01-01,2025-12-29,3,Flood in Zimbabwe
+1103688,AFG,Green,0,2025-12-30,2025-12-29,3,Flood in Afghanistan
+1103686,PER,Green,0,2025-12-28,2025-12-22,3,Flood in Peru
+1103683,AUS,Green,0,2025-12-28,2025-12-22,3,Flood in Australia
+1103675,ARG,Green,0,2025-12-20,2025-12-15,11,Flood in Argentina
+1103695,BDI,Green,0,2025-12-27,2025-12-22,3,Flood in Burundi
+1103682,JOR,Green,0,2025-12-27,2025-12-22,3,Flood in Jordan
+1103690,IRN,Green,0,2025-12-26,2025-12-22,3,Flood in Islamic Republic of Iran
+1103680,IRQ,Green,0,2025-12-26,2025-12-22,3,Flood in Iraq
+1103679,COL,Green,0,2025-12-24,2025-12-22,5,Flood in Colombia
+1103685,MYS,Green,0,2025-12-24,2025-12-22,3,Flood in Malaysia
+1103684,ZMB,Green,0,2025-12-24,2025-12-22,3,Flood in Zambia
+1103677,ITA,Green,0,2025-12-24,2025-12-22,3,Flood in Italy
+1103691,MWI,Green,0,2025-12-22,2025-12-22,3,Flood in Malawi
+1103678,ISR,Green,0,2025-12-23,2025-12-22,2,Flood in Israel
+1103674,ZAF,Green,0,2025-12-21,2025-12-15,3,Flood in South Africa
+1103687,PNG,Green,0,2025-12-20,2025-12-15,3,Flood in Papua New Guinea
+1103672,DZA,Green,0,2025-12-17,2025-12-15,3,Flood in Algeria
+1103786,IDN,Green,0,2026-03-02,2026-03-02,94,Flood in Indonesia
+1103841,USA,Green,0,2026-04-13,2026-04-13,26,Flood in United States
+1103870,COD,Green,0,2026-04-12,2026-04-06,19,Flood in Democratic Republic of Congo
+1103840,CAN,Green,0,2026-04-13,2026-04-13,16,Flood in Canada
+1103823,PER,Green,0,2026-03-28,2026-03-23,28,Flood in Peru
+1103822,ARG,Green,0,2026-03-28,2026-03-23,25,Flood in Argentina
+1103876,BRA,Green,0,2026-04-06,2026-04-06,14,Flood in Brazil
+1103839,ITA,Green,0,2026-04-14,2026-04-13,3,Flood in Italy
+1103847,PRY,Green,0,2026-04-13,2026-04-13,3,Flood in Paraguay
+1103836,DZA,Green,0,2026-04-12,2026-04-06,3,Flood in Algeria
+1103828,AGO,Green,0,2026-03-28,2026-03-23,18,Flood in Angola
+1103815,AFG,Orange,1,2026-03-25,2026-03-23,21,Flood in Afghanistan
+1103834,VEN,Green,0,2026-04-11,2026-04-06,3,Flood in Venezuela
+1103837,ESP,Green,0,2026-04-10,2026-04-06,3,Flood in Spain
+1103838,PHL,Green,0,2026-04-08,2026-04-06,4,Flood in Philippines
+1103835,SLB,Green,0,2026-04-07,2026-04-06,3,Flood in Solomon Is.
+1103833,TUR,Green,0,2026-04-05,2026-03-30,5,Flood in Türkiye
+1103819,RUS,Green,0,2026-03-27,2026-03-23,12,Flood in Russia
+1103818,AZE,Green,0,2026-03-27,2026-03-23,12,Flood in Azerbaijan
+1103830,CHN,Green,0,2026-04-04,2026-03-30,3,Flood in China
+1103831,COL,Green,0,2026-04-03,2026-03-30,3,Flood in Colombia
+1103826,USA,Green,0,2026-03-30,2026-03-30,7,Flood in United States
+1103821,PAK,Green,0,2026-03-25,2026-03-23,11,Flood in Pakistan
+1103825,ITA,Green,0,2026-03-31,2026-03-30,3,Flood in Italy
+1103829,ZWE,Green,0,2026-03-20,2026-03-16,12,Flood in Zimbabwe
+1103820,IRN,Green,0,2026-03-28,2026-03-23,3,Flood in Islamic Republic of Iran
+1103817,BIH,Green,0,2026-03-28,2026-03-23,3,Flood in Bosnia  and  Herzegovina
+1103827,CMR,Green,0,2026-03-26,2026-03-23,3,Flood in Cameroon
+1103816,IRQ,Green,0,2026-03-25,2026-03-23,3,Flood in Iraq
+1103812,ISR,Green,0,2026-03-25,2026-03-23,3,Flood in Israel
+1103811,NZL,Green,0,2026-03-25,2026-03-23,3,Flood in New Zealand
+1103813,COD,Green,0,2026-03-19,2026-03-16,8,Flood in Democratic Republic of Congo
+1103809,ESP,Green,0,2026-03-24,2026-03-23,3,Flood in Spain
+1103805,COL,Green,0,2026-03-18,2026-03-16,9,Flood in Colombia
+1103800,SYR,Green,0,2026-03-15,2026-03-09,11,Flood in Syria
+1103803,KEN,Green,0,2026-03-18,2026-03-16,7,Flood in Kenya
+1103791,PER,Green,0,2026-03-06,2026-03-02,19,Flood in Peru
+1103814,PNG,Green,0,2026-03-16,2026-03-16,8,Flood in Papua New Guinea
+1103806,OMN,Green,0,2026-03-20,2026-03-16,3,Flood in Oman
+1103789,USA,Green,0,2026-03-05,2026-03-02,18,Flood in United States
+1103832,BWA,Green,0,2026-03-15,2026-03-09,7,Flood in Botswana
+1103807,CAN,Green,0,2026-03-17,2026-03-16,3,Flood in Canada
+1103802,LBY,Green,0,2026-03-16,2026-03-16,3,Flood in Libya
+1103794,PRY,Green,0,2026-03-08,2026-03-02,11,Flood in Paraguay
+1103808,MWI,Green,0,2026-03-15,2026-03-09,3,Flood in Malawi
+1103804,NAM,Green,0,2026-03-15,2026-03-09,3,Flood in Namibia
+1103801,TUR,Green,0,2026-03-15,2026-03-09,3,Flood in Türkiye
+1103799,CHL,Green,0,2026-03-15,2026-03-09,3,Flood in Chile
+1103797,ITA,Green,0,2026-03-09,2026-03-09,9,Flood in Italy
+1103793,ARG,Green,0,2026-03-05,2026-03-02,12,Flood in Argentina
+1103810,COL,Green,0,2026-03-11,2026-03-09,5,Flood in Colombia
+1103824,BDI,Green,0,2026-03-11,2026-03-09,4,Flood in Burundi
+1103796,TZA,Green,0,2026-03-10,2026-03-09,3,Flood in Tanzania
+1103798,ETH,Orange,1,2026-03-09,2026-03-09,3,Flood in Ethiopia
+1103795,ESP,Green,0,2026-03-06,2026-03-02,6,Flood in Spain
+1103792,KEN,Green,0,2026-03-04,2026-03-02,7,Flood in Kenya
+1103790,DZA,Green,0,2026-03-05,2026-03-02,3,Flood in Algeria
+1103787,MEX,Green,0,2026-02-28,2026-02-23,3,Flood in Mexico
+1103785,FJI,Green,0,2026-02-27,2026-02-23,3,Flood in Fiji
+1103788,AGO,Green,0,2026-02-21,2026-02-16,5,Flood in Angola
+1103781,ARG,Green,0,2026-02-21,2026-02-16,5,Flood in Argentina
+1103783,CHL,Green,0,2026-02-22,2026-02-16,3,Flood in Chile
+1103769,PER,Green,0,2026-02-15,2026-02-09,10,Flood in Peru
+1103780,BRA,Green,0,2026-02-21,2026-02-16,3,Flood in Brazil
+1103779,ZMB,Green,0,2026-02-20,2026-02-16,3,Flood in Zambia
+1103772,USA,Green,0,2026-02-16,2026-02-16,7,Flood in United States
+1103778,PHL,Green,0,2026-02-19,2026-02-16,3,Flood in Philippines
+1103775,KEN,Green,0,2026-02-17,2026-02-16,3,Flood in Kenya
+1103770,MNE,Green,0,2026-02-15,2026-02-09,2,Flood in Montenegro
+1103888,USA,Green,0,2026-05-19,2026-05-18,172,Flood in United States
+1103933,CHN,Orange,1,2026-06-06,2026-06-01,39,Flood in China
+1104027,TCD,Green,0,2026-06-02,2026-06-01,39,Flood in Chad
+1103990,NPL,Green,0,2026-06-14,2026-06-08,8,Flood in Nepal
+1103930,SLV,Green,0,2026-06-05,2026-06-01,14,Flood in El Salvador
+1103944,MEX,Green,0,2026-06-14,2026-06-08,4,Flood in Mexico
+1103940,BRA,Green,0,2026-06-11,2026-06-08,6,Flood in Brazil
+1103943,TUR,Green,0,2026-06-13,2026-06-08,3,Flood in Türkiye
+1103937,MMR,Green,0,2026-06-02,2026-06-01,13,Flood in Myanmar
+1103934,MDA,Green,0,2026-06-05,2026-06-01,10,Flood in Moldova
+1103931,RUS,Green,0,2026-06-03,2026-06-01,12,Flood in Russia
+1103970,NER,Green,0,2026-06-10,2026-06-08,3,Flood in Niger
+1103939,MYS,Green,0,2026-06-11,2026-06-08,2,Flood in Malaysia
+1103935,CAN,Green,0,2026-06-06,2026-06-01,7,Flood in Canada
+1103923,ITA,Green,0,2026-06-02,2026-06-01,11,Flood in Italy
+1103911,MEX,Green,0,2026-05-27,2026-05-25,17,Flood in Mexico
+1103971,ECU,Green,0,2026-06-09,2026-06-08,3,Flood in Ecuador
+1103927,SVN,Green,0,2026-06-03,2026-06-01,9,Flood in Slovenia
+1103921,AUT,Green,0,2026-05-31,2026-05-25,12,Flood in Austria
+1103987,VNM,Green,0,2026-06-08,2026-06-08,3,Flood in Vietnam
+1103962,GHA,Green,0,2026-06-07,2026-06-01,4,Flood in Ghana
+1103938,NIC,Green,0,2026-06-08,2026-06-08,3,Flood in Nicaragua
+1103936,UKR,Green,0,2026-06-08,2026-06-08,3,Flood in Ukraine
+1103928,HND,Green,0,2026-06-02,2026-06-01,9,Flood in Honduras
+1103924,COL,Green,0,2026-06-01,2026-06-01,9,Flood in Colombia
+1103932,DZA,Green,0,2026-06-07,2026-06-01,2,Flood in Algeria
+1103892,PER,Green,0,2026-05-21,2026-05-18,19,Flood in Peru
+1103988,CRI,Green,0,2026-06-05,2026-06-01,3,Flood in Costa Rica
+1103985,ROU,Green,0,2026-06-05,2026-06-01,3,Flood in Romania
+1103917,IND,Green,0,2026-05-28,2026-05-25,11,Flood in India
+1103984,GTM,Green,0,2026-06-01,2026-06-01,6,Flood in Guatemala
+1103941,VEN,Green,0,2026-06-01,2026-06-01,6,Flood in Venezuela
+1103919,DEU,Green,0,2026-05-29,2026-05-25,9,Flood in Germany
+1103986,ESP,Green,0,2026-06-03,2026-06-01,3,Flood in Spain
+1103929,ZAF,Green,0,2026-06-03,2026-06-01,3,Flood in South Africa
+1103926,POL,Green,0,2026-06-03,2026-06-01,3,Flood in Poland
+1103925,HRV,Green,0,2026-06-03,2026-06-01,3,Flood in Croatia
+1103983,JPN,Green,0,2026-06-02,2026-06-01,3,Flood in Japan
+1103912,BRA,Green,0,2026-05-23,2026-05-18,12,Flood in Brazil
+1103910,KOR,Green,0,2026-05-25,2026-05-25,10,Flood in South Korea
+1103922,NZL,Green,0,2026-05-31,2026-05-25,3,Flood in New Zealand
+1103918,BEL,Green,0,2026-05-30,2026-05-25,3,Flood in Belgium
+1103881,THA,Green,0,2026-05-13,2026-05-11,19,Flood in Thailand
+1103916,LBY,Green,0,2026-05-26,2026-05-25,3,Flood in Libya
+1103883,CHN,Green,0,2026-05-15,2026-05-11,13,Flood in China
+1103914,SYR,Green,0,2026-05-24,2026-05-18,3,Flood in Syria
+1103909,GEO,Green,0,2026-05-24,2026-05-18,3,Flood in Georgia
+1103845,TUR,Green,0,2026-04-20,2026-04-20,37,Flood in Türkiye
+1103896,VNM,Green,0,2026-05-15,2026-05-11,11,Flood in Vietnam
+1103915,UZB,Green,0,2026-05-23,2026-05-18,2,Flood in Uzbekistan
+1103913,COL,Green,0,2026-05-22,2026-05-18,3,Flood in Colombia
+1103908,ROU,Green,0,2026-05-22,2026-05-18,3,Flood in Romania
+1103895,KGZ,Green,0,2026-05-22,2026-05-18,3,Flood in Kyrgyzstan
+1103894,BGR,Green,0,2026-05-22,2026-05-18,3,Flood in Bulgaria
+1103907,JPN,Green,0,2026-05-22,2026-05-18,2,Flood in Japan
+1103900,LKA,Green,0,2026-05-08,2026-05-04,16,Flood in Sri Lanka
+1103891,MDA,Green,0,2026-05-21,2026-05-18,3,Flood in Moldova
+1103880,PHL,Green,0,2026-05-13,2026-05-11,11,Flood in Philippines
+1103890,AFG,Green,0,2026-05-20,2026-05-18,3,Flood in Afghanistan
+1103889,RUS,Green,0,2026-05-19,2026-05-18,4,Flood in Russia
+1103884,MYS,Green,0,2026-05-16,2026-05-11,7,Flood in Malaysia
+1103887,AUS,Green,0,2026-05-18,2026-05-18,3,Flood in Australia
+1103906,NPL,Green,0,2026-05-16,2026-05-11,3,Flood in Nepal
+1103905,THA,Green,0,2026-05-17,2026-05-11,2,Flood in Thailand
+1103893,SUR,Green,0,2026-05-16,2026-05-11,3,Flood in Suriname
+1103855,ESP,Green,0,2026-04-28,2026-04-27,21,Flood in Spain
+1103904,IND,Green,0,2026-05-15,2026-05-11,3,Flood in India
+1103885,AUT,Green,0,2026-05-15,2026-05-11,3,Flood in Austria
+1103871,ITA,Green,0,2026-05-05,2026-05-04,12,Flood in Italy
+1103882,YEM,Green,0,2026-05-13,2026-05-11,3,Flood in Yemen
+1103878,BGD,Green,0,2026-05-13,2026-05-11,3,Flood in Bangladesh
+1103852,BRA,Green,0,2026-04-26,2026-04-20,19,Flood in Brazil
+1103902,IDN,Green,0,2026-05-11,2026-05-11,3,Flood in Indonesia
+1103874,MEX,Green,0,2026-05-07,2026-05-04,7,Flood in Mexico
+1103869,UGA,Green,0,2026-05-03,2026-04-27,11,Flood in Uganda
+1103901,CZE,Green,0,2026-05-11,2026-05-11,2,Flood in Czech Republic
+1103872,AUT,Green,0,2026-05-06,2026-05-04,7,Flood in Austria
+1103856,FRA,Green,0,2026-04-27,2026-04-27,16,Flood in France
+1103877,PAK,Green,0,2026-05-10,2026-05-04,2,Flood in Pakistan
+1103854,PER,Green,0,2026-04-28,2026-04-27,14,Flood in Peru
+1103873,ARG,Green,0,2026-05-08,2026-05-04,3,Flood in Argentina
+1103843,COL,Green,0,2026-04-17,2026-04-13,24,Flood in Colombia
+1103875,CAN,Green,0,2026-05-07,2026-05-04,3,Flood in Canada
+1103903,CHL,Green,0,2026-05-05,2026-05-04,4,Flood in Chile
+1103862,DEU,Green,0,2026-05-02,2026-04-27,7,Flood in Germany
+1103886,PHL,Green,0,2026-05-03,2026-04-27,4,Flood in Philippines
+1103868,KEN,Green,0,2026-05-03,2026-04-27,3,"Flood in Kenya, Mongolia"
+1103898,VEN,Green,0,2026-05-02,2026-04-27,3,Flood in Venezuela
+1103857,KGZ,Green,0,2026-04-28,2026-04-27,7,Flood in Kyrgyzstan
+1103867,UZB,Green,0,2026-05-01,2026-04-27,3,Flood in Uzbekistan
+1103865,ZAF,Green,0,2026-05-01,2026-04-27,3,Flood in South Africa
+1103864,COD,Green,0,2026-05-01,2026-04-27,3,Flood in Democratic Republic of Congo
+1103863,DZA,Green,0,2026-05-01,2026-04-27,3,Flood in Algeria
+1103861,TJK,Green,0,2026-05-01,2026-04-27,3,Flood in Tajikistan
+1103850,PAN,Green,0,2026-04-23,2026-04-20,11,Flood in Panama
+1103849,KEN,Green,0,2026-04-22,2026-04-20,12,Flood in Kenya
+1103858,IND,Green,0,2026-04-29,2026-04-27,3,Flood in India
+1103853,BGD,Green,0,2026-04-28,2026-04-27,3,Flood in Bangladesh
+1103879,IDN,Green,0,2026-04-20,2026-04-20,11,Flood in Indonesia
+1103899,PRT,Green,0,2026-04-28,2026-04-27,2,Flood in Portugal
+1103866,PAK,Green,0,2026-04-28,2026-04-27,2,Flood in Pakistan
+1103859,SOM,Green,0,2026-04-26,2026-04-20,3,Flood in Somalia
+1103897,COL,Green,0,2026-04-26,2026-04-20,3,Flood in Colombia
+1103860,DOM,Green,0,2026-04-25,2026-04-20,3,Flood in Dominican Republic
+1103848,AFG,Green,0,2026-04-22,2026-04-20,3,Flood in Afghanistan
+1103851,VEN,Green,0,2026-04-22,2026-04-20,3,Flood in Venezuela
+1103844,IND,Green,0,2026-04-19,2026-04-13,3,Flood in India
+1103846,MEX,Green,0,2026-04-17,2026-04-13,4,Flood in Mexico
+1103842,NZL,Green,0,2026-04-17,2026-04-13,3,Flood in New Zealand
+1104091,NPL,Green,0,2026-08-12,2026-08-10,3,Flood in Nepal
+1104063,CHL,Green,0,2026-07-27,2026-07-27,6,Flood in Chile
+1104041,PER,Green,0,2026-07-19,2026-07-13,3,Flood in Peru
+1104028,FRA,Green,0,2026-07-15,2026-07-13,2,Flood in France
+1104026,IDN,Green,0,2026-07-12,2026-07-06,5,Flood in Indonesia
+1104023,AUT,Green,0,2026-07-14,2026-07-13,3,Flood in Austria
+1104004,KGZ,Green,0,2026-07-01,2026-06-29,16,Flood in Kyrgyzstan
+1104019,DEU,Green,0,2026-07-13,2026-07-13,3,Flood in Germany
+1104031,NIC,Green,0,2026-07-12,2026-07-06,3,Flood in Nicaragua
+1104021,HND,Green,0,2026-07-12,2026-07-06,3,Flood in Honduras
+1104020,MYS,Green,0,2026-07-11,2026-07-06,4,Flood in Malaysia
+1104008,FIN,Green,0,2026-07-05,2026-06-29,10,Flood in Finland
+1103996,THA,Green,0,2026-07-01,2026-06-29,14,Flood in Thailand
+1104013,GTM,Green,0,2026-07-09,2026-07-06,4,Flood in Guatemala
+1104042,VEN,Green,0,2026-07-09,2026-07-06,3,Flood in Venezuela
+1104015,BGD,Green,0,2026-07-09,2026-07-06,3,Flood in Bangladesh
+1104035,CIV,Green,0,2026-06-22,2026-06-22,19,Flood in Cote d'Ivoire
+1104022,NPL,Green,0,2026-07-08,2026-07-06,3,Flood in Nepal
+1104017,EST,Green,0,2026-07-08,2026-07-06,3,Flood in Estonia
+1104012,KOR,Green,0,2026-07-07,2026-07-06,3,Flood in South Korea
+1104009,LAO,Green,0,2026-06-30,2026-06-29,9,Flood in Laos
+1104006,NZL,Green,0,2026-07-05,2026-06-29,3,Flood in New Zealand
+1103992,VNM,Green,0,2026-06-25,2026-06-22,12,Flood in Vietnam
+1104007,ECU,Green,0,2026-07-03,2026-06-29,3,Flood in Ecuador
+1103920,TUR,Green,0,2026-06-28,2026-06-22,8,Flood in Türkiye
+1104001,UKR,Green,0,2026-07-02,2026-06-29,3,Flood in Ukraine
+1104003,CRI,Green,0,2026-07-02,2026-06-29,3,Flood in Costa Rica
+1103980,ITA,Green,0,2026-06-29,2026-06-29,6,Flood in Italy
+1103993,JPN,Green,0,2026-06-24,2026-06-22,10,Flood in Japan
+1103999,PRY,Green,0,2026-06-29,2026-06-29,5,Flood in Paraguay
+1104005,AUS,Green,0,2026-07-01,2026-06-29,3,Flood in Australia
+1103997,NGA,Green,0,2026-07-01,2026-06-29,3,Flood in Nigeria
+1103950,IDN,Green,0,2026-06-15,2026-06-15,19,Flood in Indonesia
+1103955,POL,Green,0,2026-06-18,2026-06-15,16,Flood in Poland
+1103963,CAN,Green,0,2026-06-20,2026-06-15,14,Flood in Canada
+1103964,CZE,Green,0,2026-06-20,2026-06-15,14,Flood in Czech Republic
+1104016,KAZ,Green,0,2026-07-01,2026-06-29,3,Flood in Kazakhstan
+1103967,HUN,Green,0,2026-06-22,2026-06-22,11,Flood in Hungary
+1103957,AUT,Green,0,2026-06-19,2026-06-15,14,Flood in Austria
+1103958,DEU,Green,0,2026-06-19,2026-06-15,14,Flood in Germany
+1103998,SVK,Green,0,2026-07-01,2026-06-29,2,Flood in Slovakia
+1103966,ROU,Green,0,2026-06-21,2026-06-15,11,Flood in Romania
+1104030,RUS,Green,0,2026-06-29,2026-06-29,3,Flood in Russia
+1103954,GHA,Green,0,2026-06-19,2026-06-15,12,Flood in Ghana
+1103982,VEN,Green,0,2026-06-28,2026-06-22,3,Flood in Venezuela
+1103976,IRN,Green,0,2026-06-27,2026-06-22,3,Flood in Islamic Republic of Iran
+1103977,BRA,Green,0,2026-06-26,2026-06-22,4,Flood in Brazil
+1103978,NLD,Green,0,2026-06-27,2026-06-22,3,Flood in Netherlands
+1103979,GEO,Green,0,2026-06-27,2026-06-22,3,Flood in Georgia
+1104002,PAK,Green,0,2026-06-27,2026-06-22,3,Flood in Pakistan
+1103994,BEN,Green,0,2026-06-25,2026-06-22,3,Flood in Benin
+1103995,BFA,Green,0,2026-06-23,2026-06-22,4,Flood in Burkina Faso
+1103975,MMR,Green,0,2026-06-24,2026-06-22,3,Flood in Myanmar
+1103973,BGR,Green,0,2026-06-23,2026-06-22,3,Flood in Bulgaria
+1103974,MKD,Green,0,2026-06-23,2026-06-22,3,Flood in The Republic of North Macedonia
+1103949,GTM,Green,0,2026-06-15,2026-06-15,10,Flood in Guatemala
+1103956,FRA,Green,0,2026-06-18,2026-06-15,7,Flood in France
+1103991,NIC,Green,0,2026-06-21,2026-06-15,3,Flood in Nicaragua
+1103969,HND,Green,0,2026-06-20,2026-06-15,3,Flood in Honduras
+1103965,BEL,Green,0,2026-06-20,2026-06-15,3,Flood in Belgium
+1103961,KOR,Green,0,2026-06-19,2026-06-15,3,Flood in South Korea
+1103968,TLS,Green,0,2026-06-19,2026-06-15,3,Flood in Timor-Leste
+1103989,IND,Green,0,2026-06-18,2026-06-15,3,Flood in India
+1103960,KGZ,Green,0,2026-06-18,2026-06-15,3,Flood in Kyrgyzstan
+1103951,PER,Green,0,2026-06-18,2026-06-15,3,Flood in Peru
+1103952,COL,Green,0,2026-06-17,2026-06-15,3,Flood in Colombia
+1103953,PAK,Green,0,2026-06-17,2026-06-15,3,Flood in Pakistan
+1103959,GEO,Green,0,2026-06-17,2026-06-15,3,Flood in Georgia
+1103948,ESP,Green,0,2026-06-16,2026-06-15,4,Flood in Spain
+1103945,TUN,Green,0,2026-06-15,2026-06-15,3,Flood in Tunisia
+1103946,BIH,Green,0,2026-06-15,2026-06-15,3,Flood in Bosnia  and  Herzegovina
+1103947,PRT,Green,0,2026-06-15,2026-06-15,2,Flood in Portugal
+1104245,ECU,Green,0,2026-10-11,2026-10-05,8,Flood in Ecuador
+1104202,FRA,Green,0,2026-09-29,2026-09-28,10,Flood in France
+1104204,PAN,Green,0,2026-09-26,2026-09-21,3,Flood in Panama
+1104180,TUN,Green,0,2026-09-17,2026-09-14,3,Flood in Tunisia
+1104146,IDN,Green,0,2026-09-06,2026-08-31,3,Flood in Indonesia
+1104117,GIN,Green,0,2026-08-23,2026-08-17,3,Flood in Guinea
+1104253,IDN,Green,0,2026-10-24,2026-10-19,26,Flood in Indonesia
+1104287,ESP,Green,0,2026-11-15,2026-11-09,3,Flood in Spain
+1104286,ZAF,Green,0,2026-11-15,2026-11-09,3,Flood in South Africa

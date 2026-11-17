@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "DimWeek",
+          "nodeLineageTag": "4a4a78af-5293-5b9b-841d-3446838f539e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 520,
+            "y": 0
+          },
+          "nodeIndex": "DimCountry",
+          "nodeLineageTag": "6ad76a36-7f21-52c7-8b8d-cfc7483c40d4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 260,
+            "y": 0
+          },
+          "nodeIndex": "FactCholera",
+          "nodeLineageTag": "13f77879-7ac6-510c-954a-b60df058cd78",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 780,
+            "y": 380
+          },
+          "nodeIndex": "Flood",
+          "nodeLineageTag": "eebb1d04-1c97-5ac6-bbe0-9a3c54fb77ae",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 780,
+            "y": 0
+          },
+          "nodeIndex": "FloodLag",
+          "nodeLineageTag": "cdbb8717-7a4e-5cc0-a20d-32e048f037d7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 380
+          },
+          "nodeIndex": "Don",
+          "nodeLineageTag": "132acf37-1050-5b02-bc6e-31cef34b5118",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 260,
+            "y": 380
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "2707aa34-8c56-564a-9c4f-c04049772981",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

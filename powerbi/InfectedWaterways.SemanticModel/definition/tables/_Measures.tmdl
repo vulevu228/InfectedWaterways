@@ -1,0 +1,410 @@
+table _Measures
+	lineageTag: 2707aa34-8c56-564a-9c4f-c04049772981
+
+	measure 'Anchor Week' = CALCULATE(MAX(FactCholera[week]), ALL()) - 7
+		formatString: dd mmm yyyy
+		displayFolder: 1 Cholera now
+		lineageTag: 1736b770-a425-5af8-b41e-ecf5abd2aaa6
+
+	measure 'Cases L4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[cases]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 28, FactCholera[week] <= a - 0)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 368a45f5-7748-5a73-b34d-deb55323012a
+
+	measure 'Deaths L4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[deaths]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 28, FactCholera[week] <= a - 0)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 7207dcbe-70a9-515f-b547-d9ade7106225
+
+	measure 'Countries L4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(DISTINCTCOUNT(FactCholera[iso3]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 28, FactCholera[week] <= a - 0)
+		formatString: 0
+		displayFolder: 1 Cholera now
+		lineageTag: 01e129c3-94ef-55b0-8882-46319cd70ab2
+
+	measure 'Cases P4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[cases]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 56, FactCholera[week] <= a - 28)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 5d4f9da5-8c18-542c-a3b5-f6eaf0794197
+
+	measure 'Deaths P4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[deaths]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 56, FactCholera[week] <= a - 28)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: f1b7012c-0798-510c-9937-866b09c79c0d
+
+	measure 'Countries P4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(DISTINCTCOUNT(FactCholera[iso3]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 56, FactCholera[week] <= a - 28)
+		formatString: 0
+		displayFolder: 1 Cholera now
+		lineageTag: a2e18fef-5312-5171-b663-4a39bd1813f4
+
+	measure 'Cases LY4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[cases]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 392, FactCholera[week] <= a - 364)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 1d0e411e-77c3-51e8-ac8b-5bf33f8fce47
+
+	measure 'Deaths LY4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[deaths]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 392, FactCholera[week] <= a - 364)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: fe3e3c22-7e00-5969-9382-8b81e03f55c5
+
+	measure 'Countries LY4W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(DISTINCTCOUNT(FactCholera[iso3]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 392, FactCholera[week] <= a - 364)
+		formatString: 0
+		displayFolder: 1 Cholera now
+		lineageTag: 0db1a09c-8b77-5f7b-939e-6782cbf95a8c
+
+	measure 'Cases 52W' =
+			VAR a = [Anchor Week]
+			RETURN CALCULATE(SUM(FactCholera[cases]), REMOVEFILTERS(DimWeek), FactCholera[week] > a - 364, FactCholera[week] <= a - 0)
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: b522ad55-15dd-5da8-a944-eab4da8e8dd8
+
+	measure 'Change vs Prev' =
+			VAR c = [Cases L4W]
+			VAR b = [Cases P4W]
+			RETURN IF(ISBLANK(c) || ISBLANK(b) || b = 0, BLANK(), DIVIDE(c - b, b))
+		formatString: +0%;-0%;0%
+		displayFolder: 1 Cholera now
+		lineageTag: 71958487-f826-567c-a626-03ec5659fd71
+
+	measure 'Change vs LY' =
+			VAR c = [Cases L4W]
+			VAR b = [Cases LY4W]
+			RETURN IF(ISBLANK(c) || ISBLANK(b) || b = 0, BLANK(), DIVIDE(c - b, b))
+		formatString: +0%;-0%;0%
+		displayFolder: 1 Cholera now
+		lineageTag: 7d2a88e9-f5f7-556f-ac36-28a23f2f1b1d
+
+	measure 'CFR L4W' = DIVIDE([Deaths L4W], [Cases L4W])
+		formatString: 0.0%
+		displayFolder: 1 Cholera now
+		lineageTag: f1ef264d-62e2-5481-9949-70b6da3ebcdd
+
+	measure 'Weekly Cases' =
+			// the newest week is left out, as in the KPIs: late reports make it look like a crash
+			IF(MAX(DimWeek[week]) > [Anchor Week], BLANK(), SUM(FactCholera[cases]))
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 24d50d05-505c-5155-9698-54452c341fe4
+
+	measure 'Window Text' =
+			VAR a = [Anchor Week]
+			RETURN "WHO weekly cholera & AWD reports  ·  last 4 complete weeks " & FORMAT(a - 21, "d mmm", "en-GB") & " – " & FORMAT(a + 6, "d mmm yyyy", "en-GB") & "  ·  newest week left out (late reports)"
+		displayFolder: 1 Cholera now
+		lineageTag: f2448546-0b91-5bf8-89a9-9253479c535d
+
+	measure 'L4W Text' = SUBSTITUTE(FORMAT([Cases L4W], "#,##0", "en-GB"), ",", UNICHAR(8239))
+		displayFolder: 1 Cholera now
+		lineageTag: 03a8b76e-deeb-50d9-9e11-19c0c5a94832
+
+	measure 'L4W Sub' = IF(ISBLANK([Change vs Prev]), "–", FORMAT([Change vs Prev], "+0%;-0%;0%", "en-GB")) & " vs the 4 weeks before (" & SUBSTITUTE(FORMAT([Cases P4W], "#,##0", "en-GB"), ",", UNICHAR(8239)) & " cases)"
+		displayFolder: 1 Cholera now
+		lineageTag: a5ef5af6-ba5a-550b-96e7-0a7905d17f72
+
+	measure 'LY Text' = IF(ISBLANK([Change vs LY]), "–", FORMAT([Change vs LY], "+0%;-0%;0%", "en-GB"))
+		displayFolder: 1 Cholera now
+		lineageTag: c65f47d9-8299-553d-ba22-635f856d3605
+
+	measure 'LY Sub' = SUBSTITUTE(FORMAT([Cases LY4W], "#,##0", "en-GB"), ",", UNICHAR(8239)) & " cases in the same weeks of " & YEAR([Anchor Week] - 364)
+		displayFolder: 1 Cholera now
+		lineageTag: d10ea2a9-a410-5895-ad4a-1e411e532035
+
+	measure 'LY Sub2' = [Countries LY4W] & " countries reported then, " & [Countries L4W] & " now"
+		displayFolder: 1 Cholera now
+		lineageTag: 52ffc4eb-861c-54cc-84c0-3852794c5118
+
+	measure 'Deaths Text' = SUBSTITUTE(FORMAT([Deaths L4W], "#,##0", "en-GB"), ",", UNICHAR(8239))
+		displayFolder: 1 Cholera now
+		lineageTag: b6fff8fb-d9ee-5528-a8fd-cc891933533e
+
+	measure 'Deaths Sub' = "deaths  ·  " & FORMAT([CFR L4W], "0.0%", "en-GB") & " of reported cases died (CFR)"
+		displayFolder: 1 Cholera now
+		lineageTag: b7bc9e85-e2ba-5c85-bc66-db282b0a848c
+
+	measure 'Deaths Sub2' = [Countries L4W] & " countries reported in these 4 weeks"
+		displayFolder: 1 Cholera now
+		lineageTag: 3b6bd553-e04b-51c7-b792-275047bbd3b8
+
+	measure 'Top Countries L4W' =
+			VAR N = SELECTEDVALUE(DimCountry[country])
+			VAR V = [Cases L4W]
+			RETURN IF(ISBLANK(N) || ISBLANK(V) || V = 0, BLANK(),
+			    VAR R = RANKX(FILTER(ALLSELECTED(DimCountry[country]), [Cases L4W] > 0), [Cases L4W], V, DESC)
+			    RETURN IF(R <= 10, V))
+		formatString: #,##0
+		displayFolder: 1 Cholera now
+		lineageTag: 41a6e6b3-7a97-5e8e-96ca-cadef4003f7c
+
+	measure 'Country Bar Color' =
+			VAR c = [Change vs Prev]
+			RETURN IF(ISBLANK(c), "#B8C0CA", IF(c > 0.1, "#EB6834", IF(c < -0.1, "#1BAF7A", "#8A94A1")))
+		displayFolder: 1 Cholera now
+		lineageTag: 13dc6b21-430d-548a-912e-f0a4f68af547
+
+	measure 'Floods Studied' = DISTINCTCOUNT(FloodLag[eventid])
+		formatString: #,##0
+		displayFolder: 2 Floods
+		lineageTag: dac46477-1a4f-5da1-b9c6-d7bce43a0dd6
+
+	measure 'Flood Countries' = DISTINCTCOUNT(FloodLag[iso3])
+		formatString: 0
+		displayFolder: 2 Floods
+		lineageTag: e21a12ce-9b53-5e97-974c-11b7ca504dc0
+
+	measure 'Floods Logged' = COUNTROWS(Flood)
+		formatString: #,##0
+		displayFolder: 2 Floods
+		lineageTag: 58c4a5eb-d7c0-5c9c-9144-4acf06c86da8
+
+	measure 'Median Ratio' = MEDIAN(FloodLag[ratio])
+		formatString: 0.00
+		displayFolder: 2 Floods
+		lineageTag: 77e4d23e-69f6-52ca-830c-71b7c9aa1f3b
+
+	measure 'Ratio After' = CALCULATE([Median Ratio], FloodLag[lag_week] >= 1, FloodLag[lag_week] <= 8)
+		formatString: 0.00
+		displayFolder: 2 Floods
+		lineageTag: 45bb008c-dba4-53b6-a9fa-855faa7fe8d0
+
+	measure 'Ratio Before' = CALCULATE([Median Ratio], FloodLag[lag_week] >= -4, FloodLag[lag_week] <= -1)
+		formatString: 0.00
+		displayFolder: 2 Floods
+		lineageTag: 82dc668f-8ba6-5313-9e49-73914f5d393c
+
+	measure 'Above Share After' = DIVIDE(CALCULATE(COUNTROWS(FloodLag), FloodLag[ratio] > 1, FloodLag[lag_week] >= 1, FloodLag[lag_week] <= 8), CALCULATE(COUNT(FloodLag[ratio]), FloodLag[lag_week] >= 1, FloodLag[lag_week] <= 8))
+		formatString: 0%
+		displayFolder: 2 Floods
+		lineageTag: d34dca14-13c4-50e5-810a-56b4964e2d67
+
+	measure 'Above Share Before' = DIVIDE(CALCULATE(COUNTROWS(FloodLag), FloodLag[ratio] > 1, FloodLag[lag_week] >= -4, FloodLag[lag_week] <= -1), CALCULATE(COUNT(FloodLag[ratio]), FloodLag[lag_week] >= -4, FloodLag[lag_week] <= -1))
+		formatString: 0%
+		displayFolder: 2 Floods
+		lineageTag: b98c9e3a-5b21-5870-a37d-3c6141e70fef
+
+	measure 'Studied Text' = SUBSTITUTE(FORMAT([Floods Studied], "#,##0", "en-GB"), ",", UNICHAR(8239))
+		displayFolder: 2 Floods
+		lineageTag: 6f74b90f-357f-516d-9c9c-8d7eb0dfd847
+
+	measure 'Studied Sub' = "floods in " & [Flood Countries] & " countries with WHO cholera data"
+		displayFolder: 2 Floods
+		lineageTag: 7714dcbf-1746-5458-ae54-f63b4dc8013d
+
+	measure 'Studied Sub2' = "out of " & SUBSTITUTE(FORMAT([Floods Logged], "#,##0", "en-GB"), ",", UNICHAR(8239)) & " GDACS floods since " & FORMAT(MIN(Flood[from_date]), "mmm yyyy", "en-GB")
+		displayFolder: 2 Floods
+		lineageTag: 1843dfc5-2ffd-51aa-a859-65b553effc32
+
+	measure 'Ratio Text' = IF(ISBLANK([Ratio After]), "–", FORMAT([Ratio After], "0.00", "en-GB") & "×")
+		displayFolder: 2 Floods
+		lineageTag: 0019b940-1beb-51df-b7c6-b72ae037e911
+
+	measure 'Ratio Sub' = "of normal: median of weeks +1 to +8 after the flood"
+		displayFolder: 2 Floods
+		lineageTag: 514e1206-1b90-569f-bf8c-ea69d2550a62
+
+	measure 'Ratio Sub2' = FORMAT([Ratio Before], "0.00", "en-GB") & "× in the 4 weeks before it"
+		displayFolder: 2 Floods
+		lineageTag: 33d275ec-c25c-5f21-b283-cd5232fc67c6
+
+	measure 'Above Text' = FORMAT([Above Share After], "0%", "en-GB")
+		displayFolder: 2 Floods
+		lineageTag: f821e30f-4d02-5a3e-afe6-4db7fc9604fc
+
+	measure 'Above Sub' = "of weeks +1 to +8 above normal  ·  " & FORMAT([Above Share Before], "0%", "en-GB") & " before the flood"
+		displayFolder: 2 Floods
+		lineageTag: e5a2a08c-da44-580a-a046-ead91362f928
+
+	measure 'Lag Bar Color' =
+			VAR k = SELECTEDVALUE(FloodLag[lag_week])
+			RETURN IF(k > 0, "#2A78D6", IF(k = 0, "#16191D", "#B8C0CA"))
+		displayFolder: 2 Floods
+		lineageTag: 2cd8c287-9ba7-5c8f-a31d-c6b05ae29142
+
+	measure 'WASH Countries' = CALCULATE(COUNTROWS(DimCountry), KEEPFILTERS(DimCountry[band_order] < 4))
+		formatString: 0
+		displayFolder: 3 Water
+		lineageTag: fcaaf2b9-aee5-5ad6-b266-ec4c1b120185
+
+	measure 'WASH Countries Reporting' = CALCULATE(COUNTROWS(DimCountry), KEEPFILTERS(DimCountry[band_order] < 4), DimCountry[has_cholera] = TRUE())
+		formatString: 0
+		displayFolder: 3 Water
+		lineageTag: b9491f95-914f-5813-ac42-bf5716d36bf8
+
+	measure 'Share Reporting' = DIVIDE([WASH Countries Reporting] + 0, [WASH Countries])
+		formatString: 0%
+		displayFolder: 3 Water
+		lineageTag: 307773fb-5964-5787-988d-c2121cb30853
+
+	measure 'Pop Reporting' = CALCULATE(SUM(DimCountry[pop]), DimCountry[has_cholera] = TRUE())
+		formatString: #,##0
+		displayFolder: 3 Water
+		lineageTag: 9ffda893-094a-5bb3-8aeb-c72849fc927d
+
+	measure 'Per 100k 52W' = IF(SELECTEDVALUE(DimCountry[band_order]) = 4, BLANK(), DIVIDE([Cases 52W], [Pop Reporting]) * 100000)
+		formatString: #,##0.0
+		displayFolder: 3 Water
+		lineageTag: 51e14e34-20f7-5e86-8e02-f131264e9a2d
+
+	measure 'Top Per 100k' =
+			VAR N = SELECTEDVALUE(DimCountry[country])
+			VAR V = [Per 100k 52W]
+			RETURN IF(ISBLANK(N) || ISBLANK(V) || V = 0, BLANK(),
+			    VAR R = RANKX(FILTER(ALLSELECTED(DimCountry[country]), [Per 100k 52W] > 0), [Per 100k 52W], V, DESC)
+			    RETURN IF(R <= 15, V))
+		formatString: #,##0.0
+		displayFolder: 3 Water
+		lineageTag: 148cd1ee-3186-5e03-90f3-8c0fd1629033
+
+	measure 'Band Color' = SWITCH(SELECTEDVALUE(DimCountry[band_order]), 0, "#B8C0CA", 1, "#8FB2DE", 2, "#F2A47F", 3, "#EB6834", "#B8C0CA")
+		displayFolder: 3 Water
+		lineageTag: b5c86531-0fbe-592a-a212-ddee9fd909c1
+
+	measure 'High Band Text' = FORMAT(CALCULATE([Share Reporting], DimCountry[band_order] = 3), "0%", "en-GB")
+		displayFolder: 3 Water
+		lineageTag: 90745c54-3016-58bb-a6dd-9d936b37e0fa
+
+	measure 'High Band Sub' = CALCULATE([WASH Countries Reporting] + 0, DimCountry[band_order] = 3) & " of " & CALCULATE([WASH Countries], DimCountry[band_order] = 3) & " countries reported cholera since 2023"
+		displayFolder: 3 Water
+		lineageTag: 2480fb1a-c52d-5c74-8f16-403b3ace26f5
+
+	measure 'High Band Sub2' = "countries where 30 % or more lack basic drinking water"
+		displayFolder: 3 Water
+		lineageTag: 15510718-d273-554a-94fa-2f8308aecb15
+
+	measure 'Low Band Text' = FORMAT(CALCULATE([Share Reporting], DimCountry[band_order] = 0), "0%", "en-GB")
+		displayFolder: 3 Water
+		lineageTag: 865e3bed-5423-5ae0-90a9-94cae286e76f
+
+	measure 'Low Band Sub' = CALCULATE([WASH Countries Reporting] + 0, DimCountry[band_order] = 0) & " of " & CALCULATE([WASH Countries], DimCountry[band_order] = 0) & " countries reported cholera since 2023"
+		displayFolder: 3 Water
+		lineageTag: 09829b8a-4126-5078-be26-ab778fe47d44
+
+	measure 'Low Band Sub2' = "countries where under 5 % lack basic drinking water"
+		displayFolder: 3 Water
+		lineageTag: 5cee21ea-1ead-5f5d-bd24-38e99cfa50a6
+
+	measure 'Water Period Text' =
+			VAR a = [Anchor Week]
+			RETURN "Water: WHO/UNICEF JMP, latest year per country  ·  cholera: WHO weekly reports, 52 weeks to " & FORMAT(a + 6, "d mmm yyyy", "en-GB")
+		displayFolder: 3 Water
+		lineageTag: 8c25c613-f979-5a16-80ed-6adce11fe535
+
+	measure 'Waterborne Reports' = CALCULATE(COUNTROWS(Don), Don[kind] = "waterborne")
+		formatString: #,##0
+		displayFolder: 4 DON
+		lineageTag: 5227b5c5-aa8c-5944-a152-a5a9cbc1cd89
+
+	measure 'DON Reports' = COUNTROWS(Don)
+		formatString: #,##0
+		displayFolder: 4 DON
+		lineageTag: cfd9b1fc-1fa3-5767-816e-11ba789cf852
+
+	measure 'Waterborne Share' = DIVIDE([Waterborne Reports], [DON Reports])
+		formatString: 0.0%
+		displayFolder: 4 DON
+		lineageTag: d75b4d79-23d7-5be5-8181-bf342d564d28
+
+	measure 'Waterborne Countries' = CALCULATE(DISTINCTCOUNT(Don[iso3]), Don[kind] = "waterborne")
+		formatString: 0
+		displayFolder: 4 DON
+		lineageTag: 126281ae-b7c3-5e0e-97e5-d839455754a7
+
+	measure 'Latest Waterborne' = CALCULATE(MAX(Don[published]), Don[kind] = "waterborne")
+		formatString: dd mmm yyyy
+		displayFolder: 4 DON
+		lineageTag: a9321f76-de05-5817-b7e9-bd62f20fad44
+
+	measure 'WB Text' = SUBSTITUTE(FORMAT([Waterborne Reports], "#,##0", "en-GB"), ",", UNICHAR(8239))
+		displayFolder: 4 DON
+		lineageTag: 9eadd302-5036-5a21-afa0-1f2d683a2019
+
+	measure 'WB Sub' = FORMAT([Waterborne Share], "0.0%", "en-GB") & " of all " & SUBSTITUTE(FORMAT([DON Reports], "#,##0", "en-GB"), ",", UNICHAR(8239)) & " reports since " & MIN(Don[year]) & "  ·  " & [Waterborne Countries] & " countries"
+		displayFolder: 4 DON
+		lineageTag: 09987464-542d-5702-945d-c33f74ac51cd
+
+	measure 'Latest Text' = FORMAT([Latest Waterborne], "d mmm yyyy", "en-GB")
+		displayFolder: 4 DON
+		lineageTag: 159fe7f8-ca97-51ea-b01c-15906ebe6eb7
+
+	measure 'Latest Sub' =
+			VAR d = [Latest Waterborne]
+			RETURN FORMAT(DATEDIFF(d, TODAY(), DAY), "#,##0", "en-GB") & " days ago (at refresh)  ·  " & CALCULATE(MAX(Don[disease_group]), Don[kind] = "waterborne", Don[published] = d)
+		displayFolder: 4 DON
+		lineageTag: 823b5937-c503-55b1-b11c-97b4be44cb15
+
+	measure 'Latest Sub2' =
+			VAR d = [Latest Waterborne]
+			VAR t = CALCULATE(MAX(Don[title]), Don[kind] = "waterborne", Don[published] = d)
+			RETURN IF(LEN(t) > 52, LEFT(t, 50) & "…", t)
+		displayFolder: 4 DON
+		lineageTag: f73e4b3a-6db3-57d0-a076-a147f5b902e2
+
+	measure 'Cholera DON Share' = DIVIDE(CALCULATE([Waterborne Reports], Don[disease_group] = "Cholera / AWD"), [Waterborne Reports])
+		formatString: 0%
+		displayFolder: 4 DON
+		lineageTag: 7b5b763f-ebc5-599c-83c6-c9c24133c52b
+
+	measure 'Cholera DON Text' = FORMAT([Cholera DON Share], "0%", "en-GB")
+		displayFolder: 4 DON
+		lineageTag: 082ac895-a927-5104-bce9-aa691c4ba694
+
+	measure 'Cholera DON Sub' = "of waterborne reports are cholera / AWD"
+		displayFolder: 4 DON
+		lineageTag: 06f626e3-2a81-5d08-bff6-ff019106c828
+
+	measure 'Cholera DON Sub2' = "hepatitis A/E " & CALCULATE([Waterborne Reports] + 0, Don[disease_group] = "Hepatitis A / E") & "  ·  typhoid " & CALCULATE([Waterborne Reports] + 0, Don[disease_group] = "Typhoid") & "  ·  other " & CALCULATE([Waterborne Reports] + 0, Don[disease_group] = "Other waterborne")
+		displayFolder: 4 DON
+		lineageTag: 62ccd3a6-abd5-5345-862b-c275314bab4d
+
+	measure 'Waterborne per Year' = [Waterborne Reports] + 0
+		formatString: #,##0
+		displayFolder: 4 DON
+		lineageTag: 5c4df393-63e9-582c-aa35-c7c314158a35
+
+	measure 'Top DON Countries' =
+			VAR N = SELECTEDVALUE(Don[country])
+			VAR V = [Waterborne Reports]
+			RETURN IF(ISBLANK(N) || ISBLANK(V), BLANK(),
+			    VAR R = RANKX(FILTER(ALLSELECTED(Don[country]), NOT ISBLANK([Waterborne Reports])), [Waterborne Reports], V, DESC)
+			    RETURN IF(R <= 12, V))
+		formatString: #,##0
+		displayFolder: 4 DON
+		lineageTag: ee299dd8-603f-535d-b97b-19ad108ab055
+
+	column Value
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 27518091-cb57-501a-8f6f-8d05b03dcdc8
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				  Source = #table({"Value"}, {{0}}),
+				  #"Changed Type" = Table.TransformColumnTypes(Source, {{"Value", Int64.Type}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,73 @@
+table FactCholera
+	lineageTag: 13f77879-7ac6-510c-954a-b60df058cd78
+
+	column iso3
+		dataType: string
+		lineageTag: 99fa24e8-8be8-5a00-8486-08bd2bc59511
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: ba5e902a-06f3-53fa-8056-97ccde24bc00
+		summarizeBy: none
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column region
+		dataType: string
+		lineageTag: f0d310ac-3b5a-5465-85b3-325673e96e2b
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column cases
+		dataType: int64
+		formatString: #,##0
+		lineageTag: c54e3b5a-f534-5764-a74a-a3663302475f
+		summarizeBy: none
+		sourceColumn: cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column deaths
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 1ef2c96f-1aa3-5e06-b470-978b170bbc5d
+		summarizeBy: none
+		sourceColumn: deaths
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1dceb3be-40b8-54e1-968a-e5503e21c0c8
+		summarizeBy: none
+		sourceColumn: week_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactCholera = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "cholera_week.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"iso3", "week", "region", "cases", "deaths"}),
+				    Nulls = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Nulls, {{"iso3", type text}, {"week", type date}, {"region", type text}, {"cases", Int64.Type}, {"deaths", Int64.Type}}, "en-US"),
+				    #"Added week_key" = Table.AddColumn(Typed, "week_key", each Date.Year([week]) * 10000 + Date.Month([week]) * 100 + Date.Day([week]), Int64.Type)
+				in
+				    #"Added week_key"
+
+	annotation PBI_ResultType = Table
+

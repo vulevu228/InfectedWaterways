@@ -8,3 +8,7 @@ __pycache__/
 node_modules/
 package-lock.json
 package.json
+
+# Power BI Desktop local state
+**/.pbi/cache.abf
+**/.pbi/localSettings.json

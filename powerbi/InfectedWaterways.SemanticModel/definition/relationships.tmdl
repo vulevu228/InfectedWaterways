@@ -1,0 +1,12 @@
+relationship a766c0b6-7935-5d45-81cc-04b3866f0d3d
+	fromColumn: FactCholera.week_key
+	toColumn: DimWeek.week_key
+
+relationship bc7ada2b-dabd-5a79-b301-5f90c97482a0
+	fromColumn: FactCholera.iso3
+	toColumn: DimCountry.iso3
+
+relationship c431417c-f11e-5ff4-b46c-244bf2c476ce
+	fromColumn: FloodLag.iso3
+	toColumn: DimCountry.iso3
+

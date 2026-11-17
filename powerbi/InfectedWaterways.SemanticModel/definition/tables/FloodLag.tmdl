@@ -1,0 +1,111 @@
+table FloodLag
+	lineageTag: cdbb8717-7a4e-5cc0-a20d-32e048f037d7
+
+	column eventid
+		dataType: int64
+		formatString: 0
+		lineageTag: 83b4efd3-e7c2-5a9d-875d-5d32972bd3be
+		summarizeBy: none
+		sourceColumn: eventid
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso3
+		dataType: string
+		lineageTag: 9822fc6d-76ac-5385-8fba-078d6ef909f5
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert
+		dataType: string
+		lineageTag: 9bd8ebf1-05c7-5ae7-aaa7-99a98f18d0dc
+		summarizeBy: none
+		sourceColumn: alert
+		sortByColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3d49d114-6b99-5ad7-8b7b-97c4a2ab6049
+		summarizeBy: none
+		sourceColumn: alert_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column flood_week
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 237b64c9-1059-5f92-9a76-dcba4e5ebac4
+		summarizeBy: none
+		sourceColumn: flood_week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column lag_week
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 524c482c-0583-56f5-9623-f1867a7102a8
+		summarizeBy: none
+		sourceColumn: lag_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column cases
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 03dd0acb-1c46-5d41-bf60-bf734c6e6596
+		summarizeBy: none
+		sourceColumn: cases
+
+		annotation SummarizationSetBy = Automatic
+
+	column baseline
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 1fe149c0-15dc-58b8-81e6-df1779118c4a
+		summarizeBy: none
+		sourceColumn: baseline
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9de7d2b0-8ab6-5577-8368-bc62400c9e4e
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column lag_label
+		dataType: string
+		lineageTag: c6225ff6-ad36-546e-8583-ed42d5d66501
+		summarizeBy: none
+		sourceColumn: lag_label
+		sortByColumn: lag_week
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FloodLag = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "flood_lag.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"eventid", "iso3", "alert", "alert_order", "flood_week", "lag_week", "cases", "baseline", "ratio"}),
+				    Nulls = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Nulls, {{"eventid", Int64.Type}, {"iso3", type text}, {"alert", type text}, {"alert_order", Int64.Type}, {"flood_week", type date}, {"lag_week", Int64.Type}, {"cases", Int64.Type}, {"baseline", type number}, {"ratio", type number}}, "en-US"),
+				    #"Added lag_label" = Table.AddColumn(Typed, "lag_label", each if [lag_week] > 0 then "+" & Text.From([lag_week]) else Text.From([lag_week]), type text)
+				in
+				    #"Added lag_label"
+
+	annotation PBI_ResultType = Table
+

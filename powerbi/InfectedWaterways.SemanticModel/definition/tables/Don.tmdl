@@ -1,0 +1,85 @@
+table Don
+	lineageTag: 132acf37-1050-5b02-bc6e-31cef34b5118
+
+	column url_name
+		dataType: string
+		lineageTag: 4f625dea-5635-50af-a9ad-96a15044f5fc
+		summarizeBy: none
+		sourceColumn: url_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column published
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: a6959448-5a1f-5bdc-81a2-334a4137ad47
+		summarizeBy: none
+		sourceColumn: published
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: f23818f8-aad4-5359-bc2a-b109a69a9d50
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 37b16b5a-c0ab-58d9-ac81-4e54522f9f12
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 503521f7-6169-5523-9628-7bcba8f642fc
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso3
+		dataType: string
+		lineageTag: 591d1149-e659-5d91-b8d4-41410cce3b14
+		summarizeBy: none
+		sourceColumn: iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column kind
+		dataType: string
+		lineageTag: 54ccbc15-1a02-5d15-a2ed-c62b0ee11644
+		summarizeBy: none
+		sourceColumn: kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column disease_group
+		dataType: string
+		lineageTag: 9a1c99b6-69de-5285-80d1-8f89b645f048
+		summarizeBy: none
+		sourceColumn: disease_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Don = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "don.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"url_name", "published", "year", "title", "country", "iso3", "kind", "disease_group"}),
+				    Nulls = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Nulls, {{"url_name", type text}, {"published", type date}, {"year", Int64.Type}, {"title", type text}, {"country", type text}, {"iso3", type text}, {"kind", type text}, {"disease_group", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

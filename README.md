@@ -1,6 +1,6 @@
 # Infected Waterways
 
-**Status:** Milestones 1–5 done (river graph + trace, live data layer, spread simulator, Haiti 2010 validation, relative risk index), 2026-11-17. Private repo.
+**Status:** Milestones 1–6 done (river graph + trace, live data layer, spread simulator, Haiti 2010 validation, relative risk index, Power BI report), 2026-11-17. Private repo.
 
 **Live (Tailscale only):** http://100.108.59.90:8796/ on the Pi (service `waterways-web`).
 
@@ -35,7 +35,7 @@ SARS-CoV-2 only shows up in the wastewater early-warning layer, because it doesn
 | 3b | Outbreak scenario | ⛔ Superseded by M5 (2026-11-17): it turned exposure into ill and dead counts by multiplying four uncertain factors |
 | 4 | Validation | ✅ Out of sample on Haiti 2010 (`build/validate_haiti.py` → `docs/VALIDATION.md`), criteria fixed before the run: timing ✅, flow ✅, simultaneity across the delta ❌, exposure contrast ❌. Songhua 2005 is a calibration point (M1), not a test |
 | 5 | Relative risk index | ✅ The **Risk** tab: people on unsafe water along the contaminated stretch as an order-of-magnitude band with a fast–slow range, compared with the Artibonite 2010 path, plus the blind spots the validation found. No case or death counts |
-| 6 | Dashboard | Power BI report (real cholera vs. floods vs. WASH coverage) |
+| 6 | Dashboard | ✅ Power BI report, 4 pages: cholera now (last 4 weeks vs. the 4 before and vs. last year), floods → cholera event study (2,454 GDACS floods backfilled to Nov 2022), unsafe drinking water vs. cholera, WHO outbreak news since 1996 |
 | 7 | Showcase scenarios | e.g. Lancang→Mekong→Tonle Sap seasonal flow reversal, Ganges–Brahmaputra delta, Niger, Danube |
 
 ## How it works
@@ -112,6 +112,34 @@ Every trace on the map is labelled **SIMULATED · MEAN FLOW**. It uses long-term
    The scenario is a contamination event - a flood-driven sewage overflow, a failed treatment plant, an untreated discharge.
    It is labelled HYPOTHETICAL · NOT A FORECAST and ranks places for preparedness; it does not count the ill or the dead.
 
+9. **Power BI report (Milestone 6).** `powerbi/InfectedWaterways.pbip` looks at the real-world data around the map: what is
+   reported now, whether floods are followed by cholera, and how drinking-water access lines up with it. The Pi's Postgres
+   only listens on localhost, so the report reads CSV snapshots: `sql/04_bi.sql` defines read-only `bi` views,
+   `build/export_bi.py` copies them over SSH into `powerbi/data/`, and `build/gen_pbip.py` generates the report
+   (same light design as the Sky & Sea report). Numbers below: WHO data up to the week of 12 Oct 2026.
+
+   - **Cholera now.** 29,531 reported cases in the last 4 complete weeks (21 Sep – 18 Oct 2026): −14 % vs. the 4 weeks
+     before, −28 % vs. the same weeks of 2025. 438 deaths (1.5 % of reported cases). Only 16 countries reported, vs. 29 a
+     year earlier, so part of the fall is fewer reports. The newest week is left out everywhere because late reports
+     make it look like a crash.
+   - **Floods → cholera: no link visible.** 349 floods in 35 countries with WHO cholera data, each compared with that
+     country's own normal (mean reported weekly cases in weeks −12 to −5). Median weekly cases stay at 0.73–0.93× normal
+     from 4 weeks before to 8 weeks after the flood (0.85× after, 0.88× before), and orange/red floods look the same.
+     National weekly totals can hide a local outbreak downstream of one flood, so this is "not visible at this
+     resolution", not "no effect".
+   - **Unsafe water.** 16 of 24 countries (67 %) where 30 % or more of people lack basic drinking water reported cholera
+     since 2023, vs. 7 of 143 (5 %) where under 5 % lack it. Cases per 100,000 people (last 52 weeks) by water-access
+     group and the 15 highest national rates.
+   - **Outbreak news.** 347 waterborne WHO Disease Outbreak News reports since 1996 (10.8 % of 3,205); 87 % are cholera
+     or acute watery diarrhoea. Few after 2022 because WHO tracks cholera in its weekly feed instead.
+
+   Correlation, not cause; WHO reporting is uneven, and a missing week means no report, not zero cases.
+
+   | | |
+   |---|---|
+   | ![Cholera now](images/dashboard-1-cholera-now.png) | ![Floods to cholera](images/dashboard-2-floods.png) |
+   | ![Unsafe water](images/dashboard-3-unsafe-water.png) | ![Outbreak news](images/dashboard-4-outbreak-news.png) |
+
 ## Run / deploy
 ```
 python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio pyarrow
@@ -128,6 +156,10 @@ python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio py
 .venv/Scripts/python scripts/push_to_pi.py [--server]   # web/ (+ .gz twins) -> /mnt/ssd/waterways/web/site
 # on the Pi: sql/03_live.sql, then python3 pi/collect/collect_live.py --setup-gauges (once, ~20 min),
 #            pi/systemd/waterways-collect.{service,timer} (daily 07:20)
+#            python3 pi/collect/collect_live.py --backfill-floods 2023-01-01   (once: GDACS history)
+# Power BI: sql/04_bi.sql on the Pi (bi views), then
+python build/export_bi.py                       # bi views -> powerbi/data/*.csv (over SSH)
+py build/gen_pbip.py                            # regenerates powerbi/InfectedWaterways.pbip (Pillow); then Refresh in Desktop
 ```
 Map: MapLibre GL 5.24.0 on a custom OpenFreeMap (OpenMapTiles) style. It offers Esri World Imagery, Sentinel-2 cloudless 2025 (EOX),
 AWS Terrain Tiles hillshade/3D, maplibre-contour contour lines, and a globe view.
@@ -139,7 +171,7 @@ See `docs/SOURCES.md` (access test of every source) and `docs/DATA_ASSESSMENT.md
 
 ## Data layers (and what this is not)
 Raw downloads and API pulls land in `data/raw` (one-off reference grids) or go straight into typed PostGIS tables
-(`cholera_week`, `don_reports`, `floods`, `gauges`, `gauge_flow`, `wash`, `pop`, `rivers`, …). KPIs and the risk
+(`cholera_week`, `don_reports`, `floods`, `gauges`, `gauge_flow`, `wash`, `country_pop`, `pop`, `rivers`, …). KPIs and the risk
 index are computed **on read**: `/api/live` runs the aggregations per request and caches the result for 10 minutes,
 `/api/trace` walks the river graph per click, and the simulator and risk index run in the browser.
 
@@ -151,13 +183,15 @@ collector overwrites in place. Adding a bronze landing (one gzipped response per
 first thing to do if this project ever needs to reproduce a number as it stood on a given date.
 
 ## Planned stack
-PostGIS 3.5 on Postgres 17, database `waterways`, data on the Pi SSD `/mnt/ssd`. The SSD moves to the Pi 5 when it arrives. Stdlib Python + psycopg 3 API → web map; Power BI later.
+PostGIS 3.5 on Postgres 17, database `waterways`, data on the Pi SSD `/mnt/ssd`. The SSD moves to the Pi 5 when it arrives. Stdlib Python + psycopg 3 API → web map; `bi` views → CSV snapshots → Power BI report.
 
 ## Layout
 - `build/` scripts that turn raw downloads into `web/data/`
 - `web/` the map (MapLibre GL 5.24.0, OpenFreeMap dark basemap)
 - `collectors/` API pulls (WHO DON, GHO, GDACS, Open-Meteo flood)
-- `sql/` PostGIS schema + indexes
+- `sql/` PostGIS schema + indexes, `04_bi.sql` views for the report
+- `powerbi/` the Power BI project (`InfectedWaterways.pbip`) and its CSV snapshots in `powerbi/data/`
+- `images/` report screenshots
 - `pi/` loader, systemd unit, trace API server (`pi/web/waterways_web.py`)
 - `scripts/` deploy (`push_to_pi.py`)
 - `data/raw`, `data/processed` (git-ignored once a repo exists)

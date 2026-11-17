@@ -1,0 +1,305 @@
+cultureInfo en-GB
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dimweek.week": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimWeek",
+			          "ConceptualProperty": "week"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Week (Monday)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.weekly_cases": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Weekly Cases"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Reported cases": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.top_countries_l4w": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Top Countries L4W"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cases": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.median_ratio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Median Ratio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cases ÷ normal (median)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.share_reporting": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Share Reporting"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Countries reporting cholera": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.per_100k_52w": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Per 100k 52W"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cases per 100,000 people": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.top_per_100k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Top Per 100k"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cases per 100,000": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.top_don_countries": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Top DON Countries"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Reports": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.waterborne_per_year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Waterborne per Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Waterborne reports": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimcountry.country": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimCountry",
+			          "ConceptualProperty": "country"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Country": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dimcountry.unsafe_band": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DimCountry",
+			          "ConceptualProperty": "unsafe_band"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Without basic drinking water": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "floodlag.lag_label": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "FloodLag",
+			          "ConceptualProperty": "lag_label"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Weeks from flood start": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "don.country": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Don",
+			          "ConceptualProperty": "country"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Country": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "don.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Don",
+			          "ConceptualProperty": "year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+
