@@ -1,9 +1,10 @@
 # Public map on GitHub Pages: web/ from main + the newest live snapshot the Pi pushes to the live-data branch.
+# The Pi starts this run itself (gh workflow run) after its push; a push to live-data alone cannot trigger it.
 name: Pages
 
 on:
   push:
-    branches: [main, live-data]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

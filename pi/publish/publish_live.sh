@@ -1,6 +1,6 @@
 #!/bin/sh
 # Publishes today's /api/live + /api/health to the live-data branch (one commit, force-pushed), which redeploys the
-# public map on GitHub Pages. Runs after the daily collector (ExecStartPost in waterways-collect.service).
+# public map on GitHub Pages. Runs daily at 08:00 (waterways-publish.timer), after the 07:20 collector.
 # Push auth: the gh CLI login of this user (gh auth git-credential), no token in this file.
 set -eu
 D=/home/emir/waterways-live
@@ -23,4 +23,6 @@ git add live.json health.json README.md
 msg="Live snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
 git commit -q --amend -m "$msg" 2>/dev/null || git commit -q -m "$msg"
 git push -q -f origin live-data
-echo "published: $msg"
+# a push to live-data does not start the Pages workflow (it only lives on main), so start it here
+gh workflow run pages.yml --repo vulevu228/InfectedWaterways --ref main
+echo "published: $msg (Pages deploy started)"
