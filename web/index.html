@@ -71,6 +71,15 @@ table.kv td:last-child { text-align:right; font-variant-numeric:tabular-nums; pa
 h3 { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin:14px 0 6px; font-weight:600; }
 .tl { list-style:none; padding:0; margin:0; }
 .tl li { display:grid; grid-template-columns:58px 1fr auto; gap:8px; padding:4px 0; border-bottom:1px solid var(--line); align-items:baseline; }
+.tl li.hd, .list li.hd { cursor:default; padding:2px 0 3px; border-bottom:1px solid var(--line2); background:none; }
+.tl li.hd span, .list li.hd span { color:var(--faint) !important; font-size:9.5px !important; text-transform:uppercase; letter-spacing:.7px; text-decoration:none !important; }
+.tl li.hd .n::after { content:none !important; }
+.ib { display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; margin-left:5px; border-radius:50%; border:1px solid var(--line2);
+      color:var(--muted); font:italic 700 9.5px/1 Georgia,serif; vertical-align:1px; text-transform:none; letter-spacing:0; user-select:none; flex:none; }
+[data-tip] { cursor:help; }
+.ib:hover, .ib.on { color:#fff; border-color:#7cc4ff; background:#12294a; }
+#tipbox { position:fixed; z-index:20; max-width:290px; background:#0b1626; border:1px solid #2f5b8c; border-radius:8px; padding:8px 10px; font-size:12px;
+          line-height:1.45; color:var(--text); box-shadow:0 8px 24px rgba(0,0,0,.5); display:none; pointer-events:none; text-transform:none; letter-spacing:0; }
 .tl li .d { color:#ffc98a; font-variant-numeric:tabular-nums; font-size:12px; }
 .tl li .k { color:var(--muted); font-variant-numeric:tabular-nums; font-size:11.5px; }
 .tl li.border .n::after { content:" ⇆"; color:var(--muted); }
@@ -183,6 +192,7 @@ kbd { font:10px ui-monospace,Consolas,monospace; border:1px solid var(--line2); 
   <div class="hint" id="hint">Click a river to see its system. Switch to Trace to follow the water.</div>
   <input id="q" list="names" placeholder="Find a river, lake or event…   ( / )" autocomplete="off">
   <datalist id="names"></datalist>
+  <div class="note" style="margin-top:8px">Numbers to the right of a layer: how many items it shows. Hover or tap any number or ⓘ for what it means.</div>
   <div class="tools"><button data-all="open" title="Open every section">▾ Expand all</button><button data-all="close" title="Close every section">▸ Collapse all</button><button id="resetUi" title="Default layers, basemap and view">↺ Reset</button></div>
 
   <details open data-s="water"><summary>Rivers &amp; water<span class="fn" data-fn></span></summary>
@@ -232,6 +242,7 @@ kbd { font:10px ui-monospace,Consolas,monospace; border:1px solid var(--line2); 
   <div><div><span class="dot" style="background:var(--outbreak)"></span>Outbreak</div><div style="margin-top:3px"><span class="dot" style="background:var(--spill)"></span>River spill</div></div>
 </div>
 <div id="status"></div>
+<div id="tipbox" role="tooltip"></div>
 
 <script>
 "use strict";
@@ -242,6 +253,26 @@ const EMPTY = { type: "FeatureCollection", features: [] };
 const $ = id => document.getElementById(id);
 const fmt = (n, d = 0) => n == null || isNaN(n) ? "–" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d, minimumFractionDigits: d });
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// ⓘ explainer: every number on the site says what it is, its unit and its source - on its card or behind an ⓘ
+const ib = t => `<span class="ib" role="button" tabindex="0" aria-label="${esc(t)}" data-tip="${esc(t)}">i</span>`;
+const thead = (...c) => `<li class="hd">${c.map((x, i) => `<span class="${["d", "n", "k"][i] || ""}">${x}</span>`).join("")}</li>`;
+let tipEl = null, tipPinned = false;
+function tipShow(el) {
+  const b = $("tipbox"); b.textContent = el.dataset.tip; b.style.display = "block";
+  const r = el.getBoundingClientRect(), w = b.offsetWidth, h = b.offsetHeight;
+  b.style.left = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), innerWidth - w - 8) + "px";
+  b.style.top = (r.top - h - 8 < 8 ? r.bottom + 8 : r.top - h - 8) + "px";
+  tipEl?.classList.remove("on"); tipEl = el; el.classList.add("on");
+}
+function tipHide() { $("tipbox").style.display = "none"; tipEl?.classList.remove("on"); tipEl = null; tipPinned = false; }
+document.addEventListener("click", e => {   // capture: an ⓘ inside a layer label or a KPI button must not toggle or open it
+  const el = e.target.closest?.("[data-tip]");
+  if (el) { e.preventDefault(); e.stopPropagation(); if (tipEl === el && tipPinned) tipHide(); else { tipShow(el); tipPinned = true; } } else tipHide();
+}, true);
+document.addEventListener("pointerover", e => { const el = e.target.closest?.("[data-tip]"); if (el && e.pointerType === "mouse" && !tipPinned) tipShow(el); });
+document.addEventListener("pointerout", e => { const el = e.target.closest?.("[data-tip]"); if (el && e.pointerType === "mouse" && !tipPinned && !el.contains(e.relatedTarget)) tipHide(); });
+document.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.dataset?.tip) { e.preventDefault(); tipShow(e.target); } });
+addEventListener("scroll", tipHide, true);
 const days = d => d < 1 ? `${fmt(d * 24)} h` : d < 10 ? `${fmt(d, 1)} d` : `${fmt(d)} d`;
 let statusT;
 function status(t, err) { const s = $("status"); clearTimeout(statusT); s.textContent = t || ""; s.className = err ? "err" : ""; s.style.display = t ? "block" : "none"; if (t && err) statusT = setTimeout(() => status(""), 6000); }
@@ -470,11 +501,11 @@ map.on("moveend", loadVisibleT3);
 
 function buildLists() {
   const named = D.stems.features.filter(f => f.properties.name);
-  $("top").innerHTML = named.slice(0, 20).map((f, i) => `<li data-m="${f.properties.main}"><span>${i + 1}. ${esc(f.properties.name)}</span><span class="v">${fmt(f.properties.dis)} m³/s</span></li>`).join("");
-  $("top").onclick = e => { const li = e.target.closest("li"); if (li) showSystem(+li.dataset.m, true); };
+  $("top").innerHTML = `<li class="hd"><span>River, by mean flow at its mouth</span><span>m³/s</span></li>` + named.slice(0, 20).map((f, i) => `<li data-m="${f.properties.main}"><span>${i + 1}. ${esc(f.properties.name)}</span><span class="v">${fmt(f.properties.dis)} m³/s</span></li>`).join("");
+  $("top").onclick = e => { const li = e.target.closest("li"); if (li?.dataset.m) showSystem(+li.dataset.m, true); };
   const evs = [...D.events.features].sort((a, b) => (a.properties.from > b.properties.from ? -1 : 1));
-  $("evlist").innerHTML = evs.map(f => { const p = f.properties; return `<li data-id="${p.id}"><span><span class="dot" style="background:${p.kind === "outbreak" ? "var(--outbreak)" : "var(--spill)"}"></span>${esc(p.name)}</span><span class="v">${p.from.slice(0, 4)}</span></li>`; }).join("");
-  $("evlist").onclick = e => { const li = e.target.closest("li"); if (li) showEvent(li.dataset.id, true); };
+  $("evlist").innerHTML = `<li class="hd"><span>Event (red outbreak, amber spill)</span><span>Year</span></li>` + evs.map(f => { const p = f.properties; return `<li data-id="${p.id}"><span><span class="dot" style="background:${p.kind === "outbreak" ? "var(--outbreak)" : "var(--spill)"}"></span>${esc(p.name)}</span><span class="v">${p.from.slice(0, 4)}</span></li>`; }).join("");
+  $("evlist").onclick = e => { const li = e.target.closest("li"); if (li?.dataset.id) showEvent(li.dataset.id, true); };
   const seen = new Set(), opts = [];
   const add = (n, k) => { if (n && !seen.has(n)) { seen.add(n); opts.push(`<option value="${esc(n)}">${k}</option>`); } };
   named.forEach(f => add(f.properties.name, "river"));
@@ -539,11 +570,11 @@ function showEvent(id, fly) {
   openInfo(`<div class="kicker">${out ? "Waterborne outbreak" : "River contamination"}<span class="badge ${out ? "out" : "spl"}">${yr}${yr2 && yr2 !== yr ? "–" + yr2 : ""}</span></div>
     <h2>${esc(p.name)}</h2><div class="note" style="margin-top:-4px">${esc(p.agent)}</div>
     <div class="tiles">${p.cases ? `<div class="tile"><b>${fmt(p.cases)}</b><span>reported cases</span></div>` : ""}${p.deaths ? `<div class="tile"><b>${fmt(p.deaths)}</b><span>deaths</span></div>` : ""}
-    ${p.path_km ? `<div class="tile"><b>${fmt(p.path_km)}</b><span>km downstream to the ${p.ends === "sea" ? "sea" : "sink"}</span></div><div class="tile"><b>${fmt(p.path_days)}</b><span>days to get there (model)</span></div>` : ""}</div>
+    ${p.path_km ? `<div class="tile"><b>${fmt(p.path_km)}</b><span>km downstream to the ${p.ends === "sea" ? "sea" : "sink"}</span></div><div class="tile"><b>${fmt(p.path_days)}</b><span>days to get there (model)${ib("Days the water takes from where the event started to the sea or sink, at long-term mean flow, from the travel-time model.")}</span></div>` : ""}</div>
     <table class="kv"><tr><td>Where it started</td><td>${esc(p.place)}</td></tr>${p.system ? `<tr><td>River system</td><td>${esc(p.system)}</td></tr>` : ""}
     ${cs.length ? `<tr><td>Downstream through</td><td>${esc(cs.map(c => c.replace("People's Republic of China", "China")).join(" → "))}</td></tr>` : ""}</table>
     <div class="note" style="color:var(--text)">${esc(p.water)}</div><div class="note">${esc(p.count_note)}</div>
-    ${cps.length ? `<h3>Model check: reported vs. modelled arrival</h3><table class="cmp"><tr><th>Checkpoint</th><th>Reported</th><th>Model</th></tr>
+    ${cps.length ? `<h3>Model check: reported vs. modelled arrival${ib("Days after the release when the contamination front reached each place: as reported in the sources, and as the travel-time model computes it. These points were used to calibrate the model.")}</h3><table class="cmp"><tr><th>Checkpoint</th><th>Reported</th><th>Model</th></tr>
       ${cps.map(c => `<tr><td>${esc(c[0])}</td><td>day ${c[3]}</td><td>day ${fmt(c[4], 1)}</td></tr>`).join("")}</table>` : ""}
     <h3>Sources</h3><div class="src">${src.map(s => `<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join("")}</div>
     ${p.mode === "river" ? `<button class="btn" id="goTrace">▶ Run the trace live</button>` : ""}`);
@@ -582,7 +613,7 @@ async function runTrace(ll, label) {
   const s = d.summary, pts = [];
   const lg = d.features.at(-1).geometry, lc = lg.type === "LineString" ? lg.coordinates : lg.coordinates.at(-1);
   pts.push({ type: "Feature", geometry: { type: "Point", coordinates: firstCoord(d.features[0].geometry) }, properties: { k: "start", label: "Start", prio: 0 } });
-  pts.push({ type: "Feature", geometry: { type: "Point", coordinates: lc.at(-1) }, properties: { k: "end", label: `${s.ends === "sea" ? "Sea" : "Sink"} · ${days(s.days)}`, prio: 1 } });
+  pts.push({ type: "Feature", geometry: { type: "Point", coordinates: lc.at(-1) }, properties: { k: "end", label: `${s.ends === "sea" ? "Sea" : "Sink"} in ${days(s.days)}`, prio: 1 } });
   const stepD = s.days > 120 ? 20 : s.days > 40 ? 10 : s.days > 12 ? 5 : s.days > 3 ? 1 : 0.25;
   let next = stepD;
   for (const f of d.features) {
@@ -592,7 +623,7 @@ async function runTrace(ll, label) {
     }
   }
   d.cities.filter(c => c.pop >= 50000).forEach(c => pts.push({ type: "Feature", geometry: { type: "Point", coordinates: [c.lon, c.lat] },
-    properties: { k: "city", pop: c.pop, label: `${c.name} · ${days(c.h / 24)}`, prio: 3 - Math.log10(c.pop) } }));
+    properties: { k: "city", pop: c.pop, label: `${c.name} · water in ${days(c.h / 24)}`, prio: 3 - Math.log10(c.pop) } }));
   map.getSource("tracepts").setData({ type: "FeatureCollection", features: pts });
   TRACEPTS = pts;
   if (!flowAnim) animateFlow();
@@ -606,17 +637,17 @@ function showTrace(d, label) {
   const isos = new Set(d.countries.flatMap(c => c.iso3.split("/")));
   openInfo(`<div class="kicker">${mode === "outbreak" ? "Relative risk index" : "Downstream trace"}<span class="badge sim">SIMULATED · MEAN FLOW</span></div>
     <h2>${esc(label || s.system || "Unnamed river system")}</h2>
-    <div class="note" style="margin-top:-4px">Start snapped to the nearest river ≥ 1 m³/s, ${fmt(s.snap_km, 1)} km from the click · ${fmt(s.reaches)} reaches · ${d.ms} ms</div>
-    <div class="tiles"><div class="tile"><b>${fmt(s.km)}</b><span>km to the ${s.ends === "sea" ? "sea" : "inland sink"}</span></div>
-      <div class="tile"><b>${days(s.days)}</b><span>travel time at mean flow</span></div>
-      <div class="tile"><b>×${fmt(s.dilution)}</b><span>more water at the end (dilution)</span></div>
-      <div class="tile"><b>${isos.size}</b><span>${isos.size === 1 ? "country" : "countries"} on the way</span></div></div>
-    ${s.pop_5km ? `<div class="tile" style="margin-top:-2px"><b>${fmtPop(s.pop_5km)}</b><span>people live within 5 km of this river path (GHS-POP 2025)</span></div>` : ""}
+    <div class="note" style="margin-top:-4px">Start snapped to the nearest river ≥ 1 m³/s, ${fmt(s.snap_km, 1)} km from the click · ${fmt(s.reaches)} river reaches · server answered in ${fmt(d.ms)} ms</div>
+    <div class="tiles"><div class="tile"><b>${fmt(s.km)}</b><span>km to the ${s.ends === "sea" ? "sea" : "inland sink"}${ib("River distance from the start point to where the water ends, following the HydroRIVERS network reach by reach.")}</span></div>
+      <div class="tile"><b>${days(s.days)}</b><span>travel time at mean flow${ib("How long water takes from the start to the end at the river's long-term mean flow. Speed per reach v = a·Q^b, calibrated on 6 reported spill arrivals; typical error ×1.17. Floods make it faster, droughts and dams slower.")}</span></div>
+      <div class="tile"><b>×${fmt(s.dilution)}</b><span>more water at the end (dilution)${ib("Mean flow at the end divided by mean flow at the start. ×96 means each litre from the start is mixed into 96 litres by the end, so anything it carries is 96 times weaker, before any die-off.")}</span></div>
+      <div class="tile"><b>${isos.size}</b><span>${isos.size === 1 ? "country" : "countries"} on the way${ib("Countries the path runs through or borders. A border river counts for both countries.")}</span></div></div>
+    ${s.pop_5km ? `<div class="tile" style="margin-top:-2px"><b>${fmtPop(s.pop_5km)}</b><span>people live within 5 km of this river path (GHS-POP 2025)${ib("Everyone living within 5 km of the traced path, from the GHS-POP 2025 population grid; each grid cell is counted once. People along the water, not people affected.")}</span></div>` : ""}
     <div class="sim" id="sim"></div>
-    <h3>Mean flow along the way (m³/s, log scale)</h3><div class="chart" id="prof"></div>
-    <h3>Countries</h3><ul class="tl">${d.countries.map(c => `<li class="${c.border ? "border" : ""}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name.replaceAll("People's Republic of China", "China"))}</span><span class="k">${fmt(c.len_km)} km</span></li>`).join("")}</ul>
-    ${cities.length ? `<h3>Cities on the river (≤ 8 km)</h3><ul class="tl">${cities.map(c => `<li class="click" data-lon="${c.lon}" data-lat="${c.lat}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name)}${c.capital ? " ★" : ""}</span><span class="k">${c.pop >= 1e6 ? fmt(c.pop / 1e6, 1) + " M" : fmt(c.pop / 1e3) + " k"}</span></li>`).join("")}</ul>` : ""}
-    ${d.lakes.length ? `<h3>Lakes &amp; reservoirs on the way</h3><ul class="tl">${d.lakes.map(l => `<li><span class="d">${days(l.h / 24)}</span><span class="n">${esc(l.name)} <span style="color:var(--muted)">(${esc(l.type)})</span></span><span class="k">${fmt(l.res_days)} d stay</span></li>`).join("")}</ul>
+    <h3>Mean flow along the way (m³/s, log scale)${ib("Long-term mean discharge of each reach from start (left) to end (right). It steps up where tributaries join. Hover for km, flow and arrival time.")}</h3><div class="chart" id="prof"></div>
+    <h3>Countries</h3><ul class="tl">${thead("Water arrives", "Country (⇆ border river)", "River km in it")}${d.countries.map(c => `<li class="${c.border ? "border" : ""}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name.replaceAll("People's Republic of China", "China"))}</span><span class="k">${fmt(c.len_km)} km</span></li>`).join("")}</ul>
+    ${cities.length ? `<h3>Cities on the river (≤ 8 km)${ib("Cities with at least 20,000 people within 8 km of the path (Natural Earth). Left: when water from the start point reaches the city at mean flow (also on the map label). Right: the city's population, not the number of people affected. Click a row to fly there.")}</h3><ul class="tl">${thead("Water arrives", "City (★ capital)", "City population")}${cities.map(c => `<li class="click" data-lon="${c.lon}" data-lat="${c.lat}"><span class="d">${days(c.h / 24)}</span><span class="n">${esc(c.name)}${c.capital ? " ★" : ""}</span><span class="k">${c.pop >= 1e6 ? fmt(c.pop / 1e6, 1) + " M" : fmt(c.pop / 1e3) + " k"}</span></li>`).join("")}</ul>` : ""}
+    ${d.lakes.length ? `<h3>Lakes &amp; reservoirs on the way</h3><ul class="tl">${thead("Water arrives", "Lake or reservoir", "Average stay")}${d.lakes.map(l => `<li><span class="d">${days(l.h / 24)}</span><span class="n">${esc(l.name)} <span style="color:var(--muted)">(${esc(l.type)})</span></span><span class="k">${fmt(l.res_days)} d stay</span></li>`).join("")}</ul>
       <div class="note">Water stays in a lake for its residence time on average – this delays and dilutes anything it carries. Not added to the travel time.</div>` : ""}
     <div class="note">Travel time per reach: v = ${velocity.a} · Q<sup>${velocity.b}</sup> m/s, calibrated on 6 reported arrival times (typical out-of-sample error ×${Math.exp(velocity.loo_rms_log ?? velocity.rms_log).toFixed(2)}). Floods, droughts, tides and dams change real travel times.</div>`);
   $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => map.flyTo({ center: [+li.dataset.lon, +li.dataset.lat], zoom: 10, duration: 1200 }));
@@ -677,17 +708,17 @@ async function loadLive() {
   setCount("floods", (L.floods || []).length); setCount("don", (L.don_reports || []).filter(d => d.lon != null).length);
   map.getSource("cholera").setData({ type: "FeatureCollection", features: (L.cholera_countries || []).map(c => pt(c.lon, c.lat, c)) });
   map.getSource("floods").setData({ type: "FeatureCollection", features: (L.floods || []).map(f => pt(f.lon, f.lat, f)) });
-  map.getSource("gauges").setData({ type: "FeatureCollection", features: (L.gauges || []).map(g => pt(g.lon, g.lat, { ...g, spark: null, rtxt: `${fmt(g.ratio, 1)}×` })) });
+  map.getSource("gauges").setData({ type: "FeatureCollection", features: (L.gauges || []).map(g => pt(g.lon, g.lat, { ...g, spark: null, rtxt: `${fmt(g.ratio, 1)}× normal flow` })) });
   map.getSource("don").setData({ type: "FeatureCollection", features: (L.don_reports || []).filter(d => d.lon != null).map(d => pt(d.lon, d.lat, { id: d.id, title: d.title })) });
   const tiles = [
-    { k: "cholera", l: `Cholera cases · 4 weeks to ${dshort(ch.window_end)}`, v: fmt(ch.cases_4w), c: `<i>${pct(ch.cases_4w, ch.cases_prev4w)}</i> vs. previous 4 weeks (${fmt(ch.cases_prev4w)})` },
-    { k: "cholera", l: "Countries reporting cholera · 4 weeks", v: fmt(ch.countries_4w), c: `previous 4 weeks: <i>${fmt(ch.countries_prev4w)}</i>` },
-    { k: "cholera", l: `Cholera in ${ch.window_end?.slice(0, 4)} so far`, v: fmtK(ch.cases_ytd), c: `<i>${pct(ch.cases_ytd, ch.cases_ytd_prev)}</i> vs. same weeks ${+ch.window_end?.slice(0, 4) - 1} · ${fmt(ch.deaths_ytd)} deaths (${fmt(ch.deaths_ytd_prev)})` },
-    { k: "floods", l: "River floods now · GDACS", v: fmt(fk.current), c: `<i>${fmt(fk.current_orange_red)}</i> orange/red alerts · ${fmt(fk.last30)} active in last 30 days` },
-    { k: "flow", l: `Big rivers above normal · of ${fmt(wk.n)}`, v: wk.n ? fmt(wk.above) : "…", c: wk.n ? `<i>${fmt(wk.below)}</i> below normal · vs. same weeks 2021–25` : "first baseline is still loading" },
-    { k: "people", l: "People within 5 km of a river ≥ 1 m³/s", v: st.people_5km ? fmtPop(+st.people_5km) : "…", c: st.people_5km ? `<i>${fmt(st.people_5km / st.people_total * 100)} %</i> of ${fmtPop(+st.people_total)} people (GHS-POP 2025)` : "population layer is loading" },
+    { k: "cholera", i: `Cholera cases (suspected and confirmed) reported to WHO by all countries for the 4 weeks to ${dshort(ch.window_end)}. The arrow compares them with the 4 weeks before. Reports arrive about a week late, so the window ends a week before the newest report.`, l: `Cholera cases · 4 weeks to ${dshort(ch.window_end)}`, v: fmt(ch.cases_4w), c: `<i>${pct(ch.cases_4w, ch.cases_prev4w)}</i> vs. previous 4 weeks (${fmt(ch.cases_prev4w)})` },
+    { k: "cholera", i: "Countries that reported at least one cholera case to WHO in those 4 weeks, and the same count for the 4 weeks before.", l: "Countries reporting cholera · 4 weeks", v: fmt(ch.countries_4w), c: `previous 4 weeks: <i>${fmt(ch.countries_prev4w)}</i>` },
+    { k: "cholera", i: `Cholera cases reported since 1 January ${ch.window_end?.slice(0, 4)}, compared with the same calendar weeks of last year. Then deaths this year, with last year's for the same weeks in brackets.`, l: `Cholera in ${ch.window_end?.slice(0, 4)} so far`, v: fmtK(ch.cases_ytd), c: `<i>${pct(ch.cases_ytd, ch.cases_ytd_prev)}</i> vs. same weeks ${+ch.window_end?.slice(0, 4) - 1} · ${fmt(ch.deaths_ytd)} deaths (${fmt(ch.deaths_ytd_prev)})` },
+    { k: "floods", i: "River-flood events GDACS lists as ongoing today. Orange and red alerts expect significant or severe humanitarian impact. The last figure counts events active at any point in the last 30 days.", l: "River floods now · GDACS", v: fmt(fk.current), c: `<i>${fmt(fk.current_orange_red)}</i> orange/red alerts · ${fmt(fk.last30)} active in last 30 days` },
+    { k: "flow", i: `Of ${fmt(wk.n)} virtual gauges near the mouths of the largest rivers (GloFAS model): how many run at least 1.25× (above) or at most 0.8× (below) the median flow of the same weeks in 2021-25.`, l: `Big rivers above normal · of ${fmt(wk.n)}`, v: wk.n ? fmt(wk.above) : "…", c: wk.n ? `<i>${fmt(wk.below)}</i> below normal · vs. same weeks 2021–25` : "first baseline is still loading" },
+    { k: "people", i: "People living within 5 km of any river with at least 1 m³/s mean flow, and their share of the world population (GHS-POP 2025 grid). These are the people a contaminated river can reach, not people affected.", l: "People within 5 km of a river ≥ 1 m³/s", v: st.people_5km ? fmtPop(+st.people_5km) : "…", c: st.people_5km ? `<i>${fmt(st.people_5km / st.people_total * 100)} %</i> of ${fmtPop(+st.people_total)} people (GHS-POP 2025)` : "population layer is loading" },
   ];
-  $("kpis").innerHTML = tiles.map((t, i) => `<button class="kpi" data-k="${t.k}" data-i="${i}"><span class="l">${t.l}</span><b>${t.v}</b><span class="c">${t.c}</span></button>`).join("");
+  $("kpis").innerHTML = tiles.map((t, i) => `<button class="kpi" data-k="${t.k}" data-i="${i}"><span class="l">${t.l}${ib(t.i)}</span><b>${t.v}</b><span class="c">${t.c}</span></button>`).join("");
   $("kpis").onclick = e => { const b = e.target.closest(".kpi"); if (b) kpiPanel(b.dataset.k); };
   $("overlap").innerHTML = L.overlap?.length ? `<div class="alert-line" id="ovl">⚠ Cholera in the last 4 weeks <b>and</b> a river flood now: ${esc(L.overlap.join(", "))}</div>` : "";
   if ($("ovl")) $("ovl").onclick = () => kpiPanel("floods");
@@ -701,7 +732,7 @@ function kpiPanel(k) {
     const cs = [...L.cholera_countries].sort((a, b) => b.cases_4w - a.cases_4w || b.cases_12w - a.cases_12w);
     openInfo(`<div class="kicker">Cholera now · WHO weekly reports</div><h2>${fmt(L.cholera.cases_4w)} cases in 4 weeks</h2>
       <div class="note" style="margin-top:-4px">4 weeks to ${dshort(L.cholera.window_end)}, ${fmt(L.cholera.countries_4w)} countries. Click a country for its weekly curve.</div>
-      <table class="cmp"><tr><th>Country</th><th>4 weeks</th><th>previous 4</th><th>${L.cholera.window_end.slice(0, 4)}</th></tr>
+      <table class="cmp"><tr><th>Country</th><th>Cases, 4 weeks</th><th>previous 4</th><th>${L.cholera.window_end.slice(0, 4)} so far</th></tr>
       ${cs.map(c => `<tr class="click" data-iso="${c.iso3}" style="cursor:pointer"><td>${esc(c.name)}</td><td>${fmt(c.cases_4w)}</td><td>${fmt(c.cases_prev4w)}</td><td>${fmtK(c.cases_ytd)}</td></tr>`).join("")}</table>
       <div class="note">Absence of a report is not absence of cholera. Source: <a href="https://who-global-cholera-and-awd-dashboard-1-who.hub.arcgis.com/" target="_blank" rel="noopener" style="color:#7cc4ff">WHO Global Cholera and AWD Dashboard</a>.</div>`);
     $("ib").querySelectorAll("tr.click").forEach(r => r.onclick = () => showCholera(r.dataset.iso, true));
@@ -710,7 +741,7 @@ function kpiPanel(k) {
     const fs = L.floods.filter(f => f.current);
     openInfo(`<div class="kicker">River floods now · GDACS</div><h2>${fmt(fs.length)} current flood events</h2>
       <div class="note" style="margin-top:-4px">Floods speed rivers up and wash sewage and latrines into them – the classic trigger for waterborne outbreaks.</div>
-      <ul class="tl">${fs.map(f => `<li class="click" data-id="${f.id}"><span class="d">${dshort(f.from)}</span><span class="n">${esc(f.name)}${L.overlap.includes(f.country) ? " ⚠" : ""}</span><span class="k">${alertPill(f.alert)}</span></li>`).join("")}</ul>
+      <ul class="tl">${thead("Since", "Flood (⚠ also cholera)", "GDACS alert")}${fs.map(f => `<li class="click" data-id="${f.id}"><span class="d">${dshort(f.from)}</span><span class="n">${esc(f.name)}${L.overlap.includes(f.country) ? " ⚠" : ""}</span><span class="k">${alertPill(f.alert)}</span></li>`).join("")}</ul>
       <div class="note">⚠ = the country also reported cholera in the last 4 weeks.</div>`);
     $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => showFlood(+li.dataset.id, true));
   } else if (k === "flow") {
@@ -719,7 +750,7 @@ function kpiPanel(k) {
     openInfo(`<div class="kicker">River flow now vs. normal · GloFAS</div><h2>${fmt(L.flow_kpi.above)} above, ${fmt(L.flow_kpi.below)} below normal</h2>
       <div class="note" style="margin-top:-4px">One virtual gauge near the mouth of each of the ${fmt(L.flow_kpi.n)} largest river systems. Normal = median flow in the same ±15 days of the previous 5 years. Above = ≥ 1.25×, below = ≤ 0.8×.
       High flow carries contamination further and faster; low flow dilutes it less.</div>
-      <h3>Highest</h3><ul class="tl">${gs.slice(0, 10).map(row).join("")}</ul><h3>Lowest</h3><ul class="tl">${gs.slice(-10).reverse().map(row).join("")}</ul>`);
+      <h3>Highest</h3><ul class="tl">${thead("× normal", "River", "Flow, last 7 days")}${gs.slice(0, 10).map(row).join("")}</ul><h3>Lowest</h3><ul class="tl">${thead("× normal", "River", "Flow, last 7 days")}${gs.slice(-10).reverse().map(row).join("")}</ul>`);
     $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => showGauge(+li.dataset.m, true));
   } else if (k === "people") {
     openInfo(`<div class="kicker">Who lives on the rivers</div><h2>${fmtPop(+L.static.people_5km || 0)} people</h2>
@@ -871,7 +902,7 @@ function setupSim(d) {
   const pts = TRACEPTS.filter(p => p.properties.k !== "safe");
   if (S[1].i < d.features.length) {
     const c = firstCoord(d.features[S[1].i].geometry);
-    pts.push({ type: "Feature", geometry: { type: "Point", coordinates: c }, properties: { k: "safe", label: `99.9 % gone · ${days(d.features[S[1].i].properties.h0 / 24 * tf)}`, prio: 0.5 } });
+    pts.push({ type: "Feature", geometry: { type: "Point", coordinates: c }, properties: { k: "safe", label: `99.9 % gone after ${days(d.features[S[1].i].properties.h0 / 24 * tf)}`, prio: 0.5 } });
   }
   map.getSource("tracepts").setData({ type: "FeatureCollection", features: pts });
   const dayTxt = s => s.h == null ? "never" : days(s.h / 24 * tf);
@@ -882,12 +913,12 @@ function setupSim(d) {
       <button data-f="today" class="${SIM.flow === "today" && g ? "on" : ""}" ${g ? "" : "disabled title='No GloFAS gauge on this river system'"}>Today's flow${g ? ` (${fmt(g.ratio, 2)}× normal)` : ""}</button></div>
     <div class="pnote">${esc(P.note)}</div>
     <div class="tiles">
-      <div class="tile"><b>${S[1].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[1].km)} km</b><span>until 99.9 % is gone (range ${fmt(S[0].km)}–${S[2].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[2].km)} km)</span></div>
-      <div class="tile"><b>${dayTxt(S[1])}</b><span>until 99.9 % is gone (fast case ${dayTxt(S[0])})</span></div>
-      <div class="tile"><b>${S[1].pop ? fmtPop(S[1].pop) : "–"}</b><span>people within 5 km of that stretch (range ${fmtPop(S[0].pop)}–${fmtPop(S[2].pop)})</span></div>
-      <div class="tile"><b>${fmt(S[1].cities.length)}</b><span>${S[1].cities.length === 1 ? "city" : "cities"} ≥ 20 k on it${S[1].cities.length ? ": " + esc(S[1].cities.slice(0, 3).map(c => c.name).join(", ")) : ""}</span></div></div>
+      <div class="tile"><b>${S[1].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[1].km)} km</b><span>until 99.9 % is gone (range ${fmt(S[0].km)}–${S[2].i >= d.features.length ? fmt(d.summary.km) + "+" : fmt(S[2].km)} km)${ib("Distance until the concentration has fallen to 1/1,000 of the start, by dilution plus die-off at the typical decay rate. Range: fast to slow decay. '+' means it is still above 1/1,000 where the river ends.")}</span></div>
+      <div class="tile"><b>${dayTxt(S[1])}</b><span>until 99.9 % is gone (fast case ${dayTxt(S[0])})${ib("Travel time at mean flow to that 1/1,000 point, typical decay; in brackets the fast-decay case. 'never' = not reached before the river ends.")}</span></div>
+      <div class="tile"><b>${S[1].pop ? fmtPop(S[1].pop) : "–"}</b><span>people within 5 km of that stretch (range ${fmtPop(S[0].pop)}–${fmtPop(S[2].pop)})${ib("People living within 5 km of the stretch that still carries at least 1/1,000 of the start concentration (GHS-POP 2025). Range: fast to slow decay. People along the water, not people infected.")}</span></div>
+      <div class="tile"><b>${fmt(S[1].cities.length)}</b><span>${S[1].cities.length === 1 ? "city" : "cities"} ≥ 20 k on it${S[1].cities.length ? ": " + esc(S[1].cities.slice(0, 3).map(c => c.name).join(", ")) : ""}${ib("Cities with at least 20,000 people within 8 km of that stretch (Natural Earth).")}</span></div></div>
     ${endTxt ? `<div class="pnote">${endTxt}</div>` : ""}
-    <h3>Concentration left, relative to the release point (log scale)</h3><div class="chart" id="simc"></div>
+    <h3>Concentration left, relative to the release point (log scale)${ib("Concentration after full mixing, relative to the release point (start = 1). It falls by dilution from tributaries and by die-off (T90 = days for 90 % to die). Line: typical decay; band: fast to slow.")}</h3><div class="chart" id="simc"></div>
     <div class="pnote">Line: typical decay. Band: fast to slow decay. Dilution from tributaries plus die-off (T90 = ${isFinite(P.t90[1]) ? P.t90.map(t => fmt(t, t < 1 ? 1 : 0)).join(" / ") + " days" : "none"}).
       Lakes on the way add their residence time to the die-off clock. Assumes full mixing; ignores sediment, regrowth and treatment.</div>
     ${P.src.length ? `<div class="src">${P.src.map(k => `<a href="${SRC[k][1]}" target="_blank" rel="noopener">${esc(SRC[k][0])}</a>`).join("")}</div>` : ""}
@@ -966,8 +997,8 @@ function riskIndex(d, S) {
       along the reach it still holds drink water that is not safe? A ranking aid for preparedness. It does not estimate who falls ill or dies.</div>
     <div class="chips" id="expo">${Object.values(EXPO).map(e => `<button data-e="${e.k}" class="${e.k === SIM.exp ? "on" : ""}">${e.lbl}</button>`).join("")}</div>
     <div class="tiles">
-      <div class="tile" style="border-color:${B[2]}"><b style="color:${B[2]}">${B[1]}</b><span>order of magnitude: ${fmtPop(mid)} people on unsafe water (range ${fmtPop(lo)}–${fmtPop(hi)}, fast to slow die-off)</span></div>
-      <div class="tile"><b>${rel == null ? "–" : rel >= 10 ? "×" + fmt(rel) : rel >= 0.1 ? "×" + fmt(rel, 1) : "<×0.1"}</b><span>the Artibonite 2010 path, measured the same way${ref ? ` (${fmtPop(ref)})` : ""} - where a contaminated river started an epidemic</span></div>
+      <div class="tile" style="border-color:${B[2]}"><b style="color:${B[2]}">${B[1]}</b><span>order of magnitude: ${fmtPop(mid)} people on unsafe water (range ${fmtPop(lo)}–${fmtPop(hi)}, fast to slow die-off)${ib("People within 5 km of the contaminated stretch × the share of their country's people drinking unimproved or surface water (WHO). Bands: Very low < 1,000 · Low 1,000-10,000 · Moderate 10,000-100,000 · High 100,000-1 M · Very high ≥ 1 M. Range: fast to slow die-off.")}</span></div>
+      <div class="tile"><b>${rel == null ? "–" : rel >= 10 ? "×" + fmt(rel) : rel >= 0.1 ? "×" + fmt(rel, 1) : "<×0.1"}</b><span>the Artibonite 2010 path, measured the same way${ref ? ` (${fmtPop(ref)})` : ""} - where a contaminated river started an epidemic${ib("This place's number divided by the same number for the Artibonite path from Meille, where a contaminated river started Haiti's 2010 cholera epidemic. ×1 = as many people on unsafe water as there; <×0.1 = under a tenth.")}</span></div>
     </div>
     <div class="risk-scale"><div class="rs-bar">${RISK_BANDS.slice(1).map((b, i) => `<i style="left:${pos(b[0])}%"></i>`).join("")}
         <span class="rs-range" style="left:${pos(lo)}%;width:${Math.max(pos(hi) - pos(lo), 1.2)}%"></span>
@@ -976,7 +1007,7 @@ function riskIndex(d, S) {
       <div class="rs-lb"><span>100</span><span>1 k</span><span>10 k</span><span>100 k</span><span>1 M</span><span>10 M</span></div>
       <div class="note">People on unsafe water along the stretch, log scale. Dot: typical die-off; bar: fast to slow; white tick: Artibonite 2010.</div></div>
     ${flags.length ? `<h3>Known blind spots here</h3>${flags.map(f => `<div class="pnote">${f}</div>`).join("")}` : ""}
-    ${known.length > 1 ? `<h3>By country</h3><ul class="tl bl">${known.slice(0, 12).map(r => `<li>
+    ${known.length > 1 ? `<h3>By country</h3><ul class="tl bl">${thead("Country", "", "Unsafe water, of all within 5 km")}${known.slice(0, 12).map(r => `<li>
       <span class="n">${esc(r.name.replace(" border river", " (border)"))}</span>
       <span class="bar sm"><i class="u" style="width:${(r.risk / maxR * 100).toFixed(1)}%"></i></span>
       <span class="k">${fmtPop(r.risk)} of ${fmtPop(r.pop)}</span></li>`).join("")}</ul>` : ""}
@@ -1082,13 +1113,28 @@ const store = { get(k, d) { try { const v = JSON.parse(localStorage.getItem("iw.
 const toggles = () => [...document.querySelectorAll("#side input[data-l], #side input[data-t]")];
 const cbKey = cb => cb.dataset.l ? "l:" + cb.dataset.l : "t:" + cb.dataset.t;
 const DEFAULTS = Object.fromEntries(toggles().map(cb => [cbKey(cb), cb.checked]));   // read before anything is restored
-function setCount(k, n) { const e = $("c-" + k); if (e) e.textContent = n == null ? "" : fmt(n); }
+const COUNT_TIP = {
+  stems: n => `${fmt(n)} named main stems: rivers whose mouth carries at least 100 m³/s on average, with a name from Natural Earth.`,
+  rivers: n => `${fmt(n)} river reaches drawn now (HydroRIVERS, at least 10 m³/s). Smaller rivers load region by region as you zoom in, so this grows.`,
+  lakes: n => `${fmt(n)} lakes and reservoirs of at least 100 km² (HydroLAKES).`,
+  events: n => `${fmt(n)} documented outbreaks and river spills, each hand-checked against WHO, PAHO, UNEP, CDC or peer-reviewed sources.`,
+  cholera: n => `${fmt(n)} countries with cholera reported to WHO in the last 12 weeks.`,
+  flow: n => `${fmt(n)} virtual gauges (GloFAS river-flow model) near the mouths of the largest rivers.`,
+  floods: n => `${fmt(n)} river-flood events GDACS listed as active at some point in the last 30 days (the KPI tile counts only today's).`,
+  don: n => `${fmt(n)} WHO Disease Outbreak News reports on waterborne diseases in the last 3 years that name a place.`,
+};
+function setCount(k, n) {
+  const e = $("c-" + k); if (!e) return;
+  e.textContent = n == null ? "" : fmt(n);
+  if (n != null && COUNT_TIP[k]) e.dataset.tip = COUNT_TIP[k](n);
+}
 function riverCount() { setCount("rivers", D.t1.features.length + D.t2.features.length + D.t3.features.length); }
 function sumSections() {
   document.querySelectorAll("#side details").forEach(d => {
     const f = d.querySelector("[data-fn]"); if (!f) return;
     const cbs = [...d.querySelectorAll("input[type=checkbox]")];
-    f.textContent = `${cbs.filter(c => c.checked).length}/${cbs.length}`;
+    const on = cbs.filter(c => c.checked).length;
+    f.textContent = `${on}/${cbs.length}`; f.dataset.tip = `${on} of the ${cbs.length} layers in this section are switched on.`;
   });
 }
 let uiReady = false;   // <details open> fires "toggle" on page load: don't let that overwrite the saved state before restoreUi ran
