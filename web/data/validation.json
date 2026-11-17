@@ -1,0 +1,140 @@
+{
+ "haiti2010": {
+  "updated": "2026-11-17",
+  "origin": "Meille (UN camp stream)",
+  "velocity": {
+   "a": 0.1,
+   "b": 0.3,
+   "err_factor": 1.17
+  },
+  "trace": {
+   "km": 118.4,
+   "days": 3.41,
+   "q_start": 1.4,
+   "q_end": 134.9,
+   "dilution": 96.4,
+   "pop_5km": 598619
+  },
+  "places": [
+   {
+    "name": "Mirebalais",
+    "dist_km": 0.4,
+    "river_km": 3.3,
+    "days": 0.27
+   },
+   {
+    "name": "Saut-d'Eau",
+    "dist_km": 5.9,
+    "river_km": 14.8,
+    "days": 0.62
+   },
+   {
+    "name": "Boucan-Carre",
+    "dist_km": 6.6,
+    "river_km": 16.4,
+    "days": 0.67
+   },
+   {
+    "name": "La Chapelle",
+    "dist_km": 2.0,
+    "river_km": 31.8,
+    "days": 1.08
+   },
+   {
+    "name": "Desarmes",
+    "dist_km": 2.3,
+    "river_km": 45.6,
+    "days": 1.46
+   },
+   {
+    "name": "Verrettes",
+    "dist_km": 2.9,
+    "river_km": 56.8,
+    "days": 1.76
+   },
+   {
+    "name": "Petite-Riviere-de-l'Artibonite",
+    "dist_km": 0.5,
+    "river_km": 65.7,
+    "days": 2.0
+   },
+   {
+    "name": "Pont-Sonde",
+    "dist_km": 0.6,
+    "river_km": 83.4,
+    "days": 2.48
+   },
+   {
+    "name": "Saint-Marc",
+    "dist_km": 10.3,
+    "river_km": 86.0,
+    "days": 2.55
+   },
+   {
+    "name": "Dessalines",
+    "dist_km": 11.1,
+    "river_km": 92.8,
+    "days": 2.73
+   },
+   {
+    "name": "L'Estere",
+    "dist_km": 9.0,
+    "river_km": 99.7,
+    "days": 2.91
+   },
+   {
+    "name": "Desdunes",
+    "dist_km": 6.0,
+    "river_km": 106.4,
+    "days": 3.09
+   },
+   {
+    "name": "Grande Saline",
+    "dist_km": 0.2,
+    "river_km": 118.4,
+    "days": 3.41
+   }
+  ],
+  "tests": {
+   "P1": {
+    "pass": true,
+    "criterion": "Timing: the release dates the model implies for a delta onset on Oct 19 (incubation 0.5-4.4 d, travel x/÷ the calibration error) overlap the window in which the camp was demonstrably contaminating (Oct 12-19).",
+    "travel_to_delta_days": 1.46,
+    "implied_release": [
+     "2010-10-13",
+     "2010-10-17",
+     "2010-10-18"
+    ],
+    "max_travel_that_passes_days": 6.5
+   },
+   "P2": {
+    "pass": false,
+    "criterion": "Simultaneity: the model front reaches every point from Desarmes to the sea within 1 day (observed: alerts from Desarmes to the seashore within 24 h).",
+    "arrival_desarmes_days": 1.46,
+    "arrival_sea_days": 3.41,
+    "spread_days": 1.95,
+    "speed_needed_factor": 1.95
+   },
+   "P3": {
+    "pass": false,
+    "criterion": "Exposure contrast: people per river-km within 5 km are at least 3x higher in the delta (Desarmes -> sea) than on the middle stretch (Mirebalais -> Desarmes), where almost no cases were reported.",
+    "middle": {
+     "people": 122668,
+     "km": 40.3,
+     "per_km": 3044
+    },
+    "delta": {
+     "people": 396530,
+     "km": 72.8,
+     "per_km": 5446
+    },
+    "ratio": 1.79
+   },
+   "P4": {
+    "pass": true,
+    "criterion": "Flow: the model's mean flow at the mouth is above 100 m3/s (paper: usually >100 m3/s in October).",
+    "q_end": 134.9
+   }
+  }
+ }
+}

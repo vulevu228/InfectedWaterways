@@ -1,13 +1,22 @@
 # Infected Waterways
 
-**Status:** Milestones 1–3 done (river graph + trace, live data layer with KPIs, spread simulator), 2026-11-16. Private repo.
+**Status:** Milestones 1–5 done (river graph + trace, live data layer, spread simulator, Haiti 2010 validation, relative risk index), 2026-11-17. Private repo.
 
 **Live (Tailscale only):** http://100.108.59.90:8796/ on the Pi (service `waterways-web`).
 
-**Idea:** a global, open-data model of how waterborne pathogens travel along the world's river networks.
-You pick a release point on any river. The model routes it downstream using real flow data and shows
-dilution, die-off, arrival time at each city and the population living along the affected river stretch.
-It is validated against documented real events.
+**What it answers:** *how far and how fast does contamination travel down a river, and who lives on that path?*
+You pick a release point on any of the world's rivers. The model follows the water to the sea using real flow
+data and shows arrival time at each place, dilution and die-off, and the people living along the stretch that
+still carries it - with a relative risk index for those who drink unsafe water.
+
+**What it does not answer:** how many people would fall ill or die. That needs an infective dose, a dose-response
+curve, how much river water people drink, and an attack rate for the same kind of exposure - none of which is
+known per place. An earlier version multiplied published numbers into case and death counts (Milestone 3b); the
+Haiti 2010 validation showed the exposure step alone can be far off, so the counts were removed (Milestone 5).
+
+**How sure it is:** travel time is calibrated on 6 reported arrival times (typical error ×1.17) and tested out of
+sample on the Haiti 2010 cholera epidemic: path, order and timing pass; the speed of spread across a delta and
+the 5 km exposure proxy fail, for reasons that are named (`docs/VALIDATION.md`).
 
 **Ethics rule:** every simulated scenario is labelled **SIMULATED / HYPOTHETICAL** on every map, chart and
 export. Real outbreak data (WHO and others) stays visually separate from the simulation.
@@ -23,10 +32,11 @@ SARS-CoV-2 only shows up in the wastewater early-warning layer, because it doesn
 | 1 | World waterways map + river graph | ✅ Web map (rivers ≥ 10 m³/s, 1,131 named main stems, 1,708 HydroLAKES ≥ 100 km², OSM waterways at zoom ≥ 7, satellite/Sentinel-2/3D terrain); 2,369,127 HydroRIVERS reaches (≥ 1 m³/s) in PostGIS; downstream trace API (path, travel time, countries incl. border rivers, cities, lakes); 11 historic outbreaks + spills with sources; velocity calibrated on 6 reported arrival times (`docs/CALIBRATION.md`) |
 | 2 | Real-data layer | ✅ Daily collector on the Pi: WHO weekly cholera by country (2023–now), WHO Disease Outbreak News (3,205 reports since 1996, 347 waterborne), GDACS floods, GloFAS river flow at 150 virtual gauges vs. the same season of the previous 5 years, WHO drinking-water coverage for 226 countries; GHS-POP 2025 population (people within 5 km of each trace); KPI panel with comparison periods |
 | 3 | Spread simulator | ✅ Release anywhere: relative concentration = dilution (Q₀/Q) × die-off 10^(−t/T90), per pathogen with fast/typical/slow T90 from the literature; lakes add their residence time; optional today's flow from GloFAS; KPIs: km and days until 99.9 % gone, people and cities on that stretch |
-| 3b | Outbreak scenario | ✅ Third map tab: exposed population → people on unsafe water (WHO drinking-water coverage, 226 countries) → cases at an attack rate measured in a documented outbreak → deaths at that pathogen's published case-fatality ratio, with a per-country breakdown |
-| 4 | Validation | (Travel time already checked in M1.) Replay the 2005 Songhua→Amur benzene spill and the 2010 Haiti Artibonite cholera outbreak, then compare with reported arrival times |
-| 5 | Map + dashboard | Web map (Count Down style) + Power BI report (real cholera vs. floods vs. WASH coverage) |
-| 6 | Showcase scenarios | e.g. Lancang→Mekong→Tonle Sap seasonal flow reversal, Ganges–Brahmaputra delta, Niger, Danube |
+| 3b | Outbreak scenario | ⛔ Superseded by M5 (2026-11-17): it turned exposure into ill and dead counts by multiplying four uncertain factors |
+| 4 | Validation | ✅ Out of sample on Haiti 2010 (`build/validate_haiti.py` → `docs/VALIDATION.md`), criteria fixed before the run: timing ✅, flow ✅, simultaneity across the delta ❌, exposure contrast ❌. Songhua 2005 is a calibration point (M1), not a test |
+| 5 | Relative risk index | ✅ The **Risk** tab: people on unsafe water along the contaminated stretch as an order-of-magnitude band with a fast–slow range, compared with the Artibonite 2010 path, plus the blind spots the validation found. No case or death counts |
+| 6 | Dashboard | Power BI report (real cholera vs. floods vs. WASH coverage) |
+| 7 | Showcase scenarios | e.g. Lancang→Mekong→Tonle Sap seasonal flow reversal, Ganges–Brahmaputra delta, Niger, Danube |
 
 ## How it works
 1. **River graph.** HydroRIVERS v1.0: every reach has `NEXT_DOWN`, the reach it flows into. The 2,369,127 reaches with
@@ -77,29 +87,30 @@ SARS-CoV-2 only shows up in the wastewater early-warning layer, because it doesn
 
 Every trace on the map is labelled **SIMULATED · MEAN FLOW**. It uses long-term mean flow, so it is not a forecast.
 
-7. **Outbreak scenario (Milestone 3b).** The **Outbreak** tab turns the concentration curve into a burden estimate, in four
-   multiplications, each one a published number rather than a guess:
+7. **Validation on Haiti 2010 (Milestone 4).** `build/validate_haiti.py` traces from the UN camp stream at Meille, where the
+   epidemic started, and tests the result against Piarroux et al. 2011 (*Emerging Infectious Diseases* 17(7)). Haiti was not used
+   for calibration, and the four criteria are fixed in the script before it runs:
 
-   | Step | What it is | Source |
+   | Test | Result | |
    |---|---|---|
-   | exposed | people within 5 km of the stretch still carrying ≥ 0.1 % of the release concentration | GHS-POP 2025 + the simulator above |
-   | × on unsafe water | share of that country's people whose drinking water is **not safely managed** (the 2.1 bn in WHO's 2025 count) or, stricter, **unimproved or straight from the surface** | WHO GHO `WSH_WATER_BASIC` / `WSH_WATER_SAFELY_MANAGED` (WHO-UNICEF JMP), 226 countries, latest year per country |
-   | × attack rate | share of them who fall ill, taken from a documented outbreak of that pathogen | cholera/typhoid/hep A: Haiti 2010–12, 0.65 % / **6.1 %** / 30.7 % (NEJM + department data) · Cryptosporidium: Milwaukee 1993, **25 %** / 52 % · E. coli: Walkerton 2000, **48 %** |
-   | × case fatality | published CFR for that pathogen | cholera 1 % (WHO's maximum with treatment) – 3 % (recent outbreaks) · typhoid 1 – 2.49 % · E. coli 0.3 % (Walkerton) · Cryptosporidium 0.017 % (Milwaukee) · hepatitis A: WHO publishes none, so no deaths are shown |
+   | P1 timing | pass | the front reaches Desarmes, the head of the delta, after 1.5 d, so a delta onset on Oct 19 implies a release on Oct 13-18, inside the window the camp was contaminating (Oct 12-19). A weak test: anything up to 6.5 d would pass |
+   | P2 simultaneity | **fail** | one channel's front needs 1.95 d to cross the delta; the delta fell ill within a day. Irrigation canals spread river water across it at once |
+   | P3 exposure contrast | **fail** | people per river-km within 5 km are only ×1.8 higher in the delta than in the middle valley (needed ×3; observed cases: thousands vs. 0-2). Four of the seven struck communes have their town 6-11 km from the channel |
+   | P4 flow | pass | 135 m³/s mean flow at the mouth; the paper: usually > 100 m³/s in October |
 
-   The scenario is a contamination event – a flood-driven sewage overflow, a failed treatment plant, an untreated discharge –
-   with no response. It is labelled HYPOTHETICAL · NOT A FORECAST in the panel. It has no dose-response model: everyone beside
-   water above 0.1 % of the release concentration counts as exposed, which is a proxy. Typhoid and hepatitis A borrow cholera's
-   attack rate because no outbreak of theirs is measured well enough; the panel says so. Worked examples at mean flow:
+   Read: the model gets *where* and *in what order* right, and *when* within its error. It cannot see canals, and a flat 5 km
+   band is a poor proxy for who drinks the river. Hence Milestone 5.
 
-   | Where | Pathogen | Exposed | On unsafe water | Ill | Dead |
-   |---|---|---|---|---|---|
-   | Ganges at Kanpur, whole river | Cryptosporidium | 25 M | 6.7 M | 1.7 M (3.5 M at 52 %) | 284 |
-   | Congo at Kisangani, 1,118 km | Vibrio cholerae | 2.2 M | 1.4 M | 85 k (9 k – 427 k) | 848 – 2,545 |
-   | Rhine at Cologne, 352 km | Vibrio cholerae | 4.6 M | ≈ 0 (100 % basic coverage) | ≈ 0 | ≈ 0 |
+8. **Relative risk index (Milestone 5).** The **Risk** tab shows one measured quantity: people within 5 km of the stretch that
+   still carries ≥ 0.1 % of the release, times the share of their country's people on **unimproved or surface water** (WHO GHO
+   `WSH_WATER_BASIC`, all 226 countries; "not safely managed" is offered too but covers only 158). It is shown as a band
+   (Very low < 1 k, Low, Moderate, High, Very high ≥ 1 M), with the range from fast to slow die-off, next to the Artibonite 2010
+   path measured the same way (≈ 160 k). Where they apply, the panel lists the blind spots: a stretch that reaches a delta,
+   lakes on the way, people without a WHO figure. Examples, cholera at mean flow: Artibonite from Meille **High** (×1.0),
+   upper Ganges at Haridwar **Low** (4 k; 3 k-385 k), Rhine at Basel **Very low** (0).
 
-   The Rhine row is the point of the layer: the same contamination is a water-treatment story in one country and a mass-casualty
-   one in another. What separates them is coverage, not hydrology.
+   The scenario is a contamination event - a flood-driven sewage overflow, a failed treatment plant, an untreated discharge.
+   It is labelled HYPOTHETICAL · NOT A FORECAST and ranks places for preparedness; it does not count the ill or the dead.
 
 ## Run / deploy
 ```
@@ -120,7 +131,7 @@ python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio py
 ```
 Map: MapLibre GL 5.24.0 on a custom OpenFreeMap (OpenMapTiles) style. It offers Esri World Imagery, Sentinel-2 cloudless 2025 (EOX),
 AWS Terrain Tiles hillshade/3D, maplibre-contour contour lines, and a globe view.
-Deep links: `?trace=lon,lat`, `?event=<id>`, `?river=<name>`, `?base=esri|s2`, `?3d=1`, `?panel=cholera|floods|flow|people`, `?pathogen=cholera|typhoid|hepa|ecoli|crypto|tracer`, `?mode=explore|trace|outbreak`, `?exposure=safe|basic`.
+Deep links: `?trace=lon,lat`, `?event=<id>`, `?river=<name>`, `?base=esri|s2`, `?3d=1`, `?panel=cholera|floods|flow|people`, `?pathogen=cholera|typhoid|hepa|ecoli|crypto|tracer`, `?mode=explore|trace|risk` (old links: `outbreak`), `?exposure=basic|safe`.
 
 Zoom: HydroRIVERS (a ~500 m model network that carries the flow data) fades out from zoom 7.5 to 10 and OpenStreetMap water areas and river lines take over, so the zoomed-in map shows the real banks.
 
@@ -128,9 +139,9 @@ See `docs/SOURCES.md` (access test of every source) and `docs/DATA_ASSESSMENT.md
 
 ## Data layers (and what this is not)
 Raw downloads and API pulls land in `data/raw` (one-off reference grids) or go straight into typed PostGIS tables
-(`cholera_week`, `don_reports`, `floods`, `gauges`, `gauge_flow`, `wash`, `pop`, `rivers`, …). KPIs and the outbreak
-scenario are computed **on read**: `/api/live` runs the aggregations per request and caches the result for 10 minutes,
-`/api/trace` walks the river graph per click, and the scenario arithmetic runs in the browser.
+(`cholera_week`, `don_reports`, `floods`, `gauges`, `gauge_flow`, `wash`, `pop`, `rivers`, …). KPIs and the risk
+index are computed **on read**: `/api/live` runs the aggregations per request and caches the result for 10 minutes,
+`/api/trace` walks the river graph per click, and the simulator and risk index run in the browser.
 
 This is deliberately **not** a medallion lakehouse like `SkyAndSeaLakehouse` or `MacroConflictLakehouse`: there is no
 immutable bronze landing zone for the daily API pulls and no materialised gold table. The data is small (the largest
