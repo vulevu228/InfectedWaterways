@@ -246,7 +246,12 @@ kbd { font:10px ui-monospace,Consolas,monospace; border:1px solid var(--line2); 
 
 <script>
 "use strict";
-const API = location.port === "8796" ? "" : "http://100.108.59.90:8796";
+// Public version (GitHub Pages, or ?static): no trace server. Live data = the Pi's daily snapshot, traces = precomputed examples.
+const STATIC = /\.github\.io$/i.test(location.hostname) || new URLSearchParams(location.search).has("static");
+const API = location.port === "8796" ? "" : "http://skysea-pi:8796";   // Tailscale name of the Pi
+let EXAMPLES = [];
+const EXP = STATIC ? fetch("data/static/examples.json").then(r => r.json()).then(x => (EXAMPLES = x)) : Promise.resolve([]);
+const apiGet = path => STATIC ? getJSON("data/static/" + path.replace("/api/", "") + ".json") : getJSON(API + path);
 const DEM = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png";
 const F = ["Noto Sans Regular"], FI = ["Noto Sans Italic"], FB = ["Noto Sans Bold"];
 const EMPTY = { type: "FeatureCollection", features: [] };
@@ -477,8 +482,17 @@ map.on("load", async () => {
     deepLinks();
     loadVisibleT3();
   } catch (e) { status("Could not load map data: " + e.message, true); }
-  fetch(API + "/api/health").then(r => r.json()).then(h => { if (h.ok) $("sReach").textContent = (h.reaches / 1e6).toFixed(2) + " M"; })
-    .catch(() => { $("hint").textContent = "Trace server not reachable – exploring only."; $("mTrace").disabled = true; });
+  apiGet("/api/health").then(h => { if (h.ok) $("sReach").textContent = (h.reaches / 1e6).toFixed(2) + " M"; })
+    .catch(() => { if (!STATIC) { $("hint").textContent = "Trace server not reachable – exploring only."; $("mTrace").disabled = true; } });
+  if (STATIC) EXP.then(ex => {
+    map.addSource("examples", { type: "geojson", data: { type: "FeatureCollection", features: ex.map(e => pt(e.lon, e.lat, { id: e.id, name: e.name })) } });
+    map.addLayer({ id: "examples", type: "circle", source: "examples", layout: { visibility: "none" },
+      paint: { "circle-radius": 7, "circle-color": "#ffffff", "circle-stroke-color": "#ff9d3a", "circle-stroke-width": 3 } });
+    map.addLayer({ id: "examples-lbl", type: "symbol", source: "examples", minzoom: 2, layout: { visibility: "none", "text-field": ["get", "name"],
+      "text-font": FB, "text-size": 11, "text-offset": [0, 1.1], "text-anchor": "top", "text-max-width": 10 },
+      paint: { "text-color": "#ffffff", "text-halo-color": "#050a12", "text-halo-width": 1.5 } });
+    setMode(mode);
+  }).catch(e => status("Could not load the example traces: " + e.message, true));
 });
 
 async function loadVisibleT3() {
@@ -600,10 +614,34 @@ function animateFlow() {
   flowAnim = requestAnimationFrame(tick);
 }
 const firstCoord = g => g.type === "LineString" ? g.coordinates[0] : g.coordinates[0][0];
+// public version: the nearest precomputed example within 30 px on screen (or 50 km for deep links and event buttons)
+function nearestExample(ll, px = 30) {
+  const p = map.project(ll);
+  let best = null, bd = Infinity;
+  for (const e of EXAMPLES) {
+    const q = map.project([e.lon, e.lat]), dpx = Math.hypot(p.x - q.x, p.y - q.y);
+    const km = 6371 * Math.acos(Math.min(1, Math.sin(ll.lat * Math.PI / 180) * Math.sin(e.lat * Math.PI / 180) +
+      Math.cos(ll.lat * Math.PI / 180) * Math.cos(e.lat * Math.PI / 180) * Math.cos((ll.lng - e.lon) * Math.PI / 180)));
+    if ((dpx <= px || km <= 50) && km < bd) { best = e; bd = km; }
+  }
+  return best;
+}
+function examplesPanel() {
+  openInfo(`<div class="kicker">Public version · example traces</div><h2>Pick a release point</h2>
+    <div class="note" style="margin-top:-4px">Tracing from any point on any river needs the project's own server (2.37 million river reaches in PostGIS on a Raspberry Pi). This public copy carries ${EXAMPLES.length} precomputed traces: the white points on the map, or the list below.</div>
+    <ul class="tl">${thead("To the sea", "Release point", "River km")}${EXAMPLES.map(e => `<li class="click" data-id="${e.id}"><span class="d">${days(e.days)}</span><span class="n">${esc(e.name)}</span><span class="k">${fmt(e.km)} km</span></li>`).join("")}</ul>`);
+  $("ib").querySelectorAll("li.click").forEach(li => li.onclick = () => { const e = EXAMPLES.find(x => x.id === li.dataset.id); runTrace({ lng: e.lon, lat: e.lat }); });
+}
 async function runTrace(ll, label) {
+  let d, url = `${API}/api/trace?lon=${ll.lng.toFixed(5)}&lat=${ll.lat.toFixed(5)}&a=${velocity.a}&b=${velocity.b}`;
+  if (STATIC) {
+    await EXP;
+    const ex = nearestExample(ll);
+    if (!ex) { status(`Public version: click one of the ${EXAMPLES.length} white example points. Tracing any river needs the private server.`, true); return examplesPanel(); }
+    url = `data/static/traces/${ex.id}.json`; label = label || ex.name;
+  }
   status("Following the water downstream…");
-  let d;
-  try { d = await getJSON(`${API}/api/trace?lon=${ll.lng.toFixed(5)}&lat=${ll.lat.toFixed(5)}&a=${velocity.a}&b=${velocity.b}`); }
+  try { d = await getJSON(url); }
   catch (e) { return status("Trace server not reachable: " + e.message, true); }
   if (d.error) return status(d.error, true);
   status("");
@@ -637,7 +675,7 @@ function showTrace(d, label) {
   const isos = new Set(d.countries.flatMap(c => c.iso3.split("/")));
   openInfo(`<div class="kicker">${mode === "outbreak" ? "Relative risk index" : "Downstream trace"}<span class="badge sim">SIMULATED · MEAN FLOW</span></div>
     <h2>${esc(label || s.system || "Unnamed river system")}</h2>
-    <div class="note" style="margin-top:-4px">Start snapped to the nearest river ≥ 1 m³/s, ${fmt(s.snap_km, 1)} km from the click · ${fmt(s.reaches)} river reaches · server answered in ${fmt(d.ms)} ms</div>
+    <div class="note" style="margin-top:-4px">Start snapped to the nearest river ≥ 1 m³/s, ${fmt(s.snap_km, 1)} km from the click · ${fmt(s.reaches)} river reaches · ${STATIC ? "precomputed trace (public version)" : `server answered in ${fmt(d.ms)} ms`}</div>
     <div class="tiles"><div class="tile"><b>${fmt(s.km)}</b><span>km to the ${s.ends === "sea" ? "sea" : "inland sink"}${ib("River distance from the start point to where the water ends, following the HydroRIVERS network reach by reach.")}</span></div>
       <div class="tile"><b>${days(s.days)}</b><span>travel time at mean flow${ib("How long water takes from the start to the end at the river's long-term mean flow. Speed per reach v = a·Q^b, calibrated on 6 reported spill arrivals; typical error ×1.17. Floods make it faster, droughts and dams slower.")}</span></div>
       <div class="tile"><b>×${fmt(s.dilution)}</b><span>more water at the end (dilution)${ib("Mean flow at the end divided by mean flow at the start. ×96 means each litre from the start is mixed into 96 litres by the end, so anything it carries is 96 times weaker, before any die-off.")}</span></div>
@@ -697,7 +735,7 @@ const dshort = d => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { day
 const pt = (x, y, p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [x, y] }, properties: p });
 async function loadLive() {
   const firstLive = LIVE === null;
-  try { LIVE = await getJSON(API + "/api/live"); } catch (e) {
+  try { LIVE = await apiGet("/api/live"); } catch (e) {
     freshness(null, e.message);
     if (!LIVE) $("kpis").innerHTML = `<div class="kpi wide"><span class="l">Live data not reachable</span><span class="c">${esc(e.message)}</span></div>`;
     return; }
@@ -1054,7 +1092,9 @@ function setMode(m) {
   $("mTrace").classList.toggle("on", m === "trace");
   $("mOutbreak").classList.toggle("on", m === "outbreak");
   $("mOutbreak").classList.toggle("ob", m === "outbreak");
-  $("hint").textContent = HINT[m];
+  $("hint").textContent = STATIC && m !== "explore" ? `Public version: click one of the ${EXAMPLES.length} white example points to follow the water to the sea.` : HINT[m];
+  if (STATIC && map.getLayer("examples")) for (const l of ["examples", "examples-lbl"]) map.setLayoutProperty(l, "visibility", m === "explore" ? "none" : "visible");
+  if (STATIC && m !== "explore" && was === "explore" && !lastTrace && EXAMPLES.length) examplesPanel();
   map.getCanvas().style.cursor = m === "explore" ? "" : "crosshair";
   // the trace panel reads differently per mode, so re-render it instead of making the user click the river again
   if (lastTrace && was !== m && (m === "outbreak" || was === "outbreak")) showTrace(lastTrace, lastLabel);
@@ -1167,9 +1207,11 @@ function freshness(L, err) {
   const gen = Date.parse(L.generated), hrs = (Date.now() - gen) / 36e5;
   const wk = L.cholera?.latest_week ? (Date.now() - Date.parse(L.cholera.latest_week)) / 864e5 : 0;
   // flow + floods are refreshed by the 07:20 collector; WHO cholera weeks arrive with ~1-2 weeks lag
-  f.className = "fresh" + (hrs > 2 ? " old" : wk > 21 ? " stale" : "");
+  f.className = "fresh" + (hrs > (STATIC ? 36 : 2) ? " old" : wk > 21 ? " stale" : "");
   const t = new Date(gen).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
-  f.innerHTML = `<i></i><span>Live API ${t} · WHO week ${L.cholera?.latest_week ? dshort(L.cholera.latest_week) : "–"} · refreshes every 10 min</span>`;
+  f.innerHTML = STATIC
+    ? `<i></i><span>Daily snapshot ${new Date(gen).toLocaleDateString("en-GB", { day: "numeric", month: "short" })} ${t} · WHO week ${L.cholera?.latest_week ? dshort(L.cholera.latest_week) : "–"}</span>`
+    : `<i></i><span>Live API ${t} · WHO week ${L.cholera?.latest_week ? dshort(L.cholera.latest_week) : "–"} · refreshes every 10 min</span>`;
 }
 $("side").addEventListener("change", e => { if (e.target.matches("input[data-l], input[data-t]")) saveUi(); });
 document.querySelectorAll("#side details[data-s]").forEach(d => d.addEventListener("toggle", saveUi));

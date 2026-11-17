@@ -1,0 +1,173 @@
+[
+ {
+  "id": "haiti2010",
+  "name": "Cholera, Haiti (Artibonite, 2010)",
+  "lon": -72.105,
+  "lat": 18.815,
+  "system": null,
+  "km": 118.4,
+  "days": 3.41
+ },
+ {
+  "id": "baiamare2000",
+  "name": "Cyanide spill, Baia Mare (2000)",
+  "lon": 23.47,
+  "lat": 47.665,
+  "system": "Danube",
+  "km": 2154.3,
+  "days": 27.48
+ },
+ {
+  "id": "songhua2005",
+  "name": "Benzene spill, Songhua River (2005)",
+  "lon": 126.5,
+  "lat": 43.92,
+  "system": "Amur",
+  "km": 2456.1,
+  "days": 26.73
+ },
+ {
+  "id": "mariana2015",
+  "name": "Tailings dam collapse, Rio Doce (2015)",
+  "lon": -43.468,
+  "lat": -20.207,
+  "system": "Doce",
+  "km": 603.2,
+  "days": 15.79
+ },
+ {
+  "id": "sandoz1986",
+  "name": "Sandoz chemical fire, Rhine (1986)",
+  "lon": 7.675,
+  "lat": 47.535,
+  "system": "Rhine",
+  "km": 902.7,
+  "days": 11.17
+ },
+ {
+  "id": "rhine-basel",
+  "name": "Rhine at Basel",
+  "lon": 7.59,
+  "lat": 47.56,
+  "system": "Rhine",
+  "km": 893.2,
+  "days": 11.03
+ },
+ {
+  "id": "danube-passau",
+  "name": "Danube at Passau",
+  "lon": 13.47,
+  "lat": 48.57,
+  "system": "Danube",
+  "km": 2396.8,
+  "days": 24.0
+ },
+ {
+  "id": "volga-tver",
+  "name": "Volga at Tver",
+  "lon": 35.9,
+  "lat": 56.86,
+  "system": "Volga",
+  "km": 3215.3,
+  "days": 34.05
+ },
+ {
+  "id": "ganges-haridwar",
+  "name": "Ganges at Haridwar",
+  "lon": 78.16,
+  "lat": 29.95,
+  "system": "Ganges",
+  "km": 2184.5,
+  "days": 24.01
+ },
+ {
+  "id": "brahmaputra-dibrugarh",
+  "name": "Brahmaputra at Dibrugarh",
+  "lon": 94.9,
+  "lat": 27.48,
+  "system": "Ganges",
+  "km": 1052.6,
+  "days": 6.99
+ },
+ {
+  "id": "indus-attock",
+  "name": "Indus at Attock",
+  "lon": 72.25,
+  "lat": 33.9,
+  "system": "Indus",
+  "km": 1722.7,
+  "days": 16.38
+ },
+ {
+  "id": "mekong-jinghong",
+  "name": "Lancang–Mekong at Jinghong",
+  "lon": 100.8,
+  "lat": 22.0,
+  "system": "Mekong",
+  "km": 2836.3,
+  "days": 24.9
+ },
+ {
+  "id": "yangtze-chongqing",
+  "name": "Yangtze at Chongqing",
+  "lon": 106.55,
+  "lat": 29.56,
+  "system": "Yangtze",
+  "km": 2201.8,
+  "days": 13.46
+ },
+ {
+  "id": "nile-khartoum",
+  "name": "Nile at Khartoum",
+  "lon": 32.53,
+  "lat": 15.62,
+  "system": "Nile",
+  "km": 3195.0,
+  "days": 34.27
+ },
+ {
+  "id": "niger-bamako",
+  "name": "Niger at Bamako",
+  "lon": -8.0,
+  "lat": 12.63,
+  "system": "Niger",
+  "km": 3486.4,
+  "days": 49.83
+ },
+ {
+  "id": "congo-kisangani",
+  "name": "Congo at Kisangani",
+  "lon": 25.19,
+  "lat": 0.52,
+  "system": "Congo",
+  "km": 2218.7,
+  "days": 13.29
+ },
+ {
+  "id": "zambezi-falls",
+  "name": "Zambezi at Victoria Falls",
+  "lon": 25.86,
+  "lat": -17.93,
+  "system": "Zambezi",
+  "km": 1623.1,
+  "days": 19.12
+ },
+ {
+  "id": "amazon-iquitos",
+  "name": "Amazon at Iquitos",
+  "lon": -73.25,
+  "lat": -3.75,
+  "system": "Amazon",
+  "km": 3380.0,
+  "days": 13.17
+ },
+ {
+  "id": "mississippi-minneapolis",
+  "name": "Mississippi at Minneapolis",
+  "lon": -93.26,
+  "lat": 44.98,
+  "system": "Mississippi",
+  "km": 3003.5,
+  "days": 26.63
+ }
+]

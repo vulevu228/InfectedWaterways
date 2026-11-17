@@ -1,0 +1,10 @@
+[Unit]
+Description=Infected Waterways: publish the daily API snapshot to the live-data branch (GitHub Pages map)
+After=network-online.target waterways-web.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=emir
+ExecStart=/bin/sh /home/emir/waterways/pi/publish/publish_live.sh
+TimeoutStartSec=600

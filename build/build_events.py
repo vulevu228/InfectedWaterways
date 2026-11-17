@@ -9,7 +9,7 @@ History layer + travel-time calibration.
 4. Writes web/data/events.geojson (origin points) and web/data/event_paths.geojson (downstream paths, with the
    calibrated arrival time per reach).
 
-Run: .venv/Scripts/python build/build_events.py [api base, default http://100.108.59.90:8796]
+Run: .venv/Scripts/python build/build_events.py [api base, default http://skysea-pi:8796]
 """
 import datetime as dt
 import json
@@ -19,7 +19,7 @@ import sys
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-API = sys.argv[1] if len(sys.argv) > 1 else "http://100.108.59.90:8796"
+API = sys.argv[1] if len(sys.argv) > 1 else "http://skysea-pi:8796"
 OUT = ROOT / "web" / "data"
 
 

@@ -1,8 +1,10 @@
 # Infected Waterways
 
-**Status:** Milestones 1–6 done (river graph + trace, live data layer, spread simulator, Haiti 2010 validation, relative risk index, Power BI report), 2026-11-17. Private repo.
+**Status:** Milestones 1–6 done (river graph + trace, live data layer, spread simulator, Haiti 2010 validation, relative risk index, Power BI report), 2026-11-17.
 
-**Live (Tailscale only):** http://100.108.59.90:8796/ on the Pi (service `waterways-web`).
+**Map:** https://vulevu228.github.io/InfectedWaterways/ - the public version: the full map, 19 precomputed example traces
+(the 5 historic river events plus big rivers on every continent) and a daily snapshot of the live data. Tracing from any
+point on any river needs the trace server (2.37 million river reaches in PostGIS on a Raspberry Pi), which stays private.
 
 **What it answers:** *how far and how fast does contamination travel down a river, and who lives on that path?*
 You pick a release point on any of the world's rivers. The model follows the water to the sea using real flow
@@ -157,6 +159,10 @@ python -m venv .venv && .venv/Scripts/python -m pip install geopandas pyogrio py
 # on the Pi: sql/03_live.sql, then python3 pi/collect/collect_live.py --setup-gauges (once, ~20 min),
 #            pi/systemd/waterways-collect.{service,timer} (daily 07:20)
 #            python3 pi/collect/collect_live.py --backfill-floods 2023-01-01   (once: GDACS history)
+# Public map (GitHub Pages, .github/workflows/pages.yml): web/ in static mode (automatic on *.github.io, or ?static)
+python build/export_static.py                   # example traces + live/health snapshot -> web/data/static/
+# on the Pi: pi/publish/publish_live.sh via pi/systemd/waterways-publish.{service,timer} (daily 08:00) force-pushes
+#            live.json + health.json to the live-data branch, which redeploys Pages with that day's numbers
 # Power BI: sql/04_bi.sql on the Pi (bi views), then
 python build/export_bi.py                       # bi views -> powerbi/data/*.csv (over SSH)
 py build/gen_pbip.py                            # regenerates powerbi/InfectedWaterways.pbip (Pillow); then Refresh in Desktop
@@ -194,6 +200,7 @@ PostGIS 3.5 on Postgres 17, database `waterways`, data on the Pi SSD `/mnt/ssd`.
 - `images/` report screenshots
 - `pi/` loader, systemd unit, trace API server (`pi/web/waterways_web.py`)
 - `scripts/` deploy (`push_to_pi.py`)
+- `.github/workflows/pages.yml` public map: `web/` + the Pi's daily snapshot from the `live-data` branch
 - `data/raw`, `data/processed` (git-ignored once a repo exists)
 - `notebooks/` exploration
 - `docs/` source inventory, method notes

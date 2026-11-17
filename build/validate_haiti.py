@@ -16,7 +16,7 @@ Observed facts (Piarroux et al. 2011, Emerg Infect Dis 17(7):1161-8, doi:10.3201
   - Regression: downstream of Meille RR 4.91, coastal plain RR 4.60, distance to Mirebalais not significant.
 Incubation of cholera (Azman et al. 2013, J Infect 66:432-8): 5 % by 0.5 d, median 1.4 d, 95 % by 4.4 d.
 
-Run: .venv/Scripts/python build/validate_haiti.py [api base, default http://100.108.59.90:8796]
+Run: .venv/Scripts/python build/validate_haiti.py [api base, default http://skysea-pi:8796]
 """
 import datetime as dt
 import json
@@ -26,7 +26,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-API = sys.argv[1] if len(sys.argv) > 1 else "http://100.108.59.90:8796"
+API = sys.argv[1] if len(sys.argv) > 1 else "http://skysea-pi:8796"
 
 ORIGIN = ("Meille (UN camp stream)", -72.105, 18.815)
 # OpenStreetMap / Nominatim positions of the places the paper names (town centres)

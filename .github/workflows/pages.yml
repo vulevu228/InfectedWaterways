@@ -1,0 +1,42 @@
+# Public map on GitHub Pages: web/ from main + the newest live snapshot the Pi pushes to the live-data branch.
+name: Pages
+
+on:
+  push:
+    branches: [main, live-data]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Overlay the Pi's daily snapshot (if the live-data branch exists)
+        run: |
+          if git fetch --depth 1 origin live-data; then
+            for f in live.json health.json; do
+              # temp file first: a failed show must not empty the fallback copy from main
+              if git show FETCH_HEAD:$f > /tmp/$f 2>/dev/null && [ -s /tmp/$f ]; then mv /tmp/$f web/data/static/$f; else echo "no $f on live-data"; fi
+            done
+          fi
+          ls -l web/data/static
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deployment
+        uses: actions/deploy-pages@v4
